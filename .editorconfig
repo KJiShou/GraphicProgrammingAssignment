@@ -1,0 +1,53 @@
+# EditorConfig for Graphics Programming Assignment
+# https://editorconfig.org
+
+# Top-most EditorConfig file
+root = true
+
+# All files
+[*]
+charset = utf-8
+end_of_line = crlf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# C++ source files
+[*.{cpp,h,hpp,c}]
+indent_style = space
+indent_size = 4
+
+# GLSL shader files
+[*.{glsl,vert,frag,geom,comp,tesc,tese}]
+indent_style = space
+indent_size = 4
+
+# Visual Studio files
+[*.{sln,vcxproj,vcxproj.filters}]
+indent_style = tab
+indent_size = 4
+
+# CMake files
+[CMakeLists.txt]
+indent_style = space
+indent_size = 2
+
+# Markdown files
+[*.md]
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = false
+
+# YAML files
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2
+
+# JSON files
+[*.json]
+indent_style = space
+indent_size = 2
+
+# XML files
+[*.xml]
+indent_style = space
+indent_size = 2
