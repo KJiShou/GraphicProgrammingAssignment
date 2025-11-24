@@ -60,7 +60,23 @@ int main()
     std::string vertexShaderSource = loadShaderSource("shaders/vertex.glsl");
     std::string fragmentShaderSource = loadShaderSource("shaders/fragment.glsl");
     
+    // Validate shader sources were loaded successfully
+    if (vertexShaderSource.empty() || fragmentShaderSource.empty())
+    {
+        std::cerr << "Failed to load shader sources. Exiting..." << std::endl;
+        glfwTerminate();
+        return -1;
+    }
+    
     unsigned int shaderProgram = createShaderProgram(vertexShaderSource, fragmentShaderSource);
+    
+    // Validate shader program was created successfully
+    if (shaderProgram == 0)
+    {
+        std::cerr << "Failed to create shader program. Exiting..." << std::endl;
+        glfwTerminate();
+        return -1;
+    }
 
     // Set up vertex data and buffers
     float vertices[] = {
@@ -149,6 +165,13 @@ std::string loadShaderSource(const char* filepath)
 
 unsigned int compileShader(unsigned int type, const std::string& source)
 {
+    // Validate source is not empty
+    if (source.empty())
+    {
+        std::cerr << "Shader source is empty" << std::endl;
+        return 0;
+    }
+
     unsigned int shader = glCreateShader(type);
     const char* src = source.c_str();
     glShaderSource(shader, 1, &src, NULL);
@@ -162,6 +185,8 @@ unsigned int compileShader(unsigned int type, const std::string& source)
     {
         glGetShaderInfoLog(shader, 512, NULL, infoLog);
         std::cerr << "Shader compilation failed:\n" << infoLog << std::endl;
+        glDeleteShader(shader);
+        return 0;
     }
 
     return shader;
@@ -171,6 +196,15 @@ unsigned int createShaderProgram(const std::string& vertexSource, const std::str
 {
     unsigned int vertexShader = compileShader(GL_VERTEX_SHADER, vertexSource);
     unsigned int fragmentShader = compileShader(GL_FRAGMENT_SHADER, fragmentSource);
+
+    // Check if shader compilation succeeded
+    if (vertexShader == 0 || fragmentShader == 0)
+    {
+        std::cerr << "Shader compilation failed, cannot create program" << std::endl;
+        if (vertexShader != 0) glDeleteShader(vertexShader);
+        if (fragmentShader != 0) glDeleteShader(fragmentShader);
+        return 0;
+    }
 
     // Link shaders
     unsigned int shaderProgram = glCreateProgram();
@@ -186,6 +220,10 @@ unsigned int createShaderProgram(const std::string& vertexSource, const std::str
     {
         glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
         std::cerr << "Shader program linking failed:\n" << infoLog << std::endl;
+        glDeleteProgram(shaderProgram);
+        glDeleteShader(vertexShader);
+        glDeleteShader(fragmentShader);
+        return 0;
     }
 
     // Delete shaders as they're linked into the program now
