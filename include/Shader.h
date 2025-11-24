@@ -3,7 +3,9 @@
 #include <string>
 
 // Shader utility class for loading and managing shaders
-// This is a template for extending the project with a more robust shader system
+// NOTE: This is a template/placeholder for future development
+// The current implementation in main.cpp uses basic shader loading functions
+// This class can be implemented later to provide a cleaner shader management interface
 
 namespace Graphics {
 

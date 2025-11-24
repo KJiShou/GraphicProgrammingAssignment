@@ -49,7 +49,7 @@ namespace Graphics {
               u(0.0f), v(0.0f) {}
     };
     
-    // Utility functions
+    // Utility functions (for future use - e.g., when implementing camera transformations)
     inline float DegreesToRadians(float degrees) {
         return degrees * (PI / 180.0f);
     }

@@ -146,10 +146,12 @@ These libraries are not included in the repository because:
 
 ## Alternative: Pre-built Setup
 
-Some repositories provide a setup script or pre-built dependencies. If available, look for:
-- `setup.bat` or `setup.sh` scripts
-- `dependencies/` folder with pre-built libraries
-- Release packages with dependencies included
+**Note**: This project currently does not include automated setup scripts or pre-built dependencies. All dependencies must be downloaded manually following the instructions above. Future versions may include:
+- `setup.bat` or `setup.sh` scripts for automated dependency downloading
+- Pre-built dependencies in release packages
+- vcpkg manifest files for automated dependency management
+
+For now, please follow the manual download instructions in the Quick Setup Guide above.
 
 ## Next Steps
 

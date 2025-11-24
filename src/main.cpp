@@ -168,7 +168,8 @@ unsigned int compileShader(unsigned int type, const std::string& source)
     // Validate source is not empty
     if (source.empty())
     {
-        std::cerr << "Shader source is empty" << std::endl;
+        const char* shaderType = (type == GL_VERTEX_SHADER) ? "vertex" : "fragment";
+        std::cerr << "Error: " << shaderType << " shader source is empty" << std::endl;
         return 0;
     }
 
@@ -184,7 +185,8 @@ unsigned int compileShader(unsigned int type, const std::string& source)
     if (!success)
     {
         glGetShaderInfoLog(shader, 512, NULL, infoLog);
-        std::cerr << "Shader compilation failed:\n" << infoLog << std::endl;
+        const char* shaderType = (type == GL_VERTEX_SHADER) ? "vertex" : "fragment";
+        std::cerr << "Error: " << shaderType << " shader compilation failed:\n" << infoLog << std::endl;
         glDeleteShader(shader);
         return 0;
     }
