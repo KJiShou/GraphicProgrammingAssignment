@@ -39,3 +39,34 @@
 
 # debug information files
 *.dwo
+
+# Visual Studio files
+.vs/
+*.user
+*.suo
+*.sdf
+*.opensdf
+*.db
+*.opendb
+*.VC.db
+*.VC.VC.opendb
+*.vcxproj.user
+
+# Build directories
+bin/
+obj/
+Debug/
+Release/
+x64/
+x86/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# External libraries (should be downloaded separately)
+external/glfw/
+external/glad/
+external/glm/
