@@ -1,0 +1,9 @@
+#pragma once
+#define WIN32_LEAN_AND_MEAN
+#include <Windows.h>
+#include <gl/GL.h>
+#include <gl/GLU.h>
+#include <iostream>
+#include <chrono>
+#include "json.hpp"
+#include <fstream>
