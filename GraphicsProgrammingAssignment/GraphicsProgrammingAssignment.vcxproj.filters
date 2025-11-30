@@ -53,7 +53,7 @@
     <ClInclude Include="Sphere.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\ThomasNg\Downloads\json.hpp">
+    <ClInclude Include="json.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
