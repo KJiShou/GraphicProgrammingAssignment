@@ -42,3 +42,6 @@
 
 # ignore .vs folder
 .vs/
+json.hpp
+Debug/
+GraphicsProgrammingAssignment/Debug/
