@@ -149,9 +149,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\Users\ThomasNg\Downloads\json.hpp" />
     <ClInclude Include="Cube.h" />
     <ClInclude Include="Cylinder.h" />
+    <ClInclude Include="json.hpp" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Pyramid.h" />
     <ClInclude Include="Sphere.h" />
