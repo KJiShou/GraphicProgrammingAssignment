@@ -61,5 +61,6 @@
     <None Include="data.json">
       <Filter>Data</Filter>
     </None>
+    <None Include="..\.gitignore" />
   </ItemGroup>
 </Project>
