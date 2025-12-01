@@ -3,12 +3,19 @@
 #include "Pyramid.h"
 #include "Cylinder.h"
 #include "Sphere.h"
+#include "InputManager.h"
+#include "Timer.h"
 
+#pragma comment(lib, "d3d9.lib")
+#pragma comment(lib, "d3dx9.lib")
+#pragma comment(lib, "dinput8.lib")
+#pragma comment(lib, "dxguid.lib")
 #pragma comment (lib, "OpenGL32.lib")
 #pragma comment (lib, "GLU32.lib")
 
 #define WINDOW_TITLE "OpenGL Window"
 #define PI 3.14159
+#define FPS 60
 
 using json = nlohmann::json;
 json j;
@@ -18,6 +25,10 @@ HWND hWnd = NULL;
 bool isFullscreen = false;
 RECT windowRect = { 0, 0, 1600, 900 };
 RECT fullscreenRect = { 0, 0, GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN) };
+MSG msg;
+Timer frameTimer = Timer();
+InputManager input;
+int globalFrameCounter;
 
 // camera
 float cameraRotateXAngle = 0.0f;
@@ -26,9 +37,11 @@ float cameraRotateZAngle = 0.0f;
 float cameraTransX = -1.0f;
 float cameraTransY = 0.0f;
 float cameraTransZ = -5.0f;
+float gameObjectTransX = 0.0f, gameObjectTransY = 0.0f, gameObjectTransZ = 0.0f;
+float gameObjectRotX = 0.0f, gameObjectRotY = 0.0f, gameObjectRotZ = 0.0f;
 bool isPerspective = true;
-bool isOtho = true;
-bool isFrustrum = true;
+bool isOtho = false;
+bool isFrustrum = false;
 bool isFirstRun = true;
 
 float deltaTime = 0.0f;
@@ -187,14 +200,6 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 			cameraTransX -= 0.1f;
 			break;
 		}
-		case 'S': {
-			cameraTransZ -= 0.1f;
-			break;
-		}
-		case 'W': {
-			cameraTransZ += 0.1f;
-			break;
-		}
 		case 'X': {
 			if (GetKeyState(VK_SHIFT) & 0x8000)
 			{
@@ -252,6 +257,9 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 			}
 			break;
 		}
+		case VK_ESCAPE:
+			PostQuitMessage(0);
+			break;
 		default: break;
 		}
 		break;
@@ -267,7 +275,15 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 
 	return 0;
 }
-
+bool ProcessMessages() {
+	while (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) {
+		if (msg.message == WM_QUIT)
+			return false;
+		TranslateMessage(&msg);
+		DispatchMessage(&msg);
+	}
+	return true;
+}
 //--------------------------------------------------------------------
 
 bool InitPixelFormat(HDC hdc)
@@ -381,7 +397,10 @@ void Display()
 
 void DrawRobot() {
 	glLoadIdentity();
-
+	glTranslatef(gameObjectTransX, gameObjectTransY, gameObjectTransZ);
+	glRotatef(gameObjectRotX, 1, 0, 0);
+	glRotatef(gameObjectRotY, 0, 1, 0);
+	glRotatef(gameObjectRotZ, 0, 0, 1);
 	for (auto& cylinder : cylinders)
 	{
 		cylinder->Draw();
@@ -641,6 +660,46 @@ void ReadData() {
 	}
 }
 
+void Update(int framesToUpdate) {
+	for (int i = 0; i < framesToUpdate; i++) {
+		globalFrameCounter++;
+
+		// camera move
+		if (input.IsRightMouseDown()) {
+			// move front
+			if (input.IsKeyPressed(DIK_W)) {
+				cameraTransZ+= 0.1;
+			}
+			// move back
+			if (input.IsKeyPressed(DIK_S)) {
+				cameraTransZ-= 0.1;
+			}
+			// move left
+			if (input.IsKeyPressed(DIK_D)) {
+				cameraTransX-= 0.1;
+			}
+			// move right
+			if (input.IsKeyPressed(DIK_A)) {
+				cameraTransX+= 0.1;
+			}
+			// move up
+			if (input.IsKeyPressed(DIK_E)) {
+				cameraTransY-= 0.1;
+			}
+			// move down
+			if (input.IsKeyPressed(DIK_Q)) {
+				cameraTransY+= 0.1;
+			}
+		}
+			// camera rotation
+			gameObjectTransX = -input.GetMouseX()/100.0f;
+			gameObjectRotY = input.GetMouseX()/10.0f;
+			gameObjectTransY = input.GetMouseY()/100.0f;
+			gameObjectRotX = input.GetMouseY()/10.0f;
+
+	}
+}
+
 int main(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)
 {
 	WNDCLASSEX wc;
@@ -675,6 +734,9 @@ int main(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)
 	//	make context current
 	if (!wglMakeCurrent(hdc, hglrc)) return false;
 
+	input.Initialize(hWnd);
+	frameTimer.Init(FPS);
+
 	//--------------------------------
 	//	End initialization
 	//--------------------------------
@@ -685,19 +747,12 @@ int main(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)
 
 	ReadData();
 	
-	MSG msg;
 	ZeroMemory(&msg, sizeof(msg));
 
-	while (true)
+	while (ProcessMessages())
 	{
-		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
-		{
-			if (msg.message == WM_QUIT) break;
-
-			TranslateMessage(&msg);
-			DispatchMessage(&msg);
-		}
-
+		input.Update();
+		Update(frameTimer.FramesToUpdate());
 		Display();
 
 		SwapBuffers(hdc);
