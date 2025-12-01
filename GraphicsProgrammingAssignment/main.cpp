@@ -6,6 +6,7 @@
 #include "InputManager.h"
 #include "Timer.h"
 #include "Object.h"
+#include "TowerBridge.h"
 
 #pragma comment(lib, "d3d9.lib")
 #pragma comment(lib, "d3dx9.lib")
@@ -40,14 +41,14 @@ float cameraTransY = 0.0f;
 float cameraTransZ = -5.0f;
 float gameObjectTransX = 0.0f, gameObjectTransY = 0.0f, gameObjectTransZ = 0.0f;
 float gameObjectRotX = 0.0f, gameObjectRotY = 0.0f, gameObjectRotZ = 0.0f;
-bool isPerspective = false;
+bool isPerspective = true;
 bool isOtho = false;
-bool isFrustrum = true;
+bool isFrustrum = false;
 bool isFirstRun = true;
 
 float deltaTime = 0.0f;
 
-Object robot("data.json");
+TowerBridge towerBridge;
 
 HWND GetHWnd() { return hWnd; }
 
@@ -92,7 +93,7 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 			break;
 		}
 		case VK_RETURN: {
-			robot.ReadData();
+			towerBridge.object.ReadData();
 			break;
 		}
 		case VK_UP: {
@@ -244,7 +245,7 @@ void PerspectiveView() {
 	float fovy = 50.67f;
 	float aspect = 1.777f;
 	float nearPerspValue = 0.1f;
-	float farPerspValue = 10.0f;
+	float farPerspValue = 20.0f;
 	gluPerspective(fovy, 1600.0f/900.0f, nearPerspValue, farPerspValue);
 }
 
@@ -285,7 +286,7 @@ void UpdateCameraView() {
 
 void Draw() {
 	UpdateCameraView();
-	robot.Draw();
+	towerBridge.Draw();
 }
 
 void Display()
@@ -339,27 +340,33 @@ void Update(int framesToUpdate) {
 		if (input.IsRightMouseDown()) {
 			// move front
 			if (input.IsKeyPressed(DIK_W)) {
-				cameraTransZ+= 0.1;
+				if (input.IsKeyPressed(DIK_LSHIFT)) cameraTransZ += 0.3;
+				else cameraTransZ+= 0.1;
 			}
 			// move back
 			if (input.IsKeyPressed(DIK_S)) {
-				cameraTransZ-= 0.1;
+				if (input.IsKeyPressed(DIK_LSHIFT)) cameraTransZ-= 0.3;
+				else cameraTransZ -= 0.1;
 			}
 			// move left
 			if (input.IsKeyPressed(DIK_D)) {
-				cameraTransX-= 0.1;
+				if (input.IsKeyPressed(DIK_LSHIFT)) cameraTransX-= 0.3;
+				else cameraTransX -= 0.1;
 			}
 			// move right
 			if (input.IsKeyPressed(DIK_A)) {
-				cameraTransX+= 0.1;
+				if (input.IsKeyPressed(DIK_LSHIFT)) cameraTransX+= 0.3;
+				else cameraTransX += 0.1;
 			}
 			// move up
 			if (input.IsKeyPressed(DIK_E)) {
-				cameraTransY-= 0.1;
+				if (input.IsKeyPressed(DIK_LSHIFT)) cameraTransY-= 0.3;
+				else cameraTransY -= 0.1;
 			}
 			// move down
 			if (input.IsKeyPressed(DIK_Q)) {
-				cameraTransY+= 0.1;
+				if (input.IsKeyPressed(DIK_LSHIFT)) cameraTransY+= 0.3;
+				else cameraTransY += 0.1;
 			}
 		}
 			// camera rotation

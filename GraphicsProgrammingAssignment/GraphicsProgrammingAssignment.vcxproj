@@ -155,6 +155,7 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="TowerBridge.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cube.h" />
@@ -166,6 +167,7 @@
     <ClInclude Include="Pyramid.h" />
     <ClInclude Include="Sphere.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="TowerBridge.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.gitignore" />

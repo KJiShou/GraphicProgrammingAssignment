@@ -1,3 +1,4 @@
+#pragma once
 #include "pch.h"
 #include "Cylinder.h"
 #include "Sphere.h"
