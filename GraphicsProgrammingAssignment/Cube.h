@@ -4,6 +4,7 @@ class Cube
 {
 public:
 	Cube(float length, float width, float height, float r, float g, float b);
+	~Cube();
 	void Draw();
 	void Translate(float x, float y, float z);
 	void Rotate(float rotX, float rotY, float rotZ, bool isRotateByCenter = true, float rotPosX = 0.0f, float rotPosY = 0.0f, float rotPosZ = 0.0f);

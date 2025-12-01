@@ -1,0 +1,107 @@
+{
+  "cylinders": [
+    {
+      "baseRadius": 1.0,
+      "topRadius": 0.5,
+      "height": 1.0,
+      "slices": 10,
+      "stacks": 10,
+      "style": "GLU_LINE",
+      "isClose": true,
+      "lineWidth": 1.0,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "transX": 1.5,
+      "transY": 1.0,
+      "transZ": 0.0,
+      "rotX": 0.0,
+      "rotY": 0.0,
+      "rotZ": 0.0,
+      "scaleX": 1.5,
+      "scaleY": 1.0,
+      "scaleZ": 1.0
+    },
+    {
+      "baseRadius": 0.5,
+      "topRadius": 0.5,
+      "height": 1.0,
+      "slices": 10,
+      "stacks": 10,
+      "style": "GLU_FILL",
+      "isClose": false,
+      "lineWidth": 1.0,
+      "r": 0.0,
+      "g": 0.0,
+      "b": 0.0,
+      "transX": 0.0,
+      "transY": 0.0,
+      "transZ": 0.0,
+      "rotX": 0.0,
+      "rotY": 0.0,
+      "rotZ": 0.0,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "scaleZ": 1.0
+    }
+  ],
+  "spheres": [
+    {
+      "radius": 2.0,
+      "slices": 20,
+      "stacks": 20,
+      "style": "GLU_LINE",
+      "lineWidth": 1.0,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 0.0,
+      "transX": 0.0,
+      "transY": 0.0,
+      "transZ": 0.0,
+      "rotX": 0.0,
+      "rotY": 0.0,
+      "rotZ": 0.0,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "scaleZ": 1.0
+    }
+  ],
+  "cubes": [
+    {
+      "length": 2.0,
+      "width": 1.0,
+      "height": 1.0,
+      "r": 0.5,
+      "g": 0.5,
+      "b": 0.5,
+      "transX": 0.0,
+      "transY": 0.0,
+      "transZ": 0.0,
+      "rotX": 0.0,
+      "rotY": 0.0,
+      "rotZ": 0.0,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "scaleZ": 1.0
+    }
+  ],
+  "pyramids": [
+    {
+      "length": 2.0,
+      "width": 1.0,
+      "height": 1.5,
+      "r": 1.0,
+      "g": 0.0,
+      "b": 1.0,
+      "transX": 0.0,
+      "transY": 0.0,
+      "transZ": 0.0,
+      "rotX": 0.0,
+      "rotY": 0.0,
+      "rotZ": 0.0,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "scaleZ": 1.0
+    }
+  ]
+}

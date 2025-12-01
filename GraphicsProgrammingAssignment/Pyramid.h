@@ -3,6 +3,7 @@ class Pyramid
 {
 public:
 	Pyramid(float length, float width, float height, float r, float g, float b);
+	~Pyramid();
 	void Draw();
 	void Translate(float x, float y, float z);
 	void Rotate(float rotX, float rotY, float rotZ, bool isRotateByCenter = true, float rotPosX = 0.0f, float rotPosY = 0.0f, float rotPosZ = 0.0f);

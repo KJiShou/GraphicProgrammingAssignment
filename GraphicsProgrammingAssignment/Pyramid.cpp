@@ -20,6 +20,9 @@ Pyramid::Pyramid(
 	centerY = height * 0.5f;
 	centerZ = width * 0.5f;
 };
+Pyramid::~Pyramid() {
+
+}
 
 void Pyramid::Draw() {
 
