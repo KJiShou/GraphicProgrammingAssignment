@@ -93,7 +93,7 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 			break;
 		}
 		case VK_RETURN: {
-			towerBridge.object.ReadData();
+			towerBridge.ReadData();
 			break;
 		}
 		case VK_UP: {

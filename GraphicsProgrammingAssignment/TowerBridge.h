@@ -6,5 +6,6 @@ public:
 	Object object;
 	TowerBridge() : object("towerBridge.json") {}
 	void Draw();
+	void ReadData();
 };
 
