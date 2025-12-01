@@ -393,14 +393,18 @@ void Display()
 	//	End of OpenGL drawing
 	//--------------------------------
 }
-//--------------------------------------------------------------------
 
-void DrawRobot() {
+void UpdateCameraView() {
 	glLoadIdentity();
 	glTranslatef(gameObjectTransX, gameObjectTransY, gameObjectTransZ);
 	glRotatef(gameObjectRotX, 1, 0, 0);
 	glRotatef(gameObjectRotY, 0, 1, 0);
 	glRotatef(gameObjectRotZ, 0, 0, 1);
+}
+//--------------------------------------------------------------------
+
+void DrawRobot() {
+	UpdateCameraView();
 	for (auto& cylinder : cylinders)
 	{
 		cylinder->Draw();
