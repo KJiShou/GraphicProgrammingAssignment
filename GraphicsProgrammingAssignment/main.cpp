@@ -45,6 +45,7 @@ bool isPerspective = true;
 bool isOtho = false;
 bool isFrustrum = false;
 bool isFirstRun = true;
+bool drawAxis = false;
 
 float deltaTime = 0.0f;
 
@@ -122,6 +123,8 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 			cameraTransX = -1.0f;
 			cameraTransY = 0;
 			cameraTransZ = -5.0f;
+			input.SetMouseX(0);
+			input.SetMouseY(0);
 		}
 		case 'X': {
 			if (GetKeyState(VK_SHIFT) & 0x8000)
@@ -178,6 +181,10 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 					cameraRotateZAngle = 0.0f;
 				}
 			}
+			break;
+		}
+		case 'F': {
+			drawAxis = !drawAxis;
 			break;
 		}
 		case VK_ESCAPE:
@@ -284,6 +291,81 @@ void UpdateCameraView() {
 	glRotatef(gameObjectRotZ, 0, 0, 1);
 }
 
+void DrawAxis() {
+	// x axis positive
+	glBegin(GL_LINES);
+	glColor3f(1.0, 0, 0);
+	glPushMatrix();
+	glVertex3f(0, 0, 0);
+	glVertex3f(20, 0, 0);
+	glPopMatrix();
+	glEnd();
+
+	// x axis negative
+	glBegin(GL_LINES);
+	glColor3f(1.0, 0, 1.0);
+	glPushMatrix();
+	glVertex3f(0, 0, 0);
+	glVertex3f(-20, 0, 0);
+	glPopMatrix();
+	glEnd();
+
+	// y axis positive
+	glBegin(GL_LINES);
+	glColor3f(0.0, 1.0, 0);
+	glPushMatrix();
+	glVertex3f(0, 0, 0);
+	glVertex3f(0, 20, 0);
+	glPopMatrix();
+	glEnd();
+
+	// y axis negative
+	glBegin(GL_LINES);
+	glColor3f(0.0, 1.0, 1.0);
+	glPushMatrix();
+	glVertex3f(0, 0, 0);
+	glVertex3f(0, -20, 0);
+	glPopMatrix();
+	glEnd();
+
+	// z axis positive
+	glBegin(GL_LINES);
+	glColor3f(0.0, 0.0, 1.0);
+	glPushMatrix();
+	glVertex3f(0, 0, 0);
+	glVertex3f(0, 0, 20);
+	glPopMatrix();
+	glEnd();
+
+	// z axis negative
+	glBegin(GL_LINES);
+	glColor3f(1.0, 1.0, 1.0);
+	glPushMatrix();
+	glVertex3f(0, 0, 0);
+	glVertex3f(0, 0, -20);
+	glPopMatrix();
+	glEnd();
+
+	// draw point
+	glBegin(GL_POINTS);
+	for (int x = 1; x <= 20; x++) {
+		for (int y = 1; y <= 20; y++) {
+			for (int z = 0; z <= 20; z++) {
+
+			glVertex3f(x, y, z);
+			glVertex3f(-x, y, z);
+			glVertex3f(x, -y, z);
+			glVertex3f(-x, -y, z);
+			glVertex3f(x, y, -z);
+			glVertex3f(-x, y, -z);
+			glVertex3f(x, -y, -z);
+			glVertex3f(-x, -y, -z);
+			}
+		}
+	}
+	glEnd();
+}
+
 void Draw() {
 	UpdateCameraView();
 	towerBridge.Draw();
@@ -323,6 +405,7 @@ void Display()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	CalcDeltaTime();
+	if (drawAxis) DrawAxis();
 	Draw();
 	//--------------------------------
 	//	End of OpenGL drawing

@@ -31,7 +31,7 @@ bool InputManager::Initialize(HWND hwnd) {
 	hr = dInput->CreateDevice(GUID_SysMouse, &dInputMouseDevice, NULL);
 	if (FAILED(hr)) return false;
 	dInputMouseDevice->SetDataFormat(&c_dfDIMouse);
-	dInputMouseDevice->SetCooperativeLevel(hwnd, DISCL_FOREGROUND | DISCL_EXCLUSIVE);
+	dInputMouseDevice->SetCooperativeLevel(hwnd, DISCL_FOREGROUND | DISCL_NONEXCLUSIVE);
 	dInputMouseDevice->Acquire();
 
 	return true;
@@ -70,8 +70,18 @@ LONG InputManager::GetMouseX() {
 	return currentXpos;
 }
 
+void InputManager::SetMouseX(LONG x)
+{
+	currentXpos = x;
+}
+
 LONG InputManager::GetMouseY() {
 	return currentYpos;
+}
+
+void InputManager::SetMouseY(LONG y)
+{
+	currentYpos = y;
 }
 
 void InputManager::CleanUp() {

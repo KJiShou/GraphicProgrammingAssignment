@@ -19,7 +19,9 @@ public:
 	void Update();
 	bool IsKeyPressed(BYTE key);
 	LONG GetMouseX();
+	void SetMouseX(LONG x);
 	LONG GetMouseY();
+	void SetMouseY(LONG y);
 	void CleanUp();
 	bool IsLeftMouseDown();
 	bool IsRightMouseDown();
