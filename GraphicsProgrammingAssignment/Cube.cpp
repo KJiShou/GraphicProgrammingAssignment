@@ -19,7 +19,11 @@ Cube::Cube(
 	centerX = length * 0.5f;
 	centerY = height * 0.5f;
 	centerZ = width * 0.5f;
-};
+}
+Cube::~Cube()
+{
+}
+;
 
 void Cube::Draw() {
 
