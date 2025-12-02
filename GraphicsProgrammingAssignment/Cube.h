@@ -19,6 +19,8 @@ public:
 
 	void SetColor(float red, float green, float blue);
 
+	void SetExpandable(bool ex);
+
 	// ======================
 	// Getters
 	// ======================
@@ -57,6 +59,8 @@ public:
 	float GetRotPosX() const;
 	float GetRotPosY() const;
 	float GetRotPosZ() const;
+
+	bool GetIsExpandable() const;
 private:
 	// size
 	float length;
@@ -93,5 +97,8 @@ private:
 	float rotPosX = 0.0f;
 	float rotPosY = 0.0f;
 	float rotPosZ = 0.0f;
+
+	// expand in two way
+	bool isExpandable = false;
 };
 

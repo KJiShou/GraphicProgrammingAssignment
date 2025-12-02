@@ -49,6 +49,7 @@ void InputManager::Update() {
 
 	currentXpos += mouseState.lX;
 	currentYpos += mouseState.lY;
+	mouseScroll = mouseState.lZ;
 
 	//currentXpos = (currentXpos < 0) ? 0 : (currentXpos >= windowWidth ? (windowWidth - 1) : currentXpos);
 	//currentYpos = (currentYpos < 0) ? 0 : (currentYpos >= windowHeight ? (windowHeight - 1) : currentYpos);
@@ -82,6 +83,11 @@ LONG InputManager::GetMouseY() {
 void InputManager::SetMouseY(LONG y)
 {
 	currentYpos = y;
+}
+
+float InputManager::GetMouseScroll()
+{
+	return mouseState.lZ;
 }
 
 void InputManager::CleanUp() {

@@ -14,7 +14,7 @@ Cube::Cube(
 	height(height),
 	r(r),
 	g(g),
-	b(b) 
+	b(b)
 {
 	centerX = length * 0.5f;
 	centerY = height * 0.5f;
@@ -36,6 +36,7 @@ void Cube::Draw() {
 	if (isRotateByCenter)
 	{
 		glTranslatef(centerX, centerY, centerZ);
+		if (isExpandable) glTranslatef(-centerX, -centerY, -centerZ);
 	}
 	else
 	{
@@ -49,6 +50,7 @@ void Cube::Draw() {
 	if (isRotateByCenter)
 	{
 		glTranslatef(-centerX, -centerY, -centerZ);
+		if (isExpandable) glTranslatef(centerX, centerY, centerZ);
 	}
 	else
 	{
@@ -56,6 +58,8 @@ void Cube::Draw() {
 	}
 
 	glScalef(scaleX, scaleY, scaleZ);
+
+	if (isExpandable) glTranslatef(-centerX, -centerY, -centerZ);
 
 	glBegin(GL_QUADS);
 
@@ -145,6 +149,11 @@ void Cube::SetColor(float red, float green, float blue)
 	b = blue;
 }
 
+void Cube::SetExpandable(bool ex)
+{
+	isExpandable = ex;
+}
+
 // ======================
 // Getters
 // ======================
@@ -184,3 +193,6 @@ float Cube::GetCenterZ() const { return centerZ; }
 float Cube::GetRotPosX() const { return rotPosX; }
 float Cube::GetRotPosY() const { return rotPosY; }
 float Cube::GetRotPosZ() const { return rotPosZ; }
+
+// expand in two way
+bool Cube::GetIsExpandable() const { return isExpandable; }

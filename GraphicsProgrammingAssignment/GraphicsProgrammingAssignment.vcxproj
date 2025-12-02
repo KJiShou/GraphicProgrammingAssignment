@@ -171,6 +171,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.gitignore" />
+    <None Include="bridge.json" />
     <None Include="data.json" />
     <None Include="template.json" />
     <None Include="towerBridge.json" />

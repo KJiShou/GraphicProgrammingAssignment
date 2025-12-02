@@ -3,8 +3,9 @@
 class TowerBridge
 {
 public:
-	Object object;
-	TowerBridge() : object("towerBridge.json") {}
+	Object tower;
+	Object bridge;
+	TowerBridge() : tower("towerBridge.json"), bridge("bridge.json") {}
 	void Draw();
 	void ReadData();
 };
