@@ -61,6 +61,7 @@ struct CubeData {
 	float scaleX;
 	float scaleY;
 	float scaleZ;
+	bool isExpandable;
 };
 struct PyramidData {
 	float length;
@@ -113,10 +114,6 @@ private:
 public:
 	Object(std::string fileName);
 	virtual ~Object();
-	/*Object(const Object&) = delete;
-	Object& operator=(const Object&) = delete;
-	Object(Object&&) noexcept = default;
-	Object& operator=(Object&&) noexcept = default;*/
 
 	void Draw();
 

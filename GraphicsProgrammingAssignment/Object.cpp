@@ -148,6 +148,8 @@ void Object::ReadData(bool firstRun) {
 		c.scaleY = jc["scaleY"];
 		c.scaleZ = jc["scaleZ"];
 
+		c.isExpandable = jc["isExpandable"];
+
 		cubesData.push_back(c);
 	}
 
@@ -203,6 +205,7 @@ void Object::ReadData(bool firstRun) {
 			cubes[i]->Translate(data.transX, data.transY, data.transZ);
 			cubes[i]->Rotate(data.rotX, data.rotY, data.rotZ);
 			cubes[i]->Scale(data.scaleX, data.scaleY, data.scaleZ);
+			cubes[i]->SetExpandable(data.isExpandable);
 			i++;
 		}
 		i = 0;
@@ -255,6 +258,7 @@ void Object::ReadData(bool firstRun) {
 			cubes[i]->Translate(cubesData[i].transX, cubesData[i].transY, cubesData[i].transZ);
 			cubes[i]->Rotate(cubesData[i].rotX, cubesData[i].rotY, cubesData[i].rotZ);
 			cubes[i]->Scale(cubesData[i].scaleX, cubesData[i].scaleY, cubesData[i].scaleZ);
+			cubes[i]->SetExpandable(cubesData[i].isExpandable);
 		}
 
 		for (size_t i = 0; i < pyramids.size() && i < pyramidsData.size(); i++)

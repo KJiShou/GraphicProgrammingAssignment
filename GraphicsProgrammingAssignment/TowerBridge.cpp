@@ -1,10 +1,11 @@
 #include "TowerBridge.h"
 
 void TowerBridge::Draw() {
-	object.Rotate(90, 0, 0);
-	object.Draw();
+	tower.Draw();
+	//bridge.Draw();
 }
 
 void TowerBridge::ReadData() {
-	object.ReadData();
+	tower.ReadData();
+	bridge.ReadData();
 }

@@ -339,7 +339,7 @@ void DrawAxis() {
 
 	// z axis negative
 	glBegin(GL_LINES);
-	glColor3f(1.0, 1.0, 1.0);
+	glColor3f(0.0, 0.0, 0.0);
 	glPushMatrix();
 	glVertex3f(0, 0, 0);
 	glVertex3f(0, 0, -20);
@@ -347,27 +347,26 @@ void DrawAxis() {
 	glEnd();
 
 	// draw point
-	glBegin(GL_POINTS);
-	for (int x = 1; x <= 20; x++) {
-		for (int y = 1; y <= 20; y++) {
-			for (int z = 0; z <= 20; z++) {
-
-			glVertex3f(x, y, z);
-			glVertex3f(-x, y, z);
-			glVertex3f(x, -y, z);
-			glVertex3f(-x, -y, z);
-			glVertex3f(x, y, -z);
-			glVertex3f(-x, y, -z);
-			glVertex3f(x, -y, -z);
-			glVertex3f(-x, -y, -z);
-			}
-		}
-	}
+	
+	
+	glColor3f(1, 1, 1);
+	for (int i= 1; i <= 200; i++) {
+		glPointSize(2);
+		if (i % 10 == 0) glPointSize(3);
+		glBegin(GL_POINTS);
+		glVertex3f(i/10.0, 0, 0);
+		glVertex3f(0, i/10.0, 0);
+		glVertex3f(0, 0, i/10.0);
+		glVertex3f(-i/10.0, 0, 0);
+		glVertex3f(0, -i/10.0, 0);
+		glVertex3f(0, 0, -i/10.0);
 	glEnd();
+	}
 }
 
 void Draw() {
 	UpdateCameraView();
+	if (drawAxis) DrawAxis();
 	towerBridge.Draw();
 }
 
@@ -405,7 +404,6 @@ void Display()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	CalcDeltaTime();
-	if (drawAxis) DrawAxis();
 	Draw();
 	//--------------------------------
 	//	End of OpenGL drawing
@@ -452,6 +450,7 @@ void Update(int framesToUpdate) {
 				else cameraTransY += 0.1;
 			}
 		}
+		
 			// camera rotation
 			gameObjectTransX = -input.GetMouseX()/100.0f;
 			gameObjectRotY = input.GetMouseX()/10.0f;

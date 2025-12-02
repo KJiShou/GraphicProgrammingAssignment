@@ -9,6 +9,7 @@ private:
 	BYTE diKeys[256];
 	LONG currentXpos;
 	LONG currentYpos;
+	float mouseScroll;
 	LONG windowHeight = 720;
 	LONG windowWidth = 1080;
 public:
@@ -22,6 +23,7 @@ public:
 	void SetMouseX(LONG x);
 	LONG GetMouseY();
 	void SetMouseY(LONG y);
+	float GetMouseScroll();
 	void CleanUp();
 	bool IsLeftMouseDown();
 	bool IsRightMouseDown();
