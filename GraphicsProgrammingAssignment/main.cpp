@@ -45,11 +45,15 @@ bool isPerspective = true;
 bool isOtho = false;
 bool isFrustrum = false;
 bool isFirstRun = true;
-bool drawAxis = false;
+bool drawAxis = true;
 
 float deltaTime = 0.0f;
 
 TowerBridge towerBridge;
+//===================
+// JS Practical Test
+//===================
+float rotation = 0.0f;
 
 HWND GetHWnd() { return hWnd; }
 
@@ -185,6 +189,24 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 		}
 		case 'F': {
 			drawAxis = !drawAxis;
+			break;
+		}
+		case 'O': {
+			isOtho = true;
+			isPerspective = false;
+			isFrustrum = false;
+			break;
+		}
+		case 'P': {
+			isOtho = false;
+			isPerspective = true;
+			isFrustrum = false;
+			break;
+		}
+		case 'I': {
+			isOtho = false;
+			isPerspective = false;
+			isFrustrum = true;
 			break;
 		}
 		case VK_ESCAPE:
@@ -367,7 +389,7 @@ void DrawAxis() {
 void Draw() {
 	UpdateCameraView();
 	if (drawAxis) DrawAxis();
-	towerBridge.Draw();
+	towerBridge.Draw(rotation);
 }
 
 void Display()
@@ -449,6 +471,12 @@ void Update(int framesToUpdate) {
 				if (input.IsKeyPressed(DIK_LSHIFT)) cameraTransY+= 0.3;
 				else cameraTransY += 0.1;
 			}
+		}
+		if (input.IsKeyPressed(DIK_U) && rotation > -90) {
+			rotation--;
+		}
+		if (input.IsKeyPressed(DIK_P) && rotation < 0) {
+			rotation++;
 		}
 		
 			// camera rotation

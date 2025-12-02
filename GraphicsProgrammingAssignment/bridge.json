@@ -1,19 +1,19 @@
 {
   "cubes": [
     {
-      "length": 3,
-      "width": 2,
-      "height": 2,
+      "length": 2,
+      "width": 4.0,
+      "height": 0.2,
       "r": 0.149,
       "g": 0.141,
       "b": 0.176,
       "transX": 0,
-      "transY": 0,
-      "transZ": 0,
+      "transY": -2.6,
+      "transZ": 4.0,
       "rotX": 0.0,
       "rotY": 0.0,
       "rotZ": 0.0,
-      "scaleX": 2.0,
+      "scaleX": 1.0,
       "scaleY": 1.0,
       "scaleZ": 1.0,
       "isExpandable": true

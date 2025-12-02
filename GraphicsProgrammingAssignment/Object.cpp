@@ -16,14 +16,16 @@ void Object::Translate(float x, float y, float z) {
 	}
 	glTranslatef(x, y, z);
 }
-void Object::Rotate(float x, float y, float z) {
+void Object::Rotate(float x, float y, float z, float pivotX, float pivotY , float pivotZ ) {
 	if (!isPush) {
 		glPushMatrix();
 		isPush = true;
 	}
+	if (pivotX != 0.0f || pivotY != 0.0f || pivotZ != 0.0f) glTranslatef(-pivotX, -pivotY, -pivotZ);
 	glRotatef(x, 1, 0, 0);
 	glRotatef(y, 0, 1, 0);
 	glRotatef(z, 0, 0, 1);
+	if (pivotX != 0.0f || pivotY != 0.0f || pivotZ != 0.0f) glTranslatef(pivotX, pivotY, pivotZ);
 }
 void Object::Scale(float x, float y, float z) {
 	if (!isPush) {
