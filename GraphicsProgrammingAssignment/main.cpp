@@ -55,6 +55,10 @@ TowerBridge towerBridge;
 //===================
 float rotation = 0.0f;
 
+float camPosX = 0.0f, camPosY = 0.0f, camPosZ = 5.0f;
+float camYaw = 0.0f;   // Y-axis rotation (left/right)
+float camPitch = 0.0f; // X-axis rotation (up/down)
+
 HWND GetHWnd() { return hWnd; }
 
 LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
@@ -307,10 +311,9 @@ void CalcDeltaTime() {
 
 void UpdateCameraView() {
 	glLoadIdentity();
-	glTranslatef(gameObjectTransX, gameObjectTransY, gameObjectTransZ);
-	glRotatef(gameObjectRotX, 1, 0, 0);
-	glRotatef(gameObjectRotY, 0, 1, 0);
-	glRotatef(gameObjectRotZ, 0, 0, 1);
+	glRotatef(-camPitch, 1, 0, 0);
+	glRotatef(-camYaw, 0, 1, 0);
+	glTranslatef(-camPosX, -camPosY, -camPosZ);
 }
 
 void DrawAxis() {
@@ -441,36 +444,35 @@ void Update(int framesToUpdate) {
 
 		// camera move
 		if (input.IsRightMouseDown()) {
-			// move front
-			if (input.IsKeyPressed(DIK_W)) {
-				if (input.IsKeyPressed(DIK_LSHIFT)) cameraTransZ += 0.3;
-				else cameraTransZ+= 0.1;
-			}
-			// move back
-			if (input.IsKeyPressed(DIK_S)) {
-				if (input.IsKeyPressed(DIK_LSHIFT)) cameraTransZ-= 0.3;
-				else cameraTransZ -= 0.1;
-			}
-			// move left
-			if (input.IsKeyPressed(DIK_D)) {
-				if (input.IsKeyPressed(DIK_LSHIFT)) cameraTransX-= 0.3;
-				else cameraTransX -= 0.1;
-			}
-			// move right
-			if (input.IsKeyPressed(DIK_A)) {
-				if (input.IsKeyPressed(DIK_LSHIFT)) cameraTransX+= 0.3;
-				else cameraTransX += 0.1;
-			}
-			// move up
-			if (input.IsKeyPressed(DIK_E)) {
-				if (input.IsKeyPressed(DIK_LSHIFT)) cameraTransY-= 0.3;
-				else cameraTransY -= 0.1;
-			}
-			// move down
-			if (input.IsKeyPressed(DIK_Q)) {
-				if (input.IsKeyPressed(DIK_LSHIFT)) cameraTransY+= 0.3;
-				else cameraTransY += 0.1;
-			}
+			float speed = input.IsKeyPressed(DIK_LSHIFT) ? 0.3f : 0.1f;
+
+			float forwardX = sinf(camYaw * PI / 180);
+			float forwardZ = cosf(camYaw * PI / 180);
+
+			float rightX = cosf(camYaw * PI / 180);
+			float rightZ = -sinf(camYaw * PI / 180);
+
+			// Move Forward/Back
+			if (input.IsKeyPressed(DIK_S))
+				camPosX += forwardX * speed,
+				camPosZ += forwardZ * speed;
+
+				if (input.IsKeyPressed(DIK_W))
+					camPosX -= forwardX * speed,
+				camPosZ -= forwardZ * speed;
+
+			// Move Left/Right
+			if (input.IsKeyPressed(DIK_A))
+				camPosX -= rightX * speed,
+				camPosZ -= rightZ * speed;
+
+			if (input.IsKeyPressed(DIK_D))
+				camPosX += rightX * speed,
+				camPosZ += rightZ * speed;
+
+			// Move Up/Down
+			if (input.IsKeyPressed(DIK_E)) camPosY += speed;
+			if (input.IsKeyPressed(DIK_Q)) camPosY -= speed;
 		}
 		if (input.IsKeyPressed(DIK_U) && rotation > -90) {
 			rotation--;
@@ -480,10 +482,15 @@ void Update(int framesToUpdate) {
 		}
 		
 			// camera rotation
-			gameObjectTransX = -input.GetMouseX()/100.0f;
-			gameObjectRotY = input.GetMouseX()/10.0f;
-			gameObjectTransY = input.GetMouseY()/100.0f;
-			gameObjectRotX = input.GetMouseY()/10.0f;
+		camYaw -= input.GetMouseX() * 0.1f;
+		camPitch -= input.GetMouseY() * 0.1f;
+
+		// Clamp pitch (Unity does this)
+		if (camPitch > 89.0f)  camPitch = 89.0f;
+		if (camPitch < -89.0f) camPitch = -89.0f;
+
+		input.SetMouseX(0);
+		input.SetMouseY(0);
 
 	}
 }
