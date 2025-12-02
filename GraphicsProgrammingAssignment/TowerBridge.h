@@ -6,7 +6,7 @@ public:
 	Object tower;
 	Object bridge;
 	TowerBridge() : tower("towerBridge.json"), bridge("bridge.json") {}
-	void Draw();
+	void Draw(float rotation);
 	void ReadData();
 };
 

@@ -118,7 +118,7 @@ public:
 	void Draw();
 
 	void Translate(float x, float y, float z);
-	void Rotate(float x, float y, float z);
+	void Rotate(float x, float y, float z, float pivotX = 0.0f, float pivotY = 0.0f, float pivotZ = 0.0f);
 	void Scale(float x, float y, float z);
 	void ReadData();
 };
