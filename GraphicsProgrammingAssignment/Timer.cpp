@@ -1,5 +1,5 @@
-#include "Timer.h"
 #include "pch.h"
+#include "Timer.h"
 
 void Timer::Init(int fps)
 {
