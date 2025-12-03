@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "InputManager.h"
 
 InputManager::InputManager() {
@@ -50,9 +51,6 @@ void InputManager::Update() {
 	currentXpos += mouseState.lX;
 	currentYpos += mouseState.lY;
 	mouseScroll = mouseState.lZ;
-
-	//currentXpos = (currentXpos < 0) ? 0 : (currentXpos >= windowWidth ? (windowWidth - 1) : currentXpos);
-	//currentYpos = (currentYpos < 0) ? 0 : (currentYpos >= windowHeight ? (windowHeight - 1) : currentYpos);
 }
 
 bool InputManager::IsKeyPressed(BYTE key) {

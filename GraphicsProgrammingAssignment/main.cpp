@@ -444,45 +444,33 @@ void Update(int framesToUpdate) {
 		globalFrameCounter++;
 
 		// camera move
-		if (input.IsRightMouseDown()) {
-			float speed = input.IsKeyPressed(DIK_LSHIFT) ? 0.3f : 0.1f;
+		float speed = input.IsKeyPressed(DIK_LSHIFT) ? 0.3f : 0.1f;
 
-			float forwardX = sinf(camYaw * PI / 180);
-			float forwardZ = cosf(camYaw * PI / 180);
+		float forwardX = sinf(camYaw * PI / 180);
+		float forwardZ = cosf(camYaw * PI / 180);
 
-			float rightX = cosf(camYaw * PI / 180);
-			float rightZ = -sinf(camYaw * PI / 180);
+		float rightX = cosf(camYaw * PI / 180);
+		float rightZ = -sinf(camYaw * PI / 180);
 
-			// Move Forward/Back
-			if (input.IsKeyPressed(DIK_S))
-				camPosX += forwardX * speed,
-				camPosZ += forwardZ * speed;
+		// Move Forward/Back
+		if (input.IsKeyPressed(DIK_S))
+			camPosX += forwardX * speed,
+			camPosZ += forwardZ * speed;
 
-				if (input.IsKeyPressed(DIK_W))
-					camPosX -= forwardX * speed,
-				camPosZ -= forwardZ * speed;
+			if (input.IsKeyPressed(DIK_W))
+				camPosX -= forwardX * speed,
+			camPosZ -= forwardZ * speed;
 
-			// Move Left/Right
-			if (input.IsKeyPressed(DIK_A))
-				camPosX -= rightX * speed,
-				camPosZ -= rightZ * speed;
+		// Move Left/Right
+		if (input.IsKeyPressed(DIK_A))
+			camPosX -= rightX * speed,
+			camPosZ -= rightZ * speed;
 
-			if (input.IsKeyPressed(DIK_D))
-				camPosX += rightX * speed,
-				camPosZ += rightZ * speed;
+		if (input.IsKeyPressed(DIK_D))
+			camPosX += rightX * speed,
+			camPosZ += rightZ * speed;
 
-			// Move Up/Down
-			if (input.IsKeyPressed(DIK_E)) camPosY += speed;
-			if (input.IsKeyPressed(DIK_Q)) camPosY -= speed;
-		}
-		if (input.IsKeyPressed(DIK_U) && rotation > -90) {
-			rotation--;
-		}
-		if (input.IsKeyPressed(DIK_P) && rotation < 0) {
-			rotation++;
-		}
-		
-			// camera rotation
+		// camera rotation
 		camYaw -= input.GetMouseX() * 0.1f;
 		camPitch -= input.GetMouseY() * 0.1f;
 
@@ -492,6 +480,21 @@ void Update(int framesToUpdate) {
 
 		input.SetMouseX(0);
 		input.SetMouseY(0);
+
+		// Move Up/Down
+		if (input.IsKeyPressed(DIK_E)) camPosY += speed;
+		if (input.IsKeyPressed(DIK_Q)) camPosY -= speed;
+
+		//=================
+		// Practical Test
+		//=================
+		if (input.IsKeyPressed(DIK_U) && rotation > -90) {
+			rotation--;
+		}
+		if (input.IsKeyPressed(DIK_P) && rotation < 0) {
+			rotation++;
+		}
+		
 
 	}
 }
