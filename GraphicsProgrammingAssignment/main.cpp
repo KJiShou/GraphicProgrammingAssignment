@@ -283,22 +283,23 @@ void PerspectiveView() {
 }
 
 void OrthoView() {
-	float left = -2.0f;
-	float right = 2.0f;
-	float bottom = -2.0f;
-	float top = 2.0f;
-	float nearValue = -5.0f;
-	float farValue = 5.0f;
+	float left = -10.0f;
+	float right = 10.0f;
+	float bottom = -10.0f;
+	float top = 10.0f;
+	float nearValue = -10.0f;
+	float farValue = 10.0f;
 	glOrtho(left, right, bottom, top, nearValue, farValue);
 }
 
 void FrustrumView() {
-	float xmin = -1.0f;
-	float xmax = 1.0f;
-	float ymin = -1.0f;
-	float ymax = 1.0f;
-	float zmin = 1.0f;
-	float zmax = 4.0f;
+	float xmin = -0.1f;
+	float xmax = 0.1f;
+	float ymin = -0.1f;
+	float ymax = 0.1f;
+	float zmin = 0.1f;
+	float zmax = 20.0f;
+
 	glFrustum(xmin, xmax, ymin, ymax, zmin, zmax);
 }
 

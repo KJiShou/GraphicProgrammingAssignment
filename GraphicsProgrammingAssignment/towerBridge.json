@@ -966,6 +966,44 @@
       "scaleY": 1.0,
       "scaleZ": 1.0,
       "isExpandable": true
+    },
+    {
+      "comment": "Left Road Side",
+      "length": 0.2,
+      "width": 11.0,
+      "height": 0.5,
+      "r": 0.659,
+      "g": 0.647,
+      "b": 0.694,
+      "transX": -0.9,
+      "transY": -2.25,
+      "transZ": -7.5,
+      "rotX": 0.0,
+      "rotY": 0.0,
+      "rotZ": 0.0,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "scaleZ": 1.0,
+      "isExpandable": true
+    },
+    {
+      "comment": "Right Road Side",
+      "length": 0.2,
+      "width": 11.0,
+      "height": 0.5,
+      "r": 0.659,
+      "g": 0.647,
+      "b": 0.694,
+      "transX": 0.9,
+      "transY": -2.25,
+      "transZ": -7.5,
+      "rotX": 0.0,
+      "rotY": 0.0,
+      "rotZ": 0.0,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "scaleZ": 1.0,
+      "isExpandable": true
     }
   ]
 }
