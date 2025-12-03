@@ -1004,6 +1004,25 @@
       "scaleY": 1.0,
       "scaleZ": 1.0,
       "isExpandable": true
+    },
+    {
+      "comment": "Sea",
+      "length": 100.0,
+      "width": 100.0,
+      "height": 0.1,
+      "r": 0.0,
+      "g": 0.424,
+      "b": 0.745,
+      "transX": 0.0,
+      "transY": -5.0,
+      "transZ": 0.0,
+      "rotX": 0.0,
+      "rotY": 0.0,
+      "rotZ": 0.0,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "scaleZ": 1.0,
+      "isExpandable": true
     }
   ]
 }

@@ -50,16 +50,23 @@ bool drawAxis = true;
 float deltaTime = 0.0f;
 
 TowerBridge towerBridge;
+Object background("background.json");
 //===================
 // JS Practical Test
 //===================
 float rotation = 0.0f;
+bool rotate = false;
 
 float camPosX = 0.0f, camPosY = 0.0f, camPosZ = 5.0f;
 float camYaw = 0.0f;   // Y-axis rotation (left/right)
 float camPitch = 0.0f; // X-axis rotation (up/down)
 
 HWND GetHWnd() { return hWnd; }
+
+void ReadData() {
+	background.ReadData();
+	towerBridge.ReadData();
+}
 
 LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
@@ -102,7 +109,7 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 			break;
 		}
 		case VK_RETURN: {
-			towerBridge.ReadData();
+			ReadData();
 			break;
 		}
 		case VK_UP: {
@@ -278,7 +285,7 @@ void PerspectiveView() {
 	float fovy = 50.67f;
 	float aspect = 1.777f;
 	float nearPerspValue = 0.1f;
-	float farPerspValue = 20.0f;
+	float farPerspValue = 40.0f;
 	gluPerspective(fovy, 1600.0f/900.0f, nearPerspValue, farPerspValue);
 }
 
@@ -288,7 +295,7 @@ void OrthoView() {
 	float bottom = -10.0f;
 	float top = 10.0f;
 	float nearValue = -10.0f;
-	float farValue = 10.0f;
+	float farValue = 50.0f;
 	glOrtho(left, right, bottom, top, nearValue, farValue);
 }
 
@@ -298,7 +305,7 @@ void FrustrumView() {
 	float ymin = -0.1f;
 	float ymax = 0.1f;
 	float zmin = 0.1f;
-	float zmax = 20.0f;
+	float zmax = 40.0f;
 
 	glFrustum(xmin, xmax, ymin, ymax, zmin, zmax);
 }
@@ -311,7 +318,6 @@ void CalcDeltaTime() {
 }
 
 void UpdateCameraView() {
-	glLoadIdentity();
 	glRotatef(-camPitch, 1, 0, 0);
 	glRotatef(-camYaw, 0, 1, 0);
 	glTranslatef(-camPosX, -camPosY, -camPosZ);
@@ -391,14 +397,16 @@ void DrawAxis() {
 }
 
 void Draw() {
+	glLoadIdentity();
+	glPushMatrix();
 	UpdateCameraView();
 	if (drawAxis) DrawAxis();
 	towerBridge.Draw(rotation);
+	glPopMatrix();
 }
 
 void Display()
 {
-
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
@@ -431,6 +439,7 @@ void Display()
 
 	CalcDeltaTime();
 	Draw();
+	background.Draw();
 	//--------------------------------
 	//	End of OpenGL drawing
 	//--------------------------------
@@ -494,8 +503,6 @@ void Update(int framesToUpdate) {
 		if (input.IsKeyPressed(DIK_P) && rotation < 0) {
 			rotation++;
 		}
-		
-
 	}
 }
 
