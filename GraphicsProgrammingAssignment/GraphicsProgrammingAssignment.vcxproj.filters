@@ -95,5 +95,8 @@
     <None Include="bridge.json">
       <Filter>Data</Filter>
     </None>
+    <None Include="background.json">
+      <Filter>Data</Filter>
+    </None>
   </ItemGroup>
 </Project>

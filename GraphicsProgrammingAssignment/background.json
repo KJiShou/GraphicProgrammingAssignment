@@ -1,0 +1,22 @@
+{
+  "cubes": [
+    {
+      "length": 100.0,
+      "width": 0.1,
+      "height": 100.0,
+      "r": 0.757,
+      "g": 0.859,
+      "b": 0.961,
+      "transX": 0.0,
+      "transY": 0.0,
+      "transZ": -35.0,
+      "rotX": 0.0,
+      "rotY": 0.0,
+      "rotZ": 0.0,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "scaleZ": 1.0,
+      "isExpandable": true
+    }
+  ]
+}
