@@ -2,9 +2,9 @@
 #include "Light.h"
 
 Light::Light(
-    const std::array<float, 3>& ambient,
-    const std::array<float, 3>& diffuse,
-    const std::array<float, 3>& position,
+    const std::array<float, 4>& ambient,
+    const std::array<float, 4>& diffuse,
+    const std::array<float, 4>& position,
     GLenum id
 ): 
     ambientLight(ambient),
@@ -24,6 +24,7 @@ void Light::Update() {
     glLightfv(lightID, GL_AMBIENT, ambientLight.data());
     glLightfv(lightID, GL_DIFFUSE, diffuseLight.data());
     glLightfv(lightID, GL_POSITION, diffuseLightPos.data());
+    //std::cout << "Position: x: " << diffuseLightPos.data()[0] << std::endl;
 }
 
 void Light::Enable() {
@@ -38,15 +39,15 @@ void Light::Disable() {
 //      Getters
 // -------------------
 
-const std::array<float, 3>& Light::GetAmbient() const {
+const std::array<float, 4>& Light::GetAmbient() const {
     return ambientLight;
 }
 
-const std::array<float, 3>& Light::GetDiffuse() const {
+const std::array<float, 4>& Light::GetDiffuse() const {
     return diffuseLight;
 }
 
-const std::array<float, 3>& Light::GetPosition() const {
+const std::array<float, 4>& Light::GetPosition() const {
     return diffuseLightPos;
 }
 
@@ -58,23 +59,23 @@ GLenum Light::GetLightID() const {
 //      Setters
 // -------------------
 
-void Light::SetAmbient(const std::array<float, 3>& ambient) {
+void Light::SetAmbient(const std::array<float, 4>& ambient) {
     ambientLight = ambient;
 }
 
-void Light::SetAmbient(float x, float y, float z) {
-    ambientLight = { x, y, z };
+void Light::SetAmbient(float x, float y, float z, float a) {
+    ambientLight = { x, y, z, a};
 }
 
-void Light::SetDiffuse(const std::array<float, 3>& diffuse) {
+void Light::SetDiffuse(const std::array<float, 4>& diffuse) {
     diffuseLight = diffuse;
 }
 
-void Light::SetDiffuse(float x, float y, float z) {
-    diffuseLight = { x, y, z };
+void Light::SetDiffuse(float x, float y, float z, float a) {
+    diffuseLight = { x, y, z , a};
 }
 
-void Light::SetPosition(const std::array<float, 3>& position) {
+void Light::SetPosition(const std::array<float, 4>& position) {
     diffuseLightPos = position;
 }
 
