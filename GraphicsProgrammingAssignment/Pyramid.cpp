@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Pyramid.h"
+#include "Math.h"
 
 Pyramid::Pyramid(
 	float length,
@@ -61,57 +62,52 @@ void Pyramid::Draw() {
 
 	glScalef(scaleX, scaleY, scaleZ);
 
-	Math::Vec3 A, B, C, D, top, normal;
+	Math::Vec3 apex = { centerX, height, centerZ };
+	Math::Vec3 v0 = { 0.0f, 0.0f, 0.0f };       // back-left
+	Math::Vec3 v1 = { length, 0.0f, 0.0f };     // back-right
+	Math::Vec3 v2 = { length, 0.0f, width };    // front-right
+	Math::Vec3 v3 = { 0.0f, 0.0f, width };      // front-left
 
-	// bottom four point
-	A = { 0.0f, 0.0f, 0.0f };
-	B = { length, 0.0f, 0.0f };
-	C = { length, 0.0f, width };
-	D = { 0.0f, 0.0f, width };
-
-	// base
+	// base (facing downward)
 	glBegin(GL_QUADS);
-	normal = Math::CalcNormal(A, B, C);
+	Math::Vec3 normal = Math::CalcNormal(v0, v1, v2);
 	glNormal3f(normal.x, normal.y, normal.z);
-	glVertex3f(A.x, A.y, A.z);
-	glVertex3f(B.x, B.y, B.z);
-	glVertex3f(C.x, C.y, C.z);
-	glVertex3f(D.x, D.y, D.z);
+	glVertex3f(v0.x, v0.y, v0.z);
+	glVertex3f(v1.x, v1.y, v1.z);
+	glVertex3f(v2.x, v2.y, v2.z);
+	glVertex3f(v3.x, v3.y, v3.z);
 	glEnd();
-
-	top = { centerX, height, centerZ };
 
 	glBegin(GL_TRIANGLES);
-	// back
-	normal = Math::CalcNormal(A, B, top);
+	// front (+Z)
+	normal = Math::CalcNormal(v3, v2, apex);
 	glNormal3f(normal.x, normal.y, normal.z);
-	glVertex3f(A.x, A.y, A.z);
-	glVertex3f(B.x, B.y, B.z);
-	glVertex3f(top.x, top.y, top.z);
-	
-	// right
-	normal = Math::CalcNormal(B, C, top);
-	glNormal3f(normal.x, normal.y, normal.z);
-	glVertex3f(B.x, B.y, B.z);
-	glVertex3f(C.x, C.y, C.z);
-	glVertex3f(top.x, top.y, top.z);
+	glVertex3f(v3.x, v3.y, v3.z);
+	glVertex3f(v2.x, v2.y, v2.z);
+	glVertex3f(apex.x, apex.y, apex.z);
 
-	// front
-	normal = Math::CalcNormal(D, C, top);
+	// back (-Z)
+	normal = Math::CalcNormal(v1, v0, apex);
 	glNormal3f(normal.x, normal.y, normal.z);
-	glVertex3f(D.x, D.y, D.z);
-	glVertex3f(C.x, C.y, C.z);
-	glVertex3f(top.x, top.y, top.z);
+	glVertex3f(v1.x, v1.y, v1.z);
+	glVertex3f(v0.x, v0.y, v0.z);
+	glVertex3f(apex.x, apex.y, apex.z);
 
-	// left
-	normal = Math::CalcNormal(A, D, top);
+	// right (+X)
+	normal = Math::CalcNormal(v2, v1, apex);
 	glNormal3f(normal.x, normal.y, normal.z);
-	glVertex3f(A.x, A.y, A.z);
-	glVertex3f(D.x, D.y, D.z);
-	glVertex3f(top.x, top.y, top.z);
+	glVertex3f(v2.x, v2.y, v2.z);
+	glVertex3f(v1.x, v1.y, v1.z);
+	glVertex3f(apex.x, apex.y, apex.z);
 
+	// left (-X)
+	normal = Math::CalcNormal(v0, v3, apex);
+	glNormal3f(normal.x, normal.y, normal.z);
+	glVertex3f(v0.x, v0.y, v0.z);
+	glVertex3f(v3.x, v3.y, v3.z);
+	glVertex3f(apex.x, apex.y, apex.z);
 	glEnd();
-	
+
 	//glVertex3f(0.0f, 0.0f, 0.0f);
 	//glVertex3f(length, 0.0f, 0.0f);
 	//glVertex3f(length, 0.0f, width);

@@ -26,7 +26,7 @@ json j;
 
 // light
 GLUquadricObj* var = gluNewQuadric();
-Light *light0 = new Light( { 0.0f, 0.0f, 0.0f, 1.0f}, { 1.0f, 1.0f, 1.0f, 1.0f}, {0.0f, 0.0f, 0.0f, 0.0f}, GL_LIGHT0);
+Light *light0 = new Light( { 0.0f, 0.0f, 0.0f, 1.0f}, { 1.0f, 1.0f, 1.0f, 1.0f}, {0.0f, 0.0f, 0.0f, 1.0f}, GL_LIGHT0);
 Cube *c1 = new Cube(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
 Pyramid p1 = Pyramid(1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f);
 Tetrahedron t1 = Tetrahedron(1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f);
@@ -437,19 +437,10 @@ void DrawAxis() {
 }
 
 void Draw() {
-	glLoadIdentity();
 	glPushMatrix();
-	UpdateCameraView();
-	
 	if (drawAxis) DrawAxis();
 	towerBridge.Draw(rotation);
-	c1->Translate(-10.0f, 0.0f, 10.0f);
-	c1->Draw();
-	p1.Translate(-5.0f, 0.0f, 10.0f);
-	p1.Draw();
-	t1.Translate(-15.0f, 0.0f, 10.0f);
-	t1.Draw();
-	
+
 	glPushMatrix();
 	glTranslatef(light0->GetPosition()[0], light0->GetPosition()[1], light0->GetPosition()[2]);
 	GLfloat redColor[] = { 1.0f, 0.0f, 0.0f };
@@ -458,8 +449,14 @@ void Draw() {
 	gluSphere(var, 0.1f, 10.0f, 10.0f);
 	glPopMatrix();
 
+	c1->Translate(-10.0f, 0.0f, 10.0f);
+	c1->Draw();
+	p1.Translate(-5.0f, 0.0f, 10.0f);
+	p1.Draw();
+	t1.Translate(-15.0f, 0.0f, 10.0f);
+	t1.Draw();
+
 	glPopMatrix();
-	//glLoadIdentity();
 }
 
 void Display()
@@ -479,14 +476,17 @@ void Display()
 	{
 		FrustrumView();
 	}
-	
+
+	glClearColor(0.3f, 0.3f, 0.3f, 0.0f);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	UpdateCameraView();
 	glTranslatef(cameraTransX, cameraTransY, cameraTransZ);
 	glRotatef(cameraRotateXAngle, 1.0f, 0.0f, 0.0f);
 	glRotatef(cameraRotateYAngle, 0.0f, 1.0f, 0.0f);
 	glRotatef(cameraRotateZAngle, 0.0f, 0.0f, 1.0f);
 
-	glClearColor(0.3f, 0.3f, 0.3f, 0.0f);
-	glMatrixMode(GL_MODELVIEW);
+	light0->Update();
 
 	//--------------------------------
 	//	OpenGL drawing
@@ -494,7 +494,7 @@ void Display()
 	glClearColor(0.3f, 0.3f, 0.3f, 0.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
-	light0->Update();
+	
 
 	CalcDeltaTime();
 	Draw();
@@ -653,6 +653,7 @@ int main(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)
 	glEnable(GL_DEPTH_TEST);
 	light0->Enable();
 	glEnable(GL_LIGHTING);
+	//glEnable(GL_NORMALIZE);
 	
 	ZeroMemory(&msg, sizeof(msg));
 

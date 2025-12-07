@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Tetrahedron.h"
+#include "Math.h"
 
 Tetrahedron::Tetrahedron(
 	float length,
@@ -61,43 +62,40 @@ void Tetrahedron::Draw() {
 
 	glScalef(scaleX, scaleY, scaleZ);
 
-	Math::Vec3 A, B, C, D, top, normal;
+	Math::Vec3 A = { 0.0f, 0.0f, 0.0f };
+	Math::Vec3 B = { length, 0.0f, 0.0f };
+	Math::Vec3 C = { centerX, 0.0f, width };
+	Math::Vec3 top = { centerX, height, centerZ };
 
-	// bottom four point
-	A = { 0.0f, 0.0f, 0.0f };
-	B = { length, 0.0f, 0.0f };
-	C = { centerX, 0.0f, width };
+	const Math::Vec3 shapeCenter = {
+		(A.x + B.x + C.x + top.x) * 0.25f,
+		(A.y + B.y + C.y + top.y) * 0.25f,
+		(A.z + B.z + C.z + top.z) * 0.25f
+	};
 
-	// base
+	auto emitFace = [&](const Math::Vec3& p1, const Math::Vec3& p2, const Math::Vec3& p3) {
+		Math::Vec3 n = Math::CalcNormal(p1, p2, p3);
+		Math::Vec3 faceCenter = {
+			(p1.x + p2.x + p3.x) / 3.0f,
+			(p1.y + p2.y + p3.y) / 3.0f,
+			(p1.z + p2.z + p3.z) / 3.0f
+		};
+		Math::Vec3 toCenter = { shapeCenter.x - faceCenter.x, shapeCenter.y - faceCenter.y, shapeCenter.z - faceCenter.z };
+		float dot = n.x * toCenter.x + n.y * toCenter.y + n.z * toCenter.z;
+		if (dot > 0.0f) {
+			n.x = -n.x; n.y = -n.y; n.z = -n.z;
+		}
+		glNormal3f(n.x, n.y, n.z);
+		glVertex3f(p1.x, p1.y, p1.z);
+		glVertex3f(p2.x, p2.y, p2.z);
+		glVertex3f(p3.x, p3.y, p3.z);
+	};
+
 	glBegin(GL_TRIANGLES);
-	normal = Math::CalcNormal(C, B, A);
-	glNormal3f(normal.x, normal.y, normal.z);
-	glVertex3f(C.x, C.y, C.z);
-	glVertex3f(A.x, A.y, A.z);
-	glVertex3f(B.x, B.y, B.z);
-
-	top = { centerX, height, centerZ };
-
-	// back
-	normal = Math::CalcNormal(A, B, top);
-	glNormal3f(normal.x, normal.y, normal.z);
-	glVertex3f(A.x, A.y, A.z);
-	glVertex3f(B.x, B.y, B.z);
-	glVertex3f(top.x, top.y, top.z);
-
-	// right
-	normal = Math::CalcNormal(B, C, top);
-	glNormal3f(normal.x, normal.y, normal.z);
-	glVertex3f(B.x, B.y, B.z);
-	glVertex3f(C.x, C.y, C.z);
-	glVertex3f(top.x, top.y, top.z);
-
-	// left
-	normal = Math::CalcNormal(C, A, top);
-	glNormal3f(normal.x, normal.y, normal.z);
-	glVertex3f(C.x, C.y, C.z);
-	glVertex3f(A.x, A.y, A.z);
-	glVertex3f(top.x, top.y, top.z);
+	emitFace(A, B, C);     // base
+	emitFace(A, B, top);   // back
+	emitFace(B, C, top);   // right
+	emitFace(C, A, top);   // left
 
 	glEnd();
 
