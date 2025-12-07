@@ -7,6 +7,7 @@
 #include "Timer.h"
 #include "Object.h"
 #include "TowerBridge.h"
+#include "Light.h"
 
 #pragma comment(lib, "d3d9.lib")
 #pragma comment(lib, "d3dx9.lib")
@@ -21,6 +22,10 @@
 
 using json = nlohmann::json;
 json j;
+
+// light
+GLUquadricObj* var = gluNewQuadric();
+Light light0 = Light( { 0.2f, 0.2f, 0.2f }, { 1.0f, 1.0f, 1.0f }, {0.0f, 0.0f, 0.0f}, GL_LIGHT0);
 
 // Windows
 HWND hWnd = NULL;
@@ -220,6 +225,22 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 			isFrustrum = true;
 			break;
 		}
+		/*case 'J': {
+			if (GetKeyState(VK_SHIFT) & 0x8000)
+			{
+				light0.Move(light0.GetPosition()[0] - 0.1f, light0.GetPosition()[1], light0.GetPosition()[2]);
+			}
+			else
+			{
+				cameraRotateZAngle++;
+				if (cameraRotateZAngle >= 360.0f)
+				{
+					cameraRotateZAngle = 0.0f;
+				}
+			}
+			
+			break;
+		}*/
 		case VK_ESCAPE:
 			PostQuitMessage(0);
 			break;
@@ -399,9 +420,20 @@ void DrawAxis() {
 void Draw() {
 	glLoadIdentity();
 	glPushMatrix();
+	glTranslatef(light0.GetPosition()[0], light0.GetPosition()[1], light0.GetPosition()[2]);
+	GLfloat redColor[] = { 1.0f, 0.0f, 0.0f };
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, redColor);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, redColor);
+	gluSphere(var, 1.0f, 10.0f, 10.0f);
+	glPopMatrix();
+
+	//glLoadIdentity();
+	glPushMatrix();
 	UpdateCameraView();
+	
 	if (drawAxis) DrawAxis();
 	towerBridge.Draw(rotation);
+
 	glPopMatrix();
 }
 
@@ -430,6 +462,9 @@ void Display()
 
 	glClearColor(0.3f, 0.3f, 0.3f, 0.0f);
 	glMatrixMode(GL_MODELVIEW);
+
+	light0.Update();
+	
 
 	//--------------------------------
 	//	OpenGL drawing
@@ -491,8 +526,12 @@ void Update(int framesToUpdate) {
 		input.SetMouseY(0);
 
 		// Move Up/Down
-		if (input.IsKeyPressed(DIK_E)) camPosY += speed;
-		if (input.IsKeyPressed(DIK_Q)) camPosY -= speed;
+		if (input.IsKeyPressed(DIK_E)) {
+			camPosY += speed;
+		}
+		if (input.IsKeyPressed(DIK_Q)) {
+			camPosY -= speed;
+		}
 
 		//=================
 		// Practical Test
@@ -502,6 +541,44 @@ void Update(int framesToUpdate) {
 		}
 		if (input.IsKeyPressed(DIK_P) && rotation < 0) {
 			rotation++;
+		}
+
+		// Light move
+		// x direction
+		if (input.IsKeyPressed(DIK_J))
+		{
+			if (input.IsKeyPressed(DIK_LSHIFT))
+			{
+				light0.Move(light0.GetPosition()[0] - 0.1f, light0.GetPosition()[1], light0.GetPosition()[2]);
+			}
+			else {
+				light0.Move(light0.GetPosition()[0] + 0.1f, light0.GetPosition()[1], light0.GetPosition()[2]);
+			}
+		}
+
+		// y direction
+		if (input.IsKeyPressed(DIK_K))
+		{
+			if (input.IsKeyPressed(DIK_LSHIFT))
+			{
+				light0.Move(light0.GetPosition()[0], light0.GetPosition()[1] - 0.1f, light0.GetPosition()[2]);
+			}
+			else {
+				light0.Move(light0.GetPosition()[0], light0.GetPosition()[1] + 0.1f, light0.GetPosition()[2]);
+			}
+		}
+
+		// z direction
+		if (input.IsKeyPressed(DIK_L))
+		{
+			if (input.IsKeyPressed(DIK_LSHIFT))
+			{
+				light0.Move(light0.GetPosition()[0], light0.GetPosition()[1], light0.GetPosition()[2] - 0.1f);
+			}
+			else {
+				light0.Move(light0.GetPosition()[0], light0.GetPosition()[1], light0.GetPosition()[2] + 0.1f);
+			}
+			
 		}
 	}
 }
@@ -550,6 +627,8 @@ int main(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)
 	ShowWindow(hWnd, nCmdShow);
 
 	glEnable(GL_DEPTH_TEST);
+	light0.Enable();
+	glEnable(GL_LIGHTING);
 	
 	ZeroMemory(&msg, sizeof(msg));
 
@@ -561,6 +640,7 @@ int main(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)
 
 		SwapBuffers(hdc);
 	}
+	gluDeleteQuadric(var);
 
 	UnregisterClass(WINDOW_TITLE, wc.hInstance);
 

@@ -16,6 +16,9 @@ Pyramid::Pyramid(
 	g(g),
 	b(b)
 {
+	color[0] = r;
+	color[1] = g;
+	color[2] = b;
 	centerX = length * 0.5f;
 	centerY = height * 0.5f;
 	centerZ = width * 0.5f;
@@ -28,7 +31,9 @@ void Pyramid::Draw() {
 
 	glPushMatrix();
 
-	glColor3f(r, g, b);
+	//glColor3f(r, g, b);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, color);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, color);
 
 	glTranslatef(transX, transY, transZ);
 
@@ -127,12 +132,18 @@ void Pyramid::SetHeight(float h) {
 	centerY = height * 0.5f;
 }
 
+void Pyramid::SetColor(const std::array<float, 3>& c) {
+	color[0] = c[0];
+	color[1] = c[1];
+	color[2] = c[2];
+}
 void Pyramid::SetColor(float red, float green, float blue)
 {
-	r = red;
-	g = green;
-	b = blue;
+	color[0] = r;
+	color[1] = g;
+	color[2] = b;
 }
+
 
 // ======================
 // Getters
@@ -147,6 +158,12 @@ float Pyramid::GetHeight() const { return height; }
 float Pyramid::GetR() const { return r; }
 float Pyramid::GetG() const { return g; }
 float Pyramid::GetB() const { return b; }
+std::array<float, 3> Pyramid::GetColor() const {
+	return { color[0], color[1], color[2] };
+}
+const float* Pyramid::GetColorPtr() const {
+	return color;
+}
 
 // translate
 float Pyramid::GetTransX() const { return transX; }

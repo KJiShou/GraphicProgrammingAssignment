@@ -19,6 +19,7 @@ public:
 	void SetStyle(GLenum s);
 
 	void SetColor(float red, float green, float blue);
+	void SetColor(const std::array<float, 3>& c);
 
 	// ======================
 	// Getters
@@ -36,6 +37,8 @@ public:
 	float GetR() const;
 	float GetG() const;
 	float GetB() const;
+	std::array<float, 3> GetColor() const;
+	const float* GetColorPtr() const;
 
 	// translate
 	float GetTransX() const;
@@ -76,6 +79,7 @@ private:
 	float r;
 	float g;
 	float b;
+	float color[3];
 
 	// translate
 	float transX = 0.0f;
