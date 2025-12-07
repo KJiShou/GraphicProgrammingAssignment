@@ -16,6 +16,9 @@ Cube::Cube(
 	g(g),
 	b(b)
 {
+	color[0] = r;
+	color[1] = g;
+	color[2] = b;
 	centerX = length * 0.5f;
 	centerY = height * 0.5f;
 	centerZ = width * 0.5f;
@@ -29,7 +32,9 @@ void Cube::Draw() {
 
 	glPushMatrix();
 
-	glColor3f(r, g, b);
+	// glColor3f(r, g, b);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, color);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, color);
 
 	glTranslatef(transX, transY, transZ);
 
@@ -141,12 +146,16 @@ void Cube::SetHeight(float h) {
 	height = h;
 	centerY = height * 0.5f;
 }
-
+void Cube::SetColor(const std::array<float, 3>& c) {
+	color[0] = c[0];
+	color[1] = c[1];
+	color[2] = c[2];
+}
 void Cube::SetColor(float red, float green, float blue) 
 {
-	r = red;
-	g = green;
-	b = blue;
+	color[0] = r;
+	color[1] = g;
+	color[2] = b;
 }
 
 void Cube::SetExpandable(bool ex)
@@ -167,6 +176,12 @@ float Cube::GetHeight() const { return height; }
 float Cube::GetR() const { return r; }
 float Cube::GetG() const { return g; }
 float Cube::GetB() const { return b; }
+std::array<float, 3> Cube::GetColor() const {
+	return { color[0], color[1], color[2] };
+}
+const float* Cube::GetColorPtr() const {
+	return color;
+}
 
 // translate
 float Cube::GetTransX() const { return transX; }

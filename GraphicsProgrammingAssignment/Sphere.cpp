@@ -20,6 +20,9 @@ Sphere::Sphere(
 	g(g),
 	b(b)
 {
+	color[0] = r;
+	color[1] = g;
+	color[2] = b;
 	obj = gluNewQuadric();
 	centerX = 0.0f;
 	centerY = 0.0f;
@@ -39,7 +42,9 @@ void Sphere::Draw() {
 
 	gluQuadricDrawStyle(obj, style);
 
-	glColor3f(r, g, b);
+	// glColor3f(r, g, b);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, color);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, color);
 
 	glTranslatef(transX, transY, transZ);
 
@@ -103,11 +108,16 @@ void Sphere::SetSlices(int s) { slices = s; }
 void Sphere::SetStacks(int s) { stacks = s; }
 void Sphere::SetStyle(GLenum s) { style = s; }
 
+void Sphere::SetColor(const std::array<float, 3>& c) {
+	color[0] = c[0];
+	color[1] = c[1];
+	color[2] = c[2];
+}
 void Sphere::SetColor(float red, float green, float blue)
 {
-	r = red;
-	g = green;
-	b = blue;
+	color[0] = r;
+	color[1] = g;
+	color[2] = b;
 }
 
 // ======================
@@ -126,6 +136,12 @@ int Sphere::GetStacks() const { return stacks; }
 float Sphere::GetR() const { return r; }
 float Sphere::GetG() const { return g; }
 float Sphere::GetB() const { return b; }
+std::array<float, 3> Sphere::GetColor() const {
+	return { color[0], color[1], color[2] };
+}
+const float* Sphere::GetColorPtr() const {
+	return color;
+}
 
 // translate
 float Sphere::GetTransX() const { return transX; }
