@@ -2,9 +2,9 @@
 class Light
 {
 public:
-	Light(const std::array<float, 3>& ambient,
-		const std::array<float, 3>& diffuse,
-		const std::array<float, 3>& position,
+	Light(const std::array<float, 4>& ambient,
+		const std::array<float, 4>& diffuse,
+		const std::array<float, 4>& position,
 		GLenum id);
 
 	void Update();
@@ -13,25 +13,25 @@ public:
 	void Move(float x, float y, float z);
 
 	// --- Getters ---
-	const std::array<float, 3>& GetAmbient() const;
-	const std::array<float, 3>& GetDiffuse() const;
-	const std::array<float, 3>& GetPosition() const;
+	const std::array<float, 4>& GetAmbient() const;
+	const std::array<float, 4>& GetDiffuse() const;
+	const std::array<float, 4>& GetPosition() const;
 	GLenum GetLightID() const;
 
 	// --- Setters ---
-	void SetAmbient(const std::array<float, 3>& ambient);
-	void SetAmbient(float x, float y, float z);
+	void SetAmbient(const std::array<float, 4>& ambient);
+	void SetAmbient(float x, float y, float z, float a);
 
-	void SetDiffuse(const std::array<float, 3>& diffuse);
-	void SetDiffuse(float x, float y, float z);
+	void SetDiffuse(const std::array<float, 4>& diffuse);
+	void SetDiffuse(float x, float y, float z, float a);
 
-	void SetPosition(const std::array<float, 3>& position);
+	void SetPosition(const std::array<float, 4>& position);
 	void SetPosition(float x, float y, float z);
 
 private:
-	std::array<float, 3> ambientLight;
-	std::array<float, 3> diffuseLight;
-	std::array<float, 3> diffuseLightPos;
+	std::array<float, 4> ambientLight;
+	std::array<float, 4> diffuseLight;
+	std::array<float, 4> diffuseLightPos;
 	GLenum lightID = GL_LIGHT0;
 };
 

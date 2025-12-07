@@ -8,6 +8,7 @@
 #include "Object.h"
 #include "TowerBridge.h"
 #include "Light.h"
+#include "Tetrahedron.h"
 
 #pragma comment(lib, "d3d9.lib")
 #pragma comment(lib, "d3dx9.lib")
@@ -25,7 +26,10 @@ json j;
 
 // light
 GLUquadricObj* var = gluNewQuadric();
-Light light0 = Light( { 0.2f, 0.2f, 0.2f }, { 1.0f, 1.0f, 1.0f }, {0.0f, 0.0f, 0.0f}, GL_LIGHT0);
+Light *light0 = new Light( { 0.0f, 0.0f, 0.0f, 1.0f}, { 1.0f, 1.0f, 1.0f, 1.0f}, {0.0f, 0.0f, 0.0f, 0.0f}, GL_LIGHT0);
+Cube *c1 = new Cube(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
+Pyramid p1 = Pyramid(1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f);
+Tetrahedron t1 = Tetrahedron(1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f);
 
 // Windows
 HWND hWnd = NULL;
@@ -228,17 +232,34 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 		/*case 'J': {
 			if (GetKeyState(VK_SHIFT) & 0x8000)
 			{
-				light0.Move(light0.GetPosition()[0] - 0.1f, light0.GetPosition()[1], light0.GetPosition()[2]);
+				light0->Move(light0->GetPosition()[0] - 0.1f, light0->GetPosition()[1], light0->GetPosition()[2]);
 			}
 			else
 			{
-				cameraRotateZAngle++;
-				if (cameraRotateZAngle >= 360.0f)
-				{
-					cameraRotateZAngle = 0.0f;
-				}
+				light0->Move(light0->GetPosition()[0] + 0.1f, light0->GetPosition()[1], light0->GetPosition()[2]);
 			}
-			
+			break;
+		}
+		case 'K': {
+			if (GetKeyState(VK_SHIFT) & 0x8000)
+			{
+				light0->Move(light0->GetPosition()[0], light0->GetPosition()[1] - 0.1f, light0->GetPosition()[2]);
+			}
+			else
+			{
+				light0->Move(light0->GetPosition()[0], light0->GetPosition()[1] + 0.1f, light0->GetPosition()[2]);
+			}
+			break;
+		}
+		case 'L': {
+			if (GetKeyState(VK_SHIFT) & 0x8000)
+			{
+				light0->Move(light0->GetPosition()[0], light0->GetPosition()[1] , light0->GetPosition()[2] - 0.1f);
+			}
+			else
+			{
+				light0->Move(light0->GetPosition()[0], light0->GetPosition()[1], light0->GetPosition()[2] + 0.1f);
+			}
 			break;
 		}*/
 		case VK_ESCAPE:
@@ -400,8 +421,6 @@ void DrawAxis() {
 	glEnd();
 
 	// draw point
-	
-	
 	glColor3f(1, 1, 1);
 	for (int i= 1; i <= 200; i++) {
 		glPointSize(2);
@@ -420,21 +439,27 @@ void DrawAxis() {
 void Draw() {
 	glLoadIdentity();
 	glPushMatrix();
-	glTranslatef(light0.GetPosition()[0], light0.GetPosition()[1], light0.GetPosition()[2]);
-	GLfloat redColor[] = { 1.0f, 0.0f, 0.0f };
-	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, redColor);
-	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, redColor);
-	gluSphere(var, 1.0f, 10.0f, 10.0f);
-	glPopMatrix();
-
-	//glLoadIdentity();
-	glPushMatrix();
 	UpdateCameraView();
 	
 	if (drawAxis) DrawAxis();
 	towerBridge.Draw(rotation);
+	c1->Translate(-10.0f, 0.0f, 10.0f);
+	c1->Draw();
+	p1.Translate(-5.0f, 0.0f, 10.0f);
+	p1.Draw();
+	t1.Translate(-15.0f, 0.0f, 10.0f);
+	t1.Draw();
+	
+	glPushMatrix();
+	glTranslatef(light0->GetPosition()[0], light0->GetPosition()[1], light0->GetPosition()[2]);
+	GLfloat redColor[] = { 1.0f, 0.0f, 0.0f };
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, redColor);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, redColor);
+	gluSphere(var, 0.1f, 10.0f, 10.0f);
+	glPopMatrix();
 
 	glPopMatrix();
+	//glLoadIdentity();
 }
 
 void Display()
@@ -463,14 +488,13 @@ void Display()
 	glClearColor(0.3f, 0.3f, 0.3f, 0.0f);
 	glMatrixMode(GL_MODELVIEW);
 
-	light0.Update();
-	
-
 	//--------------------------------
 	//	OpenGL drawing
 	//--------------------------------
 	glClearColor(0.3f, 0.3f, 0.3f, 0.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	
+	light0->Update();
 
 	CalcDeltaTime();
 	Draw();
@@ -549,10 +573,10 @@ void Update(int framesToUpdate) {
 		{
 			if (input.IsKeyPressed(DIK_LSHIFT))
 			{
-				light0.Move(light0.GetPosition()[0] - 0.1f, light0.GetPosition()[1], light0.GetPosition()[2]);
+				light0->Move(light0->GetPosition()[0] - 0.1f, light0->GetPosition()[1], light0->GetPosition()[2]);
 			}
 			else {
-				light0.Move(light0.GetPosition()[0] + 0.1f, light0.GetPosition()[1], light0.GetPosition()[2]);
+				light0->Move(light0->GetPosition()[0] + 0.1f, light0->GetPosition()[1], light0->GetPosition()[2]);
 			}
 		}
 
@@ -561,10 +585,10 @@ void Update(int framesToUpdate) {
 		{
 			if (input.IsKeyPressed(DIK_LSHIFT))
 			{
-				light0.Move(light0.GetPosition()[0], light0.GetPosition()[1] - 0.1f, light0.GetPosition()[2]);
+				light0->Move(light0->GetPosition()[0], light0->GetPosition()[1] - 0.1f, light0->GetPosition()[2]);
 			}
 			else {
-				light0.Move(light0.GetPosition()[0], light0.GetPosition()[1] + 0.1f, light0.GetPosition()[2]);
+				light0->Move(light0->GetPosition()[0], light0->GetPosition()[1] + 0.1f, light0->GetPosition()[2]);
 			}
 		}
 
@@ -573,10 +597,10 @@ void Update(int framesToUpdate) {
 		{
 			if (input.IsKeyPressed(DIK_LSHIFT))
 			{
-				light0.Move(light0.GetPosition()[0], light0.GetPosition()[1], light0.GetPosition()[2] - 0.1f);
+				light0->Move(light0->GetPosition()[0], light0->GetPosition()[1], light0->GetPosition()[2] - 0.1f);
 			}
 			else {
-				light0.Move(light0.GetPosition()[0], light0.GetPosition()[1], light0.GetPosition()[2] + 0.1f);
+				light0->Move(light0->GetPosition()[0], light0->GetPosition()[1], light0->GetPosition()[2] + 0.1f);
 			}
 			
 		}
@@ -627,7 +651,7 @@ int main(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)
 	ShowWindow(hWnd, nCmdShow);
 
 	glEnable(GL_DEPTH_TEST);
-	light0.Enable();
+	light0->Enable();
 	glEnable(GL_LIGHTING);
 	
 	ZeroMemory(&msg, sizeof(msg));
@@ -637,11 +661,11 @@ int main(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)
 		input.Update();
 		Update(frameTimer.FramesToUpdate());
 		Display();
-
 		SwapBuffers(hdc);
 	}
 	gluDeleteQuadric(var);
-
+	delete(light0);
+	delete(c1);
 	UnregisterClass(WINDOW_TITLE, wc.hInstance);
 
 	return true;

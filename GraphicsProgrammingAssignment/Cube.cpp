@@ -22,6 +22,63 @@ Cube::Cube(
 	centerX = length * 0.5f;
 	centerY = height * 0.5f;
 	centerZ = width * 0.5f;
+
+	Math::Vec3 A, B, C, D, normal;
+	A = { 0.0f, 0.0f, width };
+	B = { length, 0.0f, width };
+	C = { length, height, width };
+	D = { 0.0f, height, width };
+	normal = Math::CalcNormal(A, B, C);
+	std::cout << "front x: " << normal.x << std::endl;
+	std::cout << "front y: " << normal.y << std::endl;
+	std::cout << "front z: " << normal.z << std::endl;
+
+	A = { 0.0f, 0.0f, 0.0f };
+	B = { length, 0.0f, 0.0f };
+	C = { length, height, 0.0f };
+	D = { 0.0f, height, 0.0f };
+	normal = Math::CalcNormal(A, B, C);
+	std::cout << "back x: " << normal.x << std::endl;
+	std::cout << "back y: " << normal.y << std::endl;
+	std::cout << "back z: " << normal.z << std::endl;
+
+	A = { 0.0f, 0.0f, 0.0f };
+	B = { 0.0f, 0.0f, width };
+	C = { 0.0f, height, width };
+	D = { 0.0f, height, 0.0f };
+	normal = Math::CalcNormal(A, B, C);
+	std::cout << "left x: " << normal.x << std::endl;
+	std::cout << "left y: " << normal.y << std::endl;
+	std::cout << "left z: " << normal.z << std::endl;
+
+	// =======================
+	A = { length, 0.0f, width };
+	B = { length, 0.0f, 0.0f };
+	C = { length, height, 0.0f };
+	D = { length, height, width };
+	normal = Math::CalcNormal(A, B, C);
+	std::cout << "right x: " << normal.x << std::endl;
+	std::cout << "right y: " << normal.y << std::endl;
+	std::cout << "right z: " << normal.z << std::endl;
+
+	A = { 0.0f, height, width };
+	B = { length, height, width };
+	C = { length, height, 0.0f };
+	D = { 0.0f, height, 0.0f };
+	normal = Math::CalcNormal(A, B, C);
+	std::cout << "top x: " << normal.x << std::endl;
+	std::cout << "top y: " << normal.y << std::endl;
+	std::cout << "top z: " << normal.z << std::endl;
+
+	A = { 0.0f, 0.0f, 0.0f };
+	B = { length, 0.0f, 0.0f };
+	C = { length, 0.0f, width };
+	D = { 0.0f, 0.0f, width };
+	normal = Math::CalcNormal(A, B, C);
+	std::cout << "bottom x: " << normal.x << std::endl;
+	std::cout << "bottom y: " << normal.y << std::endl;
+	std::cout << "bottom z: " << normal.z << std::endl;
+
 }
 Cube::~Cube()
 {
@@ -68,41 +125,134 @@ void Cube::Draw() {
 
 	glBegin(GL_QUADS);
 
-	// back
-	glVertex3f(0.0f, 0.0f, 0.0f);
-	glVertex3f(length, 0.0f, 0.0f);
-	glVertex3f(length, height, 0.0f);
-	glVertex3f(0.0f, height, 0.0f);
+	// Follow anti-clockwise
+	Math::Vec3 A, B, C, D, normal;
+	
+	// =======================
+	// FRONT FACE (z > 0)
+	// =======================
+	A = { 0.0f, 0.0f, width };
+	B = { length, 0.0f, width };
+	C = { length, height, width };
+	D = { 0.0f, height, width };
+	normal = Math::CalcNormal(A, B, C);
+	//glNormal3f(normal.x, normal.y, normal.z);
+	glNormal3f(0.0f, 0.0f, 1.0f);
+	glVertex3f(A.x, A.y, A.z);
+	glVertex3f(B.x, B.y, B.z);
+	glVertex3f(C.x, C.y, C.z);
+	glVertex3f(D.x, D.y, D.z);
+	
+	// =======================
+	// BACK FACE (z = 0)
+	// =======================
+	A = { 0.0f, 0.0f, 0.0f };
+	B = { length, 0.0f, 0.0f };
+	C = { length, height, 0.0f };
+	D = { 0.0f, height, 0.0f };
+	normal = Math::CalcNormal(A, B, C);
+	//glNormal3f(normal.x, normal.y, normal.z);
+	glNormal3f(0.0f, 0.0f, 1.0f);
+	glVertex3f(A.x, A.y, A.z);
+	glVertex3f(B.x, B.y, B.z);
+	glVertex3f(C.x, C.y, C.z);
+	glVertex3f(D.x, D.y, D.z);
+	
+	// =======================
+	// LEFT FACE (x = 0)
+	// =======================
+	A = { 0.0f, 0.0f, 0.0f };
+	B = { 0.0f, 0.0f, width };
+	C = { 0.0f, height, width };
+	D = { 0.0f, height, 0.0f };
+	normal = Math::CalcNormal(A, B, C);
+	//glNormal3f(normal.x, normal.y, normal.z);
+	glNormal3f(-1.0f, 0.0f, 0.0f);
+	glVertex3f(A.x, A.y, A.z);
+	glVertex3f(B.x, B.y, B.z);
+	glVertex3f(C.x, C.y, C.z);
+	glVertex3f(D.x, D.y, D.z);
+	
+	// =======================
+	// RIGHT FACE (x > 0)
+	// =======================
+	A = { length, 0.0f, width };
+	B = { length, 0.0f, 0.0f };
+	C = { length, height, 0.0f };
+	D = { length, height, width };
+	normal = Math::CalcNormal(A, B, C);
+	//glNormal3f(normal.x, normal.y, normal.z);
+	glNormal3f(1.0f, 0.0f, 0.0f);
+	glVertex3f(A.x, A.y, A.z);
+	glVertex3f(B.x, B.y, B.z);
+	glVertex3f(C.x, C.y, C.z);
+	glVertex3f(D.x, D.y, D.z);
+	
+	// =======================
+	// TOP FACE (y > 0)
+	// =======================
+	A = { 0.0f, height, width };
+	B = { length, height, width };
+	C = { length, height, 0.0f };
+	D = { 0.0f, height, 0.0f };
+	normal = Math::CalcNormal(A, B, C);
+	glNormal3f(0.0f, 1.0f, 0.0f);
+	glVertex3f(A.x, A.y, A.z);
+	glVertex3f(D.x, D.y, D.z);
+	glVertex3f(C.x, C.y, C.z);
+	glVertex3f(B.x, B.y, B.z);
+	
+	// =======================
+	// BOTTOM FACE (y = 0)
+	// =======================
+	A = { 0.0f, 0.0f, 0.0f };
+	B = { length, 0.0f, 0.0f };
+	C = { length, 0.0f, width };
+	D = { 0.0f, 0.0f, width };
+	normal = Math::CalcNormal(A, B, C);
+	//glNormal3f(normal.x, normal.y, normal.z);
+	glNormal3f(0.0f, -1.0f, 0.0f);
+	glVertex3f(A.x, A.y, A.z);
+	glVertex3f(B.x, B.y, B.z);
+	glVertex3f(C.x, C.y, C.z);
+	glVertex3f(D.x, D.y, D.z);
 
-	// front
-	glVertex3f(0.0f, 0.0f, width);
-	glVertex3f(length, 0.0f, width);
-	glVertex3f(length, height, width);
-	glVertex3f(0.0f, height, width);
 
-	// left
-	glVertex3f(0.0f, 0.0f, 0.0f);
-	glVertex3f(0.0f, 0.0f, width);
-	glVertex3f(0.0f, height, width);
-	glVertex3f(0.0f, height, 0.0f);
+	//// back
+	//glVertex3f(0.0f, 0.0f, 0.0f);
+	//glVertex3f(length, 0.0f, 0.0f);
+	//glVertex3f(length, height, 0.0f);
+	//glVertex3f(0.0f, height, 0.0f);
 
-	// right
-	glVertex3f(length, 0.0f, 0.0f);
-	glVertex3f(length, 0.0f, width);
-	glVertex3f(length, height, width);
-	glVertex3f(length, height, 0.0f);
+	//// front
+	//glVertex3f(0.0f, 0.0f, width);
+	//glVertex3f(length, 0.0f, width);
+	//glVertex3f(length, height, width);
+	//glVertex3f(0.0f, height, width);
 
-	// top
-	glVertex3f(0.0f, height, 0.0f);
-	glVertex3f(0.0f, height, width);
-	glVertex3f(length, height, width);
-	glVertex3f(length, height, 0.0f);
+	//// left
+	//glVertex3f(0.0f, 0.0f, 0.0f);
+	//glVertex3f(0.0f, 0.0f, width);
+	//glVertex3f(0.0f, height, width);
+	//glVertex3f(0.0f, height, 0.0f);
 
-	// bottom
-	glVertex3f(0.0f, 0.0f, 0.0f);
-	glVertex3f(0.0f, 0.0f, width);
-	glVertex3f(length, 0.0f, width);
-	glVertex3f(length, 0.0f, 0.0f);
+	//// right
+	//glVertex3f(length, 0.0f, 0.0f);
+	//glVertex3f(length, 0.0f, width);
+	//glVertex3f(length, height, width);
+	//glVertex3f(length, height, 0.0f);
+
+	//// top
+	//glVertex3f(0.0f, height, 0.0f);
+	//glVertex3f(0.0f, height, width);
+	//glVertex3f(length, height, width);
+	//glVertex3f(length, height, 0.0f);
+
+	//// bottom
+	//glVertex3f(0.0f, 0.0f, 0.0f);
+	//glVertex3f(0.0f, 0.0f, width);
+	//glVertex3f(length, 0.0f, width);
+	//glVertex3f(length, 0.0f, 0.0f);
 
 	glEnd();
 
