@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Cube.h"
+#include "Math.h"
 
 Cube::Cube(
 	float length,
@@ -125,134 +126,71 @@ void Cube::Draw() {
 
 	glBegin(GL_QUADS);
 
-	// Follow anti-clockwise
-	Math::Vec3 A, B, C, D, normal;
-	
-	// =======================
-	// FRONT FACE (z > 0)
-	// =======================
+	// back (-Z)
+	Math::Vec3 A = { 0.0f, 0.0f, 0.0f };
+	Math::Vec3 B = { 0.0f, height, 0.0f };
+	Math::Vec3 C = { length, height, 0.0f };
+	Math::Vec3 normal = Math::CalcNormal(A, B, C);
+	glNormal3f(normal.x, normal.y, normal.z);
+	glVertex3f(A.x, A.y, A.z);
+	glVertex3f(B.x, B.y, B.z);
+	glVertex3f(C.x, C.y, C.z);
+	glVertex3f(length, 0.0f, 0.0f);
+
+	// front (+Z)
 	A = { 0.0f, 0.0f, width };
 	B = { length, 0.0f, width };
 	C = { length, height, width };
-	D = { 0.0f, height, width };
 	normal = Math::CalcNormal(A, B, C);
-	//glNormal3f(normal.x, normal.y, normal.z);
-	glNormal3f(0.0f, 0.0f, 1.0f);
+	glNormal3f(normal.x, normal.y, normal.z);
 	glVertex3f(A.x, A.y, A.z);
 	glVertex3f(B.x, B.y, B.z);
 	glVertex3f(C.x, C.y, C.z);
-	glVertex3f(D.x, D.y, D.z);
-	
-	// =======================
-	// BACK FACE (z = 0)
-	// =======================
-	A = { 0.0f, 0.0f, 0.0f };
-	B = { length, 0.0f, 0.0f };
-	C = { length, height, 0.0f };
-	D = { 0.0f, height, 0.0f };
-	normal = Math::CalcNormal(A, B, C);
-	//glNormal3f(normal.x, normal.y, normal.z);
-	glNormal3f(0.0f, 0.0f, 1.0f);
-	glVertex3f(A.x, A.y, A.z);
-	glVertex3f(B.x, B.y, B.z);
-	glVertex3f(C.x, C.y, C.z);
-	glVertex3f(D.x, D.y, D.z);
-	
-	// =======================
-	// LEFT FACE (x = 0)
-	// =======================
+	glVertex3f(0.0f, height, width);
+
+	// left (-X)
 	A = { 0.0f, 0.0f, 0.0f };
 	B = { 0.0f, 0.0f, width };
 	C = { 0.0f, height, width };
-	D = { 0.0f, height, 0.0f };
 	normal = Math::CalcNormal(A, B, C);
-	//glNormal3f(normal.x, normal.y, normal.z);
-	glNormal3f(-1.0f, 0.0f, 0.0f);
+	glNormal3f(normal.x, normal.y, normal.z);
 	glVertex3f(A.x, A.y, A.z);
 	glVertex3f(B.x, B.y, B.z);
 	glVertex3f(C.x, C.y, C.z);
-	glVertex3f(D.x, D.y, D.z);
-	
-	// =======================
-	// RIGHT FACE (x > 0)
-	// =======================
+	glVertex3f(0.0f, height, 0.0f);
+
+	// right (+X)
 	A = { length, 0.0f, width };
 	B = { length, 0.0f, 0.0f };
 	C = { length, height, 0.0f };
-	D = { length, height, width };
 	normal = Math::CalcNormal(A, B, C);
-	//glNormal3f(normal.x, normal.y, normal.z);
-	glNormal3f(1.0f, 0.0f, 0.0f);
+	glNormal3f(normal.x, normal.y, normal.z);
 	glVertex3f(A.x, A.y, A.z);
 	glVertex3f(B.x, B.y, B.z);
 	glVertex3f(C.x, C.y, C.z);
-	glVertex3f(D.x, D.y, D.z);
-	
-	// =======================
-	// TOP FACE (y > 0)
-	// =======================
+	glVertex3f(length, height, width);
+
+	// top (+Y)
 	A = { 0.0f, height, width };
 	B = { length, height, width };
 	C = { length, height, 0.0f };
-	D = { 0.0f, height, 0.0f };
 	normal = Math::CalcNormal(A, B, C);
-	glNormal3f(0.0f, 1.0f, 0.0f);
+	glNormal3f(normal.x, normal.y, normal.z);
 	glVertex3f(A.x, A.y, A.z);
-	glVertex3f(D.x, D.y, D.z);
-	glVertex3f(C.x, C.y, C.z);
 	glVertex3f(B.x, B.y, B.z);
-	
-	// =======================
-	// BOTTOM FACE (y = 0)
-	// =======================
+	glVertex3f(C.x, C.y, C.z);
+	glVertex3f(0.0f, height, 0.0f);
+
+	// bottom (-Y)
 	A = { 0.0f, 0.0f, 0.0f };
 	B = { length, 0.0f, 0.0f };
 	C = { length, 0.0f, width };
-	D = { 0.0f, 0.0f, width };
 	normal = Math::CalcNormal(A, B, C);
-	//glNormal3f(normal.x, normal.y, normal.z);
-	glNormal3f(0.0f, -1.0f, 0.0f);
+	glNormal3f(normal.x, normal.y, normal.z);
 	glVertex3f(A.x, A.y, A.z);
 	glVertex3f(B.x, B.y, B.z);
 	glVertex3f(C.x, C.y, C.z);
-	glVertex3f(D.x, D.y, D.z);
-
-
-	//// back
-	//glVertex3f(0.0f, 0.0f, 0.0f);
-	//glVertex3f(length, 0.0f, 0.0f);
-	//glVertex3f(length, height, 0.0f);
-	//glVertex3f(0.0f, height, 0.0f);
-
-	//// front
-	//glVertex3f(0.0f, 0.0f, width);
-	//glVertex3f(length, 0.0f, width);
-	//glVertex3f(length, height, width);
-	//glVertex3f(0.0f, height, width);
-
-	//// left
-	//glVertex3f(0.0f, 0.0f, 0.0f);
-	//glVertex3f(0.0f, 0.0f, width);
-	//glVertex3f(0.0f, height, width);
-	//glVertex3f(0.0f, height, 0.0f);
-
-	//// right
-	//glVertex3f(length, 0.0f, 0.0f);
-	//glVertex3f(length, 0.0f, width);
-	//glVertex3f(length, height, width);
-	//glVertex3f(length, height, 0.0f);
-
-	//// top
-	//glVertex3f(0.0f, height, 0.0f);
-	//glVertex3f(0.0f, height, width);
-	//glVertex3f(length, height, width);
-	//glVertex3f(length, height, 0.0f);
-
-	//// bottom
-	//glVertex3f(0.0f, 0.0f, 0.0f);
-	//glVertex3f(0.0f, 0.0f, width);
-	//glVertex3f(length, 0.0f, width);
-	//glVertex3f(length, 0.0f, 0.0f);
+	glVertex3f(0.0f, 0.0f, width);
 
 	glEnd();
 
