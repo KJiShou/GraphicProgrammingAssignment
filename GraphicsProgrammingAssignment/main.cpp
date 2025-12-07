@@ -26,7 +26,7 @@ json j;
 
 // light
 GLUquadricObj* var = gluNewQuadric();
-Light *light0 = new Light( { 0.0f, 0.0f, 0.0f, 1.0f}, { 1.0f, 1.0f, 1.0f, 1.0f}, {0.0f, 0.0f, 0.0f, 1.0f}, GL_LIGHT0);
+Light *light0 = new Light( { 0.2f, 0.2f, 0.2f, 1.0f}, { 1.0f, 1.0f, 1.0f, 1.0f}, {0.0f, 0.0f, 0.0f, 1.0f}, GL_LIGHT0);
 Cube *c1 = new Cube(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
 Pyramid p1 = Pyramid(1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f);
 Tetrahedron t1 = Tetrahedron(1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f);
@@ -455,7 +455,7 @@ void Draw() {
 	p1.Draw();
 	t1.Translate(-15.0f, 0.0f, 10.0f);
 	t1.Draw();
-
+	
 	glPopMatrix();
 }
 
@@ -479,7 +479,13 @@ void Display()
 
 	glClearColor(0.3f, 0.3f, 0.3f, 0.0f);
 	glMatrixMode(GL_MODELVIEW);
+	//--------------------------------
+	//	OpenGL drawing
+	//--------------------------------
+	glClearColor(0.3f, 0.3f, 0.3f, 0.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
+	background.Draw();
 	UpdateCameraView();
 	glTranslatef(cameraTransX, cameraTransY, cameraTransZ);
 	glRotatef(cameraRotateXAngle, 1.0f, 0.0f, 0.0f);
@@ -488,17 +494,12 @@ void Display()
 
 	light0->Update();
 
-	//--------------------------------
-	//	OpenGL drawing
-	//--------------------------------
-	glClearColor(0.3f, 0.3f, 0.3f, 0.0f);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
 	
 
 	CalcDeltaTime();
 	Draw();
-	background.Draw();
+	
 	//--------------------------------
 	//	End of OpenGL drawing
 	//--------------------------------
