@@ -39,6 +39,7 @@ bool InputManager::Initialize(HWND hwnd) {
 }
 
 void InputManager::Update() {
+	
 	if (FAILED(dInputKeyboardDevice->GetDeviceState(256, diKeys))) {
 		dInputKeyboardDevice->Acquire();
 	}

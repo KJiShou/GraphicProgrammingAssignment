@@ -26,6 +26,9 @@ Cylinder::Cylinder(
 	g(g),
 	b(b)
 {
+	color[0] = r;
+	color[1] = g;
+	color[2] = b;
 	obj = gluNewQuadric();
 	SetCenterPoint();
 };
@@ -43,7 +46,9 @@ void Cylinder::Draw() {
 
 	gluQuadricDrawStyle(obj, style);
 
-	glColor3f(r, g, b);
+	//glColor3f(r, g, b);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, color);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, color);
 
 	glTranslatef(transX, transY, transZ);
 
@@ -128,11 +133,16 @@ void Cylinder::SetStacks(int s) { stacks = s; }
 void Cylinder::SetStyle(GLenum s) { style = s; }
 void Cylinder::SetIsClose(bool c) { style = c; }
 
+void Cylinder::SetColor(const std::array<float, 3>& c) {
+	color[0] = c[0];
+	color[1] = c[1];
+	color[2] = c[2];
+}
 void Cylinder::SetColor(float red, float green, float blue)
 {
-	r = red;
-	g = green;
-	b = blue;
+	color[0] = r;
+	color[1] = g;
+	color[2] = b;
 }
 
 // ======================
@@ -154,6 +164,12 @@ int Cylinder::GetStacks() const { return stacks; }
 float Cylinder::GetR() const { return r; }
 float Cylinder::GetG() const { return g; }
 float Cylinder::GetB() const { return b; }
+std::array<float, 3> Cylinder::GetColor() const {
+	return { color[0], color[1], color[2] };
+}
+const float* Cylinder::GetColorPtr() const {
+	return color;
+}
 
 // translate
 float Cylinder::GetTransX() const { return transX; }
