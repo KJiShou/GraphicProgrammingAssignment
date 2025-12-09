@@ -90,7 +90,7 @@ void Cube::Draw() {
 
 	glPushMatrix();
 
-	// glColor3f(r, g, b);
+	glColor3f(r, g, b);
 	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, color);
 	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, color);
 

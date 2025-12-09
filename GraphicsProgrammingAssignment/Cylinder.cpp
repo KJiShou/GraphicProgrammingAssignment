@@ -126,12 +126,15 @@ void Cylinder::SetCenterPoint() {
 // ======================
 void Cylinder::SetBaseRadius(float r) { baseRadius = r; }
 void Cylinder::SetTopRadius(float r) { topRadius = r; }
-void Cylinder::SetHeight(float h) { height = h; }
+void Cylinder::SetHeight(float h) {
+	height = h;
+	SetCenterPoint();
+}
 void Cylinder::SetLineWidth(float l) { lineWidth = l; }
 void Cylinder::SetSlices(int s) { slices = s; }
 void Cylinder::SetStacks(int s) { stacks = s; }
 void Cylinder::SetStyle(GLenum s) { style = s; }
-void Cylinder::SetIsClose(bool c) { style = c; }
+void Cylinder::SetIsClose(bool c) { isClose = c; }
 
 void Cylinder::SetColor(const std::array<float, 3>& c) {
 	color[0] = c[0];
@@ -140,9 +143,12 @@ void Cylinder::SetColor(const std::array<float, 3>& c) {
 }
 void Cylinder::SetColor(float red, float green, float blue)
 {
-	color[0] = r;
-	color[1] = g;
-	color[2] = b;
+	r = red;
+	g = green;
+	b = blue;
+	color[0] = red;
+	color[1] = green;
+	color[2] = blue;
 }
 
 // ======================

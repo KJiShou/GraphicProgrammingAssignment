@@ -1,0 +1,23 @@
+{
+  "spheres": [
+    {
+      "radius": 0.2,
+      "slices": 20,
+      "stacks": 20,
+      "style": "GLU_FILL",
+      "lineWidth": 1.0,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 0.0,
+      "transX": 0.0,
+      "transY": 0.7,
+      "transZ": 0.0,
+      "rotX": 0.0,
+      "rotY": 0.0,
+      "rotZ": 0.0,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "scaleZ": 1.0
+    }
+  ]
+}

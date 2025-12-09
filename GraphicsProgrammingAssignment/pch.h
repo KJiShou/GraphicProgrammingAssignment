@@ -10,3 +10,4 @@
 #include <dinput.h>
 #include <profileapi.h>
 #include "Math.h"
+#include <vector>

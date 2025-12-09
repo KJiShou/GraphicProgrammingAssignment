@@ -10,29 +10,22 @@ Object::~Object() = default;
 
 
 void Object::Translate(float x, float y, float z) {
-	if (!isPush) {
-		glPushMatrix();
-		isPush = true;
-	}
-	glTranslatef(x, y, z);
+	transX = x;
+	transY = y;
+	transZ = z;
 }
 void Object::Rotate(float x, float y, float z, float pivotX, float pivotY , float pivotZ ) {
-	if (!isPush) {
-		glPushMatrix();
-		isPush = true;
-	}
-	if (pivotX != 0.0f || pivotY != 0.0f || pivotZ != 0.0f) glTranslatef(-pivotX, -pivotY, -pivotZ);
-	glRotatef(x, 1, 0, 0);
-	glRotatef(y, 0, 1, 0);
-	glRotatef(z, 0, 0, 1);
-	if (pivotX != 0.0f || pivotY != 0.0f || pivotZ != 0.0f) glTranslatef(pivotX, pivotY, pivotZ);
+	rotX = x;
+	rotY = y;
+	rotZ = z;
+	rotPivotX = pivotX;
+	rotPivotY = pivotY;
+	rotPivotZ = pivotZ;
 }
 void Object::Scale(float x, float y, float z) {
-	if (!isPush) {
-		glPushMatrix();
-		isPush = true;
-	}
-	glScalef(x, y, z);
+	scaleX = x;
+	scaleY = y;
+	scaleZ = z;
 }
 
 void Object::ReadData(bool firstRun) {
@@ -187,7 +180,7 @@ void Object::ReadData(bool firstRun) {
 		{
 			cylinders.push_back(std::make_unique<Cylinder>(data.baseRadius, data.topRadius, data.height, data.slices, data.stacks, data.style, data.isClose, data.lineWidth, data.r, data.g, data.b));
 			cylinders[i]->Translate(data.transX, data.transY, data.transZ);
-			cylinders[i]->Rotate(data.rotX, data.rotY, data.rotZ);
+			cylinders[i]->Rotate(data.rotX, data.rotY, data.rotZ, false, 0.0f, 0.0f, 0.0f);
 			cylinders[i]->Scale(data.scaleX, data.scaleY, data.scaleZ);
 			i++;
 		}
@@ -234,7 +227,8 @@ void Object::ReadData(bool firstRun) {
 			cylinders[i]->SetLineWidth(cylindersData[i].lineWidth);
 			cylinders[i]->SetColor(cylindersData[i].r, cylindersData[i].g, cylindersData[i].b);
 			cylinders[i]->Translate(cylindersData[i].transX, cylindersData[i].transY, cylindersData[i].transZ);
-			cylinders[i]->Rotate(cylindersData[i].rotX, cylindersData[i].rotY, cylindersData[i].rotZ);
+			// Rotate around the base so increasing height does not move the positioned base
+			cylinders[i]->Rotate(cylindersData[i].rotX, cylindersData[i].rotY, cylindersData[i].rotZ, false, 0.0f, 0.0f, 0.0f);
 			cylinders[i]->Scale(cylindersData[i].scaleX, cylindersData[i].scaleY, cylindersData[i].scaleZ);
 		}
 
@@ -277,6 +271,26 @@ void Object::ReadData(bool firstRun) {
 }
 
 void Object::Draw() {
+	glPushMatrix();
+
+	glTranslatef(transX, transY, transZ);
+
+	if (rotPivotX != 0.0f || rotPivotY != 0.0f || rotPivotZ != 0.0f)
+	{
+		glTranslatef(rotPivotX, rotPivotY, rotPivotZ);
+	}
+
+	glRotatef(rotX, 1, 0, 0);
+	glRotatef(rotY, 0, 1, 0);
+	glRotatef(rotZ, 0, 0, 1);
+
+	if (rotPivotX != 0.0f || rotPivotY != 0.0f || rotPivotZ != 0.0f)
+	{
+		glTranslatef(-rotPivotX, -rotPivotY, -rotPivotZ);
+	}
+
+	glScalef(scaleX, scaleY, scaleZ);
+
 	for (auto& cylinder : cylinders)
 	{
 		cylinder->Draw();
@@ -296,13 +310,17 @@ void Object::Draw() {
 	{
 		pyramid->Draw();
 	}
-	if (isPush) {
-		glPopMatrix();
-		isPush = false;
-	}
+
+	for (Object* o : children) o->Draw();
+
+	glPopMatrix();
 }
 
 void Object::ReadData() {
 	ReadData(false);
 }
 
+void Object::AddChild(Object* o) {
+	o->parent = this;
+	children.push_back(o);
+}

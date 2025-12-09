@@ -57,6 +57,9 @@
     <ClCompile Include="Tetrahedron.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BackBone.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cube.h">
@@ -98,6 +101,9 @@
     <ClInclude Include="Tetrahedron.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BackBone.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="data.json">
@@ -114,6 +120,18 @@
       <Filter>Data</Filter>
     </None>
     <None Include="background.json">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="body.json">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="bodyBone.json">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="head.json">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="handFinger.json">
       <Filter>Data</Filter>
     </None>
   </ItemGroup>

@@ -94,10 +94,13 @@ private:
 	float rotX = 0.0f;
 	float rotY = 0.0f;
 	float rotZ = 0.0f;
+	float rotPivotX = 0.0f;
+	float rotPivotY = 0.0f;
+	float rotPivotZ = 0.0f;
 
-	float scaleX = 0.0f;
-	float scaleY = 0.0f;
-	float scaleZ = 0.0f;
+	float scaleX = 1.0f;
+	float scaleY = 1.0f;
+	float scaleZ = 1.0f;
 
 	std::vector<CylinderData> cylindersData;
 	std::vector<SphereData> spheresData;
@@ -108,9 +111,11 @@ private:
 	std::vector<std::unique_ptr<Sphere>> spheres;
 	std::vector<std::unique_ptr<Cube>> cubes;
 	std::vector<std::unique_ptr<Pyramid>> pyramids;
+
+	Object* parent = nullptr;
+	std::vector<Object*> children;
 	void ReadData(bool firstRun);
 
-	bool isPush = false;
 public:
 	Object(std::string fileName);
 	virtual ~Object();
@@ -121,5 +126,7 @@ public:
 	void Rotate(float x, float y, float z, float pivotX = 0.0f, float pivotY = 0.0f, float pivotZ = 0.0f);
 	void Scale(float x, float y, float z);
 	void ReadData();
+
+	void AddChild(Object* o);
 };
 
