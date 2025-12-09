@@ -9,6 +9,7 @@
 #include "TowerBridge.h"
 #include "Light.h"
 #include "Tetrahedron.h"
+#include "BackBone.h"
 
 #pragma comment(lib, "d3d9.lib")
 #pragma comment(lib, "d3dx9.lib")
@@ -58,23 +59,21 @@ bool drawAxis = true;
 
 float deltaTime = 0.0f;
 
-TowerBridge towerBridge;
+//TowerBridge towerBridge;
 Object background("background.json");
-//===================
-// JS Practical Test
-//===================
-float rotation = 0.0f;
-bool rotate = false;
+BackBone backbone;
 
 float camPosX = 0.0f, camPosY = 0.0f, camPosZ = 5.0f;
 float camYaw = 0.0f;   // Y-axis rotation (left/right)
 float camPitch = 0.0f; // X-axis rotation (up/down)
 
+float x = 0, y = 0, z = 0;
+
 HWND GetHWnd() { return hWnd; }
 
 void ReadData() {
 	background.ReadData();
-	towerBridge.ReadData();
+	backbone.ReadData();
 }
 
 LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
@@ -366,6 +365,7 @@ void UpdateCameraView() {
 }
 
 void DrawAxis() {
+	glDisable(GL_LIGHTING);
 	// x axis positive
 	glBegin(GL_LINES);
 	glColor3f(1.0, 0, 0);
@@ -434,12 +434,14 @@ void DrawAxis() {
 		glVertex3f(0, 0, -i/10.0);
 	glEnd();
 	}
+	glEnable(GL_LIGHTING);
 }
 
 void Draw() {
 	glPushMatrix();
 	if (drawAxis) DrawAxis();
-	towerBridge.Draw(rotation);
+	backbone.RotateHead(x, y, z);
+	backbone.Draw();
 
 	glPushMatrix();
 	glTranslatef(light0->GetPosition()[0], light0->GetPosition()[1], light0->GetPosition()[2]);
@@ -485,7 +487,9 @@ void Display()
 	glClearColor(0.3f, 0.3f, 0.3f, 0.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
+	glDisable(GL_LIGHTING);
 	background.Draw();
+	glEnable(GL_LIGHTING);
 	UpdateCameraView();
 	glTranslatef(cameraTransX, cameraTransY, cameraTransZ);
 	glRotatef(cameraRotateXAngle, 1.0f, 0.0f, 0.0f);
@@ -558,16 +562,6 @@ void Update(int framesToUpdate) {
 			camPosY -= speed;
 		}
 
-		//=================
-		// Practical Test
-		//=================
-		if (input.IsKeyPressed(DIK_U) && rotation > -90) {
-			rotation--;
-		}
-		if (input.IsKeyPressed(DIK_P) && rotation < 0) {
-			rotation++;
-		}
-
 		// Light move
 		// x direction
 		if (input.IsKeyPressed(DIK_J))
@@ -604,6 +598,43 @@ void Update(int framesToUpdate) {
 				light0->Move(light0->GetPosition()[0], light0->GetPosition()[1], light0->GetPosition()[2] + 0.1f);
 			}
 			
+		}
+
+		//=======================
+		// Testing key
+		//=======================
+		if (input.IsKeyPressed(DIKEYBOARD_NUMPAD1))
+		{
+			if (input.IsKeyPressed(DIK_LSHIFT))
+			{
+				x--;
+			}
+			else {
+				x++;
+			}
+
+		}
+		if (input.IsKeyPressed(DIKEYBOARD_NUMPAD2))
+		{
+			if (input.IsKeyPressed(DIK_LSHIFT))
+			{
+				y--;
+			}
+			else {
+				y++;
+			}
+
+		}
+		if (input.IsKeyPressed(DIKEYBOARD_NUMPAD3))
+		{
+			if (input.IsKeyPressed(DIK_LSHIFT))
+			{
+				z--;
+			}
+			else {
+				z++;
+			}
+
 		}
 	}
 }
@@ -657,6 +688,8 @@ int main(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)
 	//glEnable(GL_NORMALIZE);
 	
 	ZeroMemory(&msg, sizeof(msg));
+
+	backbone.SetBone();
 
 	while (ProcessMessages())
 	{

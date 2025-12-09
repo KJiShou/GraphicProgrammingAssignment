@@ -128,6 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BackBone.cpp" />
     <ClCompile Include="Cube.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">pch.h</PrecompiledHeaderFile>
@@ -173,6 +174,7 @@
     <ClCompile Include="TowerBridge.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BackBone.h" />
     <ClInclude Include="Cube.h" />
     <ClInclude Include="Cylinder.h" />
     <ClInclude Include="InputManager.h" />
@@ -190,8 +192,12 @@
   <ItemGroup>
     <None Include="..\.gitignore" />
     <None Include="background.json" />
+    <None Include="body.json" />
+    <None Include="bodyBone.json" />
     <None Include="bridge.json" />
     <None Include="data.json" />
+    <None Include="handFinger.json" />
+    <None Include="head.json" />
     <None Include="template.json" />
     <None Include="towerBridge.json" />
   </ItemGroup>
