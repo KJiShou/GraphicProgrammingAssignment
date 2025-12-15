@@ -124,77 +124,145 @@ void Cube::Draw() {
 
 	if (isExpandable) glTranslatef(-centerX, -centerY, -centerZ);
 
+	glBindTexture(GL_TEXTURE_2D, texBack);
 	glBegin(GL_QUADS);
-
 	// back (-Z)
-	Math::Vec3 A = { 0.0f, 0.0f, 0.0f };
-	Math::Vec3 B = { 0.0f, height, 0.0f };
-	Math::Vec3 C = { length, height, 0.0f };
-	Math::Vec3 normal = Math::CalcNormal(A, B, C);
+	Math::Vec3 A = { 0.0f, height, 0.0f };
+	Math::Vec3 B = { 0.0f, 0.0f, 0.0f };
+	Math::Vec3 C = { length, 0.0f, 0.0f };
+	Math::Vec3 D = { length, height, 0.0f };
+	Math::Vec3 normal = Math::CalcNormal(D, C, B);
 	glNormal3f(normal.x, normal.y, normal.z);
+	glTexCoord2f(1.0f, 1.0f);
 	glVertex3f(A.x, A.y, A.z);
-	glVertex3f(B.x, B.y, B.z);
-	glVertex3f(C.x, C.y, C.z);
-	glVertex3f(length, 0.0f, 0.0f);
 
+	glTexCoord2f(1.0f, 0.0f);
+	glVertex3f(B.x, B.y, B.z);
+
+	glTexCoord2f(0.0f, 0.0f);
+	glVertex3f(C.x, C.y, C.z);
+
+	glTexCoord2f(0.0f, 1.0f);
+	glVertex3f(D.x, D.y, D.z);
+	glEnd();
+
+	glBindTexture(GL_TEXTURE_2D, texFront);
+	glBegin(GL_QUADS);
 	// front (+Z)
-	A = { 0.0f, 0.0f, width };
-	B = { length, 0.0f, width };
-	C = { length, height, width };
-	normal = Math::CalcNormal(A, B, C);
-	glNormal3f(normal.x, normal.y, normal.z);
-	glVertex3f(A.x, A.y, A.z);
-	glVertex3f(B.x, B.y, B.z);
-	glVertex3f(C.x, C.y, C.z);
-	glVertex3f(0.0f, height, width);
-
-	// left (-X)
-	A = { 0.0f, 0.0f, 0.0f };
-	B = { 0.0f, 0.0f, width };
-	C = { 0.0f, height, width };
-	normal = Math::CalcNormal(A, B, C);
-	glNormal3f(normal.x, normal.y, normal.z);
-	glVertex3f(A.x, A.y, A.z);
-	glVertex3f(B.x, B.y, B.z);
-	glVertex3f(C.x, C.y, C.z);
-	glVertex3f(0.0f, height, 0.0f);
-
-	// right (+X)
-	A = { length, 0.0f, width };
-	B = { length, 0.0f, 0.0f };
-	C = { length, height, 0.0f };
-	normal = Math::CalcNormal(A, B, C);
-	glNormal3f(normal.x, normal.y, normal.z);
-	glVertex3f(A.x, A.y, A.z);
-	glVertex3f(B.x, B.y, B.z);
-	glVertex3f(C.x, C.y, C.z);
-	glVertex3f(length, height, width);
-
-	// top (+Y)
 	A = { 0.0f, height, width };
-	B = { length, height, width };
-	C = { length, height, 0.0f };
-	normal = Math::CalcNormal(A, B, C);
-	glNormal3f(normal.x, normal.y, normal.z);
-	glVertex3f(A.x, A.y, A.z);
-	glVertex3f(B.x, B.y, B.z);
-	glVertex3f(C.x, C.y, C.z);
-	glVertex3f(0.0f, height, 0.0f);
-
-	// bottom (-Y)
-	A = { 0.0f, 0.0f, 0.0f };
-	B = { length, 0.0f, 0.0f };
+	B = { 0.0f, 0.0f, width };
 	C = { length, 0.0f, width };
+	D = { length, height, width };
 	normal = Math::CalcNormal(A, B, C);
 	glNormal3f(normal.x, normal.y, normal.z);
+	
+	glTexCoord2f(0.0f, 1.0f);
 	glVertex3f(A.x, A.y, A.z);
+	
+	glTexCoord2f(0.0f, 0.0f);
 	glVertex3f(B.x, B.y, B.z);
+	
+	glTexCoord2f(1.0f, 0.0f);
 	glVertex3f(C.x, C.y, C.z);
-	glVertex3f(0.0f, 0.0f, width);
 
+	glTexCoord2f(1.0f, 1.0f);
+	glVertex3f(D.x, D.y, D.z);
+	glEnd();
+
+	glBindTexture(GL_TEXTURE_2D, texLeft);
+	glBegin(GL_QUADS);
+	// left (-X)
+	A = { 0.0f, height, 0.0f };
+	B = { 0.0f, 0.0f, 0.0f };
+	C = { 0.0f, 0.0f, width };
+	D = { 0.0f, height, width };
+	normal = Math::CalcNormal(A, B, C);
+	glNormal3f(normal.x, normal.y, normal.z);
+
+	glTexCoord2f(0.0f, 1.0f);
+	glVertex3f(A.x, A.y, A.z);
+
+	glTexCoord2f(0.0f, 0.0f);
+	glVertex3f(B.x, B.y, B.z);
+
+	glTexCoord2f(1.0f, 0.0f);
+	glVertex3f(C.x, C.y, C.z);
+
+	glTexCoord2f(1.0f, 1.0f);
+	glVertex3f(D.x, D.y, D.z);
+	glEnd();
+
+	glBindTexture(GL_TEXTURE_2D, texRight);
+	glBegin(GL_QUADS);
+	// right (+X)
+	A = { length, height, width };
+	B = { length, 0.0f, width };
+	C = { length, 0.0f, 0.0f };
+	D = { length, height, 0.0f };
+	normal = Math::CalcNormal(A, B, C);
+	glNormal3f(normal.x, normal.y, normal.z);
+	glTexCoord2f(0.0f, 1.0f);
+	glVertex3f(A.x, A.y, A.z);
+
+	glTexCoord2f(0.0f, 0.0f);
+	glVertex3f(B.x, B.y, B.z);
+
+	glTexCoord2f(1.0f, 0.0f);
+	glVertex3f(C.x, C.y, C.z);
+
+	glTexCoord2f(1.0f, 1.0f);
+	glVertex3f(D.x, D.y, D.z);
+	glEnd();
+
+	glBindTexture(GL_TEXTURE_2D, texTop);
+	glBegin(GL_QUADS);
+	// top (+Y)
+	A = { 0.0f, height, 0.0f };
+	B = { 0.0f, height, width };
+	C = { length, height, width };
+	D = { length, height, 0.0f };
+	normal = Math::CalcNormal(A, B, C);
+	glNormal3f(normal.x, normal.y, normal.z);
+
+	glTexCoord2f(0.0f, 1.0f);
+	glVertex3f(A.x, A.y, A.z);
+
+	glTexCoord2f(0.0f, 0.0f);
+	glVertex3f(B.x, B.y, B.z);
+
+	glTexCoord2f(1.0f, 0.0f);
+	glVertex3f(C.x, C.y, C.z);
+
+	glTexCoord2f(1.0f, 1.0f);
+	glVertex3f(D.x, D.y, D.z);
+	glEnd();
+
+	glBindTexture(GL_TEXTURE_2D, texBottom);
+	glBegin(GL_QUADS);
+	// bottom (-Y)
+	A = { 0.0f, 0.0f, width };
+	B = { 0.0f, 0.0f, 0.0f };
+	C = { length, 0.0f, 0.0f };
+	D = { length, 0.0f, width };
+	normal = Math::CalcNormal(A, B, C);
+	glNormal3f(normal.x, normal.y, normal.z);
+
+	glTexCoord2f(0.0f, 1.0f);
+	glVertex3f(A.x, A.y, A.z);
+
+	glTexCoord2f(0.0f, 0.0f);
+	glVertex3f(B.x, B.y, B.z);
+
+	glTexCoord2f(1.0f, 0.0f);
+	glVertex3f(C.x, C.y, C.z);
+
+	glTexCoord2f(1.0f, 1.0f);
+	glVertex3f(D.x, D.y, D.z);
 	glEnd();
 
 	glPopMatrix();
+
+	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 void Cube::Translate(float transX, float transY, float transZ) {
@@ -249,6 +317,39 @@ void Cube::SetColor(float red, float green, float blue)
 void Cube::SetExpandable(bool ex)
 {
 	isExpandable = ex;
+}
+
+void Cube::SetAllTextures(GLuint tex) {
+	texFront = tex;
+	texBack = tex;
+	texTop = tex;
+	texBottom = tex;
+	texLeft = tex;
+	texRight = tex;
+}
+
+void Cube::SetFrontTexture(GLuint front) {
+	texFront = front;
+}
+
+void Cube::SetBackTexture(GLuint back) {
+	texBack = back;
+}
+
+void Cube::SetTopTexture(GLuint top) {
+	texTop = top;
+}
+
+void Cube::SetBottomTexture(GLuint bottom) {
+	texBottom = bottom;
+}
+
+void Cube::SetLeftTexture(GLuint left) {
+	texLeft = left;
+}
+
+void Cube::SetRightTexture(GLuint right) {
+	texRight = right;
 }
 
 // ======================

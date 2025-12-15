@@ -21,6 +21,8 @@ public:
 	void SetColor(float red, float green, float blue);
 	void SetColor(const std::array<float, 3>& c);
 
+	void SetSphereTexture(GLuint tex);
+
 	// ======================
 	// Getters
 	// ======================
@@ -68,6 +70,9 @@ public:
 private:
 	GLUquadricObj* obj = nullptr;
 	GLenum style;
+
+	// texture
+	GLuint tex = 0;
 
 	// size
 	float radius;

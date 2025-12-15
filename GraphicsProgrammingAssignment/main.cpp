@@ -27,10 +27,17 @@ json j;
 
 // light
 GLUquadricObj* var = gluNewQuadric();
-Light *light0 = new Light( { 0.2f, 0.2f, 0.2f, 1.0f}, { 1.0f, 1.0f, 1.0f, 1.0f}, {0.0f, 0.0f, 0.0f, 1.0f}, GL_LIGHT0);
-Cube *c1 = new Cube(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
-Pyramid p1 = Pyramid(1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f);
-Tetrahedron t1 = Tetrahedron(1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f);
+Light light0 = Light( { 0.2f, 0.2f, 0.2f, 1.0f}, { 1.0f, 1.0f, 1.0f, 1.0f}, {0.0f, 0.0f, 0.0f, 1.0f}, GL_LIGHT0);
+Cube c1 = Cube(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
+Pyramid p1 = Pyramid(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
+Tetrahedron t1 = Tetrahedron(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
+Cylinder cylinder1 = Cylinder(1.0f, 1.0f, 1.0f, 50, 50, GLU_FILL, true, 1.0f, 1.0f, 1.0f, 1.0f);
+Sphere sphere1 = Sphere(1.0f, 10, 10, GLU_FILL, 1.0f, 1.0f, 1.0f, 1.0f);
+
+// Textures
+GLuint tex1 = 0;
+BITMAP BMP;
+HBITMAP hBMP;
 
 // Windows
 HWND hWnd = NULL;
@@ -74,6 +81,48 @@ HWND GetHWnd() { return hWnd; }
 void ReadData() {
 	background.ReadData();
 	backbone.ReadData();
+}
+
+void LoadTexture(LPCSTR filename, GLuint& texID, bool isRepeat)
+{
+	if (texID != 0) {
+		std::cout << "Tex ID error" << std::endl;
+		return;
+	}
+
+	hBMP = (HBITMAP)LoadImage(GetModuleHandle(NULL),
+		filename, IMAGE_BITMAP, 0, 0,
+		LR_CREATEDIBSECTION | LR_LOADFROMFILE);
+	if (!hBMP) {
+		std::cout << "hBmp error" << std::endl;
+		return;
+	}
+
+	GetObject(hBMP, sizeof(BITMAP), &BMP);
+
+	glGenTextures(1, &texID);
+	glBindTexture(GL_TEXTURE_2D, texID);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	
+	// optionally set wrapping
+	if (isRepeat) {
+		// X axis
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		// Y axis
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	}
+
+	glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
+
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, BMP.bmWidth, BMP.bmHeight,
+		0, GL_BGR_EXT, GL_UNSIGNED_BYTE, BMP.bmBits);
+}
+
+void ClearTexture() {
+	glDeleteTextures(1, &tex1);
+	DeleteObject(hBMP);
 }
 
 LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
@@ -444,19 +493,23 @@ void Draw() {
 	backbone.Draw();
 
 	glPushMatrix();
-	glTranslatef(light0->GetPosition()[0], light0->GetPosition()[1], light0->GetPosition()[2]);
+	glTranslatef(light0.GetPosition()[0], light0.GetPosition()[1], light0.GetPosition()[2]);
 	GLfloat redColor[] = { 1.0f, 0.0f, 0.0f };
 	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, redColor);
 	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, redColor);
 	gluSphere(var, 0.1f, 10.0f, 10.0f);
 	glPopMatrix();
 
-	c1->Translate(-10.0f, 0.0f, 10.0f);
-	c1->Draw();
+	c1.Translate(-10.0f, 0.0f, 10.0f);
+	c1.Draw();
 	p1.Translate(-5.0f, 0.0f, 10.0f);
 	p1.Draw();
 	t1.Translate(-15.0f, 0.0f, 10.0f);
 	t1.Draw();
+	cylinder1.Translate(-20.0f, 0.0f, 10.0f);
+	cylinder1.Draw();
+	sphere1.Translate(0.0f, 0.0f, 10.0f);
+	sphere1.Draw();
 	
 	glPopMatrix();
 }
@@ -496,7 +549,7 @@ void Display()
 	glRotatef(cameraRotateYAngle, 0.0f, 1.0f, 0.0f);
 	glRotatef(cameraRotateZAngle, 0.0f, 0.0f, 1.0f);
 
-	light0->Update();
+	light0.Update();
 
 	
 	
@@ -568,10 +621,10 @@ void Update(int framesToUpdate) {
 		{
 			if (input.IsKeyPressed(DIK_LSHIFT))
 			{
-				light0->Move(light0->GetPosition()[0] - 0.1f, light0->GetPosition()[1], light0->GetPosition()[2]);
+				light0.Move(light0.GetPosition()[0] - 0.1f, light0.GetPosition()[1], light0.GetPosition()[2]);
 			}
 			else {
-				light0->Move(light0->GetPosition()[0] + 0.1f, light0->GetPosition()[1], light0->GetPosition()[2]);
+				light0.Move(light0.GetPosition()[0] + 0.1f, light0.GetPosition()[1], light0.GetPosition()[2]);
 			}
 		}
 
@@ -580,10 +633,10 @@ void Update(int framesToUpdate) {
 		{
 			if (input.IsKeyPressed(DIK_LSHIFT))
 			{
-				light0->Move(light0->GetPosition()[0], light0->GetPosition()[1] - 0.1f, light0->GetPosition()[2]);
+				light0.Move(light0.GetPosition()[0], light0.GetPosition()[1] - 0.1f, light0.GetPosition()[2]);
 			}
 			else {
-				light0->Move(light0->GetPosition()[0], light0->GetPosition()[1] + 0.1f, light0->GetPosition()[2]);
+				light0.Move(light0.GetPosition()[0], light0.GetPosition()[1] + 0.1f, light0.GetPosition()[2]);
 			}
 		}
 
@@ -592,10 +645,10 @@ void Update(int framesToUpdate) {
 		{
 			if (input.IsKeyPressed(DIK_LSHIFT))
 			{
-				light0->Move(light0->GetPosition()[0], light0->GetPosition()[1], light0->GetPosition()[2] - 0.1f);
+				light0.Move(light0.GetPosition()[0], light0.GetPosition()[1], light0.GetPosition()[2] - 0.1f);
 			}
 			else {
-				light0->Move(light0->GetPosition()[0], light0->GetPosition()[1], light0->GetPosition()[2] + 0.1f);
+				light0.Move(light0.GetPosition()[0], light0.GetPosition()[1], light0.GetPosition()[2] + 0.1f);
 			}
 			
 		}
@@ -683,10 +736,23 @@ int main(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)
 	ShowWindow(hWnd, nCmdShow);
 
 	glEnable(GL_DEPTH_TEST);
-	light0->Enable();
+	light0.Enable();
 	glEnable(GL_LIGHTING);
-	//glEnable(GL_NORMALIZE);
+	gluQuadricTexture(var, GL_TRUE);
+	gluQuadricNormals(var, GLU_SMOOTH);
+	glEnable(GL_TEXTURE_2D);
+
+	// let texture can response with light
+	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+	glEnable(GL_NORMALIZE);
 	
+	LoadTexture("Assets/meme1.bmp", tex1, true);
+	c1.SetAllTextures(tex1);
+	p1.SetAllTextures(tex1);
+	t1.SetAllTextures(tex1);
+	cylinder1.SetAllTextures(tex1);
+	sphere1.SetSphereTexture(tex1);
+
 	ZeroMemory(&msg, sizeof(msg));
 
 	backbone.SetBone();
@@ -699,8 +765,9 @@ int main(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)
 		SwapBuffers(hdc);
 	}
 	gluDeleteQuadric(var);
-	delete(light0);
-	delete(c1);
+
+	ClearTexture();
+
 	UnregisterClass(WINDOW_TITLE, wc.hInstance);
 
 	return true;

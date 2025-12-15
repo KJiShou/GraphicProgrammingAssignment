@@ -39,9 +39,9 @@ void Object::ReadData(bool firstRun) {
 
 	// open json file
 	std::ifstream file(fileName);
-
+	// std::cout << "Opening {" << fileName << "} JSON file!" << std::endl;
 	if (!file.is_open()) {
-		std::cout << "Failed to open JSON file!" << std::endl;
+		std::cout << "Failed to open {" << fileName <<  "} JSON file!" << std::endl;
 		return;
 	}
 
