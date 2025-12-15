@@ -19,6 +19,13 @@ public:
 	void SetColor(float red, float green, float blue);
 	void SetColor(const std::array<float, 3>& c);
 
+	void SetAllTextures(GLuint tex);
+	void SetFrontTexture(GLuint front);
+	void SetBackTexture(GLuint back);
+	void SetBottomTexture(GLuint bottom);
+	void SetLeftTexture(GLuint left);
+	void SetRightTexture(GLuint right);
+
 	// ======================
 	// Getters
 	// ======================
@@ -60,6 +67,13 @@ public:
 	float GetRotPosY() const;
 	float GetRotPosZ() const;
 private:
+	// textures
+	GLuint texFront = 0;
+	GLuint texBack = 0;
+	GLuint texBottom = 0;
+	GLuint texLeft = 0;
+	GLuint texRight = 0;
+
 	// size
 	float length;
 	float width;

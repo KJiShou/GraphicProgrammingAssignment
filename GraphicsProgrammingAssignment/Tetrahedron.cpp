@@ -86,48 +86,42 @@ void Tetrahedron::Draw() {
 			n.x = -n.x; n.y = -n.y; n.z = -n.z;
 		}
 		glNormal3f(n.x, n.y, n.z);
-		glVertex3f(p1.x, p1.y, p1.z);
-		glVertex3f(p2.x, p2.y, p2.z);
+
+		glTexCoord2f(0.5f, 1.0f);
 		glVertex3f(p3.x, p3.y, p3.z);
+
+		glTexCoord2f(0.0f, 0.0f);
+		glVertex3f(p1.x, p1.y, p1.z);
+
+		glTexCoord2f(1.0f, 0.0f);
+		glVertex3f(p2.x, p2.y, p2.z);
+		
 	};
 
+	glBindTexture(GL_TEXTURE_2D, texBottom);
 	glBegin(GL_TRIANGLES);
 	emitFace(A, B, C);     // base
-	emitFace(A, B, top);   // back
-	emitFace(B, C, top);   // right
-	emitFace(C, A, top);   // left
-
 	glEnd();
 
-	//glVertex3f(0.0f, 0.0f, 0.0f);
-	//glVertex3f(length, 0.0f, 0.0f);
-	//glVertex3f(length, 0.0f, width);
-	//glVertex3f(0.0f, 0.0f, width);
-	//glEnd();
+	glBindTexture(GL_TEXTURE_2D, texBack);
+	glBegin(GL_TRIANGLES);
+	emitFace(B, A, top);   // back
+	glEnd();
 
-	//glBegin(GL_TRIANGLE_FAN);
-	//// center point
-	//glVertex3f(centerX, height, centerZ);
+	glBindTexture(GL_TEXTURE_2D, texRight);
+	glBegin(GL_TRIANGLES);
+	emitFace(C, B, top);   // right
+	glEnd();
 
-	//// front	
-	//glVertex3f(length, 0.0f, width);
-	//glVertex3f(0.0f, 0.0f, width);
-
-	//// back
-	//glVertex3f(0.0f, 0.0f, 0.0f);
-	//glVertex3f(length, 0.0f, 0.0f);
-
-	//// right	
-	//glVertex3f(length, 0.0f, 0.0f);
-	//glVertex3f(length, 0.0f, width);
-
-	//// left	
-	//glVertex3f(0.0f, 0.0f, width);
-	//glVertex3f(0.0f, 0.0f, 0.0f);
+	glBindTexture(GL_TEXTURE_2D, texLeft);
+	glBegin(GL_TRIANGLES);
+	emitFace(A, C, top);   // left
+	glEnd();
 
 	glEnd();
 
 	glPopMatrix();
+	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 void Tetrahedron::Translate(float transX, float transY, float transZ) {
@@ -180,6 +174,28 @@ void Tetrahedron::SetColor(float red, float green, float blue)
 	color[2] = b;
 }
 
+void Tetrahedron::SetAllTextures(GLuint tex) {
+	texBack = tex;
+	texBottom = tex;
+	texLeft = tex;
+	texRight = tex;
+}
+
+void Tetrahedron::SetBackTexture(GLuint front) {
+	texBack = front;
+}
+
+void Tetrahedron::SetBottomTexture(GLuint bottom) {
+	texBottom = bottom;
+}
+
+void Tetrahedron::SetLeftTexture(GLuint left) {
+	texLeft = left;
+}
+
+void Tetrahedron::SetRightTexture(GLuint right) {
+	texRight = right;
+}
 
 // ======================
 // Getters

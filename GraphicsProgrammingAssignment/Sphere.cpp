@@ -27,6 +27,7 @@ Sphere::Sphere(
 	centerX = 0.0f;
 	centerY = 0.0f;
 	centerZ = 0.0f;
+	gluQuadricTexture(obj, GL_TRUE);
 };
 
 Sphere::~Sphere() {
@@ -45,7 +46,7 @@ void Sphere::Draw() {
 	// glColor3f(r, g, b);
 	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, color);
 	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, color);
-
+	glBindTexture(GL_TEXTURE_2D, tex);
 	glTranslatef(transX, transY, transZ);
 
 	if (isRotateByCenter)
@@ -75,6 +76,7 @@ void Sphere::Draw() {
 	gluSphere(obj, radius, slices, stacks);
 
 	glPopMatrix();
+	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 void Sphere::Translate(float transX, float transY, float transZ) {
@@ -118,6 +120,10 @@ void Sphere::SetColor(float red, float green, float blue)
 	color[0] = r;
 	color[1] = g;
 	color[2] = b;
+}
+
+void Sphere::SetSphereTexture(GLuint tex) {
+	this->tex = tex;
 }
 
 // ======================

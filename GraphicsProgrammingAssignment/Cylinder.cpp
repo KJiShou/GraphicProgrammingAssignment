@@ -31,6 +31,7 @@ Cylinder::Cylinder(
 	color[2] = b;
 	obj = gluNewQuadric();
 	SetCenterPoint();
+	gluQuadricTexture(obj, GL_TRUE);
 };
 
 Cylinder::~Cylinder() {
@@ -49,6 +50,7 @@ void Cylinder::Draw() {
 	//glColor3f(r, g, b);
 	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, color);
 	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, color);
+	glBindTexture(GL_TEXTURE_2D, cylinderTex);
 
 	glTranslatef(transX, transY, transZ);
 
@@ -80,10 +82,13 @@ void Cylinder::Draw() {
 
 	if (isClose)
 	{
+		glBindTexture(GL_TEXTURE_2D, diskTex);
 		glPushMatrix();
+		glPushMatrix();
+		glRotatef(180.0f, 0.0f, 1.0f, 0.0f);
 		// bottom
 		gluDisk(obj, 0.0f, baseRadius, slices, stacks);
-
+		glPopMatrix();
 		// top
 		glTranslatef(0.0f, 0.0f, height);
 		gluDisk(obj, 0.0f, topRadius, slices, stacks);
@@ -91,6 +96,7 @@ void Cylinder::Draw() {
 	}
 
 	glPopMatrix();
+	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 void Cylinder::Translate(float transX, float transY, float transZ) {
@@ -149,6 +155,19 @@ void Cylinder::SetColor(float red, float green, float blue)
 	color[0] = red;
 	color[1] = green;
 	color[2] = blue;
+}
+
+void Cylinder::SetAllTextures(GLuint tex) {
+	cylinderTex = tex;
+	diskTex = tex;
+}
+
+void Cylinder::SetCylinderTexture(GLuint front) {
+	cylinderTex = front;
+}
+
+void Cylinder::SetDiskTexture(GLuint bottom) {
+	diskTex = bottom;
 }
 
 // ======================
