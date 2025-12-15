@@ -25,6 +25,10 @@ public:
 	void SetColor(float red, float green, float blue);
 	void SetColor(const std::array<float, 3>& c);
 
+	void SetAllTextures(GLuint tex);
+	void SetCylinderTexture(GLuint cylinder);
+	void SetDiskTexture(GLuint disk);
+
 	// ======================
 	// Getters
 	// ======================
@@ -76,6 +80,10 @@ private:
 	GLUquadricObj* obj = nullptr;
 	GLenum style;
 	bool isClose;
+
+	// textures
+	GLuint cylinderTex = 0;
+	GLuint diskTex = 0;
 
 	// size
 	float baseRadius;
