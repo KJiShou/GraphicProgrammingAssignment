@@ -69,74 +69,94 @@ void Pyramid::Draw() {
 	Math::Vec3 v3 = { 0.0f, 0.0f, width };      // front-left
 
 	// base (facing downward)
+	glBindTexture(GL_TEXTURE_2D, texBottom);
 	glBegin(GL_QUADS);
 	Math::Vec3 normal = Math::CalcNormal(v0, v1, v2);
 	glNormal3f(normal.x, normal.y, normal.z);
-	glVertex3f(v0.x, v0.y, v0.z);
-	glVertex3f(v1.x, v1.y, v1.z);
-	glVertex3f(v2.x, v2.y, v2.z);
+
+	glTexCoord2f(0.0f, 1.0f);
 	glVertex3f(v3.x, v3.y, v3.z);
+
+	glTexCoord2f(0.0f, 0.0f);
+	glVertex3f(v0.x, v0.y, v0.z);
+	
+	glTexCoord2f(1.0f, 0.0f);
+	glVertex3f(v1.x, v1.y, v1.z);
+
+	glTexCoord2f(1.0f, 1.0f);
+	glVertex3f(v2.x, v2.y, v2.z);
+
 	glEnd();
 
+	glBindTexture(GL_TEXTURE_2D, texFront);
 	glBegin(GL_TRIANGLES);
 	// front (+Z)
 	normal = Math::CalcNormal(v3, v2, apex);
 	glNormal3f(normal.x, normal.y, normal.z);
-	glVertex3f(v3.x, v3.y, v3.z);
-	glVertex3f(v2.x, v2.y, v2.z);
-	glVertex3f(apex.x, apex.y, apex.z);
 
+	glTexCoord2f(0.5f, 1.0f);
+	glVertex3f(apex.x, apex.y, apex.z);
+	
+	glTexCoord2f(0.0f, 0.0f);
+	glVertex3f(v3.x, v3.y, v3.z);
+	
+	glTexCoord2f(1.0f, 0.0f);
+	glVertex3f(v2.x, v2.y, v2.z);
+	
+	glEnd();
+
+	glBindTexture(GL_TEXTURE_2D, texBack);
+	glBegin(GL_TRIANGLES);
 	// back (-Z)
 	normal = Math::CalcNormal(v1, v0, apex);
 	glNormal3f(normal.x, normal.y, normal.z);
-	glVertex3f(v1.x, v1.y, v1.z);
-	glVertex3f(v0.x, v0.y, v0.z);
+
+	glTexCoord2f(0.5f, 1.0f);
 	glVertex3f(apex.x, apex.y, apex.z);
 
+	glTexCoord2f(0.0f, 0.0f);
+	glVertex3f(v1.x, v1.y, v1.z);
+
+	glTexCoord2f(1.0f, 0.0f);
+	glVertex3f(v0.x, v0.y, v0.z);
+
+	glEnd();
+
+	glBindTexture(GL_TEXTURE_2D, texRight);
+	glBegin(GL_TRIANGLES);
 	// right (+X)
 	normal = Math::CalcNormal(v2, v1, apex);
 	glNormal3f(normal.x, normal.y, normal.z);
-	glVertex3f(v2.x, v2.y, v2.z);
-	glVertex3f(v1.x, v1.y, v1.z);
+
+	glTexCoord2f(0.5f, 1.0f);
 	glVertex3f(apex.x, apex.y, apex.z);
 
+	glTexCoord2f(0.0f, 0.0f);
+	glVertex3f(v2.x, v2.y, v2.z);
+	
+	glTexCoord2f(1.0f, 0.0f);
+	glVertex3f(v1.x, v1.y, v1.z);
+	
+	glEnd();
+
+	glBindTexture(GL_TEXTURE_2D, texLeft);
+	glBegin(GL_TRIANGLES);
 	// left (-X)
 	normal = Math::CalcNormal(v0, v3, apex);
 	glNormal3f(normal.x, normal.y, normal.z);
-	glVertex3f(v0.x, v0.y, v0.z);
-	glVertex3f(v3.x, v3.y, v3.z);
+
+	glTexCoord2f(0.5f, 1.0f);
 	glVertex3f(apex.x, apex.y, apex.z);
-	glEnd();
 
-	//glVertex3f(0.0f, 0.0f, 0.0f);
-	//glVertex3f(length, 0.0f, 0.0f);
-	//glVertex3f(length, 0.0f, width);
-	//glVertex3f(0.0f, 0.0f, width);
-	//glEnd();
+	glTexCoord2f(0.0f, 0.0f);
+	glVertex3f(v0.x, v0.y, v0.z);
 
-	//glBegin(GL_TRIANGLE_FAN);
-	//// center point
-	//glVertex3f(centerX, height, centerZ);
-
-	//// front	
-	//glVertex3f(length, 0.0f, width);
-	//glVertex3f(0.0f, 0.0f, width);
-
-	//// back
-	//glVertex3f(0.0f, 0.0f, 0.0f);
-	//glVertex3f(length, 0.0f, 0.0f);
-
-	//// right	
-	//glVertex3f(length, 0.0f, 0.0f);
-	//glVertex3f(length, 0.0f, width);
-
-	//// left	
-	//glVertex3f(0.0f, 0.0f, width);
-	//glVertex3f(0.0f, 0.0f, 0.0f);
-
+	glTexCoord2f(1.0f, 0.0f);
+	glVertex3f(v3.x, v3.y, v3.z);
 	glEnd();
 
 	glPopMatrix();
+	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 void Pyramid::Translate(float transX, float transY, float transZ) {
@@ -184,9 +204,37 @@ void Pyramid::SetColor(const std::array<float, 3>& c) {
 }
 void Pyramid::SetColor(float red, float green, float blue)
 {
-	color[0] = r;
-	color[1] = g;
-	color[2] = b;
+	color[0] = red;
+	color[1] = green;
+	color[2] = blue;
+}
+
+void Pyramid::SetAllTextures(GLuint tex) {
+	texFront = tex;
+	texBack = tex;
+	texBottom = tex;
+	texLeft = tex;
+	texRight = tex;
+}
+
+void Pyramid::SetFrontTexture(GLuint front) {
+	texFront = front;
+}
+
+void Pyramid::SetBackTexture(GLuint back) {
+	texBack = back;
+}
+
+void Pyramid::SetBottomTexture(GLuint bottom) {
+	texBottom = bottom;
+}
+
+void Pyramid::SetLeftTexture(GLuint left) {
+	texLeft = left;
+}
+
+void Pyramid::SetRightTexture(GLuint right) {
+	texRight = right;
 }
 
 

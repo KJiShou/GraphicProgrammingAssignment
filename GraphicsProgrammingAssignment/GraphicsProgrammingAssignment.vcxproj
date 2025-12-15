@@ -199,6 +199,12 @@
     <None Include="handFinger.json" />
     <None Include="handPalm.json" />
     <None Include="head.json" />
+    <None Include="leftFoot.json" />
+    <None Include="leftLowerLeg.json" />
+    <None Include="leftUpperLeg.json" />
+    <None Include="rightFoot.json" />
+    <None Include="rightLowerLeg.json" />
+    <None Include="rightUpperLeg.json" />
     <None Include="template.json" />
     <None Include="towerBridge.json" />
   </ItemGroup>

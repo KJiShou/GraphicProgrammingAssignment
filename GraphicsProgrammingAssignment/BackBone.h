@@ -54,12 +54,12 @@ public:
 
 
 	// legs
-	Object* leftUpperLeg = new Object("bodyBone.json");
-	Object* leftLowerLeg = new Object("bodyBone.json");
-	Object* leftFoot = new Object("handFinger.json");
-	Object* rightUpperLeg = new Object("bodyBone.json");
-	Object* rightLowerLeg = new Object("bodyBone.json");
-	Object* rightFoot = new Object("handFinger.json");
+	Object* leftUpperLeg = new Object("leftUpperLeg.json");
+	Object* leftLowerLeg = new Object("leftLowerLeg.json");
+	Object* leftFoot = new Object("leftFoot.json");
+	Object* rightUpperLeg = new Object("rightUpperLeg.json");
+	Object* rightLowerLeg = new Object("rightLowerLeg.json");
+	Object* rightFoot = new Object("rightFoot.json");
 
 	// Rotation and Movement
 	float position[3] = { 0.0f, 0.0f, 0.0f };
