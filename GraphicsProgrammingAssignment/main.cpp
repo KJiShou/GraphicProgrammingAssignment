@@ -59,7 +59,7 @@ bool drawAxis = true;
 
 float deltaTime = 0.0f;
 
-//TowerBridge towerBridge;
+// TowerBridge towerBridge;
 Object background("background.json");
 BackBone backbone;
 
@@ -74,6 +74,7 @@ HWND GetHWnd() { return hWnd; }
 void ReadData() {
 	background.ReadData();
 	backbone.ReadData();
+	//towerBridge.ReadData();
 }
 
 LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
@@ -120,22 +121,6 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 			ReadData();
 			break;
 		}
-		case VK_UP: {
-			cameraTransY -= 0.1f;
-			break;
-		}
-		case VK_DOWN: {
-			cameraTransY += 0.1f;
-			break;
-		}
-		case VK_LEFT: {
-			cameraTransX += 0.1f;
-			break;
-		}
-		case VK_RIGHT: {
-			cameraTransX -= 0.1f;
-			break;
-		}
 		case VK_SPACE: {
 			gameObjectRotX = 0;
 			gameObjectRotY = 0;
@@ -148,6 +133,7 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 			cameraTransZ = -5.0f;
 			input.SetMouseX(0);
 			input.SetMouseY(0);
+			break;
 		}
 		case 'X': {
 			if (GetKeyState(VK_SHIFT) & 0x8000)
@@ -440,7 +426,12 @@ void DrawAxis() {
 void Draw() {
 	glPushMatrix();
 	if (drawAxis) DrawAxis();
-	backbone.RotateHead(x, y, z);
+	//towerBridge.Draw(0);
+	//backbone.RotateHead(x, y, z);
+	backbone.RotateRightForearm(0, -90);
+	backbone.RotateLeftForearm(0, -90);
+	//backbone.RotateRightHandFinger(90, 90, 90);
+	backbone.RotateLeftHandFinger(x, y, z);
 	backbone.Draw();
 
 	glPushMatrix();
@@ -451,12 +442,12 @@ void Draw() {
 	gluSphere(var, 0.1f, 10.0f, 10.0f);
 	glPopMatrix();
 
-	c1->Translate(-10.0f, 0.0f, 10.0f);
+	/*c1->Translate(-10.0f, 0.0f, 10.0f);
 	c1->Draw();
 	p1.Translate(-5.0f, 0.0f, 10.0f);
 	p1.Draw();
 	t1.Translate(-15.0f, 0.0f, 10.0f);
-	t1.Draw();
+	t1.Draw();*/
 	
 	glPopMatrix();
 }
@@ -547,7 +538,7 @@ void Update(int framesToUpdate) {
 		camYaw -= input.GetMouseX() * 0.1f;
 		camPitch -= input.GetMouseY() * 0.1f;
 
-		// Clamp pitch (Unity does this)
+		// Clamp pitch
 		if (camPitch > 89.0f)  camPitch = 89.0f;
 		if (camPitch < -89.0f) camPitch = -89.0f;
 
@@ -635,6 +626,9 @@ void Update(int framesToUpdate) {
 				z++;
 			}
 
+		}
+		if (input.IsKeyPressed(DIKEYBOARD_NUMPAD8)) {
+			backbone.RotateRightIndex(0, 0, 0);
 		}
 	}
 }
