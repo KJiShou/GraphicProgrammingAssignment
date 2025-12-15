@@ -81,7 +81,6 @@ private:
 	GLuint texLeft = 0;
 	GLuint texRight = 0;
 
-
 	// size
 	float length;
 	float width;

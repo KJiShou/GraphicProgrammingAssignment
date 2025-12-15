@@ -90,7 +90,7 @@ void Cube::Draw() {
 
 	glPushMatrix();
 
-	glColor3f(r, g, b);
+	//  glColor3f(r, g, b);
 	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, color);
 	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, color);
 
@@ -309,9 +309,9 @@ void Cube::SetColor(const std::array<float, 3>& c) {
 }
 void Cube::SetColor(float red, float green, float blue) 
 {
-	color[0] = r;
-	color[1] = g;
-	color[2] = b;
+	color[0] = red;
+	color[1] = green;
+	color[2] = blue;
 }
 
 void Cube::SetExpandable(bool ex)

@@ -489,7 +489,7 @@ void DrawAxis() {
 void Draw() {
 	glPushMatrix();
 	if (drawAxis) DrawAxis();
-	backbone.RotateHead(x, y, z);
+	backbone.RotateLeftFoot(x, y, z);
 	backbone.Draw();
 
 	glPushMatrix();

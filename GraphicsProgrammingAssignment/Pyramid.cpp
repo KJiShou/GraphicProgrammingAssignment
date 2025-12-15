@@ -204,9 +204,9 @@ void Pyramid::SetColor(const std::array<float, 3>& c) {
 }
 void Pyramid::SetColor(float red, float green, float blue)
 {
-	color[0] = r;
-	color[1] = g;
-	color[2] = b;
+	color[0] = red;
+	color[1] = green;
+	color[2] = blue;
 }
 
 void Pyramid::SetAllTextures(GLuint tex) {
