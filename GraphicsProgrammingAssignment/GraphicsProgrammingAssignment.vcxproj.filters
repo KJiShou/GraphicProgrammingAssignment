@@ -134,5 +134,8 @@
     <None Include="handFinger.json">
       <Filter>Data</Filter>
     </None>
+    <None Include="handPalm.json">
+      <Filter>Data</Filter>
+    </None>
   </ItemGroup>
 </Project>

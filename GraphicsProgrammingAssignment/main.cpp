@@ -66,7 +66,7 @@ bool drawAxis = true;
 
 float deltaTime = 0.0f;
 
-//TowerBridge towerBridge;
+// TowerBridge towerBridge;
 Object background("background.json");
 BackBone backbone;
 
@@ -81,6 +81,7 @@ HWND GetHWnd() { return hWnd; }
 void ReadData() {
 	background.ReadData();
 	backbone.ReadData();
+	//towerBridge.ReadData();
 }
 
 void LoadTexture(LPCSTR filename, GLuint& texID, bool isRepeat)
@@ -169,22 +170,6 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 			ReadData();
 			break;
 		}
-		case VK_UP: {
-			cameraTransY -= 0.1f;
-			break;
-		}
-		case VK_DOWN: {
-			cameraTransY += 0.1f;
-			break;
-		}
-		case VK_LEFT: {
-			cameraTransX += 0.1f;
-			break;
-		}
-		case VK_RIGHT: {
-			cameraTransX -= 0.1f;
-			break;
-		}
 		case VK_SPACE: {
 			gameObjectRotX = 0;
 			gameObjectRotY = 0;
@@ -197,6 +182,7 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 			cameraTransZ = -5.0f;
 			input.SetMouseX(0);
 			input.SetMouseY(0);
+			break;
 		}
 		case 'X': {
 			if (GetKeyState(VK_SHIFT) & 0x8000)
@@ -490,6 +476,12 @@ void Draw() {
 	glPushMatrix();
 	if (drawAxis) DrawAxis();
 	backbone.RotateLeftFoot(x, y, z);
+	//towerBridge.Draw(0);
+	//backbone.RotateHead(x, y, z);
+	backbone.RotateRightForearm(0, -90);
+	backbone.RotateLeftForearm(0, -90);
+	//backbone.RotateRightHandFinger(90, 90, 90);
+	backbone.RotateLeftHandFinger(x, y, z);
 	backbone.Draw();
 
 	glPushMatrix();
@@ -600,7 +592,7 @@ void Update(int framesToUpdate) {
 		camYaw -= input.GetMouseX() * 0.1f;
 		camPitch -= input.GetMouseY() * 0.1f;
 
-		// Clamp pitch (Unity does this)
+		// Clamp pitch
 		if (camPitch > 89.0f)  camPitch = 89.0f;
 		if (camPitch < -89.0f) camPitch = -89.0f;
 
@@ -688,6 +680,9 @@ void Update(int framesToUpdate) {
 				z++;
 			}
 
+		}
+		if (input.IsKeyPressed(DIKEYBOARD_NUMPAD8)) {
+			backbone.RotateRightIndex(0, 0, 0);
 		}
 	}
 }
