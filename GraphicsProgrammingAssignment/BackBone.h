@@ -22,9 +22,9 @@ public:
 	Object* rightHand = new Object("handFinger.json");
 
 	// legs
-	Object* leftUpperLeg = new Object("bodyBone.json");
-	Object* leftLowerLeg = new Object("bodyBone.json");
-	Object* leftFoot = new Object("handFinger.json");
+	Object* leftUpperLeg = new Object("leftUpperLeg.json");
+	Object* leftLowerLeg = new Object("leftLowerLeg.json");
+	Object* leftFoot = new Object("leftFoot.json");
 	Object* rightUpperLeg = new Object("bodyBone.json");
 	Object* rightLowerLeg = new Object("bodyBone.json");
 	Object* rightFoot = new Object("handFinger.json");
