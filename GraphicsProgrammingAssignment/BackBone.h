@@ -16,10 +16,42 @@ public:
 	// arms and hands
 	Object* leftUpperArm = new Object("bodyBone.json");
 	Object* leftForearm = new Object("bodyBone.json");
-	Object* leftHand = new Object("handFinger.json");
+	Object* leftHand = new Object("handPalm.json");
 	Object* rightUpperArm = new Object("bodyBone.json");
 	Object* rightForearm = new Object("bodyBone.json");
-	Object* rightHand = new Object("handFinger.json");
+	Object* rightHand = new Object("handPalm.json");
+	Object* rightIndexBase = new Object("handFinger.json");
+	Object* rightIndexMid = new Object("handFinger.json");
+	Object* rightIndexTip = new Object("handFinger.json");
+	Object* rightMiddleBase = new Object("handFinger.json");
+	Object* rightMiddleMid = new Object("handFinger.json");
+	Object* rightMiddleTip = new Object("handFinger.json");
+	Object* rightRingBase = new Object("handFinger.json");
+	Object* rightRingMid = new Object("handFinger.json");
+	Object* rightRingTip = new Object("handFinger.json");
+	Object* rightLittleBase = new Object("handFinger.json");
+	Object* rightLittleMid = new Object("handFinger.json");
+	Object* rightLittleTip = new Object("handFinger.json");
+	Object* rightThumbSpread = new Object("empty.json");
+	Object* rightThumbMid = new Object("handFinger.json");
+	Object* rightThumbTip = new Object("handFinger.json");
+	Object* leftIndexBase = new Object("handFinger.json");
+	Object* leftIndexMid = new Object("handFinger.json");
+	Object* leftIndexTip = new Object("handFinger.json");
+	Object* leftMiddleBase = new Object("handFinger.json");
+	Object* leftMiddleMid = new Object("handFinger.json");
+	Object* leftMiddleTip = new Object("handFinger.json");
+	Object* leftRingBase = new Object("handFinger.json");
+	Object* leftRingMid = new Object("handFinger.json");
+	Object* leftRingTip = new Object("handFinger.json");
+	Object* leftLittleBase = new Object("handFinger.json");
+	Object* leftLittleMid = new Object("handFinger.json");
+	Object* leftLittleTip = new Object("handFinger.json");
+	Object* leftThumbSpread = new Object("empty.json");
+	Object* leftThumbMid = new Object("handFinger.json");
+	Object* leftThumbTip = new Object("handFinger.json");
+
+
 
 	// legs
 	Object* leftUpperLeg = new Object("leftUpperLeg.json");
@@ -47,6 +79,38 @@ public:
 	float rightUpperLegRotation[3] = { 0.0f, 0.0f, 0.0f };
 	float rightLowerLegRotation[3] = { 0.0f, 0.0f, 0.0f };
 	float rightFootRotation[3] = { 0.0f, 0.0f, 0.0f };
+	float rightIndexBaseRot = 0.0f;
+	float rightIndexMidRot = 0.0f;
+	float rightIndexTipRot = 0.0f;
+	float rightMiddleBaseRot = 0.0f;
+	float rightMiddleMidRot = 0.0f;
+	float rightMiddleTipRot = 0.0f;
+	float rightRingBaseRot = 0.0f;
+	float rightRingMidRot = 0.0f;
+	float rightRingTipRot = 0.0f;
+	float rightLittleBaseRot = 0.0f;
+	float rightLittleMidRot = 0.0f;
+	float rightLittleTipRot = 0.0f;
+	float rightThumbMidRot = 0.0f;
+	float rightThumbTipRot = 0.0f;
+	float rightThumbSpreadRot = 30.0f;
+	float leftIndexBaseRot = 0.0f;
+	float leftIndexMidRot = 0.0f;
+	float leftIndexTipRot = 0.0f;
+	float leftMiddleBaseRot = 0.0f;
+	float leftMiddleMidRot = 0.0f;
+	float leftMiddleTipRot = 0.0f;
+	float leftRingBaseRot = 0.0f;
+	float leftRingMidRot = 0.0f;
+	float leftRingTipRot = 0.0f;
+	float leftLittleBaseRot = 0.0f;
+	float leftLittleMidRot = 0.0f;
+	float leftLittleTipRot = 0.0f;
+	float leftThumbMidRot = 0.0f;
+	float leftThumbTipRot = 0.0f;
+	float leftThumbSpreadRot = 30.0f;
+
+	~BackBone();
 
 	void SetBone();
 	void ReadData();
@@ -177,5 +241,103 @@ public:
 	 * @param z: -15 to 15
 	 */
 	void RotateRightFoot(float x, float y, float z);
+
+	/**
+	 * @brief Rotate Right Hand Finger
+	 *
+	 * @param x: 0 to 90
+	 * @param y: 0 to 90
+	 * @param z: 0 to 90
+	 */
+	void RotateRightHandFinger(float base, float mid, float tip);
+	/**
+	 * @brief Rotate Right Index
+	 *
+	 * @param x: 0 to 90
+	 * @param y: 0 to 90
+	 * @param z: 0 to 90
+	 */
+	void RotateRightIndex(float base, float mid, float tip);
+	/**
+	 * @brief Rotate Right Middle
+	 *
+	 * @param x: 0 to 90
+	 * @param y: 0 to 90
+	 * @param z: 0 to 90
+	 */
+	void RotateRightMiddle(float base, float mid, float tip);
+	/**
+	 * @brief Rotate Right Ring
+	 *
+	 * @param x: 0 to 90
+	 * @param y: 0 to 90
+	 * @param z: 0 to 90
+	 */
+	void RotateRightRing(float base, float mid, float tip);
+	/**
+	 * @brief Rotate Right Little
+	 *
+	 * @param x: 0 to 90
+	 * @param y: 0 to 90
+	 * @param z: 0 to 90
+	 */
+	void RotateRightLittle(float base, float mid, float tip);
+	/**
+	 * @brief Rotate Right Thumb
+	 *
+	 * @param x: 0 to 90
+	 * @param y: 0 to 90
+	 * @param z: 0 to 90
+	 */
+	void RotateRightThumb(float base, float mid, float tip);
+
+	/**
+	 * @brief Rotate Right Hand Finger
+	 *
+	 * @param x: 0 to 90
+	 * @param y: 0 to 90
+	 * @param z: 0 to 90
+	 */
+	void RotateLeftHandFinger(float base, float mid, float tip);
+	/**
+	 * @brief Rotate Right Index
+	 *
+	 * @param x: 0 to 90
+	 * @param y: 0 to 90
+	 * @param z: 0 to 90
+	 */
+	void RotateLeftIndex(float base, float mid, float tip);
+	/**
+	 * @brief Rotate Right Middle
+	 *
+	 * @param x: 0 to 90
+	 * @param y: 0 to 90
+	 * @param z: 0 to 90
+	 */
+	void RotateLeftMiddle(float base, float mid, float tip);
+	/**
+	 * @brief Rotate Right Ring
+	 *
+	 * @param x: 0 to 90
+	 * @param y: 0 to 90
+	 * @param z: 0 to 90
+	 */
+	void RotateLeftRing(float base, float mid, float tip);
+	/**
+	 * @brief Rotate Right Little
+	 *
+	 * @param x: 0 to 90
+	 * @param y: 0 to 90
+	 * @param z: 0 to 90
+	 */
+	void RotateLeftLittle(float base, float mid, float tip);
+	/**
+	 * @brief Rotate Right Thumb
+	 *
+	 * @param x: 0 to 90
+	 * @param y: 0 to 90
+	 * @param z: 0 to 90
+	 */
+	void RotateLeftThumb(float base, float mid, float tip);
 };
 
