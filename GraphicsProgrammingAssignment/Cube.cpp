@@ -81,6 +81,7 @@ Cube::Cube(
 	std::cout << "bottom z: " << normal.z << std::endl;
 
 }
+
 Cube::~Cube()
 {
 }
