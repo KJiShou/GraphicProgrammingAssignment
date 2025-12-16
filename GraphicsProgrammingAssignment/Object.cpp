@@ -40,6 +40,7 @@ void Object::ReadData(bool firstRun) {
 	spheresData.clear();
 	cubesData.clear();
 	pyramidsData.clear();
+	tetrahedronData.clear();
 
 	// open json file
 	std::ifstream file(fileName);
@@ -176,6 +177,30 @@ void Object::ReadData(bool firstRun) {
 		pyramidsData.push_back(p);
 	}
 
+	for (auto& jc : j["tetrahedrons"]) {
+		TetrahedronData p;
+		p.length = jc["length"];
+		p.width = jc["width"];
+		p.height = jc["height"];
+		p.r = jc["r"];
+		p.g = jc["g"];
+		p.b = jc["b"];
+
+		p.transX = jc["transX"];
+		p.transY = jc["transY"];
+		p.transZ = jc["transZ"];
+
+		p.rotX = jc["rotX"];
+		p.rotY = jc["rotY"];
+		p.rotZ = jc["rotZ"];
+
+		p.scaleX = jc["scaleX"];
+		p.scaleY = jc["scaleY"];
+		p.scaleZ = jc["scaleZ"];
+
+		tetrahedronData.push_back(p);
+	}
+
 	// When start program
 	if (firstRun)
 	{
@@ -214,6 +239,15 @@ void Object::ReadData(bool firstRun) {
 			pyramids[i]->Translate(data.transX, data.transY, data.transZ);
 			pyramids[i]->Rotate(data.rotX, data.rotY, data.rotZ);
 			pyramids[i]->Scale(data.scaleX, data.scaleY, data.scaleZ);
+			i++;
+		}
+		i = 0;
+		for (auto& data : tetrahedronData)
+		{
+			tetrahedrons.push_back(std::make_unique<Tetrahedron>(data.length, data.width, data.height, data.r, data.g, data.b));
+			tetrahedrons[i]->Translate(data.transX, data.transY, data.transZ);
+			tetrahedrons[i]->Rotate(data.rotX, data.rotY, data.rotZ);
+			tetrahedrons[i]->Scale(data.scaleX, data.scaleY, data.scaleZ);
 			i++;
 		}
 	}
@@ -271,6 +305,17 @@ void Object::ReadData(bool firstRun) {
 			pyramids[i]->Rotate(pyramidsData[i].rotX, pyramidsData[i].rotY, pyramidsData[i].rotZ);
 			pyramids[i]->Scale(pyramidsData[i].scaleX, pyramidsData[i].scaleY, pyramidsData[i].scaleZ);
 		}
+
+		for (size_t i = 0; i < tetrahedrons.size() && i < tetrahedronData.size(); i++)
+		{
+			tetrahedrons[i]->SetLength(tetrahedronData[i].length);
+			tetrahedrons[i]->SetWidth(tetrahedronData[i].width);
+			tetrahedrons[i]->SetHeight(tetrahedronData[i].height);
+			tetrahedrons[i]->SetColor(tetrahedronData[i].r, tetrahedronData[i].g, tetrahedronData[i].b);
+			tetrahedrons[i]->Translate(tetrahedronData[i].transX, tetrahedronData[i].transY, tetrahedronData[i].transZ);
+			tetrahedrons[i]->Rotate(tetrahedronData[i].rotX, tetrahedronData[i].rotY, tetrahedronData[i].rotZ);
+			tetrahedrons[i]->Scale(tetrahedronData[i].scaleX, tetrahedronData[i].scaleY, tetrahedronData[i].scaleZ);
+		}
 	}
 }
 
@@ -313,6 +358,11 @@ void Object::Draw() {
 	for (auto& pyramid : pyramids)
 	{
 		pyramid->Draw();
+	}
+
+	for (auto& tetrahedron : tetrahedrons)
+	{
+		tetrahedron->Draw();
 	}
 
 	for (Object* o : children) o->Draw();

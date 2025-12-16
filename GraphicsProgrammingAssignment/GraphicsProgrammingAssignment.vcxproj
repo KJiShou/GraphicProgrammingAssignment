@@ -200,6 +200,7 @@
     <None Include="bodyBone.json" />
     <None Include="bridge.json" />
     <None Include="data.json" />
+    <None Include="forearmOuter.json" />
     <None Include="handFinger.json" />
     <None Include="handPalm.json" />
     <None Include="head.json" />
@@ -211,6 +212,7 @@
     <None Include="rightUpperLeg.json" />
     <None Include="template.json" />
     <None Include="towerBridge.json" />
+    <None Include="upperArmOuter.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
