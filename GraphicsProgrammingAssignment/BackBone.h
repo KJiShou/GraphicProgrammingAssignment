@@ -5,7 +5,7 @@
 class BackBone
 {
 public:
-	Object* root = new Object("a");
+	Object* root = new Object("empty.json");
 	// head
 	Object* headBone = new Object("head.json");
 
@@ -14,11 +14,15 @@ public:
 	Object* pelvis = new Object("bodyBone.json");
 
 	// arms and hands
-	Object* leftUpperArm = new Object("bodyBone.json");
-	Object* leftForearm = new Object("bodyBone.json");
+	Object* leftUpperArm = new Object("empty.json");
+	Object* leftUpperArmOuter = new Object("upperArmOuter.json");
+	Object* leftForearm = new Object("empty.json");
+	Object* leftForearmOuter = new Object("forearmOuter.json");
 	Object* leftHand = new Object("handPalm.json");
-	Object* rightUpperArm = new Object("bodyBone.json");
-	Object* rightForearm = new Object("bodyBone.json");
+	Object* rightUpperArm = new Object("empty.json");
+	Object* rightUpperArmOuter = new Object("upperArmOuter.json");
+	Object* rightForearm = new Object("empty.json");
+	Object* rightForearmOuter = new Object("forearmOuter.json");
 	Object* rightHand = new Object("handPalm.json");
 	Object* rightIndexBase = new Object("handFinger.json");
 	Object* rightIndexMid = new Object("handFinger.json");

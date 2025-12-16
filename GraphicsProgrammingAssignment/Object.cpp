@@ -40,6 +40,7 @@ void Object::ReadData(bool firstRun) {
 	spheresData.clear();
 	cubesData.clear();
 	pyramidsData.clear();
+	tetrahedronsData.clear();
 	frustumCubesData.clear();
 
 	// open json file
@@ -322,6 +323,60 @@ void Object::ReadData(bool firstRun) {
 		frustumCubesData.push_back(c);
 	}
 
+	for (auto& jc : j["tetrahedrons"]) {
+		TetrahedronData p;
+		p.length = jc["length"];
+		p.width = jc["width"];
+		p.height = jc["height"];
+		p.r = jc["r"];
+		p.g = jc["g"];
+		p.b = jc["b"];
+
+		p.transX = jc["transX"];
+		p.transY = jc["transY"];
+		p.transZ = jc["transZ"];
+
+		p.rotX = jc["rotX"];
+		p.rotY = jc["rotY"];
+		p.rotZ = jc["rotZ"];
+
+		p.scaleX = jc["scaleX"];
+		p.scaleY = jc["scaleY"];
+		p.scaleZ = jc["scaleZ"];
+
+		tetrahedronsData.push_back(p);
+	}
+
+	// for (auto& jc : j["frustumCubes"]) {
+	// 	FrustumCubeData p;
+	// 	p.topLength = jc["topLength"];
+	// 	p.topDepth = jc["topDepth"];
+	// 	p.topOffsetX = jc["topOffsetX"];
+	// 	p.topOffsetZ = jc["topOffsetZ"];
+	// 	p.bottomLength = jc["bottomLength"];
+	// 	p.bottomDepth = jc["bottomDepth"];
+	// 	p.height = jc["height"];
+	// 	p.r = jc["r"];
+	// 	p.g = jc["g"];
+	// 	p.b = jc["b"];
+
+	// 	p.transX = jc["transX"];
+	// 	p.transY = jc["transY"];
+	// 	p.transZ = jc["transZ"];
+
+	// 	p.rotX = jc["rotX"];
+	// 	p.rotY = jc["rotY"];
+	// 	p.rotZ = jc["rotZ"];
+
+	// 	p.scaleX = jc["scaleX"];
+	// 	p.scaleY = jc["scaleY"];
+	// 	p.scaleZ = jc["scaleZ"];
+
+	// 	p.isExpandable = jc["isExpandable"];
+
+	// 	frustumCubesData.push_back(p);
+	// }
+
 	// When start program
 	if (firstRun)
 	{
@@ -397,6 +452,25 @@ void Object::ReadData(bool firstRun) {
 			frustumCubes[i]->SetBottomTexture(LoadTexture(data.bottomTex, data.isRepeat));
 			frustumCubes[i]->SetLeftTexture(LoadTexture(data.leftTex, data.isRepeat));
 			frustumCubes[i]->SetRightTexture(LoadTexture(data.rightTex, data.isRepeat));
+			i++;
+		}
+		i = 0;
+		for (auto& data : tetrahedronsData)
+		{
+			tetrahedrons.push_back(std::make_unique<Tetrahedron>(data.length, data.width, data.height, data.r, data.g, data.b));
+			tetrahedrons[i]->Translate(data.transX, data.transY, data.transZ);
+			tetrahedrons[i]->Rotate(data.rotX, data.rotY, data.rotZ);
+			tetrahedrons[i]->Scale(data.scaleX, data.scaleY, data.scaleZ);
+			i++;
+		}
+		i = 0;
+		for (auto& data : frustumCubesData)
+		{
+			frustumCubes.push_back(std::make_unique<FrustumCube>(data.topLength, data.topDepth, data.topOffsetX, data.topOffsetZ, data.bottomLength, data.bottomDepth, data.height, data.r, data.g, data.b));
+			frustumCubes[i]->Translate(data.transX, data.transY, data.transZ);
+			frustumCubes[i]->Rotate(data.rotX, data.rotY, data.rotZ);
+			frustumCubes[i]->Scale(data.scaleX, data.scaleY, data.scaleZ);
+			frustumCubes[i]->SetExpandable(data.isExpandable);
 			i++;
 		}
 	}
@@ -492,10 +566,10 @@ void Object::ReadData(bool firstRun) {
 
 			frustumCubes[i]->SetTopLength(frustumCubesData[i].topLength);
 			frustumCubes[i]->SetTopDepth(frustumCubesData[i].topDepth);
-			frustumCubes[i]->SetBottomDepth(frustumCubesData[i].bottomDepth);
-			frustumCubes[i]->SetBottomDepth(frustumCubesData[i].bottomDepth);
 			frustumCubes[i]->SetTopOffsetX(frustumCubesData[i].topOffsetX);
 			frustumCubes[i]->SetTopOffsetZ(frustumCubesData[i].topOffsetZ);
+			frustumCubes[i]->SetBottomLength(frustumCubesData[i].bottomLength);
+			frustumCubes[i]->SetBottomDepth(frustumCubesData[i].bottomDepth);
 			frustumCubes[i]->SetHeight(frustumCubesData[i].height);
 			frustumCubes[i]->SetColor(frustumCubesData[i].r, frustumCubesData[i].g, frustumCubesData[i].b);
 			frustumCubes[i]->Translate(frustumCubesData[i].transX, frustumCubesData[i].transY, frustumCubesData[i].transZ);
@@ -503,6 +577,32 @@ void Object::ReadData(bool firstRun) {
 			frustumCubes[i]->Scale(frustumCubesData[i].scaleX, frustumCubesData[i].scaleY, frustumCubesData[i].scaleZ);
 			frustumCubes[i]->SetExpandable(frustumCubesData[i].isExpandable);
 		}
+		for (size_t i = 0; i < tetrahedrons.size() && i < tetrahedronsData.size(); i++)
+		{
+			tetrahedrons[i]->SetLength(tetrahedronsData[i].length);
+			tetrahedrons[i]->SetWidth(tetrahedronsData[i].width);
+			tetrahedrons[i]->SetHeight(tetrahedronsData[i].height);
+			tetrahedrons[i]->SetColor(tetrahedronsData[i].r, tetrahedronsData[i].g, tetrahedronsData[i].b);
+			tetrahedrons[i]->Translate(tetrahedronsData[i].transX, tetrahedronsData[i].transY, tetrahedronsData[i].transZ);
+			tetrahedrons[i]->Rotate(tetrahedronsData[i].rotX, tetrahedronsData[i].rotY, tetrahedronsData[i].rotZ);
+			tetrahedrons[i]->Scale(tetrahedronsData[i].scaleX, tetrahedronsData[i].scaleY, tetrahedronsData[i].scaleZ);
+		}
+
+		// for (size_t i = 0; i < frustumCubes.size() && i < frustumCubesData.size(); i++)
+		// {
+		// 	frustumCubes[i]->SetTopLength(frustumCubesData[i].topLength);
+		// 	frustumCubes[i]->SetTopDepth(frustumCubesData[i].topDepth);
+		// 	frustumCubes[i]->SetTopOffsetX(frustumCubesData[i].topOffsetX);
+		// 	frustumCubes[i]->SetTopOffsetZ(frustumCubesData[i].topOffsetZ);
+		// 	frustumCubes[i]->SetBottomLength(frustumCubesData[i].bottomLength);
+		// 	frustumCubes[i]->SetBottomDepth(frustumCubesData[i].bottomDepth);
+		// 	frustumCubes[i]->SetHeight(frustumCubesData[i].height);
+		// 	frustumCubes[i]->SetColor(frustumCubesData[i].r, frustumCubesData[i].g, frustumCubesData[i].b);
+		// 	frustumCubes[i]->Translate(frustumCubesData[i].transX, frustumCubesData[i].transY, frustumCubesData[i].transZ);
+		// 	frustumCubes[i]->Rotate(frustumCubesData[i].rotX, frustumCubesData[i].rotY, frustumCubesData[i].rotZ);
+		// 	frustumCubes[i]->Scale(frustumCubesData[i].scaleX, frustumCubesData[i].scaleY, frustumCubesData[i].scaleZ);
+		// 	frustumCubes[i]->SetExpandable(frustumCubesData[i].isExpandable);
+		// }
 	}
 }
 
@@ -545,6 +645,16 @@ void Object::Draw() {
 	for (auto& pyramid : pyramids)
 	{
 		pyramid->Draw();
+	}
+
+	for (auto& tetrahedron : tetrahedrons)
+	{
+		tetrahedron->Draw();
+	}
+
+	for (auto& frustumCube : frustumCubes)
+	{
+		frustumCube->Draw();
 	}
 
 	for (Object* o : children) o->Draw();

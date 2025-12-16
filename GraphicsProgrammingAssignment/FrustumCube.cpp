@@ -294,6 +294,7 @@ void FrustumCube::Draw() {
 	glVertex3f(D.x, D.y, D.z);
 
 	glEnd();
+	glPopMatrix();
 
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
@@ -331,9 +332,11 @@ void FrustumCube::SetTopDepth(float d) {
 }
 void FrustumCube::SetBottomLength(float l) {
 	bottomLength = l;
+	centerX = bottomLength * 0.5f;
 }
 void FrustumCube::SetBottomDepth(float d) {
 	bottomDepth = d;
+	centerZ = bottomDepth * 0.5f;
 }
 void FrustumCube::SetTopOffsetX(float x) {
 	topOffsetX = x;

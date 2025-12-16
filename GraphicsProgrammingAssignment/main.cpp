@@ -578,9 +578,9 @@ void Update(int framesToUpdate) {
 			camPosX += forwardX * speed,
 			camPosZ += forwardZ * speed;
 
-			if (input.IsKeyPressed(DIK_W))
-				camPosX -= forwardX * speed,
-			camPosZ -= forwardZ * speed;
+		if (input.IsKeyPressed(DIK_W))
+			camPosX -= forwardX * speed,
+		camPosZ -= forwardZ * speed;
 
 		// Move Left/Right
 		if (input.IsKeyPressed(DIK_A))

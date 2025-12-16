@@ -1,0 +1,108 @@
+{
+  "cubes": [
+    {
+      "length": 0.3,
+      "width": 0.3,
+      "height": 0.3,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 0.5,
+      "transX": 0.0,
+      "transY": 0.0,
+      "transZ": 0.0,
+      "rotX": 0.0,
+      "rotY": 0.0,
+      "rotZ": 0.0,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "scaleZ": 1.0,
+      "isExpandable": true,
+      "textures": [
+        {
+          "front": "Assets/meme1.bmp",
+          "back": "Assets/meme1.bmp",
+          "top": "Assets/meme1.bmp",
+          "bottom": "Assets/meme1.bmp",
+          "left": "Assets/meme1.bmp",
+          "right": "Assets/meme1.bmp"
+        }
+      ]
+    },
+    {
+      "length": 0.2,
+      "width": 0.2,
+      "height": 0.1,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 0.5,
+      "transX": 0.0,
+      "transY": -0.9,
+      "transZ": 0.0,
+      "rotX": 0.0,
+      "rotY": 0.0,
+      "rotZ": 0.0,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "scaleZ": 1.0,
+      "isExpandable": true,
+      "textures": [
+        {
+          "front": "Assets/meme1.bmp",
+          "back": "Assets/meme1.bmp",
+          "top": "Assets/meme1.bmp",
+          "bottom": "Assets/meme1.bmp",
+          "left": "Assets/meme1.bmp",
+          "right": "Assets/meme1.bmp"
+        }
+      ]
+    }
+  ],
+  "cylinders": [
+    {
+      "baseRadius": 0.1,
+      "topRadius": 0.1,
+      "height": 0.4,
+      "slices": 10,
+      "stacks": 10,
+      "style": "GLU_FILL",
+      "isClose": true,
+      "lineWidth": 1.0,
+      "r": 0.0,
+      "g": 0.0,
+      "b": 0.0,
+      "transX": 0.0,
+      "transY": 0.0,
+      "transZ": -0.2,
+      "rotX": 0.0,
+      "rotY": 0.0,
+      "rotZ": 0.0,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "scaleZ": 1.0
+    }
+  ],
+  "frustumCubes": [
+    {
+      "topLength": 0.15,
+      "topDepth": 0.15,
+      "topOffsetX": 0.05,
+      "topOffsetZ": 0.05,
+      "bottomLength": 0.25,
+      "bottomDepth": 0.25,
+      "height": 0.8,
+      "r": 0.5,
+      "g": 0.5,
+      "b": 0.5,
+      "transX": 0.0,
+      "transY": -0.5,
+      "transZ": 0.0,
+      "rotX": 0.0,
+      "rotY": 0.0,
+      "rotZ": 180.0,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "scaleZ": 1.0,
+      "isExpandable": true
+    }
+  ]
+}

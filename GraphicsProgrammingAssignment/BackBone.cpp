@@ -24,6 +24,7 @@ void BackBone::SetBone() {
 	rightUpperArm->Translate(0.6, 1.8, 0);
 	rightForearm->Translate(0.0, -0.95, 0);
 	rightHand->Translate(0.0, -0.9, 0);
+	rightUpperArmOuter->Rotate(0, 180, 0);
 	// index finger positions
 	rightIndexBase->Translate(0.09f, -0.25f, 0.0f);
 	rightIndexMid->Translate(0.0f, -0.13f, 0.0f);
@@ -91,7 +92,9 @@ void BackBone::SetBone() {
 	// left arm
 	body->AddChild(leftUpperArm);
 	leftUpperArm->AddChild(leftForearm);
+	leftUpperArm->AddChild(leftUpperArmOuter);
 	leftForearm->AddChild(leftHand);
+	leftForearm->AddChild(leftForearmOuter);
 	// hand -> index finger
 	leftHand->AddChild(leftIndexBase);
 	leftIndexBase->AddChild(leftIndexMid);
@@ -116,7 +119,9 @@ void BackBone::SetBone() {
 	// right arm
 	body->AddChild(rightUpperArm);
 	rightUpperArm->AddChild(rightForearm);
+	rightUpperArm->AddChild(rightUpperArmOuter);
 	rightForearm->AddChild(rightHand);
+	rightForearm->AddChild(rightForearmOuter);
 	// hand -> index finger
 	rightHand->AddChild(rightIndexBase);
 	rightIndexBase->AddChild(rightIndexMid);
@@ -194,6 +199,10 @@ void BackBone::ReadData() {
 	rightLowerLeg->ReadData();
 	rightFoot->ReadData();
 	pelvis->ReadData();
+	leftUpperArmOuter->ReadData();
+	rightUpperArmOuter->ReadData();
+	leftForearmOuter->ReadData();
+	rightForearmOuter->ReadData();
 }
 
 float clamp(float v, float min, float max) {
