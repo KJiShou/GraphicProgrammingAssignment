@@ -6,7 +6,11 @@ Object::Object(std::string fName) {
 	ReadData(true);
 }
 
-Object::~Object() = default;
+Object::~Object() {
+	for (Object* c : children) {
+		delete c;
+	}
+}
 
 
 void Object::Translate(float x, float y, float z) {
