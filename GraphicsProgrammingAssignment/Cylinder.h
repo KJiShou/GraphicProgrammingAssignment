@@ -2,7 +2,7 @@
 class Cylinder
 {
 public:
-	Cylinder(float baseRadius, float topRadius, float height, int slices, int stacks, GLenum style,  bool isClose, float lineWidth,float r, float g, float b);
+	Cylinder(float baseRadius, float topRadius, float innerRadius, float height, int slices, int stacks, GLenum style,  bool isClose, float lineWidth,float r, float g, float b);
 	~Cylinder();
 	void Draw();
 	void Translate(float transX, float transY, float transZ);
@@ -10,11 +10,14 @@ public:
 	void Scale(float scaleX, float scaleY, float scaleZ);
 	void SetCenterPoint();
 
+	void ClearTextures();
+
 	// ======================
 	// Setters
 	// ======================
 	void SetBaseRadius(float r);
 	void SetTopRadius(float r);
+	void SetInnerRadius(float r);
 	void SetHeight(float h);
 	void SetLineWidth(float l);
 	void SetSlices(int s);
@@ -27,7 +30,8 @@ public:
 
 	void SetAllTextures(GLuint tex);
 	void SetCylinderTexture(GLuint cylinder);
-	void SetDiskTexture(GLuint disk);
+	void SetTopTexture(GLuint top);
+	void SetBottomTexture(GLuint bottom);
 
 	// ======================
 	// Getters
@@ -83,11 +87,13 @@ private:
 
 	// textures
 	GLuint cylinderTex = 0;
-	GLuint diskTex = 0;
+	GLuint topTex = 0;
+	GLuint bottomTex = 0;
 
 	// size
 	float baseRadius;
 	float topRadius;
+	float innerRadius;
 	float height;
 	float lineWidth;
 	int slices;

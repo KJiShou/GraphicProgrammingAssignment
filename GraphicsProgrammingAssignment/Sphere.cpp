@@ -35,6 +35,11 @@ Sphere::~Sphere() {
 	{
 		gluDeleteQuadric(obj);
 	}
+
+	if (tex != 0) {
+		glDeleteTextures(1, &tex);
+		tex = 0;
+	}
 }
 
 void Sphere::Draw() {
@@ -99,6 +104,13 @@ void Sphere::Scale(float scaleX, float scaleY, float scaleZ) {
 	this->scaleX = scaleX;
 	this->scaleY = scaleY;
 	this->scaleZ = scaleZ;
+}
+
+void Sphere::ClearTextures() {
+	if (tex != 0) {
+		glDeleteTextures(1, &tex);
+		tex = 0;
+	}
 }
 
 // ======================
