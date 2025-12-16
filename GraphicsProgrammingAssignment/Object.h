@@ -173,28 +173,28 @@ struct TetrahedronData {
 	float scaleZ;
 };
 
-struct FrustumCubeData {
-	float topLength;
-	float topDepth;
-	float topOffsetX;
-	float topOffsetZ;
-	float bottomLength;
-	float bottomDepth;
-	float height;
-	float r;
-	float g;
-	float b;
-	float transX;
-	float transY;
-	float transZ;
-	float rotX;
-	float rotY;
-	float rotZ;
-	float scaleX;
-	float scaleY;
-	float scaleZ;
-	bool isExpandable;
-};
+//struct FrustumCubeData {
+//	float topLength;
+//	float topDepth;
+//	float topOffsetX;
+//	float topOffsetZ;
+//	float bottomLength;
+//	float bottomDepth;
+//	float height;
+//	float r;
+//	float g;
+//	float b;
+//	float transX;
+//	float transY;
+//	float transZ;
+//	float rotX;
+//	float rotY;
+//	float rotZ;
+//	float scaleX;
+//	float scaleY;
+//	float scaleZ;
+//	bool isExpandable;
+//};
 
 class Object
 {

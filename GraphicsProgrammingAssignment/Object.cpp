@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "Object.h"
 
 Object::Object(std::string fName) {
@@ -673,45 +673,61 @@ void Object::AddChild(Object* o) {
 
 GLuint Object::LoadTexture(const std::string& filename, bool isRepeat)
 {
-	if (filename.empty()) return 0; // 0 = no texture
-
-	GLuint texID = 0;
-
-	if (texID != 0) {
-		std::cout << "Tex ID error" << std::endl;
-		return 0;
+	if (filename.empty()) {
+		std::cout << "[LoadTexture] No texture filename provided." << std::endl;
+		return 0; // 0 = no texture
 	}
 
-	HBITMAP hBMP = (HBITMAP)LoadImage(GetModuleHandle(NULL),
-		filename.c_str(), IMAGE_BITMAP, 0, 0,
-		LR_CREATEDIBSECTION | LR_LOADFROMFILE);
+	HBITMAP hBMP = (HBITMAP)LoadImage(
+		GetModuleHandle(NULL),
+		filename.c_str(),
+		IMAGE_BITMAP, 0, 0,
+		LR_CREATEDIBSECTION | LR_LOADFROMFILE
+	);
+
 	if (!hBMP) {
-		std::cout << "hBmp error" << std::endl;
+		std::cout << "[LoadTexture] Failed to load bitmap: " << filename << std::endl;
 		return 0;
 	}
+
 	BITMAP BMP;
 	GetObject(hBMP, sizeof(BITMAP), &BMP);
 
+	GLuint texID = 0;
 	glGenTextures(1, &texID);
 	glBindTexture(GL_TEXTURE_2D, texID);
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 
-	// optionally set wrapping
 	if (isRepeat) {
-		// X axis
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-		// Y axis
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	}
 
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
 
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, BMP.bmWidth, BMP.bmHeight,
-		0, GL_BGR_EXT, GL_UNSIGNED_BYTE, BMP.bmBits);
+	// 上传纹理
+	glTexImage2D(
+		GL_TEXTURE_2D, 0, GL_RGB,
+		BMP.bmWidth, BMP.bmHeight,
+		0, GL_BGR_EXT, GL_UNSIGNED_BYTE,
+		BMP.bmBits
+	);
 
 	DeleteObject(hBMP);
 
+	GLenum err = glGetError();
+	if (err != GL_NO_ERROR) {
+		std::cout << "[LoadTexture] OpenGL error while loading texture: " << filename
+			<< " Error code: " << err << std::endl;
+		glDeleteTextures(1, &texID);
+		return 0;
+	}
+
+	std::cout << "[LoadTexture] Successfully loaded texture: " << filename
+		<< " ID: " << texID << std::endl;
+
 	return texID;
 }
+

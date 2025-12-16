@@ -200,8 +200,9 @@ void Cylinder::SetAllTextures(GLuint tex) {
 	bottomTex = tex;
 }
 
-void Cylinder::SetCylinderTexture(GLuint front) {
-	cylinderTex = front;
+void Cylinder::SetCylinderTexture(GLuint cylinder) {
+	std::cout << "Cylinder Tex ID: " << cylinder << std::endl;
+	cylinderTex = cylinder;
 }
 
 void Cylinder::SetTopTexture(GLuint top) {

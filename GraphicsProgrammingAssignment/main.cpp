@@ -69,7 +69,8 @@ float deltaTime = 0.0f;
 
 // TowerBridge towerBridge;
 Object background("background.json");
-BackBone backbone;
+// BackBone backbone;
+BackBone* backbone = NULL;
 
 float camPosX = 0.0f, camPosY = 0.0f, camPosZ = 5.0f;
 float camYaw = 0.0f;   // Y-axis rotation (left/right)
@@ -81,7 +82,8 @@ HWND GetHWnd() { return hWnd; }
 
 void ReadData() {
 	background.ReadData();
-	backbone.ReadData();
+	//backbone.ReadData();
+	backbone->ReadData();
 	//towerBridge.ReadData();
 }
 
@@ -476,14 +478,22 @@ void DrawAxis() {
 void Draw() {
 	glPushMatrix();
 	if (drawAxis) DrawAxis();
-	backbone.RotateLeftFoot(x, y, z);
+	//backbone.RotateLeftFoot(x, y, z);
+	backbone->RotateLeftFoot(x, y, z);
+	
 	//towerBridge.Draw(0);
 	//backbone.RotateHead(x, y, z);
-	backbone.RotateRightForearm(0, -90);
-	backbone.RotateLeftForearm(0, -90);
+	
+	//backbone.RotateRightForearm(0, -90);
+	backbone->RotateRightForearm(0, -90);
+	//backbone.RotateLeftForearm(0, -90);
+	backbone->RotateLeftForearm(0, -90);
+	
 	//backbone.RotateRightHandFinger(90, 90, 90);
-	backbone.RotateLeftHandFinger(x, y, z);
-	backbone.Draw();
+	
+	//backbone.RotateLeftHandFinger(x, y, z);
+	backbone->RotateLeftHandFinger(x, y, z);
+	backbone->Draw();
 
 	glPushMatrix();
 	glTranslatef(light0.GetPosition()[0], light0.GetPosition()[1], light0.GetPosition()[2]);
@@ -685,7 +695,7 @@ void Update(int framesToUpdate) {
 
 		}
 		if (input.IsKeyPressed(DIKEYBOARD_NUMPAD8)) {
-			backbone.RotateRightIndex(0, 0, 0);
+			backbone->RotateRightIndex(0, 0, 0);
 		}
 	}
 }
@@ -744,17 +754,17 @@ int main(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)
 	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 	glEnable(GL_NORMALIZE);
 	
-	LoadTexture("Assets/meme1.bmp", tex1, true);
-	c1.SetAllTextures(tex1);
+	//LoadTexture("Assets/meme1.bmp", tex1, true);
+	/*c1.SetAllTextures(tex1);
 	p1.SetAllTextures(tex1);
 	t1.SetAllTextures(tex1);
 	cylinder1.SetAllTextures(tex1);
 	sphere1.SetSphereTexture(tex1);
-	frustumCube.SetAllTextures(tex1);
+	frustumCube.SetAllTextures(tex1);*/
 
 	ZeroMemory(&msg, sizeof(msg));
-
-	backbone.SetBone();
+	backbone = new BackBone();
+	backbone->SetBone();
 
 	while (ProcessMessages())
 	{
