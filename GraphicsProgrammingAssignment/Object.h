@@ -5,6 +5,7 @@
 #include "Pyramid.h"
 #include "Cube.h"
 #include "Tetrahedron.h"
+#include "FrustumCube.h"
 struct CylinderData {
 	float baseRadius;
 	float topRadius;
@@ -100,6 +101,29 @@ struct TetrahedronData {
 	float scaleZ;
 };
 
+struct FrustumCubeData {
+	float topLength;
+	float topDepth;
+	float topOffsetX;
+	float topOffsetZ;
+	float bottomLength;
+	float bottomDepth;
+	float height;
+	float r;
+	float g;
+	float b;
+	float transX;
+	float transY;
+	float transZ;
+	float rotX;
+	float rotY;
+	float rotZ;
+	float scaleX;
+	float scaleY;
+	float scaleZ;
+	bool isExpandable;
+};
+
 class Object
 {
 private:
@@ -125,13 +149,15 @@ private:
 	std::vector<SphereData> spheresData;
 	std::vector<CubeData> cubesData;
 	std::vector<PyramidData> pyramidsData;
-	std::vector<TetrahedronData> tetrahedronData;
+	std::vector<TetrahedronData> tetrahedronsData;
+	std::vector<FrustumCubeData> frustumCubesData;
 
 	std::vector<std::unique_ptr<Cylinder>> cylinders;
 	std::vector<std::unique_ptr<Sphere>> spheres;
 	std::vector<std::unique_ptr<Cube>> cubes;
 	std::vector<std::unique_ptr<Pyramid>> pyramids;
 	std::vector<std::unique_ptr<Tetrahedron>> tetrahedrons;
+	std::vector<std::unique_ptr<FrustumCube>> frustumCubes;
 
 	Object* parent = nullptr;
 	std::vector<Object*> children;
