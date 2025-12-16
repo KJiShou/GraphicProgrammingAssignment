@@ -10,6 +10,7 @@
 #include "Light.h"
 #include "Tetrahedron.h"
 #include "BackBone.h"
+#include "FrustumCube.h"
 
 #pragma comment(lib, "d3d9.lib")
 #pragma comment(lib, "d3dx9.lib")
@@ -33,7 +34,7 @@ Pyramid p1 = Pyramid(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
 Tetrahedron t1 = Tetrahedron(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
 Cylinder cylinder1 = Cylinder(1.0f, 1.0f, 1.0f, 50, 50, GLU_FILL, true, 1.0f, 1.0f, 1.0f, 1.0f);
 Sphere sphere1 = Sphere(1.0f, 10, 10, GLU_FILL, 1.0f, 1.0f, 1.0f, 1.0f);
-
+FrustumCube frustumCube = FrustumCube(0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
 // Textures
 GLuint tex1 = 0;
 BITMAP BMP;
@@ -502,6 +503,8 @@ void Draw() {
 	cylinder1.Draw();
 	sphere1.Translate(0.0f, 0.0f, 10.0f);
 	sphere1.Draw();
+	frustumCube.Translate(5.0f, 0.0f, 10.0f);
+	frustumCube.Draw();
 	
 	glPopMatrix();
 }
@@ -747,6 +750,7 @@ int main(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)
 	t1.SetAllTextures(tex1);
 	cylinder1.SetAllTextures(tex1);
 	sphere1.SetSphereTexture(tex1);
+	frustumCube.SetAllTextures(tex1);
 
 	ZeroMemory(&msg, sizeof(msg));
 
