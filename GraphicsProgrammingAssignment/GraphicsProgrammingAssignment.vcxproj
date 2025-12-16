@@ -137,6 +137,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">pch.h</PrecompiledHeaderFile>
     </ClCompile>
+    <ClCompile Include="FrustumCube.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">pch.h</PrecompiledHeaderFile>
+    </ClCompile>
     <ClCompile Include="InputManager.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">pch.h</PrecompiledHeaderFile>
@@ -177,6 +180,7 @@
     <ClInclude Include="BackBone.h" />
     <ClInclude Include="Cube.h" />
     <ClInclude Include="Cylinder.h" />
+    <ClInclude Include="FrustumCube.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="json.hpp" />
     <ClInclude Include="Light.h" />
@@ -196,7 +200,9 @@
     <None Include="bodyBone.json" />
     <None Include="bridge.json" />
     <None Include="data.json" />
+    <None Include="forearmOuter.json" />
     <None Include="handFinger.json" />
+    <None Include="handPalm.json" />
     <None Include="head.json" />
     <None Include="leftFoot.json" />
     <None Include="leftLowerLeg.json" />
@@ -206,6 +212,7 @@
     <None Include="rightUpperLeg.json" />
     <None Include="template.json" />
     <None Include="towerBridge.json" />
+    <None Include="upperArmOuter.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

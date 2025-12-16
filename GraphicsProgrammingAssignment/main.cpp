@@ -10,6 +10,7 @@
 #include "Light.h"
 #include "Tetrahedron.h"
 #include "BackBone.h"
+#include "FrustumCube.h"
 
 #pragma comment(lib, "d3d9.lib")
 #pragma comment(lib, "d3dx9.lib")
@@ -33,7 +34,7 @@ Pyramid p1 = Pyramid(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
 Tetrahedron t1 = Tetrahedron(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
 Cylinder cylinder1 = Cylinder(1.0f, 1.0f, 1.0f, 50, 50, GLU_FILL, true, 1.0f, 1.0f, 1.0f, 1.0f);
 Sphere sphere1 = Sphere(1.0f, 10, 10, GLU_FILL, 1.0f, 1.0f, 1.0f, 1.0f);
-
+FrustumCube frustumCube = FrustumCube(0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
 // Textures
 GLuint tex1 = 0;
 BITMAP BMP;
@@ -66,7 +67,7 @@ bool drawAxis = true;
 
 float deltaTime = 0.0f;
 
-//TowerBridge towerBridge;
+// TowerBridge towerBridge;
 Object background("background.json");
 BackBone backbone;
 
@@ -81,6 +82,7 @@ HWND GetHWnd() { return hWnd; }
 void ReadData() {
 	background.ReadData();
 	backbone.ReadData();
+	//towerBridge.ReadData();
 }
 
 void LoadTexture(LPCSTR filename, GLuint& texID, bool isRepeat)
@@ -169,22 +171,6 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 			ReadData();
 			break;
 		}
-		case VK_UP: {
-			cameraTransY -= 0.1f;
-			break;
-		}
-		case VK_DOWN: {
-			cameraTransY += 0.1f;
-			break;
-		}
-		case VK_LEFT: {
-			cameraTransX += 0.1f;
-			break;
-		}
-		case VK_RIGHT: {
-			cameraTransX -= 0.1f;
-			break;
-		}
 		case VK_SPACE: {
 			gameObjectRotX = 0;
 			gameObjectRotY = 0;
@@ -197,6 +183,7 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 			cameraTransZ = -5.0f;
 			input.SetMouseX(0);
 			input.SetMouseY(0);
+			break;
 		}
 		case 'X': {
 			if (GetKeyState(VK_SHIFT) & 0x8000)
@@ -490,6 +477,12 @@ void Draw() {
 	glPushMatrix();
 	if (drawAxis) DrawAxis();
 	backbone.RotateLeftFoot(x, y, z);
+	//towerBridge.Draw(0);
+	//backbone.RotateHead(x, y, z);
+	backbone.RotateRightForearm(0, -90);
+	backbone.RotateLeftForearm(0, -90);
+	//backbone.RotateRightHandFinger(90, 90, 90);
+	backbone.RotateLeftHandFinger(x, y, z);
 	backbone.Draw();
 
 	glPushMatrix();
@@ -510,6 +503,8 @@ void Draw() {
 	cylinder1.Draw();
 	sphere1.Translate(0.0f, 0.0f, 10.0f);
 	sphere1.Draw();
+	frustumCube.Translate(5.0f, 0.0f, 10.0f);
+	frustumCube.Draw();
 	
 	glPopMatrix();
 }
@@ -583,9 +578,9 @@ void Update(int framesToUpdate) {
 			camPosX += forwardX * speed,
 			camPosZ += forwardZ * speed;
 
-			if (input.IsKeyPressed(DIK_W))
-				camPosX -= forwardX * speed,
-			camPosZ -= forwardZ * speed;
+		if (input.IsKeyPressed(DIK_W))
+			camPosX -= forwardX * speed,
+		camPosZ -= forwardZ * speed;
 
 		// Move Left/Right
 		if (input.IsKeyPressed(DIK_A))
@@ -600,7 +595,7 @@ void Update(int framesToUpdate) {
 		camYaw -= input.GetMouseX() * 0.1f;
 		camPitch -= input.GetMouseY() * 0.1f;
 
-		// Clamp pitch (Unity does this)
+		// Clamp pitch
 		if (camPitch > 89.0f)  camPitch = 89.0f;
 		if (camPitch < -89.0f) camPitch = -89.0f;
 
@@ -689,6 +684,9 @@ void Update(int framesToUpdate) {
 			}
 
 		}
+		if (input.IsKeyPressed(DIKEYBOARD_NUMPAD8)) {
+			backbone.RotateRightIndex(0, 0, 0);
+		}
 	}
 }
 
@@ -752,6 +750,7 @@ int main(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)
 	t1.SetAllTextures(tex1);
 	cylinder1.SetAllTextures(tex1);
 	sphere1.SetSphereTexture(tex1);
+	frustumCube.SetAllTextures(tex1);
 
 	ZeroMemory(&msg, sizeof(msg));
 

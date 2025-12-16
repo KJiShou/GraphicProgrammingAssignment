@@ -1,0 +1,116 @@
+{
+  "cubes": [
+    {
+      "length": 0.5,
+      "width": 0.5,
+      "height": 0.1,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 0.5,
+      "transX": 0.0,
+      "transY": 0.3,
+      "transZ": 0.0,
+      "rotX": 0.0,
+      "rotY": 0.0,
+      "rotZ": 0.0,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "scaleZ": 1.0,
+      "isExpandable": true,
+      "textures": [
+        {
+          "front": "Assets/meme1.bmp",
+          "back": "Assets/meme1.bmp",
+          "top": "Assets/meme1.bmp",
+          "bottom": "Assets/meme1.bmp",
+          "left": "Assets/meme1.bmp",
+          "right": "Assets/meme1.bmp"
+        }
+      ]
+    },
+    {
+      "length": 0.5,
+      "width": 0.1,
+      "height": 0.5,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 0.5,
+      "transX": 0.0,
+      "transY": 0.0,
+      "transZ": 0.3,
+      "rotX": 0.0,
+      "rotY": 0.0,
+      "rotZ": 0.0,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "scaleZ": 1.0,
+      "isExpandable": true,
+      "textures": [
+        {
+          "front": "Assets/meme1.bmp",
+          "back": "Assets/meme1.bmp",
+          "top": "Assets/meme1.bmp",
+          "bottom": "Assets/meme1.bmp",
+          "left": "Assets/meme1.bmp",
+          "right": "Assets/meme1.bmp"
+        }
+      ]
+    },
+    {
+      "length": 0.5,
+      "width": 0.1,
+      "height": 0.5,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 0.5,
+      "transX": 0.0,
+      "transY": 0.0,
+      "transZ": -0.3,
+      "rotX": 0.0,
+      "rotY": 0.0,
+      "rotZ": 0.0,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "scaleZ": 1.0,
+      "isExpandable": true,
+      "textures": [
+        {
+          "front": "Assets/meme1.bmp",
+          "back": "Assets/meme1.bmp",
+          "top": "Assets/meme1.bmp",
+          "bottom": "Assets/meme1.bmp",
+          "left": "Assets/meme1.bmp",
+          "right": "Assets/meme1.bmp"
+        }
+      ]
+    },
+    {
+      "length": 0.2,
+      "width": 0.2,
+      "height": 1.0,
+      "r": 0.5,
+      "g": 0.5,
+      "b": 0.5,
+      "transX": 0.0,
+      "transY": -0.36,
+      "transZ": 0.0,
+      "rotX": 0.0,
+      "rotY": 0.0,
+      "rotZ": 0.0,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "scaleZ": 1.0,
+      "isExpandable": true,
+      "textures": [
+        {
+          "front": "Assets/meme1.bmp",
+          "back": "Assets/meme1.bmp",
+          "top": "Assets/meme1.bmp",
+          "bottom": "Assets/meme1.bmp",
+          "left": "Assets/meme1.bmp",
+          "right": "Assets/meme1.bmp"
+        }
+      ]
+    }
+  ]
+}
