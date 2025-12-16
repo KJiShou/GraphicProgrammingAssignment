@@ -4,6 +4,7 @@
 Cylinder::Cylinder(
 	float baseRadius,
 	float topRadius,
+	float innerRadius,
 	float height,
 	int slices,
 	int stacks,
@@ -16,6 +17,7 @@ Cylinder::Cylinder(
 ) :
 	baseRadius(baseRadius),
 	topRadius(topRadius),
+	innerRadius(innerRadius),
 	height(height),
 	slices(slices),
 	stacks(stacks),
@@ -38,6 +40,21 @@ Cylinder::~Cylinder() {
 	if (obj)
 	{
 		gluDeleteQuadric(obj);
+	}
+
+	if (cylinderTex != 0) {
+		glDeleteTextures(1, &cylinderTex);
+		cylinderTex = 0;
+	}
+
+	if (topTex != 0) {
+		glDeleteTextures(1, &topTex);
+		topTex = 0;
+	}
+
+	if (bottomTex != 0) {
+		glDeleteTextures(1, &bottomTex);
+		bottomTex = 0;
 	}
 }
 
@@ -82,16 +99,18 @@ void Cylinder::Draw() {
 
 	if (isClose)
 	{
-		glBindTexture(GL_TEXTURE_2D, diskTex);
+		glBindTexture(GL_TEXTURE_2D, bottomTex);
 		glPushMatrix();
 		glPushMatrix();
 		glRotatef(180.0f, 0.0f, 1.0f, 0.0f);
 		// bottom
-		gluDisk(obj, 0.0f, baseRadius, slices, stacks);
+		gluDisk(obj, innerRadius, baseRadius, slices, stacks);
 		glPopMatrix();
+
+		glBindTexture(GL_TEXTURE_2D, topTex);
 		// top
 		glTranslatef(0.0f, 0.0f, height);
-		gluDisk(obj, 0.0f, topRadius, slices, stacks);
+		gluDisk(obj, innerRadius, topRadius, slices, stacks);
 		glPopMatrix();
 	}
 
@@ -127,11 +146,29 @@ void Cylinder::SetCenterPoint() {
 	centerZ = height * 0.5f;
 }
 
+void Cylinder::ClearTextures() {
+	if (cylinderTex != 0) {
+		glDeleteTextures(1, &cylinderTex);
+		cylinderTex = 0;
+	}
+
+	if (topTex != 0) {
+		glDeleteTextures(1, &topTex);
+		topTex = 0;
+	}
+
+	if (bottomTex != 0) {
+		glDeleteTextures(1, &bottomTex);
+		bottomTex = 0;
+	}
+}
+
 // ======================
 // Setters
 // ======================
 void Cylinder::SetBaseRadius(float r) { baseRadius = r; }
 void Cylinder::SetTopRadius(float r) { topRadius = r; }
+void Cylinder::SetInnerRadius(float r) { innerRadius = r; }
 void Cylinder::SetHeight(float h) {
 	height = h;
 	SetCenterPoint();
@@ -159,15 +196,20 @@ void Cylinder::SetColor(float red, float green, float blue)
 
 void Cylinder::SetAllTextures(GLuint tex) {
 	cylinderTex = tex;
-	diskTex = tex;
+	topTex = tex;
+	bottomTex = tex;
 }
 
 void Cylinder::SetCylinderTexture(GLuint front) {
 	cylinderTex = front;
 }
 
-void Cylinder::SetDiskTexture(GLuint bottom) {
-	diskTex = bottom;
+void Cylinder::SetTopTexture(GLuint top) {
+	topTex = top;
+}
+
+void Cylinder::SetBottomTexture(GLuint bottom) {
+	bottomTex = bottom;
 }
 
 // ======================

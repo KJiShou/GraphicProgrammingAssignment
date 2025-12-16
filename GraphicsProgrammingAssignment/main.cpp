@@ -32,7 +32,7 @@ Light light0 = Light( { 0.2f, 0.2f, 0.2f, 1.0f}, { 1.0f, 1.0f, 1.0f, 1.0f}, {0.0
 Cube c1 = Cube(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
 Pyramid p1 = Pyramid(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
 Tetrahedron t1 = Tetrahedron(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
-Cylinder cylinder1 = Cylinder(1.0f, 1.0f, 1.0f, 50, 50, GLU_FILL, true, 1.0f, 1.0f, 1.0f, 1.0f);
+Cylinder cylinder1 = Cylinder(1.0f, 1.0f, 0.0f, 1.0f, 50, 50, GLU_FILL, true, 1.0f, 1.0f, 1.0f, 1.0f);
 Sphere sphere1 = Sphere(1.0f, 10, 10, GLU_FILL, 1.0f, 1.0f, 1.0f, 1.0f);
 FrustumCube frustumCube = FrustumCube(0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
 // Textures
