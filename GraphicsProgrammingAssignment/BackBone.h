@@ -15,10 +15,14 @@ public:
 
 	// arms and hands
 	Object* leftUpperArm = new Object("bodyBone.json");
+	Object* leftUpperArmOuter = new Object("upperArmOuter.json");
 	Object* leftForearm = new Object("bodyBone.json");
+	Object* leftForearmOuter = new Object("forearmOuter.json");
 	Object* leftHand = new Object("handPalm.json");
 	Object* rightUpperArm = new Object("bodyBone.json");
+	Object* rightUpperArmOuter = new Object("upperArmOuter.json");
 	Object* rightForearm = new Object("bodyBone.json");
+	Object* rightForearmOuter = new Object("forearmOuter.json");
 	Object* rightHand = new Object("handPalm.json");
 	Object* rightIndexBase = new Object("handFinger.json");
 	Object* rightIndexMid = new Object("handFinger.json");

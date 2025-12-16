@@ -149,5 +149,29 @@
     <None Include="handPalm.json">
       <Filter>Data</Filter>
     </None>
+    <None Include="rightFoot.json">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="rightLowerLeg.json">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="rightUpperLeg.json">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="upperArmOuter.json">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="leftUpperLeg.json">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="leftLowerLeg.json">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="leftFoot.json">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="forearmOuter.json">
+      <Filter>Data</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -4,6 +4,7 @@
 #include "Sphere.h"
 #include "Pyramid.h"
 #include "Cube.h"
+#include "Tetrahedron.h"
 struct CylinderData {
 	float baseRadius;
 	float topRadius;
@@ -81,6 +82,24 @@ struct PyramidData {
 	float scaleZ;
 };
 
+struct TetrahedronData {
+	float length;
+	float width;
+	float height;
+	float r;
+	float g;
+	float b;
+	float transX;
+	float transY;
+	float transZ;
+	float rotX;
+	float rotY;
+	float rotZ;
+	float scaleX;
+	float scaleY;
+	float scaleZ;
+};
+
 class Object
 {
 private:
@@ -106,11 +125,13 @@ private:
 	std::vector<SphereData> spheresData;
 	std::vector<CubeData> cubesData;
 	std::vector<PyramidData> pyramidsData;
+	std::vector<TetrahedronData> tetrahedronData;
 
 	std::vector<std::unique_ptr<Cylinder>> cylinders;
 	std::vector<std::unique_ptr<Sphere>> spheres;
 	std::vector<std::unique_ptr<Cube>> cubes;
 	std::vector<std::unique_ptr<Pyramid>> pyramids;
+	std::vector<std::unique_ptr<Tetrahedron>> tetrahedrons;
 
 	Object* parent = nullptr;
 	std::vector<Object*> children;
