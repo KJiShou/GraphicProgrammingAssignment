@@ -440,7 +440,7 @@ void Object::ReadData(bool firstRun) {
 		i = 0;
 		for (auto& data : frustumCubesData)
 		{
-			frustumCubes.push_back(std::make_unique<FrustumCube>(data.topLength, data.topDepth, data.topOffsetX, data.topOffsetZ, data.topLength, data.bottomDepth, data.height, data.r, data.g, data.b));
+			frustumCubes.push_back(std::make_unique<FrustumCube>(data.topLength, data.topDepth, data.topOffsetX, data.topOffsetZ, data.bottomLength, data.bottomDepth, data.height, data.r, data.g, data.b));
 			frustumCubes[i]->Translate(data.transX, data.transY, data.transZ);
 			frustumCubes[i]->Rotate(data.rotX, data.rotY, data.rotZ);
 			frustumCubes[i]->Scale(data.scaleX, data.scaleY, data.scaleZ);
@@ -463,8 +463,8 @@ void Object::ReadData(bool firstRun) {
 			tetrahedrons[i]->Scale(data.scaleX, data.scaleY, data.scaleZ);
 			i++;
 		}
-		i = 0;
-		for (auto& data : frustumCubesData)
+		/*i = 0;*/
+		/*for (auto& data : frustumCubesData)
 		{
 			frustumCubes.push_back(std::make_unique<FrustumCube>(data.topLength, data.topDepth, data.topOffsetX, data.topOffsetZ, data.bottomLength, data.bottomDepth, data.height, data.r, data.g, data.b));
 			frustumCubes[i]->Translate(data.transX, data.transY, data.transZ);
@@ -472,7 +472,7 @@ void Object::ReadData(bool firstRun) {
 			frustumCubes[i]->Scale(data.scaleX, data.scaleY, data.scaleZ);
 			frustumCubes[i]->SetExpandable(data.isExpandable);
 			i++;
-		}
+		}*/
 	}
 	else
 	{
