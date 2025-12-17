@@ -9,6 +9,8 @@ public:
 	void Rotate(float rotX, float rotY, float rotZ, bool isRotateByCenter = true, float rotPosX = 0.0f, float rotPosY = 0.0f, float rotPosZ = 0.0f);
 	void Scale(float scaleX, float scaleY, float scaleZ);
 
+	void ClearTextures();
+
 	// ======================
 	// Setters
 	// ======================

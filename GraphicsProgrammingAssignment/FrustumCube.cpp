@@ -35,8 +35,69 @@ FrustumCube::FrustumCube(
 
 FrustumCube::~FrustumCube()
 {
+	if (texFront != 0) {
+		glDeleteTextures(1, &texFront);
+		texFront = 0;
+	}
+
+	if (texBack != 0) {
+		glDeleteTextures(1, &texBack);
+		texBack = 0;
+	}
+
+	if (texTop != 0) {
+		glDeleteTextures(1, &texTop);
+		texTop = 0;
+	}
+
+	if (texBottom != 0) {
+		glDeleteTextures(1, &texBottom);
+		texBottom = 0;
+	}
+
+	if (texLeft != 0) {
+		glDeleteTextures(1, &texLeft);
+		texLeft = 0;
+	}
+
+	if (texRight != 0) {
+		glDeleteTextures(1, &texRight);
+		texRight = 0;
+	}
 }
 ;
+
+void FrustumCube::ClearTextures() {
+	if (texFront != 0) {
+		glDeleteTextures(1, &texFront);
+		texFront = 0;
+	}
+
+	if (texBack != 0) {
+		glDeleteTextures(1, &texBack);
+		texBack = 0;
+	}
+
+	if (texTop != 0) {
+		glDeleteTextures(1, &texTop);
+		texTop = 0;
+	}
+
+	if (texBottom != 0) {
+		glDeleteTextures(1, &texBottom);
+		texBottom = 0;
+	}
+
+	if (texLeft != 0) {
+		glDeleteTextures(1, &texLeft);
+		texLeft = 0;
+	}
+
+	if (texRight != 0) {
+		glDeleteTextures(1, &texRight);
+		texRight = 0;
+	}
+}
 
 void FrustumCube::Draw() {
 
@@ -233,6 +294,7 @@ void FrustumCube::Draw() {
 	glVertex3f(D.x, D.y, D.z);
 
 	glEnd();
+	glPopMatrix();
 
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
@@ -270,9 +332,11 @@ void FrustumCube::SetTopDepth(float d) {
 }
 void FrustumCube::SetBottomLength(float l) {
 	bottomLength = l;
+	centerX = bottomLength * 0.5f;
 }
 void FrustumCube::SetBottomDepth(float d) {
 	bottomDepth = d;
+	centerZ = bottomDepth * 0.5f;
 }
 void FrustumCube::SetTopOffsetX(float x) {
 	topOffsetX = x;
