@@ -17,16 +17,16 @@
       "scaleY": 1.0,
       "scaleZ": 1.0,
       "isExpandable": true,
-      "textures": [
-        {
-          "front": "Assets/meme1.bmp",
-          "back": "Assets/meme1.bmp",
-          "top": "Assets/meme1.bmp",
-          "bottom": "Assets/meme1.bmp",
-          "left": "Assets/meme1.bmp",
-          "right": "Assets/meme1.bmp"
-        }
-      ]
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/",
+        "front": "Assets/",
+        "back": "Assets/",
+        "top": "Assets/",
+        "bottom": "Assets/",
+        "left": "Assets/",
+        "right": "Assets/"
+      }
     },
     {
       "length": 0.2,
@@ -45,16 +45,16 @@
       "scaleY": 1.0,
       "scaleZ": 1.0,
       "isExpandable": true,
-      "textures": [
-        {
-          "front": "Assets/meme1.bmp",
-          "back": "Assets/meme1.bmp",
-          "top": "Assets/meme1.bmp",
-          "bottom": "Assets/meme1.bmp",
-          "left": "Assets/meme1.bmp",
-          "right": "Assets/meme1.bmp"
-        }
-      ]
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/",
+        "front": "Assets/",
+        "back": "Assets/",
+        "top": "Assets/",
+        "bottom": "Assets/",
+        "left": "Assets/",
+        "right": "Assets/"
+      }
     }
   ],
   "cylinders": [
@@ -81,7 +81,7 @@
       "scaleZ": 1.0
     }
   ],
-  "frustumCubes": [
+  "frustumCube": [
     {
       "topLength": 0.15,
       "topDepth": 0.15,
@@ -102,7 +102,17 @@
       "scaleX": 1.0,
       "scaleY": 1.0,
       "scaleZ": 1.0,
-      "isExpandable": true
+      "isExpandable": true,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/",
+        "front": "Assets/",
+        "back": "Assets/",
+        "top": "Assets/",
+        "bottom": "Assets/",
+        "left": "Assets/",
+        "right": "Assets/"
+      }
     }
   ]
 }

@@ -17,11 +17,11 @@ void BackBone::SetBone() {
 	body->Translate(0, 1, 0);
 	
 	// arm
-	leftUpperArm->Translate(-0.6, 1.8, 0);
+	leftUpperArm->Translate(-1.0, 1.8, 0);
 	leftForearm->Translate(0.0, -0.95, 0);
 	leftHand->Translate(0.0, -0.9, 0);
 
-	rightUpperArm->Translate(0.6, 1.8, 0);
+	rightUpperArm->Translate(1.0, 1.8, 0);
 	rightForearm->Translate(0.0, -0.95, 0);
 	rightHand->Translate(0.0, -0.9, 0);
 	rightUpperArmOuter->Rotate(0, 180, 0);
