@@ -10,6 +10,7 @@ struct CylinderData {
 	float baseRadius;
 	float topRadius;
 	float height;
+	float innerRadius;
 	int slices;
 	int stacks;
 	GLenum style;
@@ -27,6 +28,14 @@ struct CylinderData {
 	float scaleX;
 	float scaleY;
 	float scaleZ;
+	std::string topTex;
+	std::string bottomTex;
+	std::string bodyTex;
+	bool isRepeat;
+	CylinderData()
+		: topTex(""), bottomTex(""), bodyTex(""), 
+		isRepeat(true)
+	{}
 };
 struct SphereData {
 	float radius;
@@ -46,6 +55,11 @@ struct SphereData {
 	float scaleX;
 	float scaleY;
 	float scaleZ;
+	std::string sphereTex;
+	bool isRepeat;
+	SphereData()
+		: sphereTex(""), isRepeat(true)
+	{}
 };
 struct CubeData {
 	float length;
@@ -64,6 +78,18 @@ struct CubeData {
 	float scaleY;
 	float scaleZ;
 	bool isExpandable;
+	std::string frontTex;
+	std::string backTex;
+	std::string topTex;
+	std::string bottomTex;
+	std::string leftTex;
+	std::string rightTex;
+	bool isRepeat;
+	CubeData()
+		: frontTex(""), backTex(""), topTex(""),
+		bottomTex(""), leftTex(""), rightTex(""),
+		isRepeat(true) 
+	{}
 };
 struct PyramidData {
 	float length;
@@ -81,26 +107,18 @@ struct PyramidData {
 	float scaleX;
 	float scaleY;
 	float scaleZ;
+	std::string frontTex;
+	std::string backTex;
+	std::string bottomTex;
+	std::string leftTex;
+	std::string rightTex;
+	bool isRepeat;
+	PyramidData()
+		: frontTex(""), backTex(""),
+		bottomTex(""), leftTex(""), rightTex(""),
+		isRepeat(true)
+	{}
 };
-
-struct TetrahedronData {
-	float length;
-	float width;
-	float height;
-	float r;
-	float g;
-	float b;
-	float transX;
-	float transY;
-	float transZ;
-	float rotX;
-	float rotY;
-	float rotZ;
-	float scaleX;
-	float scaleY;
-	float scaleZ;
-};
-
 struct FrustumCubeData {
 	float topLength;
 	float topDepth;
@@ -122,7 +140,61 @@ struct FrustumCubeData {
 	float scaleY;
 	float scaleZ;
 	bool isExpandable;
+	std::string frontTex;
+	std::string backTex;
+	std::string topTex;
+	std::string bottomTex;
+	std::string leftTex;
+	std::string rightTex;
+	bool isRepeat;
+	FrustumCubeData()
+		: frontTex(""), backTex(""), topTex(""),
+		bottomTex(""), leftTex(""), rightTex(""),
+		isRepeat(true)
+	{
+	}
 };
+
+struct TetrahedronData {
+	float length;
+	float width;
+	float height;
+	float r;
+	float g;
+	float b;
+	float transX;
+	float transY;
+	float transZ;
+	float rotX;
+	float rotY;
+	float rotZ;
+	float scaleX;
+	float scaleY;
+	float scaleZ;
+};
+
+//struct FrustumCubeData {
+//	float topLength;
+//	float topDepth;
+//	float topOffsetX;
+//	float topOffsetZ;
+//	float bottomLength;
+//	float bottomDepth;
+//	float height;
+//	float r;
+//	float g;
+//	float b;
+//	float transX;
+//	float transY;
+//	float transZ;
+//	float rotX;
+//	float rotY;
+//	float rotZ;
+//	float scaleX;
+//	float scaleY;
+//	float scaleZ;
+//	bool isExpandable;
+//};
 
 class Object
 {
@@ -175,5 +247,7 @@ public:
 	void ReadData();
 
 	void AddChild(Object* o);
+
+	GLuint LoadTexture(const std::string& filename, bool isRepeat);
 };
 
