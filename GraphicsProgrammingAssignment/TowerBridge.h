@@ -3,9 +3,9 @@
 class TowerBridge
 {
 public:
-	Object tower;
-	Object bridge;
-	TowerBridge() : tower("towerBridge.json"), bridge("bridge.json") {}
+	Object* tower = new Object("towerBridge.json");
+	Object* bridge = new Object("bridge.json");
+	TowerBridge() {};
 	void Draw(float rotation);
 	void ReadData();
 };
