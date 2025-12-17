@@ -31,6 +31,7 @@ public:
 	void SetBottomTexture(GLuint bottom);
 	void SetLeftTexture(GLuint left);
 	void SetRightTexture(GLuint right);
+	void SetIsRepeat(bool r);
 
 	// ======================
 	// Getters
@@ -122,5 +123,6 @@ private:
 
 	// expand in two way
 	bool isExpandable = false;
+	bool isRepeat = false;
 };
 

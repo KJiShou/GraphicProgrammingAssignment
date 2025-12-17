@@ -413,6 +413,7 @@ void Object::ReadData(bool firstRun) {
 			cubes[i]->Rotate(data.rotX, data.rotY, data.rotZ);
 			cubes[i]->Scale(data.scaleX, data.scaleY, data.scaleZ);
 			cubes[i]->SetExpandable(data.isExpandable);
+			cubes[i]->SetIsRepeat(data.isRepeat);
 
 			cubes[i]->SetFrontTexture(LoadTexture(data.frontTex, data.isRepeat));
 			cubes[i]->SetBackTexture(LoadTexture(data.backTex, data.isRepeat));
@@ -534,6 +535,7 @@ void Object::ReadData(bool firstRun) {
 			cubes[i]->Rotate(cubesData[i].rotX, cubesData[i].rotY, cubesData[i].rotZ);
 			cubes[i]->Scale(cubesData[i].scaleX, cubesData[i].scaleY, cubesData[i].scaleZ);
 			cubes[i]->SetExpandable(cubesData[i].isExpandable);
+			cubes[i]->SetIsRepeat(cubesData[i].isRepeat);
 		}
 
 		for (size_t i = 0; i < pyramids.size() && i < pyramidsData.size(); i++)
@@ -707,7 +709,6 @@ GLuint Object::LoadTexture(const std::string& filename, bool isRepeat)
 
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
 
-	// 上传纹理
 	glTexImage2D(
 		GL_TEXTURE_2D, 0, GL_RGB,
 		BMP.bmWidth, BMP.bmHeight,
