@@ -67,9 +67,8 @@ bool drawAxis = true;
 
 float deltaTime = 0.0f;
 
-// TowerBridge towerBridge;
-Object background("background.json");
-// BackBone backbone;
+TowerBridge* towerBridge = NULL;
+Object* background = NULL;
 BackBone* backbone = NULL;
 
 float camPosX = 0.0f, camPosY = 0.0f, camPosZ = 5.0f;
@@ -81,10 +80,9 @@ float x = 0, y = 0, z = 0;
 HWND GetHWnd() { return hWnd; }
 
 void ReadData() {
-	background.ReadData();
-	//backbone.ReadData();
+	background->ReadData();
 	backbone->ReadData();
-	//towerBridge.ReadData();
+	towerBridge->ReadData();
 }
 
 void LoadTexture(LPCSTR filename, GLuint& texID, bool isRepeat)
@@ -481,17 +479,12 @@ void Draw() {
 	//backbone.RotateLeftFoot(x, y, z);
 	backbone->RotateLeftFoot(x, y, z);
 	
-	//towerBridge.Draw(0);
+	//towerBridge->Draw(0);
 	//backbone.RotateHead(x, y, z);
 	
-	//backbone.RotateRightForearm(0, -90);
 	backbone->RotateRightForearm(0, -90);
-	//backbone.RotateLeftForearm(0, -90);
 	backbone->RotateLeftForearm(0, -90);
-	
-	//backbone.RotateRightHandFinger(90, 90, 90);
-	
-	//backbone.RotateLeftHandFinger(x, y, z);
+		
 	backbone->RotateLeftHandFinger(x, y, z);
 	backbone->Draw();
 
@@ -504,17 +497,17 @@ void Draw() {
 	glPopMatrix();
 
 	c1.Translate(-10.0f, 0.0f, 10.0f);
-	c1.Draw();
+	//c1.Draw();
 	p1.Translate(-5.0f, 0.0f, 10.0f);
-	p1.Draw();
+	//p1.Draw();
 	t1.Translate(-15.0f, 0.0f, 10.0f);
-	t1.Draw();
+	//t1.Draw();
 	cylinder1.Translate(-20.0f, 0.0f, 10.0f);
-	cylinder1.Draw();
+	//cylinder1.Draw();
 	sphere1.Translate(0.0f, 0.0f, 10.0f);
-	sphere1.Draw();
+	//sphere1.Draw();
 	frustumCube.Translate(5.0f, 0.0f, 10.0f);
-	frustumCube.Draw();
+	//frustumCube.Draw();
 	
 	glPopMatrix();
 }
@@ -546,7 +539,7 @@ void Display()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
 	glDisable(GL_LIGHTING);
-	background.Draw();
+	background->Draw();
 	glEnable(GL_LIGHTING);
 	UpdateCameraView();
 	glTranslatef(cameraTransX, cameraTransY, cameraTransZ);
@@ -766,6 +759,8 @@ int main(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)
 	backbone = new BackBone();
 	backbone->SetBone();
 
+	towerBridge = new TowerBridge();
+	background = new Object("background.json");
 	while (ProcessMessages())
 	{
 		input.Update();

@@ -30,27 +30,18 @@ Cube::Cube(
 	C = { length, height, width };
 	D = { 0.0f, height, width };
 	normal = Math::CalcNormal(A, B, C);
-	std::cout << "front x: " << normal.x << std::endl;
-	std::cout << "front y: " << normal.y << std::endl;
-	std::cout << "front z: " << normal.z << std::endl;
 
 	A = { 0.0f, 0.0f, 0.0f };
 	B = { length, 0.0f, 0.0f };
 	C = { length, height, 0.0f };
 	D = { 0.0f, height, 0.0f };
 	normal = Math::CalcNormal(A, B, C);
-	std::cout << "back x: " << normal.x << std::endl;
-	std::cout << "back y: " << normal.y << std::endl;
-	std::cout << "back z: " << normal.z << std::endl;
 
 	A = { 0.0f, 0.0f, 0.0f };
 	B = { 0.0f, 0.0f, width };
 	C = { 0.0f, height, width };
 	D = { 0.0f, height, 0.0f };
 	normal = Math::CalcNormal(A, B, C);
-	std::cout << "left x: " << normal.x << std::endl;
-	std::cout << "left y: " << normal.y << std::endl;
-	std::cout << "left z: " << normal.z << std::endl;
 
 	// =======================
 	A = { length, 0.0f, width };
@@ -58,27 +49,18 @@ Cube::Cube(
 	C = { length, height, 0.0f };
 	D = { length, height, width };
 	normal = Math::CalcNormal(A, B, C);
-	std::cout << "right x: " << normal.x << std::endl;
-	std::cout << "right y: " << normal.y << std::endl;
-	std::cout << "right z: " << normal.z << std::endl;
 
 	A = { 0.0f, height, width };
 	B = { length, height, width };
 	C = { length, height, 0.0f };
 	D = { 0.0f, height, 0.0f };
 	normal = Math::CalcNormal(A, B, C);
-	std::cout << "top x: " << normal.x << std::endl;
-	std::cout << "top y: " << normal.y << std::endl;
-	std::cout << "top z: " << normal.z << std::endl;
 
 	A = { 0.0f, 0.0f, 0.0f };
 	B = { length, 0.0f, 0.0f };
 	C = { length, 0.0f, width };
 	D = { 0.0f, 0.0f, width };
 	normal = Math::CalcNormal(A, B, C);
-	std::cout << "bottom x: " << normal.x << std::endl;
-	std::cout << "bottom y: " << normal.y << std::endl;
-	std::cout << "bottom z: " << normal.z << std::endl;
 
 }
 
@@ -155,7 +137,7 @@ void Cube::Draw() {
 	//  glColor3f(r, g, b);
 	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, color);
 	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, color);
-
+	
 	glTranslatef(transX, transY, transZ);
 
 	if (isRotateByCenter)
@@ -186,6 +168,10 @@ void Cube::Draw() {
 
 	if (isExpandable) glTranslatef(-centerX, -centerY, -centerZ);
 
+	float uLen = isRepeat ? length : 1.0f;
+	float uHei = isRepeat ? height : 1.0f;
+	float uWid = isRepeat ? width : 1.0f;
+
 	glBindTexture(GL_TEXTURE_2D, texBack);
 	glBegin(GL_QUADS);
 	// back (-Z)
@@ -195,16 +181,16 @@ void Cube::Draw() {
 	Math::Vec3 D = { length, height, 0.0f };
 	Math::Vec3 normal = Math::CalcNormal(D, C, B);
 	glNormal3f(normal.x, normal.y, normal.z);
-	glTexCoord2f(1.0f, 1.0f);
+	glTexCoord2f(uLen, uHei);
 	glVertex3f(A.x, A.y, A.z);
 
-	glTexCoord2f(1.0f, 0.0f);
+	glTexCoord2f(uLen, 0.0f);
 	glVertex3f(B.x, B.y, B.z);
 
 	glTexCoord2f(0.0f, 0.0f);
 	glVertex3f(C.x, C.y, C.z);
 
-	glTexCoord2f(0.0f, 1.0f);
+	glTexCoord2f(0.0f, uHei);
 	glVertex3f(D.x, D.y, D.z);
 	glEnd();
 
@@ -217,17 +203,17 @@ void Cube::Draw() {
 	D = { length, height, width };
 	normal = Math::CalcNormal(A, B, C);
 	glNormal3f(normal.x, normal.y, normal.z);
-	
-	glTexCoord2f(0.0f, 1.0f);
+
+	glTexCoord2f(0.0f, uHei);
 	glVertex3f(A.x, A.y, A.z);
-	
+
 	glTexCoord2f(0.0f, 0.0f);
 	glVertex3f(B.x, B.y, B.z);
-	
-	glTexCoord2f(1.0f, 0.0f);
+
+	glTexCoord2f(uLen, 0.0f);
 	glVertex3f(C.x, C.y, C.z);
 
-	glTexCoord2f(1.0f, 1.0f);
+	glTexCoord2f(uLen, uHei);
 	glVertex3f(D.x, D.y, D.z);
 	glEnd();
 
@@ -241,16 +227,16 @@ void Cube::Draw() {
 	normal = Math::CalcNormal(A, B, C);
 	glNormal3f(normal.x, normal.y, normal.z);
 
-	glTexCoord2f(0.0f, 1.0f);
+	glTexCoord2f(0.0f, uHei);
 	glVertex3f(A.x, A.y, A.z);
 
 	glTexCoord2f(0.0f, 0.0f);
 	glVertex3f(B.x, B.y, B.z);
 
-	glTexCoord2f(1.0f, 0.0f);
+	glTexCoord2f(uWid, 0.0f);
 	glVertex3f(C.x, C.y, C.z);
 
-	glTexCoord2f(1.0f, 1.0f);
+	glTexCoord2f(uWid, uHei);
 	glVertex3f(D.x, D.y, D.z);
 	glEnd();
 
@@ -263,16 +249,16 @@ void Cube::Draw() {
 	D = { length, height, 0.0f };
 	normal = Math::CalcNormal(A, B, C);
 	glNormal3f(normal.x, normal.y, normal.z);
-	glTexCoord2f(0.0f, 1.0f);
+	glTexCoord2f(0.0f, uHei);
 	glVertex3f(A.x, A.y, A.z);
 
 	glTexCoord2f(0.0f, 0.0f);
 	glVertex3f(B.x, B.y, B.z);
 
-	glTexCoord2f(1.0f, 0.0f);
+	glTexCoord2f(uWid, 0.0f);
 	glVertex3f(C.x, C.y, C.z);
 
-	glTexCoord2f(1.0f, 1.0f);
+	glTexCoord2f(uWid, uHei);
 	glVertex3f(D.x, D.y, D.z);
 	glEnd();
 
@@ -286,16 +272,16 @@ void Cube::Draw() {
 	normal = Math::CalcNormal(A, B, C);
 	glNormal3f(normal.x, normal.y, normal.z);
 
-	glTexCoord2f(0.0f, 1.0f);
+	glTexCoord2f(0.0f, uWid);
 	glVertex3f(A.x, A.y, A.z);
 
 	glTexCoord2f(0.0f, 0.0f);
 	glVertex3f(B.x, B.y, B.z);
 
-	glTexCoord2f(1.0f, 0.0f);
+	glTexCoord2f(uLen, 0.0f);
 	glVertex3f(C.x, C.y, C.z);
 
-	glTexCoord2f(1.0f, 1.0f);
+	glTexCoord2f(uLen, uWid);
 	glVertex3f(D.x, D.y, D.z);
 	glEnd();
 
@@ -309,16 +295,16 @@ void Cube::Draw() {
 	normal = Math::CalcNormal(A, B, C);
 	glNormal3f(normal.x, normal.y, normal.z);
 
-	glTexCoord2f(0.0f, 1.0f);
+	glTexCoord2f(0.0f, uWid);
 	glVertex3f(A.x, A.y, A.z);
 
 	glTexCoord2f(0.0f, 0.0f);
 	glVertex3f(B.x, B.y, B.z);
 
-	glTexCoord2f(1.0f, 0.0f);
+	glTexCoord2f(uLen, 0.0f);
 	glVertex3f(C.x, C.y, C.z);
 
-	glTexCoord2f(1.0f, 1.0f);
+	glTexCoord2f(uLen, uWid);
 	glVertex3f(D.x, D.y, D.z);
 	glEnd();
 
@@ -412,6 +398,11 @@ void Cube::SetLeftTexture(GLuint left) {
 
 void Cube::SetRightTexture(GLuint right) {
 	texRight = right;
+}
+
+void Cube::SetIsRepeat(bool r)
+{
+	isRepeat = r;
 }
 
 // ======================
