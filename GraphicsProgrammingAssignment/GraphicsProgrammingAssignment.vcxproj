@@ -195,6 +195,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.gitignore" />
+    <None Include="armJointArmor.json" />
     <None Include="background.json" />
     <None Include="body.json" />
     <None Include="bodyBone.json" />

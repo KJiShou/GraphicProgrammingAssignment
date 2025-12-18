@@ -15,11 +15,15 @@ public:
 
 	// arms and hands
 	Object* leftUpperArm = new Object("empty.json");
+	Object* leftUpperArmJoint = new Object("empty.json");
+	Object* leftUpperArmJointOuter = new Object("armJointArmor.json");
 	Object* leftUpperArmOuter = new Object("upperArmOuter.json");
 	Object* leftForearm = new Object("empty.json");
 	Object* leftForearmOuter = new Object("forearmOuter.json");
 	Object* leftHand = new Object("handPalm.json");
 	Object* rightUpperArm = new Object("empty.json");
+	Object* rightUpperArmJoint = new Object("empty.json");
+	Object* rightUpperArmJointOuter = new Object("armJointArmor.json");
 	Object* rightUpperArmOuter = new Object("upperArmOuter.json");
 	Object* rightForearm = new Object("empty.json");
 	Object* rightForearmOuter = new Object("forearmOuter.json");
@@ -73,23 +77,60 @@ public:
 	Object* rightFoot = new Object("rightFoot.json");
 
 	// Rotation and Movement
+	//====================
+	// Main Movement and rotation
+	//====================
 	float position[3] = { 0.0f, 0.0f, 0.0f };
 	float rotation[3] = { 0.0f, 0.0f, 0.0f };
+
+	//====================
+	// Head Rotation
+	//====================
 	float headRotation[3] = { 0.0f, 0.0f, 0.0f };
+
+	//====================
+	// Body Rotation
+	//====================
 	float bodyRotation[3] = { 0.0f, 0.0f, 0.0f };
+
+	//====================
+	// Pelvis
+	//====================
 	float pelvisRotation[3] = { 0.0f, 0.0f, 0.0f };
+
+	//====================
+	// Left Arm
+	//====================
 	float leftUpperArmRotation[3] = { 0.0f, 0.0f, 0.0f };
+	float leftUpperArmJointArmorRotation[3] = { 0.0f, 0.0f, 0.0f };
 	float leftForearmRotation[3] = { 0.0f, 0.0f, 0.0f };
 	float leftHandRotation[3] = { 0.0f, 0.0f, 0.0f };
+
+	//====================
+	// Right Arm
+	//====================
 	float rightUpperArmRotation[3] = { 0.0f, 0.0f, 0.0f };
+	float rightUpperArmJointArmorRotation[3] = { 0.0f, 0.0f, 0.0f };
 	float rightForearmRotation[3] = { 0.0f, 0.0f, 0.0f };
 	float rightHandRotation[3] = { 0.0f, 0.0f, 0.0f };
+
+	//====================
+	// Left Leg
+	//====================
 	float leftUpperLegRotation[3] = { 0.0f, 0.0f, 0.0f };
 	float leftLowerLegRotation[3] = { 0.0f, 0.0f, 0.0f };
 	float leftFootRotation[3] = { 0.0f, 0.0f, 0.0f };
+
+	//====================
+	// Right Leg
+	//====================
 	float rightUpperLegRotation[3] = { 0.0f, 0.0f, 0.0f };
 	float rightLowerLegRotation[3] = { 0.0f, 0.0f, 0.0f };
 	float rightFootRotation[3] = { 0.0f, 0.0f, 0.0f };
+
+	//====================
+	// Right Finger
+	//====================
 	float rightIndexBaseRot = 0.0f;
 	float rightIndexMidRot = 0.0f;
 	float rightIndexTipRot = 0.0f;
@@ -105,6 +146,10 @@ public:
 	float rightThumbMidRot = 0.0f;
 	float rightThumbTipRot = 0.0f;
 	float rightThumbSpreadRot = 30.0f;
+
+	//====================
+	// Left Finger
+	//====================
 	float leftIndexBaseRot = 0.0f;
 	float leftIndexMidRot = 0.0f;
 	float leftIndexTipRot = 0.0f;
