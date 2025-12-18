@@ -569,13 +569,14 @@ void Display()
 //--------------------------------------------------------------------
 
 
-
+float camNormalMoveSpeed = 0.05;
+float camFasterMoveSpeed = 0.1;
 void Update(int framesToUpdate) {
 	for (int i = 0; i < framesToUpdate; i++) {
 		globalFrameCounter++;
 
 		// camera move
-		float speed = input.IsKeyPressed(DIK_LSHIFT) ? 0.3f : 0.1f;
+		float speed = input.IsKeyPressed(DIK_LSHIFT) ? camFasterMoveSpeed : camNormalMoveSpeed;
 
 		float forwardX = sinf(camYaw * PI / 180);
 		float forwardZ = cosf(camYaw * PI / 180);
@@ -765,6 +766,8 @@ int main(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)
 	ZeroMemory(&msg, sizeof(msg));
 	backbone = new BackBone();
 	backbone->SetBone();
+
+	ShowCursor(false);
 
 	while (ProcessMessages())
 	{
