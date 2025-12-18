@@ -28,7 +28,7 @@ json j;
 
 // light
 GLUquadricObj* var = gluNewQuadric();
-Light light0 = Light( { 0.2f, 0.2f, 0.2f, 1.0f}, { 1.0f, 1.0f, 1.0f, 1.0f}, {0.0f, 0.0f, 0.0f, 1.0f}, GL_LIGHT0);
+Light light0 = Light( { 0.2f, 0.2f, 0.2f, 1.0f}, { 1.0f, 1.0f, 1.0f, 1.0f}, {1.0f, 10.0f, 5.0f, 1.0f}, GL_LIGHT0);
 Cube c1 = Cube(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
 Pyramid p1 = Pyramid(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
 Tetrahedron t1 = Tetrahedron(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
@@ -80,7 +80,7 @@ float x = 0, y = 0, z = 0;
 HWND GetHWnd() { return hWnd; }
 
 void ReadData() {
-	background->ReadData();
+	//background->ReadData();
 	backbone->ReadData();
 	towerBridge->ReadData();
 }
@@ -476,16 +476,34 @@ void DrawAxis() {
 void Draw() {
 	glPushMatrix();
 	if (drawAxis) DrawAxis();
-	//backbone.RotateLeftFoot(x, y, z);
-	backbone->RotateLeftFoot(x, y, z);
-	
-	//towerBridge->Draw(0);
-	//backbone.RotateHead(x, y, z);
-	
-	backbone->RotateRightForearm(0, -90);
-	backbone->RotateLeftForearm(0, -90);
-		
+	//===============================
+	// JS Testing Section
+	//===============================
+	backbone->RotateRightForearm(x, -90);
+	backbone->RotateRightUpperArm(x, y, z);
+	backbone->RotateLeftForearm(x, -90);
 	backbone->RotateLeftHandFinger(x, y, z);
+	backbone->RotateRightHandFinger(x, y, z);
+	backbone->RotateRightUpperLeg(x, y, z);
+	backbone->RotateRightLowerLeg(x);
+	backbone->RotateRightFoot(x, y, z);
+
+	//===============================
+	// JY Testing Section
+	//===============================
+	backbone->RotateRightUpperLeg(x, y, z);
+	
+	
+	//===============================
+	// HJ Testing Section
+	//===============================
+	
+	
+
+
+	// ==============================
+	// Draw
+	// ==============================
 	backbone->Draw();
 
 	glPushMatrix();
@@ -562,13 +580,14 @@ void Display()
 //--------------------------------------------------------------------
 
 
-
+float camNormalMoveSpeed = 0.05;
+float camFasterMoveSpeed = 0.1;
 void Update(int framesToUpdate) {
 	for (int i = 0; i < framesToUpdate; i++) {
 		globalFrameCounter++;
 
 		// camera move
-		float speed = input.IsKeyPressed(DIK_LSHIFT) ? 0.3f : 0.1f;
+		float speed = input.IsKeyPressed(DIK_LSHIFT) ? camFasterMoveSpeed : camNormalMoveSpeed;
 
 		float forwardX = sinf(camYaw * PI / 180);
 		float forwardZ = cosf(camYaw * PI / 180);
@@ -663,7 +682,6 @@ void Update(int framesToUpdate) {
 			else {
 				x++;
 			}
-
 		}
 		if (input.IsKeyPressed(DIKEYBOARD_NUMPAD2))
 		{
@@ -674,7 +692,6 @@ void Update(int framesToUpdate) {
 			else {
 				y++;
 			}
-
 		}
 		if (input.IsKeyPressed(DIKEYBOARD_NUMPAD3))
 		{
@@ -685,7 +702,6 @@ void Update(int framesToUpdate) {
 			else {
 				z++;
 			}
-
 		}
 		if (input.IsKeyPressed(DIKEYBOARD_NUMPAD8)) {
 			backbone->RotateRightIndex(0, 0, 0);
@@ -758,6 +774,8 @@ int main(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)
 	ZeroMemory(&msg, sizeof(msg));
 	backbone = new BackBone();
 	backbone->SetBone();
+
+	ShowCursor(true);
 
 	towerBridge = new TowerBridge();
 	background = new Object("background.json");

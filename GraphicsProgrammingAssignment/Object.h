@@ -171,6 +171,7 @@ struct TetrahedronData {
 	float scaleX;
 	float scaleY;
 	float scaleZ;
+	bool isRepeat;
 };
 
 //struct FrustumCubeData {

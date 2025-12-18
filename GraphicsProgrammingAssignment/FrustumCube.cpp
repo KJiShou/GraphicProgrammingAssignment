@@ -150,6 +150,15 @@ void FrustumCube::Draw() {
 	float uScale = topLength / bottomLength;
 	float uOffset = (1.0f - uScale) * 0.5f;
 
+	float tilingSize = 1.0f;
+
+	float tx = isRepeat ? (bottomLength / tilingSize) : 1.0f;
+	float ty = isRepeat ? (height / tilingSize) : 1.0f;
+	float tz = isRepeat ? (bottomDepth / tilingSize) : 1.0f;
+
+	float ttx = isRepeat ? (topLength / tilingSize) : 1.0f;
+	float ttz = isRepeat ? (topDepth / tilingSize) : 1.0f;
+
 	Math::Vec3 A = { 0.0f + topOffsetX, height, topDepth + topOffsetZ };
 	Math::Vec3 B = { 0.0f, 0.0f, bottomDepth };
 	Math::Vec3 C = { bottomLength, 0.0f, bottomDepth };
@@ -160,17 +169,10 @@ void FrustumCube::Draw() {
 	// front (+z)
 	glBegin(GL_QUADS);
 
-	glTexCoord2f(uOffset, 1.0f);
-	glVertex3f(A.x, A.y, A.z);
-
-	glTexCoord2f(0.0f, 0.0f);
-	glVertex3f(B.x, B.y, B.z);
-
-	glTexCoord2f(1.0f, 0.0f);
-	glVertex3f(C.x, C.y, C.z);
-
-	glTexCoord2f(uOffset + uScale, 1.0f);
-	glVertex3f(D.x, D.y, D.z);
+	glTexCoord2f(0.0f, ty); glVertex3f(A.x, A.y, A.z);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(B.x, B.y, B.z);
+	glTexCoord2f(tx, 0.0f); glVertex3f(C.x, C.y, C.z);
+	glTexCoord2f(tx, ty);   glVertex3f(D.x, D.y, D.z);
 
 	glEnd();
 
@@ -185,17 +187,10 @@ void FrustumCube::Draw() {
 	// back (-z)
 	glBegin(GL_QUADS);
 
-	glTexCoord2f(uOffset, 1.0f);
-	glVertex3f(A.x, A.y, A.z);
-
-	glTexCoord2f(0.0f, 0.0f);
-	glVertex3f(B.x, B.y, B.z);
-
-	glTexCoord2f(1.0f, 0.0f);
-	glVertex3f(C.x, C.y, C.z);
-
-	glTexCoord2f(uOffset + uScale, 1.0f);
-	glVertex3f(D.x, D.y, D.z);
+	glTexCoord2f(0.0f, ty); glVertex3f(A.x, A.y, A.z);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(B.x, B.y, B.z);
+	glTexCoord2f(tx, 0.0f); glVertex3f(C.x, C.y, C.z);
+	glTexCoord2f(tx, ty);   glVertex3f(D.x, D.y, D.z);
 
 	glEnd();
 
@@ -209,17 +204,10 @@ void FrustumCube::Draw() {
 	// top (+y)
 	glBegin(GL_QUADS);
 
-	glTexCoord2f(0.0f, 1.0f);
-	glVertex3f(A.x, A.y, A.z);
-
-	glTexCoord2f(0.0f, 0.0f);
-	glVertex3f(B.x, B.y, B.z);
-
-	glTexCoord2f(1.0f, 0.0f);
-	glVertex3f(C.x, C.y, C.z);
-
-	glTexCoord2f(1.0f, 1.0f);
-	glVertex3f(D.x, D.y, D.z);
+	glTexCoord2f(0.0f, ttz);  glVertex3f(A.x, A.y, A.z);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(B.x, B.y, B.z);
+	glTexCoord2f(ttx, 0.0f); glVertex3f(C.x, C.y, C.z);
+	glTexCoord2f(ttx, ttz);  glVertex3f(D.x, D.y, D.z);
 
 	glEnd();
 
@@ -233,17 +221,10 @@ void FrustumCube::Draw() {
 	// bottom (-y)
 	glBegin(GL_QUADS);
 
-	glTexCoord2f(0.0f, 1.0f);
-	glVertex3f(A.x, A.y, A.z);
-
-	glTexCoord2f(0.0f, 0.0f);
-	glVertex3f(B.x, B.y, B.z);
-
-	glTexCoord2f(1.0f, 0.0f);
-	glVertex3f(C.x, C.y, C.z);
-
-	glTexCoord2f(1.0f, 1.0f);
-	glVertex3f(D.x, D.y, D.z);
+	glTexCoord2f(0.0f, tz); glVertex3f(A.x, A.y, A.z);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(B.x, B.y, B.z);
+	glTexCoord2f(tx, 0.0f); glVertex3f(C.x, C.y, C.z);
+	glTexCoord2f(tx, tz);   glVertex3f(D.x, D.y, D.z);
 
 	glEnd();
 
@@ -257,17 +238,10 @@ void FrustumCube::Draw() {
 	// left (-x)
 	glBegin(GL_QUADS);
 
-	glTexCoord2f(uOffset, 1.0f);
-	glVertex3f(A.x, A.y, A.z);
-
-	glTexCoord2f(0.0f, 0.0f);
-	glVertex3f(B.x, B.y, B.z);
-
-	glTexCoord2f(1.0f, 0.0f);
-	glVertex3f(C.x, C.y, C.z);
-
-	glTexCoord2f(uOffset + uScale, 1.0f);
-	glVertex3f(D.x, D.y, D.z);
+	glTexCoord2f(0.0f, ty); glVertex3f(A.x, A.y, A.z);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(B.x, B.y, B.z);
+	glTexCoord2f(tz, 0.0f); glVertex3f(C.x, C.y, C.z);
+	glTexCoord2f(tz, ty);   glVertex3f(D.x, D.y, D.z);
 
 	glEnd();
 
@@ -281,17 +255,10 @@ void FrustumCube::Draw() {
 	// right (+x)
 	glBegin(GL_QUADS);
 
-	glTexCoord2f(uOffset, 1.0f);
-	glVertex3f(A.x, A.y, A.z);
-
-	glTexCoord2f(0.0f, 0.0f);
-	glVertex3f(B.x, B.y, B.z);
-
-	glTexCoord2f(1.0f, 0.0f);
-	glVertex3f(C.x, C.y, C.z);
-
-	glTexCoord2f(uOffset + uScale, 1.0f);
-	glVertex3f(D.x, D.y, D.z);
+	glTexCoord2f(0.0f, ty); glVertex3f(A.x, A.y, A.z);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(B.x, B.y, B.z);
+	glTexCoord2f(tz, 0.0f); glVertex3f(C.x, C.y, C.z);
+	glTexCoord2f(tz, ty);   glVertex3f(D.x, D.y, D.z);
 
 	glEnd();
 	glPopMatrix();
@@ -396,6 +363,10 @@ void FrustumCube::SetLeftTexture(GLuint left) {
 
 void FrustumCube::SetRightTexture(GLuint right) {
 	texRight = right;
+}
+
+void FrustumCube::SetIsRepeat(bool r) {
+	isRepeat = r;
 }
 
 // ======================

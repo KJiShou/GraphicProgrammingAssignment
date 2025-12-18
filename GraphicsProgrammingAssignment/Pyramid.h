@@ -28,6 +28,8 @@ public:
 	void SetLeftTexture(GLuint left);
 	void SetRightTexture(GLuint right);
 
+	void SetIsRepeat(bool r);
+
 	// ======================
 	// Getters
 	// ======================
@@ -112,5 +114,7 @@ private:
 	float rotPosX = 0.0f;
 	float rotPosY = 0.0f;
 	float rotPosZ = 0.0f;
+
+	bool isRepeat = false;
 };
 
