@@ -477,13 +477,14 @@ void Draw() {
 	glPushMatrix();
 	if (drawAxis) DrawAxis();
 	//backbone.RotateLeftFoot(x, y, z);
-	backbone->RotateLeftFoot(x, y, z);
+	//backbone->RotateLeftFoot(x, y, z);
 	
 	//towerBridge->Draw(0);
-	//backbone.RotateHead(x, y, z);
+	//backbone->RotateHead(x, y, z);
 	
-	backbone->RotateRightForearm(0, -90);
-	backbone->RotateLeftForearm(0, -90);
+	backbone->RotateRightForearm(x, y);
+	backbone->RotateRightUpperArm(x, y, z);
+	backbone->RotateLeftForearm(x, y);
 		
 	backbone->RotateLeftHandFinger(x, y, z);
 	backbone->Draw();
