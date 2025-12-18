@@ -487,6 +487,8 @@ void Draw() {
 	backbone->RotateRightUpperLeg(x, y, z);
 	backbone->RotateRightLowerLeg(x);
 	backbone->RotateRightFoot(x, y, z);
+	backbone->RotateBody(x, y, z);
+	//backbone->RotatePelvis(x, y, z);
 
 	//===============================
 	// JY Testing Section
