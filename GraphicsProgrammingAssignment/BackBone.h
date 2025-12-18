@@ -11,6 +11,7 @@ public:
 
 	// body
 	Object* body = new Object("body.json");
+	Object* wing = new Object("wing.json");
 	Object* pelvis = new Object("bodyBone.json");
 
 	// arms and hands
