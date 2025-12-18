@@ -129,6 +129,7 @@ void BackBone::SetBone() {
 
 	// leg
 	leftLegArmor->Translate(-0.3, -0.5, 0.0);
+	leftLegArmor->Scale(1.2, 1.2, 1.2);
 	leftUpperLeg->Translate(-0.3, -0.5, 0.0);
 	leftUpperLeg->Scale(1.2, 1.2, 1.2);
 	leftUpperLeg->Translate(-0.4, -0.5, 0.0);
@@ -136,6 +137,7 @@ void BackBone::SetBone() {
 	leftFoot->Translate(0, -1.4, 0);
 
 	rightLegArmor->Translate(0.3, -0.5, 0.0);
+	rightLegArmor->Scale(1.2, 1.2, 1.2);
 	rightUpperLeg->Translate(0.3, -0.5, 0);
 	rightUpperLeg->Scale(1.2, 1.2, 1.2);
 	rightUpperLeg->Translate(0.4, -0.5, 0);
@@ -571,10 +573,10 @@ void BackBone::Draw() {
 
 	leftUpperLeg->Rotate(leftUpperLegRotation[0], leftUpperLegRotation[1], leftUpperLegRotation[2]);
 	leftLowerLeg->Rotate(leftLowerLegRotation[0], leftLowerLegRotation[1], leftLowerLegRotation[2]);
-	leftFoot->Rotate(leftFootRotation[0], leftFootRotation[1], leftFootRotation[2]);
+	leftFoot->Rotate(leftFootRotation[0], leftFootRotation[1], leftFootRotation[2], 0.0f, 0.2f, 0.0f);
 	rightUpperLeg->Rotate(rightUpperLegRotation[0], rightUpperLegRotation[1], rightUpperLegRotation[2]);
 	rightLowerLeg->Rotate(rightLowerLegRotation[0], rightLowerLegRotation[1], rightLowerLegRotation[2]);
-	rightFoot->Rotate(rightFootRotation[0], rightFootRotation[1], rightFootRotation[2]);
+	rightFoot->Rotate(rightFootRotation[0], rightFootRotation[1], rightFootRotation[2], 0.0f, 0.2f, 0.0f);
 
 	root->Draw();
 }
