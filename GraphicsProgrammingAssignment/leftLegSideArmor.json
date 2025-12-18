@@ -1,0 +1,130 @@
+{
+  "cylinders": [
+    {
+      "comment": "side armor up deco",
+      "baseRadius": 0.02,
+      "topRadius": 0.02,
+      "height": 0.1,
+      "slices": 10,
+      "stacks": 10,
+      "style": "GLU_FILL",
+      "isClose": true,
+      "lineWidth": 1.0,
+      "r": 0.0,
+      "g": 0.0,
+      "b": 0.0,
+      "transX": -0.22,
+      "transY": 0.4,
+      "transZ": -0.05,
+      "rotX": 0.0,
+      "rotY": 0.0,
+      "rotZ": 0.0,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "",
+        "top": "",
+        "bottom": "",
+        "body": ""
+      }
+    },
+    {
+      "comment": "side armor down deco",
+      "baseRadius": 0.02,
+      "topRadius": 0.02,
+      "height": 0.1,
+      "slices": 10,
+      "stacks": 10,
+      "style": "GLU_FILL",
+      "isClose": true,
+      "lineWidth": 1.0,
+      "r": 0.0,
+      "g": 0.0,
+      "b": 0.0,
+      "transX": -0.235,
+      "transY": 0.35,
+      "transZ": -0.05,
+      "rotX": 0.0,
+      "rotY": 0.0,
+      "rotZ": 0.0,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "",
+        "top": "",
+        "bottom": "",
+        "body": ""
+      }
+    }
+  ],
+  "cubes": [
+    {
+      "comment": "side armor center",
+      "length": 0.05,
+      "width": 0.26,
+      "height": 0.4,
+      "r": 0.5,
+      "g": 0.5,
+      "b": 0.5,
+      "transX": -0.2275,
+      "transY": 0.21,
+      "transZ": 0.0,
+      "rotX": 0.0,
+      "rotY": 0.0,
+      "rotZ": -15.0,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "scaleZ": 1.0,
+      "isExpandable": true,
+      "textures": {
+        "isRepeat": true,
+        "all": "",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
+      }
+    }
+  ],
+  "frustumCube": [
+    {
+      "comment": "side armor front part",
+      "topLength": 0.2,
+      "topDepth": 0.2,
+      "topOffsetX": 0.0,
+      "topOffsetZ": 0.0,
+      "bottomLength": 0.3,
+      "bottomDepth": 0.2,
+      "height": 0.05,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 0.0,
+      "transX": -0.23,
+      "transY": 0.28,
+      "transZ": 0.0,
+      "rotX": 180.0,
+      "rotY": 0.0,
+      "rotZ": 105.0,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "scaleZ": 1.0,
+      "isExpandable": true,
+      "textures": {
+        "isRepeat": true,
+        "all": "",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
+      }
+    }
+  ]
+}

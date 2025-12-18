@@ -16,6 +16,15 @@
     <Filter Include="Data">
       <UniqueIdentifier>{e31c5097-cdff-418e-814e-32ff4d813f01}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Data\Leg">
+      <UniqueIdentifier>{5e28d950-aad8-4d44-b3ea-ff73eb4922de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\Leg\Left">
+      <UniqueIdentifier>{f39eb3c1-82be-4976-9b3b-65c1a2bd8852}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\Leg\Right">
+      <UniqueIdentifier>{34629072-a046-4ff8-8735-38aca74788a1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -158,29 +167,47 @@
     <None Include="armJointArmor.json">
       <Filter>Data</Filter>
     </None>
-    <None Include="leftLowerLeg.json">
-      <Filter>Data\Leg</Filter>
-    </None>
-    <None Include="leftUpperLeg.json">
-      <Filter>Data\Leg</Filter>
-    </None>
-    <None Include="rightFoot.json">
-      <Filter>Data\Leg</Filter>
-    </None>
-    <None Include="rightLowerLeg.json">
-      <Filter>Data\Leg</Filter>
-    </None>
-    <None Include="rightUpperLeg.json">
-      <Filter>Data\Leg</Filter>
-    </None>
     <None Include="leftFoot.json">
-      <Filter>Data\Leg</Filter>
+      <Filter>Data\Leg\Left</Filter>
     </None>
     <None Include="leftLegArmor.json">
-      <Filter>Data\Leg</Filter>
+      <Filter>Data\Leg\Left</Filter>
+    </None>
+    <None Include="leftLowerLeg.json">
+      <Filter>Data\Leg\Left</Filter>
+    </None>
+    <None Include="leftUpperLeg.json">
+      <Filter>Data\Leg\Left</Filter>
+    </None>
+    <None Include="rightFoot.json">
+      <Filter>Data\Leg\Right</Filter>
     </None>
     <None Include="rightLegArmor.json">
-      <Filter>Data\Leg</Filter>
+      <Filter>Data\Leg\Right</Filter>
+    </None>
+    <None Include="rightLowerLeg.json">
+      <Filter>Data\Leg\Right</Filter>
+    </None>
+    <None Include="rightUpperLeg.json">
+      <Filter>Data\Leg\Right</Filter>
+    </None>
+    <None Include="leftLegFrontArmor.json">
+      <Filter>Data\Leg\Left</Filter>
+    </None>
+    <None Include="leftLegBackArmor.json">
+      <Filter>Data\Leg\Left</Filter>
+    </None>
+    <None Include="leftLegSideArmor.json">
+      <Filter>Data\Leg\Left</Filter>
+    </None>
+    <None Include="rightLegFrontArmor.json">
+      <Filter>Data\Leg\Right</Filter>
+    </None>
+    <None Include="rightLegBackArmor.json">
+      <Filter>Data\Leg\Right</Filter>
+    </None>
+    <None Include="rightLegSideArmor.json">
+      <Filter>Data\Leg\Right</Filter>
     </None>
   </ItemGroup>
 </Project>
