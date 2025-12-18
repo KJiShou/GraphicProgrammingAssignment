@@ -479,7 +479,7 @@ void Draw() {
 	//===============================
 	// JS Testing Section
 	//===============================
-	/*backbone->RotateRightForearm(x, -90);
+	backbone->RotateRightForearm(x, -90);
 	backbone->RotateRightUpperArm(x, y, z);
 	backbone->RotateLeftForearm(x, -90);
 	backbone->RotateLeftHandFinger(x, y, z);
@@ -487,7 +487,7 @@ void Draw() {
 	backbone->RotateRightUpperLeg(x, y, z);
 	backbone->RotateRightLowerLeg(x);
 	backbone->RotateRightFoot(x, y, z);
-	backbone->RotateLeftUpperLeg(x, y, z);*/
+	backbone->RotateLeftUpperLeg(x, y, z);
 	backbone->RotateBody(x, y, z);
 
 	//===============================
