@@ -207,10 +207,16 @@
     <None Include="head.json" />
     <None Include="leftFoot.json" />
     <None Include="leftLegArmor.json" />
+    <None Include="leftLegBackArmor.json" />
+    <None Include="leftLegFrontArmor.json" />
+    <None Include="leftLegSideArmor.json" />
     <None Include="leftLowerLeg.json" />
     <None Include="leftUpperLeg.json" />
     <None Include="rightFoot.json" />
     <None Include="rightLegArmor.json" />
+    <None Include="rightLegBackArmor.json" />
+    <None Include="rightLegFrontArmor.json" />
+    <None Include="rightLegSideArmor.json" />
     <None Include="rightLowerLeg.json" />
     <None Include="rightUpperLeg.json" />
     <None Include="template.json" />
