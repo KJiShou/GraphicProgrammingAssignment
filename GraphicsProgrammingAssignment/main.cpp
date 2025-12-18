@@ -482,11 +482,13 @@ void Draw() {
 	//towerBridge->Draw(0);
 	//backbone->RotateHead(x, y, z);
 	
-	backbone->RotateRightForearm(x, -90);
+	/*backbone->RotateRightForearm(x, -90);
 	backbone->RotateRightUpperArm(x, y, z);
 	backbone->RotateLeftForearm(x, -90);
 		
-	backbone->RotateLeftHandFinger(x, y, z);
+	backbone->RotateLeftHandFinger(x, y, z);*/
+
+	backbone->RotateRightUpperLeg(x, y, z);
 	backbone->Draw();
 
 	glPushMatrix();
@@ -665,7 +667,6 @@ void Update(int framesToUpdate) {
 			else {
 				x++;
 			}
-
 		}
 		if (input.IsKeyPressed(DIKEYBOARD_NUMPAD2))
 		{
@@ -676,7 +677,6 @@ void Update(int framesToUpdate) {
 			else {
 				y++;
 			}
-
 		}
 		if (input.IsKeyPressed(DIKEYBOARD_NUMPAD3))
 		{
@@ -687,7 +687,6 @@ void Update(int framesToUpdate) {
 			else {
 				z++;
 			}
-
 		}
 		if (input.IsKeyPressed(DIKEYBOARD_NUMPAD8)) {
 			backbone->RotateRightIndex(0, 0, 0);
@@ -761,7 +760,7 @@ int main(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)
 	backbone = new BackBone();
 	backbone->SetBone();
 
-	ShowCursor(false);
+	ShowCursor(true);
 
 	towerBridge = new TowerBridge();
 	background = new Object("background.json");
