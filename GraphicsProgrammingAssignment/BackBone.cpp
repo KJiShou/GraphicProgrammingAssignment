@@ -57,7 +57,12 @@ BackBone::~BackBone()
 	delete rightUpperLeg;
 	delete rightLowerLeg;
 	delete rightFoot;
-	delete leftLegArmor;
+	delete leftLegFrontArmor;
+	delete leftLegBackArmor;
+	delete leftLegSideArmor;
+	delete rightLegFrontArmor;
+	delete rightLegBackArmor;
+	delete rightLegSideArmor;
 }
 
 
@@ -127,12 +132,16 @@ void BackBone::SetBone() {
 
 
 	// leg
-	leftLegArmor->Translate(-0.3, -0.5, 0.0);
+	leftLegFrontArmor->Translate(-0.3, -0.5, 0.0);
+	leftLegBackArmor->Translate(-0.3, -0.5, 0.0);
+	leftLegSideArmor->Translate(-0.3, -0.5, 0.0);
 	leftUpperLeg->Translate(-0.3, -0.5, 0.0);
 	leftLowerLeg->Translate(0, -0.95, 0);
 	leftFoot->Translate(0, -1.4, 0);
 
-	rightLegArmor->Translate(0.3, -0.5, 0.0);
+	rightLegFrontArmor->Translate(0.3, -0.5, 0.0);
+	rightLegBackArmor->Translate(0.3, -0.5, 0.0);
+	rightLegSideArmor->Translate(0.3, -0.5, 0.0);
 	rightUpperLeg->Translate(0.3, -0.5, 0);
 	rightLowerLeg->Translate(0, -0.95, 0);
 	rightFoot->Translate(0, -1.4, 0);
@@ -203,13 +212,17 @@ void BackBone::SetBone() {
 
 	// left leg
 	pelvis->AddChild(leftUpperLeg);
-	pelvis->AddChild(leftLegArmor);
+	pelvis->AddChild(leftLegFrontArmor);
+	pelvis->AddChild(leftLegBackArmor);
+	pelvis->AddChild(leftLegSideArmor);
 	leftUpperLeg->AddChild(leftLowerLeg);
 	leftLowerLeg->AddChild(leftFoot);
 
 	// right leg
 	pelvis->AddChild(rightUpperLeg);
-	pelvis->AddChild(rightLegArmor);
+	pelvis->AddChild(rightLegFrontArmor);
+	pelvis->AddChild(rightLegBackArmor);
+	pelvis->AddChild(rightLegSideArmor);
 	rightUpperLeg->AddChild(rightLowerLeg);
 	rightLowerLeg->AddChild(rightFoot);
 }
@@ -253,11 +266,15 @@ void BackBone::ReadData() {
 	rightThumbTip->ReadData();
 	headBone->ReadData();
 	leftUpperLeg->ReadData();
-	leftLegArmor->ReadData();
+	leftLegFrontArmor->ReadData();
+	leftLegBackArmor->ReadData();
+	leftLegSideArmor->ReadData();
 	leftLowerLeg->ReadData();
 	leftFoot->ReadData();
 	rightUpperLeg->ReadData();
-	rightLegArmor->ReadData();
+	rightLegFrontArmor->ReadData();
+	rightLegBackArmor->ReadData();
+	rightLegSideArmor->ReadData();
 	rightLowerLeg->ReadData();
 	rightFoot->ReadData();
 	pelvis->ReadData();

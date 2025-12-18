@@ -58,11 +58,16 @@ public:
 
 
 	// legs
-	Object* leftLegArmor = new Object("leftLegArmor.json");
+	Object* leftLegFrontArmor = new Object("leftLegFrontArmor.json");
+	Object* leftLegBackArmor = new Object("leftLegBackArmor.json");
+	Object* leftLegSideArmor = new Object("leftLegSideArmor.json");
 	Object* leftUpperLeg = new Object("leftUpperLeg.json");
 	Object* leftLowerLeg = new Object("leftLowerLeg.json");
 	Object* leftFoot = new Object("leftFoot.json");
-	Object* rightLegArmor = new Object("rightLegArmor.json");
+
+	Object* rightLegFrontArmor = new Object("rightLegFrontArmor.json");
+	Object* rightLegBackArmor = new Object("rightLegBackArmor.json");
+	Object* rightLegSideArmor = new Object("rightLegSideArmor.json");
 	Object* rightUpperLeg = new Object("rightUpperLeg.json");
 	Object* rightLowerLeg = new Object("rightLowerLeg.json");
 	Object* rightFoot = new Object("rightFoot.json");
