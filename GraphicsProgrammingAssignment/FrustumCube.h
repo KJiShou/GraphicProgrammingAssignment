@@ -28,6 +28,7 @@ public:
 	void SetColor(const std::array<float, 3>& c);
 
 	void SetExpandable(bool ex);
+	void SetIsRepeat(bool r);
 
 	void SetAllTextures(GLuint tex);
 	void SetFrontTexture(GLuint front);
@@ -136,5 +137,6 @@ private:
 
 	// expand in two way
 	bool isExpandable = false;
+	bool isRepeat = false;
 };
 

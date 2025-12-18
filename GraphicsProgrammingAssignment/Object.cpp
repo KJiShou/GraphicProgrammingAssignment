@@ -436,6 +436,7 @@ void Object::ReadData(bool firstRun) {
 			pyramids[i]->SetBottomTexture(LoadTexture(data.bottomTex, data.isRepeat));
 			pyramids[i]->SetLeftTexture(LoadTexture(data.leftTex, data.isRepeat));
 			pyramids[i]->SetRightTexture(LoadTexture(data.rightTex, data.isRepeat));
+			pyramids[i]->SetIsRepeat(data.isRepeat);
 			i++;
 		}
 		i = 0;
@@ -446,6 +447,7 @@ void Object::ReadData(bool firstRun) {
 			frustumCubes[i]->Rotate(data.rotX, data.rotY, data.rotZ);
 			frustumCubes[i]->Scale(data.scaleX, data.scaleY, data.scaleZ);
 			frustumCubes[i]->SetExpandable(data.isExpandable);
+			frustumCubes[i]->SetIsRepeat(data.isRepeat);
 
 			frustumCubes[i]->SetFrontTexture(LoadTexture(data.frontTex, data.isRepeat));
 			frustumCubes[i]->SetBackTexture(LoadTexture(data.backTex, data.isRepeat));
@@ -462,6 +464,7 @@ void Object::ReadData(bool firstRun) {
 			tetrahedrons[i]->Translate(data.transX, data.transY, data.transZ);
 			tetrahedrons[i]->Rotate(data.rotX, data.rotY, data.rotZ);
 			tetrahedrons[i]->Scale(data.scaleX, data.scaleY, data.scaleZ);
+			tetrahedrons[i]->SetIsRepeat(data.isRepeat);
 			i++;
 		}
 		/*i = 0;*/
@@ -554,6 +557,7 @@ void Object::ReadData(bool firstRun) {
 			pyramids[i]->Translate(pyramidsData[i].transX, pyramidsData[i].transY, pyramidsData[i].transZ);
 			pyramids[i]->Rotate(pyramidsData[i].rotX, pyramidsData[i].rotY, pyramidsData[i].rotZ);
 			pyramids[i]->Scale(pyramidsData[i].scaleX, pyramidsData[i].scaleY, pyramidsData[i].scaleZ);
+			pyramids[i]->SetIsRepeat(pyramidsData[i].isRepeat);
 		}
 
 		for (size_t i = 0; i < frustumCubes.size() && i < frustumCubesData.size(); i++)
@@ -578,6 +582,8 @@ void Object::ReadData(bool firstRun) {
 			frustumCubes[i]->Rotate(frustumCubesData[i].rotX, frustumCubesData[i].rotY, frustumCubesData[i].rotZ);
 			frustumCubes[i]->Scale(frustumCubesData[i].scaleX, frustumCubesData[i].scaleY, frustumCubesData[i].scaleZ);
 			frustumCubes[i]->SetExpandable(frustumCubesData[i].isExpandable);
+			frustumCubes[i]->SetIsRepeat(frustumCubesData[i].isRepeat);
+
 		}
 		for (size_t i = 0; i < tetrahedrons.size() && i < tetrahedronsData.size(); i++)
 		{
@@ -588,6 +594,7 @@ void Object::ReadData(bool firstRun) {
 			tetrahedrons[i]->Translate(tetrahedronsData[i].transX, tetrahedronsData[i].transY, tetrahedronsData[i].transZ);
 			tetrahedrons[i]->Rotate(tetrahedronsData[i].rotX, tetrahedronsData[i].rotY, tetrahedronsData[i].rotZ);
 			tetrahedrons[i]->Scale(tetrahedronsData[i].scaleX, tetrahedronsData[i].scaleY, tetrahedronsData[i].scaleZ);
+			tetrahedrons[i]->SetIsRepeat(tetrahedronsData[i].isRepeat);
 		}
 
 		// for (size_t i = 0; i < frustumCubes.size() && i < frustumCubesData.size(); i++)

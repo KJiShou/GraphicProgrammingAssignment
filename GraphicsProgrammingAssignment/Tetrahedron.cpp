@@ -62,6 +62,12 @@ void Tetrahedron::Draw() {
 
 	glScalef(scaleX, scaleY, scaleZ);
 
+	float tilingSize = 1.0f;
+
+	float tx = isRepeat ? (length / tilingSize) : 1.0f;
+	float ty = isRepeat ? (height / tilingSize) : 1.0f;
+	float tz = isRepeat ? (width / tilingSize) : 1.0f;
+
 	Math::Vec3 A = { 0.0f, 0.0f, 0.0f };
 	Math::Vec3 B = { length, 0.0f, 0.0f };
 	Math::Vec3 C = { centerX, 0.0f, width };
@@ -73,7 +79,7 @@ void Tetrahedron::Draw() {
 		(A.z + B.z + C.z + top.z) * 0.25f
 	};
 
-	auto emitFace = [&](const Math::Vec3& p1, const Math::Vec3& p2, const Math::Vec3& p3) {
+	auto emitFace = [&](const Math::Vec3& p1, const Math::Vec3& p2, const Math::Vec3& p3, float factorU, float factorV) {
 		Math::Vec3 n = Math::CalcNormal(p1, p2, p3);
 		Math::Vec3 faceCenter = {
 			(p1.x + p2.x + p3.x) / 3.0f,
@@ -87,37 +93,34 @@ void Tetrahedron::Draw() {
 		}
 		glNormal3f(n.x, n.y, n.z);
 
-		glTexCoord2f(0.5f, 1.0f);
+		glTexCoord2f(factorU * 0.5f, factorV);
 		glVertex3f(p3.x, p3.y, p3.z);
 
 		glTexCoord2f(0.0f, 0.0f);
 		glVertex3f(p1.x, p1.y, p1.z);
 
-		glTexCoord2f(1.0f, 0.0f);
+		glTexCoord2f(factorU, 0.0f);
 		glVertex3f(p2.x, p2.y, p2.z);
-		
-	};
+		};
 
 	glBindTexture(GL_TEXTURE_2D, texBottom);
 	glBegin(GL_TRIANGLES);
-	emitFace(A, B, C);     // base
+	emitFace(A, B, C, tx, tz);
 	glEnd();
 
 	glBindTexture(GL_TEXTURE_2D, texBack);
 	glBegin(GL_TRIANGLES);
-	emitFace(B, A, top);   // back
+	emitFace(B, A, top, tx, ty);
 	glEnd();
 
 	glBindTexture(GL_TEXTURE_2D, texRight);
 	glBegin(GL_TRIANGLES);
-	emitFace(C, B, top);   // right
+	emitFace(C, B, top, tz, ty);
 	glEnd();
 
 	glBindTexture(GL_TEXTURE_2D, texLeft);
 	glBegin(GL_TRIANGLES);
-	emitFace(A, C, top);   // left
-	glEnd();
-
+	emitFace(A, C, top, tz, ty);
 	glEnd();
 
 	glPopMatrix();
@@ -195,6 +198,10 @@ void Tetrahedron::SetLeftTexture(GLuint left) {
 
 void Tetrahedron::SetRightTexture(GLuint right) {
 	texRight = right;
+}
+
+void Tetrahedron::SetIsRepeat(bool r) {
+	isRepeat = r;
 }
 
 // ======================
