@@ -77,7 +77,7 @@ void BackBone::SetBone() {
 
 	rightUpperLeg->Translate(0.3, -0.5, 0);
 	rightLowerLeg->Translate(0, -0.95, 0);
-	rightFoot->Translate(0, -0.9, 0);
+	rightFoot->Translate(0, -1.4, 0);
 	// ====================
 	// child relationship
 	// ====================
