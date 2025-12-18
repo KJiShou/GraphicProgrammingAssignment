@@ -1,26 +1,154 @@
 {
-  "cylinders": [
-    {
-      "baseRadius": 0.1,
-      "topRadius": 0.1,
-      "height": 2.0,
-      "slices": 10,
-      "stacks": 10,
-      "style": "GLU_FILL",
-      "isClose": true,
-      "lineWidth": 1.0,
-      "r": 0.2,
-      "g": 0.2,
-      "b": 0.2,
-      "transX": 0.0,
-      "transY": 0.0,
-      "transZ": 0.0,
-      "rotX": -90.0,
-      "rotY": 0.0,
-      "rotZ": 0.0,
-      "scaleX": 1.0,
-      "scaleY": 1.0,
-      "scaleZ": 1.0
-    }
-  ]
+    "cylinders": [
+        {
+            "baseRadius": 0.1,
+            "topRadius": 0.1,
+            "height": 2.0,
+            "slices": 10,
+            "stacks": 10,
+            "style": "GLU_FILL",
+            "isClose": true,
+            "lineWidth": 1.0,
+            "r": 0.2,
+            "g": 0.2,
+            "b": 0.2,
+            "transX": 0.0,
+            "transY": 0.0,
+            "transZ": 0.0,
+            "rotX": -90.0,
+            "rotY": 0.0,
+            "rotZ": 0.0,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0
+        }
+    ],
+    "cubes": [
+        {
+            "length": 1.4,
+            "width": 0.5,
+            "height": 0.65,
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "transX": 0.0,
+            "transY": 1.82,
+            "transZ": -0.025,
+            "rotX": 0.0,
+            "rotY": 0.0,
+            "rotZ": 0.0,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0,
+            "isExpandable": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/.bmp",
+                "front": "Assets/.bmp",
+                "back": "Assets/.bmp",
+                "top": "Assets/.bmp",
+                "bottom": "Assets/.bmp",
+                "left": "Assets/.bmp",
+                "right": "Assets/.bmp"
+            }
+        },
+        {
+            "length": 1.4,
+            "width": 0.5,
+            "height": 0.45,
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "transX": 0.0,
+            "transY": 0.375,
+            "transZ": -0.025,
+            "rotX": 0.0,
+            "rotY": 0.0,
+            "rotZ": 0.0,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0,
+            "isExpandable": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/.bmp",
+                "front": "Assets/.bmp",
+                "back": "Assets/.bmp",
+                "top": "Assets/.bmp",
+                "bottom": "Assets/.bmp",
+                "left": "Assets/.bmp",
+                "right": "Assets/.bmp"
+            }
+        }
+    ],
+    "frustumCube": [
+        {
+            "topLength": 0.8,
+            "topDepth": 0.2,
+            "topOffsetX": 0.25,
+            "topOffsetZ": 0.15,
+            "bottomLength": 1.4,
+            "bottomDepth": 0.5,
+            "height": 0.6,
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "transX": 0.0,
+            "transY": 1.195,
+            "transZ": -0.025,
+            "rotX": 180.0,
+            "rotY": 0.0,
+            "rotZ": 0.0,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0,
+            "isExpandable": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/.bmp",
+                "front": "Assets/.bmp",
+                "back": "Assets/.bmp",
+                "top": "Assets/.bmp",
+                "bottom": "Assets/.bmp",
+                "left": "Assets/.bmp",
+                "right": "Assets/.bmp"
+            }
+        },
+        {
+            "topLength": 0.8,
+            "topDepth": 0.2,
+            "topOffsetX": 0.25,
+            "topOffsetZ": 0.15,
+            "bottomLength": 1.4,
+            "bottomDepth": 0.5,
+            "height": 0.5,
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "transX": 0.0,
+            "transY": 0.85,
+            "transZ": -0.025,
+            "rotX": 0.0,
+            "rotY": 0.0,
+            "rotZ": 0.0,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0,
+            "isExpandable": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/.bmp",
+                "front": "Assets/.bmp",
+                "back": "Assets/.bmp",
+                "top": "Assets/.bmp",
+                "bottom": "Assets/.bmp",
+                "left": "Assets/.bmp",
+                "right": "Assets/.bmp"
+            }
+        }
+    ]
+
+
+
+
 }
