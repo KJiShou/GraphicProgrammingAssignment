@@ -20,13 +20,13 @@
       "isExpandable": true,
       "textures": {
         "isRepeat": true,
-        "all": "Assets/",
-        "front": "Assets/",
-        "back": "Assets/",
-        "top": "Assets/",
-        "bottom": "Assets/",
-        "left": "Assets/",
-        "right": "Assets/"
+        "all": "",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
       }
     },
     {
@@ -502,12 +502,12 @@
       "topOffsetZ": 0.075,
       "bottomLength": 0.4,
       "bottomDepth": 0.4,
-      "height": 0.3,
+      "height": 0.32,
       "r": 1.0,
       "g": 1.0,
       "b": 1.0,
       "transX": 0.0,
-      "transY": -0.75,
+      "transY": -0.76,
       "transZ": 0.0,
       "rotX": 180,
       "rotY": 0.0,

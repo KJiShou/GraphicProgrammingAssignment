@@ -4,6 +4,7 @@
       "label": "",
       "baseRadius": 0.5,
       "topRadius": 0.5,
+      "innerRadius": 0.5,
       "height": 1.0,
       "slices": 10,
       "stacks": 10,
