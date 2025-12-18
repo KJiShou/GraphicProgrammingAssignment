@@ -28,7 +28,7 @@ json j;
 
 // light
 GLUquadricObj* var = gluNewQuadric();
-Light light0 = Light( { 0.2f, 0.2f, 0.2f, 1.0f}, { 1.0f, 1.0f, 1.0f, 1.0f}, {0.0f, 0.0f, 0.0f, 1.0f}, GL_LIGHT0);
+Light light0 = Light( { 0.2f, 0.2f, 0.2f, 1.0f}, { 1.0f, 1.0f, 1.0f, 1.0f}, {1.0f, 10.0f, 5.0f, 1.0f}, GL_LIGHT0);
 Cube c1 = Cube(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
 Pyramid p1 = Pyramid(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
 Tetrahedron t1 = Tetrahedron(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
@@ -476,19 +476,34 @@ void DrawAxis() {
 void Draw() {
 	glPushMatrix();
 	if (drawAxis) DrawAxis();
-	//backbone.RotateLeftFoot(x, y, z);
-	//backbone->RotateLeftFoot(x, y, z);
-	
-	//towerBridge->Draw(0);
-	//backbone->RotateHead(x, y, z);
-	
-	/*backbone->RotateRightForearm(x, -90);
+	//===============================
+	// JS Testing Section
+	//===============================
+	backbone->RotateRightForearm(x, -90);
 	backbone->RotateRightUpperArm(x, y, z);
 	backbone->RotateLeftForearm(x, -90);
-		
-	backbone->RotateLeftHandFinger(x, y, z);*/
-
+	backbone->RotateLeftHandFinger(x, y, z);
+	backbone->RotateRightHandFinger(x, y, z);
 	backbone->RotateRightUpperLeg(x, y, z);
+	backbone->RotateRightLowerLeg(x);
+	backbone->RotateRightFoot(x, y, z);
+
+	//===============================
+	// JY Testing Section
+	//===============================
+	backbone->RotateRightUpperLeg(x, y, z);
+	
+	
+	//===============================
+	// HJ Testing Section
+	//===============================
+	
+	
+
+
+	// ==============================
+	// Draw
+	// ==============================
 	backbone->Draw();
 
 	glPushMatrix();
