@@ -80,7 +80,7 @@ float x = 0, y = 0, z = 0;
 HWND GetHWnd() { return hWnd; }
 
 void ReadData() {
-	background->ReadData();
+	//background->ReadData();
 	backbone->ReadData();
 	towerBridge->ReadData();
 }
@@ -482,9 +482,9 @@ void Draw() {
 	//towerBridge->Draw(0);
 	//backbone->RotateHead(x, y, z);
 	
-	backbone->RotateRightForearm(x, y);
+	backbone->RotateRightForearm(x, -90);
 	backbone->RotateRightUpperArm(x, y, z);
-	backbone->RotateLeftForearm(x, y);
+	backbone->RotateLeftForearm(x, -90);
 		
 	backbone->RotateLeftHandFinger(x, y, z);
 	backbone->Draw();

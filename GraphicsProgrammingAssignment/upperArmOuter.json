@@ -20,13 +20,13 @@
       "isExpandable": true,
       "textures": {
         "isRepeat": true,
-        "all": "Assets/",
-        "front": "Assets/",
-        "back": "Assets/",
-        "top": "Assets/",
-        "bottom": "Assets/",
-        "left": "Assets/",
-        "right": "Assets/"
+        "all": "",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
       }
     },
     {
