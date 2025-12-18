@@ -16,9 +16,6 @@
     <Filter Include="Data">
       <UniqueIdentifier>{e31c5097-cdff-418e-814e-32ff4d813f01}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Data\Leg">
-      <UniqueIdentifier>{5e28d950-aad8-4d44-b3ea-ff73eb4922de}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -143,6 +140,12 @@
     <None Include="handFinger.json">
       <Filter>Data</Filter>
     </None>
+    <None Include="leftFoot.json" />
+    <None Include="leftLowerLeg.json" />
+    <None Include="leftUpperLeg.json" />
+    <None Include="rightFoot.json" />
+    <None Include="rightLowerLeg.json" />
+    <None Include="rightUpperLeg.json" />
     <None Include="handPalm.json">
       <Filter>Data</Filter>
     </None>
@@ -152,23 +155,8 @@
     <None Include="forearmOuter.json">
       <Filter>Data</Filter>
     </None>
-    <None Include="leftFoot.json">
-      <Filter>Data\Leg</Filter>
-    </None>
-    <None Include="leftLowerLeg.json">
-      <Filter>Data\Leg</Filter>
-    </None>
-    <None Include="leftUpperLeg.json">
-      <Filter>Data\Leg</Filter>
-    </None>
-    <None Include="rightFoot.json">
-      <Filter>Data\Leg</Filter>
-    </None>
-    <None Include="rightLowerLeg.json">
-      <Filter>Data\Leg</Filter>
-    </None>
-    <None Include="rightUpperLeg.json">
-      <Filter>Data\Leg</Filter>
+    <None Include="armJointArmor.json">
+      <Filter>Data</Filter>
     </None>
     <None Include="leftLowerLeg.json">
       <Filter>Data\Leg</Filter>

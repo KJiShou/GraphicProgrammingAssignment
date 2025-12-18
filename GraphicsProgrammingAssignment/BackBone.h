@@ -15,11 +15,15 @@ public:
 
 	// arms and hands
 	Object* leftUpperArm = new Object("empty.json");
+	Object* leftUpperArmJoint = new Object("empty.json");
+	Object* leftUpperArmJointOuter = new Object("armJointArmor.json");
 	Object* leftUpperArmOuter = new Object("upperArmOuter.json");
 	Object* leftForearm = new Object("empty.json");
 	Object* leftForearmOuter = new Object("forearmOuter.json");
 	Object* leftHand = new Object("handPalm.json");
 	Object* rightUpperArm = new Object("empty.json");
+	Object* rightUpperArmJoint = new Object("empty.json");
+	Object* rightUpperArmJointOuter = new Object("armJointArmor.json");
 	Object* rightUpperArmOuter = new Object("upperArmOuter.json");
 	Object* rightForearm = new Object("empty.json");
 	Object* rightForearmOuter = new Object("forearmOuter.json");
@@ -74,9 +78,11 @@ public:
 	float bodyRotation[3] = { 0.0f, 0.0f, 0.0f };
 	float pelvisRotation[3] = { 0.0f, 0.0f, 0.0f };
 	float leftUpperArmRotation[3] = { 0.0f, 0.0f, 0.0f };
+	float leftUpperArmJointArmorRotation[3] = { 0.0f, 0.0f, 0.0f };
 	float leftForearmRotation[3] = { 0.0f, 0.0f, 0.0f };
 	float leftHandRotation[3] = { 0.0f, 0.0f, 0.0f };
 	float rightUpperArmRotation[3] = { 0.0f, 0.0f, 0.0f };
+	float rightUpperArmJointArmorRotation[3] = { 0.0f, 0.0f, 0.0f };
 	float rightForearmRotation[3] = { 0.0f, 0.0f, 0.0f };
 	float rightHandRotation[3] = { 0.0f, 0.0f, 0.0f };
 	float leftUpperLegRotation[3] = { 0.0f, 0.0f, 0.0f };

@@ -73,14 +73,15 @@ void BackBone::SetBone() {
 	body->Translate(0, 1, 0);
 	
 	// arm
-	leftUpperArm->Translate(-1.0, 1.8, 0);
+	leftUpperArmJoint->Translate(-1.0, 1.8, 0);
 	leftForearm->Translate(0.0, -0.95, 0);
 	leftHand->Translate(0.0, -0.9, 0);
 
-	rightUpperArm->Translate(1.0, 1.8, 0);
+	rightUpperArmJoint->Translate(1.0, 1.8, 0);
+	rightUpperArmJointOuter->Rotate(0, 180, 0);
+	rightUpperArmOuter->Rotate(0, 180, 0);
 	rightForearm->Translate(0.0, -0.95, 0);
 	rightHand->Translate(0.0, -0.9, 0);
-	rightUpperArmOuter->Rotate(0, 180, 0);
 	// index finger positions
 	rightIndexBase->Translate(0.09f, -0.25f, 0.0f);
 	rightIndexMid->Translate(0.0f, -0.13f, 0.0f);
@@ -129,11 +130,15 @@ void BackBone::SetBone() {
 	// leg
 	leftLegArmor->Translate(-0.3, -0.5, 0.0);
 	leftUpperLeg->Translate(-0.3, -0.5, 0.0);
+	leftUpperLeg->Scale(1.2, 1.2, 1.2);
+	leftUpperLeg->Translate(-0.4, -0.5, 0.0);
 	leftLowerLeg->Translate(0, -0.95, 0);
 	leftFoot->Translate(0, -1.4, 0);
 
 	rightLegArmor->Translate(0.3, -0.5, 0.0);
 	rightUpperLeg->Translate(0.3, -0.5, 0);
+	rightUpperLeg->Scale(1.2, 1.2, 1.2);
+	rightUpperLeg->Translate(0.4, -0.5, 0);
 	rightLowerLeg->Translate(0, -0.95, 0);
 	rightFoot->Translate(0, -1.4, 0);
 	// ====================
@@ -148,7 +153,9 @@ void BackBone::SetBone() {
 	body->AddChild(headBone);
 
 	// left arm
-	body->AddChild(leftUpperArm);
+	body->AddChild(leftUpperArmJoint);
+	leftUpperArmJoint->AddChild(leftUpperArm);
+	leftUpperArmJoint->AddChild(leftUpperArmJointOuter);
 	leftUpperArm->AddChild(leftForearm);
 	leftUpperArm->AddChild(leftUpperArmOuter);
 	leftForearm->AddChild(leftHand);
@@ -175,7 +182,9 @@ void BackBone::SetBone() {
 	leftThumbMid->AddChild(leftThumbTip);
 
 	// right arm
-	body->AddChild(rightUpperArm);
+	body->AddChild(rightUpperArmJoint);
+	rightUpperArmJoint->AddChild(rightUpperArm);
+	rightUpperArmJoint->AddChild(rightUpperArmJointOuter);
 	rightUpperArm->AddChild(rightForearm);
 	rightUpperArm->AddChild(rightUpperArmOuter);
 	rightForearm->AddChild(rightHand);
@@ -265,6 +274,8 @@ void BackBone::ReadData() {
 	rightUpperArmOuter->ReadData();
 	leftForearmOuter->ReadData();
 	rightForearmOuter->ReadData();
+	rightUpperArmJoint->ReadData();
+	leftUpperArmJoint->ReadData();
 }
 
 float clamp(float v, float min, float max) {
@@ -321,9 +332,12 @@ void BackBone::RotateLeftHand(float x, float y, float z)
 
 void BackBone::RotateRightUpperArm(float x, float y, float z)
 {
-	float rx = clamp(x, -135.0f, 45.0f);
-	float rz = clamp(z, -20.0f, 100.0f);
+	float rx = clamp(x, -45.0f, 180.0f);
+	float rz = clamp(z, -20.0f, 100);
 	float ry = clamp(y, -90.0f, 90.0f);
+
+	rightUpperArmJointArmorRotation[0] = -rx;
+	if (rz > 70) rightUpperArmJointArmorRotation[2] = -(rz-70);
 
 	rightUpperArmRotation[0] = -rx;
 	rightUpperArmRotation[1] = -ry;
@@ -519,6 +533,7 @@ void BackBone::Draw() {
 	leftUpperArm->Rotate(leftUpperArmRotation[0], leftUpperArmRotation[1], leftUpperArmRotation[2]);
 	leftForearm->Rotate(leftForearmRotation[0], leftForearmRotation[1], leftForearmRotation[2]);
 	leftHand->Rotate(leftHandRotation[0], leftHandRotation[1], leftHandRotation[2]);
+	rightUpperArmJointOuter->Rotate(rightUpperArmJointArmorRotation[0], rightUpperArmJointArmorRotation[1] + 180.0f, rightUpperArmJointArmorRotation[2]);
 	rightUpperArm->Rotate(rightUpperArmRotation[0], rightUpperArmRotation[1], rightUpperArmRotation[2]);
 	rightForearm->Rotate(rightForearmRotation[0], rightForearmRotation[1], rightForearmRotation[2]);
 	rightHand->Rotate(rightHandRotation[0], rightHandRotation[1], rightHandRotation[2]);

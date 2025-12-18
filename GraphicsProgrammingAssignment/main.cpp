@@ -28,7 +28,7 @@ json j;
 
 // light
 GLUquadricObj* var = gluNewQuadric();
-Light light0 = Light( { 0.2f, 0.2f, 0.2f, 1.0f}, { 1.0f, 1.0f, 1.0f, 1.0f}, {0.0f, 0.0f, 0.0f, 1.0f}, GL_LIGHT0);
+Light light0 = Light( { 0.2f, 0.2f, 0.2f, 1.0f}, { 1.0f, 1.0f, 1.0f, 1.0f}, {1.0f, 10.0f, 5.0f, 1.0f}, GL_LIGHT0);
 Cube c1 = Cube(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
 Pyramid p1 = Pyramid(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
 Tetrahedron t1 = Tetrahedron(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
@@ -489,6 +489,8 @@ void Draw() {
 	backbone->RotateLeftHandFinger(x, y, z);*/
 
 	backbone->RotateRightUpperLeg(x, y, z);
+	backbone->RotateLeftHandFinger(x, y, z);
+	backbone->RotateRightHandFinger(x, y, z);
 	backbone->Draw();
 
 	glPushMatrix();
