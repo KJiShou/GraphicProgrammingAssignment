@@ -71,9 +71,9 @@ void BackBone::SetBone() {
 
 
 	// leg
-	leftUpperLeg->Translate(-0.3, -0.5, 1.0);
+	leftUpperLeg->Translate(-0.3, -0.5, 0.0);
 	leftLowerLeg->Translate(0, -0.95, 0);
-	leftFoot->Translate(0, -0.9, 0);
+	leftFoot->Translate(0, -1.4, 0);
 
 	rightUpperLeg->Translate(0.3, -0.5, 0);
 	rightLowerLeg->Translate(0, -0.95, 0);
