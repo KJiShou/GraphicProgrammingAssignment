@@ -1,0 +1,37 @@
+{
+    "frustumCube": [
+        {
+            "label": "",
+            "topLength": 2.0,
+            "topDepth": 1.0,
+            "topOffsetX": 1.0,
+            "topOffsetZ": 1.0,
+            "bottomLength": 1.0,
+            "bottomDepth": 1.0,
+            "height": 1.0,
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "transX": 0.0,
+            "transY": 0.0,
+            "transZ": 0.0,
+            "rotX": 0.0,
+            "rotY": 0.0,
+            "rotZ": 0.0,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0,
+            "isExpandable": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/.bmp",
+                "front": "Assets/.bmp",
+                "back": "Assets/.bmp",
+                "top": "Assets/.bmp",
+                "bottom": "Assets/.bmp",
+                "left": "Assets/.bmp",
+                "right": "Assets/.bmp"
+            }
+        }
+    ]
+}
