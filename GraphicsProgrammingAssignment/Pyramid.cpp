@@ -112,6 +112,12 @@ void Pyramid::Draw() {
 
 	glScalef(scaleX, scaleY, scaleZ);
 
+	float tilingSize = 1.0f;
+
+	float tx = isRepeat ? (length / tilingSize) : 1.0f;
+	float tz = isRepeat ? (width / tilingSize) : 1.0f;
+	float ty = isRepeat ? (height / tilingSize) : 1.0f;
+
 	Math::Vec3 apex = { centerX, height, centerZ };
 	Math::Vec3 v0 = { 0.0f, 0.0f, 0.0f };       // back-left
 	Math::Vec3 v1 = { length, 0.0f, 0.0f };     // back-right
@@ -124,17 +130,10 @@ void Pyramid::Draw() {
 	Math::Vec3 normal = Math::CalcNormal(v0, v1, v2);
 	glNormal3f(normal.x, normal.y, normal.z);
 
-	glTexCoord2f(0.0f, 1.0f);
-	glVertex3f(v3.x, v3.y, v3.z);
-
-	glTexCoord2f(0.0f, 0.0f);
-	glVertex3f(v0.x, v0.y, v0.z);
-	
-	glTexCoord2f(1.0f, 0.0f);
-	glVertex3f(v1.x, v1.y, v1.z);
-
-	glTexCoord2f(1.0f, 1.0f);
-	glVertex3f(v2.x, v2.y, v2.z);
+	glTexCoord2f(0.0f, tz); glVertex3f(v3.x, v3.y, v3.z);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(v0.x, v0.y, v0.z);
+	glTexCoord2f(tx, 0.0f); glVertex3f(v1.x, v1.y, v1.z);
+	glTexCoord2f(tx, tz);   glVertex3f(v2.x, v2.y, v2.z);
 
 	glEnd();
 
@@ -144,14 +143,9 @@ void Pyramid::Draw() {
 	normal = Math::CalcNormal(v3, v2, apex);
 	glNormal3f(normal.x, normal.y, normal.z);
 
-	glTexCoord2f(0.5f, 1.0f);
-	glVertex3f(apex.x, apex.y, apex.z);
-	
-	glTexCoord2f(0.0f, 0.0f);
-	glVertex3f(v3.x, v3.y, v3.z);
-	
-	glTexCoord2f(1.0f, 0.0f);
-	glVertex3f(v2.x, v2.y, v2.z);
+	glTexCoord2f(tx * 0.5f, ty);   glVertex3f(apex.x, apex.y, apex.z);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(v3.x, v3.y, v3.z);
+	glTexCoord2f(tx, 0.0f); glVertex3f(v2.x, v2.y, v2.z);
 	
 	glEnd();
 
@@ -161,14 +155,9 @@ void Pyramid::Draw() {
 	normal = Math::CalcNormal(v1, v0, apex);
 	glNormal3f(normal.x, normal.y, normal.z);
 
-	glTexCoord2f(0.5f, 1.0f);
-	glVertex3f(apex.x, apex.y, apex.z);
-
-	glTexCoord2f(0.0f, 0.0f);
-	glVertex3f(v1.x, v1.y, v1.z);
-
-	glTexCoord2f(1.0f, 0.0f);
-	glVertex3f(v0.x, v0.y, v0.z);
+	glTexCoord2f(tx * 0.5f, ty);   glVertex3f(apex.x, apex.y, apex.z);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(v1.x, v1.y, v1.z);
+	glTexCoord2f(tx, 0.0f); glVertex3f(v0.x, v0.y, v0.z);
 
 	glEnd();
 
@@ -178,14 +167,9 @@ void Pyramid::Draw() {
 	normal = Math::CalcNormal(v2, v1, apex);
 	glNormal3f(normal.x, normal.y, normal.z);
 
-	glTexCoord2f(0.5f, 1.0f);
-	glVertex3f(apex.x, apex.y, apex.z);
-
-	glTexCoord2f(0.0f, 0.0f);
-	glVertex3f(v2.x, v2.y, v2.z);
-	
-	glTexCoord2f(1.0f, 0.0f);
-	glVertex3f(v1.x, v1.y, v1.z);
+	glTexCoord2f(tz * 0.5f, ty);   glVertex3f(apex.x, apex.y, apex.z);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(v2.x, v2.y, v2.z);
+	glTexCoord2f(tz, 0.0f); glVertex3f(v1.x, v1.y, v1.z);
 	
 	glEnd();
 
@@ -195,14 +179,9 @@ void Pyramid::Draw() {
 	normal = Math::CalcNormal(v0, v3, apex);
 	glNormal3f(normal.x, normal.y, normal.z);
 
-	glTexCoord2f(0.5f, 1.0f);
-	glVertex3f(apex.x, apex.y, apex.z);
-
-	glTexCoord2f(0.0f, 0.0f);
-	glVertex3f(v0.x, v0.y, v0.z);
-
-	glTexCoord2f(1.0f, 0.0f);
-	glVertex3f(v3.x, v3.y, v3.z);
+	glTexCoord2f(tz * 0.5f, ty);   glVertex3f(apex.x, apex.y, apex.z);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(v0.x, v0.y, v0.z);
+	glTexCoord2f(tz, 0.0f); glVertex3f(v3.x, v3.y, v3.z);
 	glEnd();
 
 	glPopMatrix();
@@ -287,6 +266,9 @@ void Pyramid::SetRightTexture(GLuint right) {
 	texRight = right;
 }
 
+void Pyramid::SetIsRepeat(bool r) {
+	isRepeat = r;
+}
 
 // ======================
 // Getters
