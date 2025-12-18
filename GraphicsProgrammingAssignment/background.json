@@ -16,7 +16,17 @@
       "scaleX": 1.0,
       "scaleY": 1.0,
       "scaleZ": 1.0,
-      "isExpandable": true
+      "isExpandable": true,
+      "textures": {
+        "isRepeat": false,
+        "all": "Assets/tower/bluesky.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
+      }
     }
   ]
 }

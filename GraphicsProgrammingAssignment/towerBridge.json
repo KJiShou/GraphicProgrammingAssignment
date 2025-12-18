@@ -10,9 +10,9 @@
       "style": "GLU_FILL",
       "isClose": false,
       "lineWidth": 1.0,
-      "r": 0.502,
-      "g": 0.424,
-      "b": 0.38,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": -0.5,
       "transY": 3.5,
       "transZ": 0.5,
@@ -21,7 +21,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/bricks.bmp",
+        "top": "Assets/tower/bricks.bmp",
+        "bottom": "Assets/tower/bricks.bmp",
+        "body": "Assets/tower/bricks.bmp"
+      }
     },
     {
       "comment": "Long Cylinder",
@@ -33,9 +40,9 @@
       "style": "GLU_FILL",
       "isClose": false,
       "lineWidth": 1.0,
-      "r": 0.502,
-      "g": 0.424,
-      "b": 0.38,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": 0.5,
       "transY": 3.5,
       "transZ": 0.5,
@@ -44,7 +51,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/bricks.bmp",
+        "top": "Assets/tower/bricks.bmp",
+        "bottom": "Assets/tower/bricks.bmp",
+        "body": "Assets/tower/bricks.bmp"
+      }
     },
     {
       "comment": "Long Cylinder",
@@ -56,9 +70,9 @@
       "style": "GLU_FILL",
       "isClose": false,
       "lineWidth": 1.0,
-      "r": 0.502,
-      "g": 0.424,
-      "b": 0.38,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": 0.5,
       "transY": 3.5,
       "transZ": -0.5,
@@ -67,7 +81,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/bricks.bmp",
+        "top": "Assets/tower/bricks.bmp",
+        "bottom": "Assets/tower/bricks.bmp",
+        "body": "Assets/tower/bricks.bmp"
+      }
     },
     {
       "comment": "Long Cylinder",
@@ -79,9 +100,9 @@
       "style": "GLU_FILL",
       "isClose": false,
       "lineWidth": 1.0,
-      "r": 0.502,
-      "g": 0.424,
-      "b": 0.38,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": -0.5,
       "transY": 3.5,
       "transZ": -0.5,
@@ -90,7 +111,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/bricks.bmp",
+        "top": "Assets/tower/bricks.bmp",
+        "bottom": "Assets/tower/bricks.bmp",
+        "body": "Assets/tower/bricks.bmp"
+      }
     },
     {
       "comment": "Top Cone",
@@ -102,9 +130,9 @@
       "style": "GLU_FILL",
       "isClose": false,
       "lineWidth": 1.0,
-      "r": 0.482,
-      "g": 0.404,
-      "b": 0.36,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": -0.5,
       "transY": 3.5,
       "transZ": -0.5,
@@ -113,7 +141,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/roof.bmp",
+        "top": "",
+        "bottom": "",
+        "body": ""
+      }
     },
     {
       "comment": "Top Cone",
@@ -125,9 +160,9 @@
       "style": "GLU_FILL",
       "isClose": false,
       "lineWidth": 1.0,
-      "r": 0.482,
-      "g": 0.404,
-      "b": 0.36,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": 0.5,
       "transY": 3.5,
       "transZ": -0.5,
@@ -136,7 +171,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/roof.bmp",
+        "top": "",
+        "bottom": "",
+        "body": ""
+      }
     },
     {
       "comment": "Top Cone",
@@ -148,9 +190,9 @@
       "style": "GLU_FILL",
       "isClose": false,
       "lineWidth": 1.0,
-      "r": 0.482,
-      "g": 0.404,
-      "b": 0.36,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": 0.5,
       "transY": 3.5,
       "transZ": 0.5,
@@ -159,7 +201,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/roof.bmp",
+        "top": "",
+        "bottom": "",
+        "body": ""
+      }
     },
     {
       "comment": "Top Cone",
@@ -171,9 +220,9 @@
       "style": "GLU_FILL",
       "isClose": false,
       "lineWidth": 1.0,
-      "r": 0.482,
-      "g": 0.404,
-      "b": 0.36,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": -0.5,
       "transY": 3.5,
       "transZ": 0.5,
@@ -182,7 +231,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/roof.bmp",
+        "top": "",
+        "bottom": "",
+        "body": ""
+      }
     },
     {
       "comment": "Top Big Cone",
@@ -194,9 +250,9 @@
       "style": "GLU_FILL",
       "isClose": false,
       "lineWidth": 1.0,
-      "r": 0.482,
-      "g": 0.404,
-      "b": 0.36,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": 0.0,
       "transY": 3.5,
       "transZ": 0.0,
@@ -205,7 +261,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/roof.bmp",
+        "top": "",
+        "bottom": "",
+        "body": ""
+      }
     },
     {
       "comment": "Top Big Cylinder",
@@ -217,9 +280,9 @@
       "style": "GLU_FILL",
       "isClose": false,
       "lineWidth": 1.0,
-      "r": 0.502,
-      "g": 0.424,
-      "b": 0.38,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": 0.0,
       "transY": 2.5,
       "transZ": 0.0,
@@ -228,7 +291,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/bricks.bmp",
+        "top": "Assets/tower/bricks.bmp",
+        "bottom": "Assets/tower/bricks.bmp",
+        "body": "Assets/tower/bricks.bmp"
+      }
     },
     {
       "comment": "Side Road 1",
@@ -251,7 +321,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/wire.bmp",
+        "top": "Assets/tower/wire.bmp",
+        "bottom": "Assets/tower/wire.bmp",
+        "body": "Assets/tower/wire.bmp"
+      }
     },
     {
       "comment": "Side Road 2",
@@ -274,7 +351,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/wire.bmp",
+        "top": "Assets/tower/wire.bmp",
+        "bottom": "Assets/tower/wire.bmp",
+        "body": "Assets/tower/wire.bmp"
+      }
     },
     {
       "comment": "Side Road 3",
@@ -297,7 +381,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/wire.bmp",
+        "top": "Assets/tower/wire.bmp",
+        "bottom": "Assets/tower/wire.bmp",
+        "body": "Assets/tower/wire.bmp"
+      }
     },
     {
       "comment": "Side Road 4",
@@ -320,7 +411,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/wire.bmp",
+        "top": "Assets/tower/wire.bmp",
+        "bottom": "Assets/tower/wire.bmp",
+        "body": "Assets/tower/wire.bmp"
+      }
     },
     {
       "comment": "Side Road 5",
@@ -343,7 +441,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/wire.bmp",
+        "top": "Assets/tower/wire.bmp",
+        "bottom": "Assets/tower/wire.bmp",
+        "body": "Assets/tower/wire.bmp"
+      }
     },
     {
       "comment": "Side Road 6",
@@ -366,7 +471,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/wire.bmp",
+        "top": "Assets/tower/wire.bmp",
+        "bottom": "Assets/tower/wire.bmp",
+        "body": "Assets/tower/wire.bmp"
+      }
     },
     {
       "comment": "Side Road 7",
@@ -389,7 +501,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/wire.bmp",
+        "top": "Assets/tower/wire.bmp",
+        "bottom": "Assets/tower/wire.bmp",
+        "body": "Assets/tower/wire.bmp"
+      }
     },
     {
       "comment": "Side Road 8",
@@ -412,7 +531,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/wire.bmp",
+        "top": "Assets/tower/wire.bmp",
+        "bottom": "Assets/tower/wire.bmp",
+        "body": "Assets/tower/wire.bmp"
+      }
     },
     {
       "comment": "Side Road 9",
@@ -435,7 +561,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/wire.bmp",
+        "top": "Assets/tower/wire.bmp",
+        "bottom": "Assets/tower/wire.bmp",
+        "body": "Assets/tower/wire.bmp"
+      }
     },
     {
       "comment": "Side Road top",
@@ -447,9 +580,9 @@
       "style": "GLU_FILL",
       "isClose": false,
       "lineWidth": 1.0,
-      "r": 0.286,
-      "g": 0.494,
-      "b": 0.588,
+      "r": 1,
+      "g": 1,
+      "b": 1,
       "transX": -0.5,
       "transY": -2.2,
       "transZ": -12.5,
@@ -458,7 +591,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/metal.bmp",
+        "top": "Assets/tower/metal.bmp",
+        "bottom": "Assets/tower/metal.bmp",
+        "body": "Assets/tower/metal.bmp"
+      }
     },
     {
       "comment": "Side Road 1",
@@ -481,7 +621,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/wire.bmp",
+        "top": "Assets/tower/wire.bmp",
+        "bottom": "Assets/tower/wire.bmp",
+        "body": "Assets/tower/wire.bmp"
+      }
     },
     {
       "comment": "Side Road 2",
@@ -504,7 +651,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/wire.bmp",
+        "top": "Assets/tower/wire.bmp",
+        "bottom": "Assets/tower/wire.bmp",
+        "body": "Assets/tower/wire.bmp"
+      }
     },
     {
       "comment": "Side Road 3",
@@ -527,7 +681,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/wire.bmp",
+        "top": "Assets/tower/wire.bmp",
+        "bottom": "Assets/tower/wire.bmp",
+        "body": "Assets/tower/wire.bmp"
+      }
     },
     {
       "comment": "Side Road 4",
@@ -550,7 +711,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/wire.bmp",
+        "top": "Assets/tower/wire.bmp",
+        "bottom": "Assets/tower/wire.bmp",
+        "body": "Assets/tower/wire.bmp"
+      }
     },
     {
       "comment": "Side Road 5",
@@ -573,7 +741,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/wire.bmp",
+        "top": "Assets/tower/wire.bmp",
+        "bottom": "Assets/tower/wire.bmp",
+        "body": "Assets/tower/wire.bmp"
+      }
     },
     {
       "comment": "Side Road 6",
@@ -596,7 +771,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/wire.bmp",
+        "top": "Assets/tower/wire.bmp",
+        "bottom": "Assets/tower/wire.bmp",
+        "body": "Assets/tower/wire.bmp"
+      }
     },
     {
       "comment": "Side Road 7",
@@ -619,7 +801,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/wire.bmp",
+        "top": "Assets/tower/wire.bmp",
+        "bottom": "Assets/tower/wire.bmp",
+        "body": "Assets/tower/wire.bmp"
+      }
     },
     {
       "comment": "Side Road 8",
@@ -642,7 +831,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/wire.bmp",
+        "top": "Assets/tower/wire.bmp",
+        "bottom": "Assets/tower/wire.bmp",
+        "body": "Assets/tower/wire.bmp"
+      }
     },
     {
       "comment": "Side Road 9",
@@ -665,7 +861,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/wire.bmp",
+        "top": "Assets/tower/wire.bmp",
+        "bottom": "Assets/tower/wire.bmp",
+        "body": "Assets/tower/wire.bmp"
+      }
     },
     {
       "comment": "Side Road top",
@@ -677,9 +880,9 @@
       "style": "GLU_FILL",
       "isClose": false,
       "lineWidth": 1.0,
-      "r": 0.286,
-      "g": 0.494,
-      "b": 0.588,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": 0.5,
       "transY": -2.2,
       "transZ": -12.5,
@@ -688,7 +891,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/metal.bmp",
+        "top": "Assets/tower/metal.bmp",
+        "bottom": "Assets/tower/metal.bmp",
+        "body": "Assets/tower/metal.bmp"
+      }
     }
   ],
   "cubes": [
@@ -697,9 +907,9 @@
       "length": 1.0,
       "width": 0.1,
       "height": 5.0,
-      "r": 0.514,
-      "g": 0.447,
-      "b": 0.42,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": 0.5,
       "transY": 0.0,
       "transZ": 0.0,
@@ -709,16 +919,26 @@
       "scaleX": 1.0,
       "scaleY": 1.0,
       "scaleZ": 1.0,
-      "isExpandable": true
+      "isExpandable": true,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/bricks.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
+      }
     },
     {
       "comment": "Wall",
       "length": 1.0,
       "width": 0.1,
       "height": 5.0,
-      "r": 0.514,
-      "g": 0.447,
-      "b": 0.42,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": -0.5,
       "transY": 0.0,
       "transZ": 0.0,
@@ -728,7 +948,17 @@
       "scaleX": 1.0,
       "scaleY": 1.0,
       "scaleZ": 1.0,
-      "isExpandable": true
+      "isExpandable": true,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/bricks.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
+      }
 
     },
     {
@@ -736,9 +966,9 @@
       "length": 1.0,
       "width": 0.1,
       "height": 5.0,
-      "r": 0.514,
-      "g": 0.447,
-      "b": 0.42,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": 0.0,
       "transY": 0.0,
       "transZ": -0.5,
@@ -748,7 +978,17 @@
       "scaleX": 1.0,
       "scaleY": 1.0,
       "scaleZ": 1.0,
-      "isExpandable": true
+      "isExpandable": true,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/bricks.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
+      }
 
     },
     {
@@ -756,9 +996,9 @@
       "length": 1.0,
       "width": 0.1,
       "height": 5.0,
-      "r": 0.514,
-      "g": 0.447,
-      "b": 0.42,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": 0.0,
       "transY": 0.0,
       "transZ": 0.5,
@@ -768,7 +1008,17 @@
       "scaleX": 1.0,
       "scaleY": 1.0,
       "scaleZ": 1.0,
-      "isExpandable": true
+      "isExpandable": true,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/bricks.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
+      }
 
     },
     {
@@ -788,7 +1038,17 @@
       "scaleX": 1.0,
       "scaleY": 1.0,
       "scaleZ": 1.0,
-      "isExpandable": true
+      "isExpandable": true,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/whiteBricks.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
+      }
 
     },
     {
@@ -808,7 +1068,17 @@
       "scaleX": 1.0,
       "scaleY": 1.0,
       "scaleZ": 1.0,
-      "isExpandable": true
+      "isExpandable": true,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/whiteBricks.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
+      }
 
     },
     {
@@ -828,7 +1098,17 @@
       "scaleX": 1.0,
       "scaleY": 1.0,
       "scaleZ": 1.0,
-      "isExpandable": true
+      "isExpandable": true,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/whiteBricks.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
+      }
 
     },
     {
@@ -848,7 +1128,17 @@
       "scaleX": 1.0,
       "scaleY": 1.0,
       "scaleZ": 1.0,
-      "isExpandable": true
+      "isExpandable": true,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/whiteBricks.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
+      }
 
     },
     {
@@ -868,7 +1158,17 @@
       "scaleX": 1.0,
       "scaleY": 1.0,
       "scaleZ": 1.0,
-      "isExpandable": true
+      "isExpandable": true,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/whiteBricks.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
+      }
 
     },
     {
@@ -888,36 +1188,56 @@
       "scaleX": 2.0,
       "scaleY": 1.0,
       "scaleZ": 2.0,
-      "isExpandable": true
+      "isExpandable": true,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/whiteBricks.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
+      }
 
     },
     {
       "comment": "Up Bridge",
-      "length": 1.5,
-      "width": 5.5,
+      "length": 5.5,
+      "width": 1.5,
       "height": 0.2,
-      "r": 0.49,
-      "g": 0.561,
-      "b": 0.604,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": 0,
       "transY": 2.5,
       "transZ": 3.45,
       "rotX": 0.0,
-      "rotY": 0.0,
+      "rotY": 90,
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
       "scaleZ": 1.0,
-      "isExpandable": true
+      "isExpandable": true,
+      "textures": {
+        "isRepeat": false,
+        "all": "Assets/tower/road.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
+      }
     },
     {
       "comment": "Up Side Bridge",
       "length": 0.2,
       "width": 5.5,
       "height": 0.5,
-      "r": 0.706,
-      "g": 0.686,
-      "b": 0.659,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": -0.5,
       "transY": 2.8,
       "transZ": 3.45,
@@ -927,16 +1247,26 @@
       "scaleX": 1.0,
       "scaleY": 1.0,
       "scaleZ": 1.0,
-      "isExpandable": true
+      "isExpandable": true,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/whiteBricks.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
+      }
     },
     {
       "comment": "Up Side Bridge",
       "length": 0.2,
       "width": 5.5,
       "height": 0.5,
-      "r": 0.706,
-      "g": 0.686,
-      "b": 0.659,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": 0.5,
       "transY": 2.8,
       "transZ": 3.45,
@@ -946,35 +1276,55 @@
       "scaleX": 1.0,
       "scaleY": 1.0,
       "scaleZ": 1.0,
-      "isExpandable": true
+      "isExpandable": true,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/whiteBricks.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
+      }
     },
     {
       "comment": "Bridge",
-      "length": 2,
-      "width": 11.0,
+      "length": 11,
+      "width": 2.0,
       "height": 0.2,
-      "r": 0.149,
-      "g": 0.141,
-      "b": 0.176,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": 0,
       "transY": -2.6,
       "transZ": -7.5,
       "rotX": 0.0,
-      "rotY": 0.0,
+      "rotY": 90,
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
       "scaleZ": 1.0,
-      "isExpandable": true
+      "isExpandable": true,
+      "textures": {
+        "isRepeat": false,
+        "all": "Assets/tower/road.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
+      }
     },
     {
       "comment": "Left Road Side",
       "length": 0.2,
       "width": 11.0,
       "height": 0.5,
-      "r": 0.659,
-      "g": 0.647,
-      "b": 0.694,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": -0.9,
       "transY": -2.25,
       "transZ": -7.5,
@@ -984,16 +1334,26 @@
       "scaleX": 1.0,
       "scaleY": 1.0,
       "scaleZ": 1.0,
-      "isExpandable": true
+      "isExpandable": true,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/whiteBricks.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
+      }
     },
     {
       "comment": "Right Road Side",
       "length": 0.2,
       "width": 11.0,
       "height": 0.5,
-      "r": 0.659,
-      "g": 0.647,
-      "b": 0.694,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": 0.9,
       "transY": -2.25,
       "transZ": -7.5,
@@ -1003,16 +1363,26 @@
       "scaleX": 1.0,
       "scaleY": 1.0,
       "scaleZ": 1.0,
-      "isExpandable": true
+      "isExpandable": true,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/tower/whiteBricks.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
+      }
     },
     {
       "comment": "Sea",
       "length": 100.0,
       "width": 100.0,
       "height": 0.1,
-      "r": 0.0,
-      "g": 0.424,
-      "b": 0.745,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": 0.0,
       "transY": -5.0,
       "transZ": 0.0,
@@ -1022,7 +1392,17 @@
       "scaleX": 1.0,
       "scaleY": 1.0,
       "scaleZ": 1.0,
-      "isExpandable": true
+      "isExpandable": true,
+      "textures": {
+        "isRepeat": false,
+        "all": "Assets/tower/sea.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
+      }
     }
   ]
 }
