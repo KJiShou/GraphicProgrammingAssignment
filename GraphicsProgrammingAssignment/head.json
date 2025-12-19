@@ -372,6 +372,209 @@
             ]
         },
         {
+            "comment": "top red hat white cover",
+            "length": 0.025,
+            "width": 0.08,
+            "height": 0.2,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "transX": 0.0625,
+            "transY": 1.05,
+            "transZ": 0.245,
+            "rotX": 0.0,
+            "rotY": 0.0,
+            "rotZ": 0.0,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0,
+            "isExpandable": true,
+            "textures": [
+                {
+                    "front": "Assets/meme1.bmp",
+                    "back": "Assets/meme1.bmp",
+                    "top": "Assets/meme1.bmp",
+                    "bottom": "Assets/meme1.bmp",
+                    "left": "Assets/meme1.bmp",
+                    "right": "Assets/meme1.bmp"
+                }
+            ]
+        },
+        {
+            "comment": "top red hat white cover",
+            "length": 0.025,
+            "width": 0.506,
+            "height": 0.1,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "transX": 0.0625,
+            "transY": 1.1,
+            "transZ": -0.047,
+            "rotX": 0.0,
+            "rotY": 0.0,
+            "rotZ": 0.0,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0,
+            "isExpandable": true,
+            "textures": [
+                {
+                    "front": "Assets/meme1.bmp",
+                    "back": "Assets/meme1.bmp",
+                    "top": "Assets/meme1.bmp",
+                    "bottom": "Assets/meme1.bmp",
+                    "left": "Assets/meme1.bmp",
+                    "right": "Assets/meme1.bmp"
+                }
+            ]
+        },
+        {
+            "comment": "top red hat white cover",
+            "length": 0.025,
+            "width": 0.08,
+            "height": 0.2,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "transX": -0.0625,
+            "transY": 1.05,
+            "transZ": 0.245,
+            "rotX": 0.0,
+            "rotY": 0.0,
+            "rotZ": 0.0,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0,
+            "isExpandable": true,
+            "textures": [
+                {
+                    "front": "Assets/meme1.bmp",
+                    "back": "Assets/meme1.bmp",
+                    "top": "Assets/meme1.bmp",
+                    "bottom": "Assets/meme1.bmp",
+                    "left": "Assets/meme1.bmp",
+                    "right": "Assets/meme1.bmp"
+                }
+            ]
+        },
+        {
+            "comment": "top red hat white cover",
+            "length": 0.025,
+            "width": 0.506,
+            "height": 0.1,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "transX": -0.0625,
+            "transY": 1.1,
+            "transZ": -0.047,
+            "rotX": 0.0,
+            "rotY": 0.0,
+            "rotZ": 0.0,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0,
+            "isExpandable": true,
+            "textures": [
+                {
+                    "front": "Assets/meme1.bmp",
+                    "back": "Assets/meme1.bmp",
+                    "top": "Assets/meme1.bmp",
+                    "bottom": "Assets/meme1.bmp",
+                    "left": "Assets/meme1.bmp",
+                    "right": "Assets/meme1.bmp"
+                }
+            ]
+        },
+        {
+            "comment": "top red hat white cover",
+            "length": 0.15,
+            "width": 0.585,
+            "height": 0.025,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "transX": 0.0,
+            "transY": 1.162,
+            "transZ": -0.007,
+            "rotX": 0.0,
+            "rotY": 0.0,
+            "rotZ": 0.0,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0,
+            "isExpandable": true,
+            "textures": [
+                {
+                    "front": "Assets/meme1.bmp",
+                    "back": "Assets/meme1.bmp",
+                    "top": "Assets/meme1.bmp",
+                    "bottom": "Assets/meme1.bmp",
+                    "left": "Assets/meme1.bmp",
+                    "right": "Assets/meme1.bmp"
+                }
+            ]
+        },
+        {
+            "comment": "top red hat white cover",
+            "length": 0.15,
+            "width": 0.05,
+            "height": 0.025,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "transX": 0.0,
+            "transY": 0.963,
+            "transZ": 0.26,
+            "rotX": 0.0,
+            "rotY": 0.0,
+            "rotZ": 0.0,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0,
+            "isExpandable": true,
+            "textures": [
+                {
+                    "front": "Assets/meme1.bmp",
+                    "back": "Assets/meme1.bmp",
+                    "top": "Assets/meme1.bmp",
+                    "bottom": "Assets/meme1.bmp",
+                    "left": "Assets/meme1.bmp",
+                    "right": "Assets/meme1.bmp"
+                }
+            ]
+        },
+        {
+            "comment": "top red hat white cover",
+            "length": 0.025,
+            "width": 0.506,
+            "height": 0.1,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "transX": 0.0625,
+            "transY": 1.1,
+            "transZ": -0.047,
+            "rotX": 0.0,
+            "rotY": 0.0,
+            "rotZ": 0.0,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0,
+            "isExpandable": true,
+            "textures": [
+                {
+                    "front": "Assets/meme1.bmp",
+                    "back": "Assets/meme1.bmp",
+                    "top": "Assets/meme1.bmp",
+                    "bottom": "Assets/meme1.bmp",
+                    "left": "Assets/meme1.bmp",
+                    "right": "Assets/meme1.bmp"
+                }
+            ]
+        },
+        {
             "length": 0.1,
             "width": 0.5,
             "height": 0.15,
