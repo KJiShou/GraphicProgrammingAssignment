@@ -97,6 +97,7 @@ void Object::ReadData(bool firstRun) {
 		f.scaleZ = jc.value("scaleZ", 1.0f);
 
 		f.isSpecular = jc.value("isSpecular", true);
+		f.shininess = jc.value("shininess", 50.0f);
 
 		if (jc.contains("textures") && jc["textures"].is_object()) {
 			auto& tex = jc["textures"];
@@ -155,6 +156,7 @@ void Object::ReadData(bool firstRun) {
 		s.scaleZ = jc.value("scaleZ", 1.0f);
 
 		s.isSpecular = jc.value("isSpecular", true);
+		s.shininess = jc.value("shininess", 50.0f);
 
 		if (jc.contains("textures") && jc["textures"].is_object()) {
 			auto& tex = jc["textures"];
@@ -196,6 +198,7 @@ void Object::ReadData(bool firstRun) {
 
 		c.isExpandable = jc.value("isExpandable", true);
 		c.isSpecular = jc.value("isSpecular", true);
+		c.shininess = jc.value("shininess", 50.0f);
 
 		if (jc.contains("textures") && jc["textures"].is_object()) {
 			auto& tex = jc["textures"];
@@ -250,6 +253,7 @@ void Object::ReadData(bool firstRun) {
 		p.scaleZ = jc.value("scaleZ", 1.0f);
 
 		p.isSpecular = jc.value("isSpecular", true);
+		p.shininess = jc.value("shininess", 50.0f);
 
 		std::string all = "";
 
@@ -301,6 +305,7 @@ void Object::ReadData(bool firstRun) {
 
 		c.isExpandable = jc.value("isExpandable", true);
 		c.isSpecular = jc.value("isSpecular", true);
+		c.shininess = jc.value("shininess", 50.0f);
 
 		if (jc.contains("textures") && jc["textures"].is_object()) {
 			auto& tex = jc["textures"];
@@ -353,6 +358,7 @@ void Object::ReadData(bool firstRun) {
 		p.scaleZ = jc["scaleZ"];
 
 		p.isSpecular = jc.value("isSpecular", true);
+		p.shininess = jc.value("shininess", 50.0f);
 
 		tetrahedronsData.push_back(p);
 	}
@@ -372,6 +378,7 @@ void Object::ReadData(bool firstRun) {
 			cylinders[i]->SetTopTexture(LoadTexture(data.topTex, data.isRepeat));
 			cylinders[i]->SetBottomTexture(LoadTexture(data.bottomTex, data.isRepeat));
 			cylinders[i]->SetIsSpecular(data.isSpecular);
+			cylinders[i]->SetShininess(data.shininess);
 			i++;
 		}
 		i = 0;
@@ -397,6 +404,7 @@ void Object::ReadData(bool firstRun) {
 			cubes[i]->SetExpandable(data.isExpandable);
 			cubes[i]->SetIsRepeat(data.isRepeat);
 			cubes[i]->SetIsSpecular(data.isSpecular);
+			cubes[i]->SetShininess(data.shininess);
 
 			cubes[i]->SetFrontTexture(LoadTexture(data.frontTex, data.isRepeat));
 			cubes[i]->SetBackTexture(LoadTexture(data.backTex, data.isRepeat));
@@ -421,6 +429,7 @@ void Object::ReadData(bool firstRun) {
 			pyramids[i]->SetRightTexture(LoadTexture(data.rightTex, data.isRepeat));
 			pyramids[i]->SetIsRepeat(data.isRepeat);
 			pyramids[i]->SetIsSpecular(data.isSpecular);
+			pyramids[i]->SetShininess(data.shininess);
 			i++;
 		}
 		i = 0;
@@ -433,6 +442,7 @@ void Object::ReadData(bool firstRun) {
 			frustumCubes[i]->SetExpandable(data.isExpandable);
 			frustumCubes[i]->SetIsRepeat(data.isRepeat);
 			frustumCubes[i]->SetIsSpecular(data.isSpecular);
+			frustumCubes[i]->SetShininess(data.shininess);
 
 			frustumCubes[i]->SetFrontTexture(LoadTexture(data.frontTex, data.isRepeat));
 			frustumCubes[i]->SetBackTexture(LoadTexture(data.backTex, data.isRepeat));
@@ -451,6 +461,7 @@ void Object::ReadData(bool firstRun) {
 			tetrahedrons[i]->Scale(data.scaleX, data.scaleY, data.scaleZ);
 			tetrahedrons[i]->SetIsRepeat(data.isRepeat);
 			tetrahedrons[i]->SetIsSpecular(data.isSpecular);
+			tetrahedrons[i]->SetShininess(data.shininess);
 			i++;
 		}
 	}
@@ -479,6 +490,7 @@ void Object::ReadData(bool firstRun) {
 			cylinders[i]->Rotate(cylindersData[i].rotX, cylindersData[i].rotY, cylindersData[i].rotZ, false, 0.0f, 0.0f, 0.0f);
 			cylinders[i]->Scale(cylindersData[i].scaleX, cylindersData[i].scaleY, cylindersData[i].scaleZ);
 			cylinders[i]->SetIsSpecular(cylindersData[i].isSpecular);
+			cylinders[i]->SetShininess(cylindersData[i].shininess);
 		}
 
 		for (size_t i = 0; i < spheres.size() && i < spheresData.size(); i++)
@@ -496,6 +508,7 @@ void Object::ReadData(bool firstRun) {
 			spheres[i]->Rotate(spheresData[i].rotX, spheresData[i].rotY, spheresData[i].rotZ);
 			spheres[i]->Scale(spheresData[i].scaleX, spheresData[i].scaleY, spheresData[i].scaleZ);
 			spheres[i]->SetIsSpecular(spheresData[i].isSpecular);
+			spheres[i]->SetShininess(spheresData[i].shininess);
 		}
 
 		for (size_t i = 0; i < cubes.size() && i < cubesData.size(); i++)
@@ -518,6 +531,7 @@ void Object::ReadData(bool firstRun) {
 			cubes[i]->SetExpandable(cubesData[i].isExpandable);
 			cubes[i]->SetIsRepeat(cubesData[i].isRepeat);
 			cubes[i]->SetIsSpecular(cubesData[i].isSpecular);
+			cubes[i]->SetShininess(cubesData[i].shininess);
 		}
 
 		for (size_t i = 0; i < pyramids.size() && i < pyramidsData.size(); i++)
@@ -538,6 +552,7 @@ void Object::ReadData(bool firstRun) {
 			pyramids[i]->Scale(pyramidsData[i].scaleX, pyramidsData[i].scaleY, pyramidsData[i].scaleZ);
 			pyramids[i]->SetIsRepeat(pyramidsData[i].isRepeat);
 			pyramids[i]->SetIsSpecular(pyramidsData[i].isSpecular);
+			pyramids[i]->SetShininess(pyramidsData[i].shininess);
 		}
 
 		for (size_t i = 0; i < frustumCubes.size() && i < frustumCubesData.size(); i++)
@@ -564,6 +579,7 @@ void Object::ReadData(bool firstRun) {
 			frustumCubes[i]->SetExpandable(frustumCubesData[i].isExpandable);
 			frustumCubes[i]->SetIsRepeat(frustumCubesData[i].isRepeat);
 			frustumCubes[i]->SetIsSpecular(frustumCubesData[i].isSpecular);
+			frustumCubes[i]->SetShininess(frustumCubesData[i].shininess);
 
 		}
 		for (size_t i = 0; i < tetrahedrons.size() && i < tetrahedronsData.size(); i++)
@@ -577,6 +593,7 @@ void Object::ReadData(bool firstRun) {
 			tetrahedrons[i]->Scale(tetrahedronsData[i].scaleX, tetrahedronsData[i].scaleY, tetrahedronsData[i].scaleZ);
 			tetrahedrons[i]->SetIsRepeat(tetrahedronsData[i].isRepeat);
 			tetrahedrons[i]->SetIsSpecular(tetrahedronsData[i].isSpecular);
+			tetrahedrons[i]->SetShininess(tetrahedronsData[i].shininess);
 		}
 	}
 }

@@ -26,6 +26,7 @@ public:
 	void SetRightTexture(GLuint right);
 	void SetIsRepeat(bool r);
 	void SetIsSpecular(bool s);
+	void SetShininess(float s);
 
 	// ======================
 	// Getters
@@ -113,5 +114,6 @@ private:
 
 	bool isRepeat = false;
 	bool isSpecular = true;
+	float shininess = 50.0f;
 };
 

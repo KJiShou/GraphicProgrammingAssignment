@@ -55,12 +55,11 @@ void Sphere::Draw() {
 	GLfloat noSpecular[] = { 0.0f, 0.0f, 0.0f, 1.0f };
 	GLfloat specular[] = { 1.0f, 1.0f, 1.0f, 1.0f };
 
-	if (isSpecular) 
+	if (isSpecular)
 		glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, specular),
-		glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 50.0f);
-	else 
-		glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, noSpecular),
-		glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 0.0f);
+		glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, shininess);
+	else
+		glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, noSpecular);
 
 	glBindTexture(GL_TEXTURE_2D, tex);
 	glTranslatef(transX, transY, transZ);
@@ -152,6 +151,10 @@ void Sphere::SetSphereTexture(GLuint tex) {
 void Sphere::SetIsSpecular(bool s)
 {
 	isSpecular = s;
+}
+
+void Sphere::SetShininess(float s) {
+	shininess = s;
 }
 
 // ======================
