@@ -180,7 +180,7 @@ public:
 	/**
 	 * @brief Rotate Left Upper Leg
 	 *
-	 * @param x: -45 to 90
+	 * @param x: -120 to 90
 	 * @param y: -15 to 60
 	 * @param z: -45 to 45
 	 */
@@ -202,7 +202,7 @@ public:
 	/**
 	 * @brief Rotate Right Upper Leg
 	 *
-	 * @param x: -45 to 90
+	 * @param x: -120 to 90
 	 * @param y: -15 to 60
 	 * @param z: -45 to 45
 	 */
