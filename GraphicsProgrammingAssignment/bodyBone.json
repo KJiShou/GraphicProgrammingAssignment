@@ -74,6 +74,34 @@
             }
         },
         {
+            "length": 0.4,
+            "width": 0.7,
+            "height": 0.2,
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "transX": 0.0,
+            "transY": -0.3,
+            "transZ": -0.025,
+            "rotX": 0.0,
+            "rotY": 0.0,
+            "rotZ": 0.0,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0,
+            "isExpandable": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/.bmp",
+                "front": "Assets/.bmp",
+                "back": "Assets/.bmp",
+                "top": "Assets/.bmp",
+                "bottom": "Assets/.bmp",
+                "left": "Assets/.bmp",
+                "right": "Assets/.bmp"
+            }
+        },
+        {
             "label": "front middle pelvis",
             "length": 0.2,
             "width": 0.15,
