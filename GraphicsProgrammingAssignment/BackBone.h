@@ -11,7 +11,10 @@ public:
 
 	// body
 	Object* body = new Object("body.json");
-	Object* wing = new Object("wing.json");
+	Object* leftWing = new Object("wing.json");
+	Object* rightWing = new Object("wing.json");
+	Object* bigLeftWing = new Object("bigWing.json");
+	Object* bigRightWing = new Object("bigWing.json");
 	Object* pelvis = new Object("bodyBone.json");
 
 	// arms and hands
