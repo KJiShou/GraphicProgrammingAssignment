@@ -10,9 +10,9 @@
       "style": "GLU_FILL",
       "isClose": true,
       "lineWidth": 1.0,
-      "r": 0.0,
-      "g": 0.0,
-      "b": 0.0,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": -0.22,
       "transY": 0.4,
       "transZ": -0.05,
@@ -23,11 +23,11 @@
       "scaleY": 1.0,
       "scaleZ": 1.0,
       "textures": {
-        "isRepeat": true,
-        "all": "",
-        "top": "",
-        "bottom": "",
-        "body": ""
+        "isRepeat": false,
+        "all": "Assets/greenLight.bmp",
+        "top": "Assets/greenLight.bmp",
+        "bottom": "Assets/greenLight.bmp",
+        "body": "Assets/greenLight.bmp"
       }
     },
     {

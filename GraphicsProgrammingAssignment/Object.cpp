@@ -327,19 +327,13 @@ void Object::ReadData(bool firstRun) {
 			std::string back = tex.value("back", "");
 			std::string left = tex.value("left", "");
 			std::string right = tex.value("right", "");
-			std::cout << "All texture: " << tex.value("all", "Not found") << std::endl;
+
 			if (!top.empty())    c.topTex = top;
-			std::cout << "top texture: " << c.topTex << std::endl;
 			if (!bottom.empty()) c.bottomTex = bottom;
-			std::cout << "bottom texture: " << c.bottomTex << std::endl;
 			if (!front.empty())   c.frontTex = front;
-			std::cout << "front texture: " << c.frontTex << std::endl;
 			if (!back.empty())   c.backTex = back;
-			std::cout << "back texture: " << c.backTex << std::endl;
 			if (!left.empty())   c.leftTex = left;
-			std::cout << "left texture: " << c.leftTex << std::endl;
 			if (!right.empty())   c.rightTex = right;
-			std::cout << "right texture: " << c.rightTex << std::endl;
 
 			c.isRepeat = tex.value("isRepeat", true);
 		}

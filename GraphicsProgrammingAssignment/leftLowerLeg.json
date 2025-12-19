@@ -117,8 +117,8 @@
       "scaleY": 1.0,
       "scaleZ": 1.0,
       "textures": {
-        "isRepeat": true,
-        "all": "Assets/white.bmp",
+        "isRepeat": false,
+        "all": "Assets/off-white-metal.bmp",
         "top": "Assets/.bmp",
         "bottom": "Assets/.bmp",
         "body": "Assets/.bmp"
@@ -379,8 +379,8 @@
       "scaleZ": 1.0,
       "isExpandable": true,
       "textures": {
-        "isRepeat": false ,
-        "all": "Assets/white.bmp",
+        "isRepeat": false,
+        "all": "Assets/off-white-metal.bmp",
         "front": "",
         "back": "",
         "top": "",
@@ -413,7 +413,7 @@
       "isExpandable": true,
       "textures": {
         "isRepeat": false,
-        "all": "Assets/white.bmp",
+        "all": "Assets/off-white-metal.bmp",
         "front": "",
         "back": "",
         "top": "",
@@ -446,7 +446,7 @@
       "isExpandable": true,
       "textures": {
         "isRepeat": false,
-        "all": "Assets/white.bmp",
+        "all": "Assets/off-white-metal.bmp",
         "front": "",
         "back": "",
         "top": "",
@@ -479,7 +479,7 @@
       "isExpandable": true,
       "textures": {
         "isRepeat": false,
-        "all": "Assets/white.bmp",
+        "all": "Assets/off-white-metal.bmp",
         "front": "",
         "back": "",
         "top": "",

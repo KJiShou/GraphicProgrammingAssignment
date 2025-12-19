@@ -20,7 +20,7 @@
       "isExpandable": true,
       "textures": {
         "isRepeat": false,
-        "all": "Assets/white.bmp",
+        "all": "Assets/off-white-metal.bmp",
         "front": "",
         "back": "",
         "top": "",
@@ -55,7 +55,7 @@
       "isExpandable": true,
       "textures": {
         "isRepeat": false,
-        "all": "Assets/white.bmp",
+        "all": "Assets/off-white-metal.bmp",
         "front": "",
         "back": "",
         "top": "",
@@ -88,7 +88,7 @@
       "isExpandable": true,
       "textures": {
         "isRepeat": false,
-        "all": "Assets/white.bmp",
+        "all": "Assets/off-white-metal.bmp",
         "front": "",
         "back": "",
         "top": "",
