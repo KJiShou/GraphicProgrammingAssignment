@@ -267,7 +267,7 @@
             "bottomLength": 1.0,
             "bottomDepth": 0.5,
             "height": 0.5,
-            "r": 0.05,
+            "r": 0.5,
             "g": 0.5,
             "b": 0.5,
             "transX": 0.0,
