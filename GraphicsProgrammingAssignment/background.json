@@ -17,6 +17,7 @@
       "scaleY": 1.0,
       "scaleZ": 1.0,
       "isExpandable": true,
+      "isSpecular":  false,
       "textures": {
         "isRepeat": false,
         "all": "Assets/tower/bluesky.bmp",

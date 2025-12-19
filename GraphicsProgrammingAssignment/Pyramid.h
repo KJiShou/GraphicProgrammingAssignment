@@ -29,6 +29,7 @@ public:
 	void SetRightTexture(GLuint right);
 
 	void SetIsRepeat(bool r);
+	void SetIsSpecular(bool s);
 
 	// ======================
 	// Getters
@@ -116,5 +117,6 @@ private:
 	float rotPosZ = 0.0f;
 
 	bool isRepeat = false;
+	bool isSpecular = true;
 };
 

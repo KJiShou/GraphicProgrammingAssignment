@@ -32,8 +32,9 @@ struct CylinderData {
 	std::string bottomTex;
 	std::string bodyTex;
 	bool isRepeat;
+	bool isSpecular;
 	CylinderData()
-		: topTex(""), bottomTex(""), bodyTex(""), 
+		: topTex(""), bottomTex(""), bodyTex(""), isSpecular(true),
 		isRepeat(true)
 	{}
 };
@@ -57,8 +58,9 @@ struct SphereData {
 	float scaleZ;
 	std::string sphereTex;
 	bool isRepeat;
+	bool isSpecular;
 	SphereData()
-		: sphereTex(""), isRepeat(true)
+		: sphereTex(""), isRepeat(true), isSpecular(true)
 	{}
 };
 struct CubeData {
@@ -85,10 +87,11 @@ struct CubeData {
 	std::string leftTex;
 	std::string rightTex;
 	bool isRepeat;
+	bool isSpecular;
 	CubeData()
 		: frontTex(""), backTex(""), topTex(""),
 		bottomTex(""), leftTex(""), rightTex(""),
-		isRepeat(true) 
+		isRepeat(true) , isSpecular(true)
 	{}
 };
 struct PyramidData {
@@ -113,10 +116,11 @@ struct PyramidData {
 	std::string leftTex;
 	std::string rightTex;
 	bool isRepeat;
+	bool isSpecular;
 	PyramidData()
 		: frontTex(""), backTex(""),
 		bottomTex(""), leftTex(""), rightTex(""),
-		isRepeat(true)
+		isRepeat(true), isSpecular(true)
 	{}
 };
 struct FrustumCubeData {
@@ -147,10 +151,11 @@ struct FrustumCubeData {
 	std::string leftTex;
 	std::string rightTex;
 	bool isRepeat;
+	bool isSpecular;
 	FrustumCubeData()
 		: frontTex(""), backTex(""), topTex(""),
 		bottomTex(""), leftTex(""), rightTex(""),
-		isRepeat(true)
+		isRepeat(true), isSpecular(true)
 	{
 	}
 };
@@ -172,6 +177,7 @@ struct TetrahedronData {
 	float scaleY;
 	float scaleZ;
 	bool isRepeat;
+	bool isSpecular;
 };
 
 //struct FrustumCubeData {

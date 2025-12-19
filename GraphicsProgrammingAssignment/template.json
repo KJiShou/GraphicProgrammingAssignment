@@ -23,6 +23,7 @@
       "scaleX": 1.0,
       "scaleY": 1.0,
       "scaleZ": 1.0,
+      "isSpecular": true,
       "textures": {
         "isRepeat": true,
         "all": "Assets/.bmp",
@@ -52,6 +53,7 @@
       "scaleX": 1.0,
       "scaleY": 1.0,
       "scaleZ": 1.0,
+      "isSpecular": true,
       "textures": {
         "isRepeat": true,
         "all": "Assets/.bmp"
@@ -77,6 +79,7 @@
       "scaleY": 1.0,
       "scaleZ": 1.0,
       "isExpandable": true,
+      "isSpecular": true,
       "textures": {
         "isRepeat": true,
         "all": "Assets/.bmp",
@@ -107,6 +110,7 @@
       "scaleX": 1.0,
       "scaleY": 1.0,
       "scaleZ": 1.0,
+      "isSpecular": true,
       "textures": {
         "isRepeat": true,
         "all": "Assets/.bmp",
@@ -141,6 +145,7 @@
       "scaleY": 1.0,
       "scaleZ": 1.0,
       "isExpandable": true,
+      "isSpecular": true,
       "textures": {
         "isRepeat": true,
         "all": "Assets/.bmp",
@@ -170,7 +175,8 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "isSpecular": true
     }
   ]
 }

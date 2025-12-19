@@ -69,6 +69,16 @@ void Cylinder::Draw() {
 	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, color);
 	glBindTexture(GL_TEXTURE_2D, cylinderTex);
 
+	GLfloat noSpecular[] = { 0.0f, 0.0f, 0.0f, 1.0f };
+	GLfloat specular[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+
+	if (isSpecular)
+		glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, specular),
+		glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 50.0f);
+	else
+		glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, noSpecular),
+		glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 0.0f);
+
 	glTranslatef(transX, transY, transZ);
 
 	if (isRotateByCenter)
@@ -211,6 +221,10 @@ void Cylinder::SetTopTexture(GLuint top) {
 
 void Cylinder::SetBottomTexture(GLuint bottom) {
 	bottomTex = bottom;
+}
+
+void Cylinder::SetIsSpecular(bool s) {
+	isSpecular = s;
 }
 
 // ======================

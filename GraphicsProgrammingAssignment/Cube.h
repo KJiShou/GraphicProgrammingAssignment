@@ -32,6 +32,7 @@ public:
 	void SetLeftTexture(GLuint left);
 	void SetRightTexture(GLuint right);
 	void SetIsRepeat(bool r);
+	void SetIsSpecular(bool s);
 
 	// ======================
 	// Getters
@@ -123,6 +124,9 @@ private:
 
 	// expand in two way
 	bool isExpandable = false;
+	// texture tiling
 	bool isRepeat = false;
+	// specular
+	bool isSpecular = true;
 };
 
