@@ -36,6 +36,15 @@ void Tetrahedron::Draw() {
 	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, color);
 	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, color);
 
+	GLfloat noSpecular[] = { 0.0f, 0.0f, 0.0f, 1.0f };
+	GLfloat specular[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+
+	if (isSpecular)
+		glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, specular),
+		glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, shininess);
+	else
+		glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, noSpecular);
+
 	glTranslatef(transX, transY, transZ);
 
 	if (isRotateByCenter)
@@ -202,6 +211,14 @@ void Tetrahedron::SetRightTexture(GLuint right) {
 
 void Tetrahedron::SetIsRepeat(bool r) {
 	isRepeat = r;
+}
+
+void Tetrahedron::SetIsSpecular(bool s) {
+	isSpecular = s;
+}
+
+void Tetrahedron::SetShininess(float s) {
+	shininess = s;
 }
 
 // ======================

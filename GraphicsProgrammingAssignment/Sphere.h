@@ -25,6 +25,9 @@ public:
 
 	void SetSphereTexture(GLuint tex);
 
+	void SetIsSpecular(bool s);
+	void SetShininess(float s);
+
 	// ======================
 	// Getters
 	// ======================
@@ -113,5 +116,8 @@ private:
 	float rotPosX = 0.0f;
 	float rotPosY = 0.0f;
 	float rotPosZ = 0.0f;
+
+	bool isSpecular = false;
+	float shininess = 50.0f;
 };
 
