@@ -808,27 +808,23 @@ void BackBone::Animate(float deltaTime) {
 	case ATTACK:
 	{
 		float aSpeed = animTime * 1.0f;
-		float swing = sin(aSpeed);
+		float swing = -sin(aSpeed);
 
-		RotateBody(10.0f + swing * 25.0f, swing * -50.0f, swing * 10.0f);
+		Rotate(10.0f + swing * 20.0f, swing * 40.0f, 0);
 
 		RotateLeftUpperLeg(20.0f + swing * 20.0f, 30.0f, 0);
 		RotateRightUpperLeg(-20.0f + swing * 10.0f, -30.0f, 0);
-
-		RotateLeftLowerLeg(-30.0f - swing * 20.0f);
+		RotateLeftLowerLeg(-30.0f - swing * 10.0f);
 		RotateRightLowerLeg(-30.0f);
 
-		RotateLeftFoot(20.0f, 0, 0);
-		RotateRightFoot(-10.0f, 0, 0);
+		RotateRightUpperArm(-45.0f + swing * 45.0f, swing * 30.0f, 20.0f);
 
-		RotateRightUpperArm(100.0f + swing * 60.0f, swing * -60.0f, 20.0f);
+		RotateRightForearm(30.0f, 0.0f);
 
-		RotateRightForearm(60.0f - swing * 60.0f, 0.0f);
+		RotateRightHand(0, 0, swing * -20.0f);
 
-		RotateRightHand(0, 0, swing * -30.0f);
-
-		RotateLeftUpperArm(30.0f, 0, 30.0f);
-		RotateLeftForearm(45.0f, -90.0f);
+		RotateLeftUpperArm(20.0f - swing * 30.0f, 0, 30.0f);
+		RotateLeftForearm(45.0f, 0);
 
 		RotateRightHandFinger(90, 90, 90);
 		RotateLeftHandFinger(90, 90, 90);
