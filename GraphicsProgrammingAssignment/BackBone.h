@@ -11,6 +11,7 @@ public:
 
 	// body
 	Object* body = new Object("body.json");
+	Object* wing = new Object("wing.json");
 	Object* pelvis = new Object("bodyBone.json");
 
 	// arms and hands
@@ -117,6 +118,9 @@ public:
 	//====================
 	// Left Leg
 	//====================
+	float leftLegFrontArmorRotation[3] = { 0.0f, 0.0f, 0.0f };
+	float leftLegBackArmorRotation[3] = { 0.0f, 0.0f, 0.0f };
+	float leftLegSideArmorRotation[3] = { 0.0f, 0.0f, 0.0f };
 	float leftUpperLegRotation[3] = { 0.0f, 0.0f, 0.0f };
 	float leftLowerLegRotation[3] = { 0.0f, 0.0f, 0.0f };
 	float leftFootRotation[3] = { 0.0f, 0.0f, 0.0f };
@@ -124,6 +128,9 @@ public:
 	//====================
 	// Right Leg
 	//====================
+	float rightLegFrontArmorRotation[3] = { 0.0f, 0.0f, 0.0f };
+	float rightLegBackArmorRotation[3] = { 0.0f, 0.0f, 0.0f };
+	float rightLegSideArmorRotation[3] = { 0.0f, 0.0f, 0.0f };
 	float rightUpperLegRotation[3] = { 0.0f, 0.0f, 0.0f };
 	float rightLowerLegRotation[3] = { 0.0f, 0.0f, 0.0f };
 	float rightFootRotation[3] = { 0.0f, 0.0f, 0.0f };

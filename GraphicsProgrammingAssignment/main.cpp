@@ -481,12 +481,15 @@ void Draw() {
 	//===============================
 	backbone->RotateRightForearm(x, -90);
 	backbone->RotateRightUpperArm(x, y, z);
+	backbone->RotateLeftUpperArm(x, y, z);
 	backbone->RotateLeftForearm(x, -90);
 	backbone->RotateLeftHandFinger(x, y, z);
 	backbone->RotateRightHandFinger(x, y, z);
 	backbone->RotateRightUpperLeg(x, y, z);
 	backbone->RotateRightLowerLeg(x);
 	backbone->RotateRightFoot(x, y, z);
+	backbone->RotateLeftUpperLeg(x, y, z);
+	backbone->RotateBody(x, y, z);
 
 	//===============================
 	// JY Testing Section

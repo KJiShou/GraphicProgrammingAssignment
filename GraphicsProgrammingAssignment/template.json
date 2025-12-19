@@ -23,6 +23,8 @@
       "scaleX": 1.0,
       "scaleY": 1.0,
       "scaleZ": 1.0,
+      "isSpecular": true,
+      "shininess": 50.0,
       "textures": {
         "isRepeat": true,
         "all": "Assets/.bmp",
@@ -52,6 +54,8 @@
       "scaleX": 1.0,
       "scaleY": 1.0,
       "scaleZ": 1.0,
+      "isSpecular": true,
+      "shininess": 50.0,
       "textures": {
         "isRepeat": true,
         "all": "Assets/.bmp"
@@ -77,6 +81,8 @@
       "scaleY": 1.0,
       "scaleZ": 1.0,
       "isExpandable": true,
+      "isSpecular": true,
+      "shininess": 50.0,
       "textures": {
         "isRepeat": true,
         "all": "Assets/.bmp",
@@ -107,6 +113,8 @@
       "scaleX": 1.0,
       "scaleY": 1.0,
       "scaleZ": 1.0,
+      "isSpecular": true,
+      "shininess": 50.0,
       "textures": {
         "isRepeat": true,
         "all": "Assets/.bmp",
@@ -121,13 +129,13 @@
   "frustumCube": [
     {
       "label": "",
-      "topLength": 2.0,
-      "topDepth": 1.0,
-      "topOffsetX": 1.0,
-      "topOffsetZ": 1.0,
-      "bottomLength": 1.0,
-      "bottomDepth": 1.0,
-      "height": 1.0,
+      "topLength": 0.7,
+      "topDepth": 0.7,
+      "topOffsetX": 0.3,
+      "topOffsetZ": 0.3,
+      "bottomLength": 1.3,
+      "bottomDepth": 1.3,
+      "height": 0.8,
       "r": 0.5,
       "g": 0.5,
       "b": 0.5,
@@ -141,6 +149,8 @@
       "scaleY": 1.0,
       "scaleZ": 1.0,
       "isExpandable": true,
+      "isSpecular": true,
+      "shininess": 50.0,
       "textures": {
         "isRepeat": true,
         "all": "Assets/.bmp",
@@ -151,6 +161,7 @@
         "left": "Assets/.bmp",
         "right": "Assets/.bmp"
       }
+
     }
   ],
   "tetrahedrons": [
@@ -170,7 +181,9 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "isSpecular": true,
+      "shininess": 50.0
     }
   ]
 }

@@ -38,6 +38,9 @@ public:
 	void SetLeftTexture(GLuint left);
 	void SetRightTexture(GLuint right);
 
+	void SetIsSpecular(bool s);
+	void SetShininess(float s);
+
 	// ======================
 	// Getters
 	// ======================
@@ -138,5 +141,7 @@ private:
 	// expand in two way
 	bool isExpandable = false;
 	bool isRepeat = false;
+	bool isSpecular = true;
+	float shininess = 50.0f;
 };
 

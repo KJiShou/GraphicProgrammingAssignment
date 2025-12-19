@@ -107,6 +107,15 @@ void FrustumCube::Draw() {
 	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, color);
 	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, color);
 
+	GLfloat noSpecular[] = { 0.0f, 0.0f, 0.0f, 1.0f };
+	GLfloat specular[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+
+	if (isSpecular)
+		glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, specular),
+		glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, shininess);
+	else
+		glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, noSpecular);
+
 	glTranslatef(transX, transY, transZ);
 
 	if (isRotateByCenter)
@@ -367,6 +376,14 @@ void FrustumCube::SetRightTexture(GLuint right) {
 
 void FrustumCube::SetIsRepeat(bool r) {
 	isRepeat = r;
+}
+
+void FrustumCube::SetIsSpecular(bool s) {
+	isSpecular = s;
+}
+
+void FrustumCube::SetShininess(float s) {
+	shininess = s;
 }
 
 // ======================

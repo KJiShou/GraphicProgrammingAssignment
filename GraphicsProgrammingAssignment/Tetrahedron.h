@@ -25,6 +25,8 @@ public:
 	void SetLeftTexture(GLuint left);
 	void SetRightTexture(GLuint right);
 	void SetIsRepeat(bool r);
+	void SetIsSpecular(bool s);
+	void SetShininess(float s);
 
 	// ======================
 	// Getters
@@ -111,5 +113,7 @@ private:
 	float rotPosZ = 0.0f;
 
 	bool isRepeat = false;
+	bool isSpecular = true;
+	float shininess = 50.0f;
 };
 
