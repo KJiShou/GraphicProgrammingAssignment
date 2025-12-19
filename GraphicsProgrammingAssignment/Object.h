@@ -33,9 +33,10 @@ struct CylinderData {
 	std::string bodyTex;
 	bool isRepeat;
 	bool isSpecular;
+	float shininess;
 	CylinderData()
 		: topTex(""), bottomTex(""), bodyTex(""), isSpecular(true),
-		isRepeat(true)
+		isRepeat(true), shininess(50.0f)
 	{}
 };
 struct SphereData {
@@ -59,8 +60,9 @@ struct SphereData {
 	std::string sphereTex;
 	bool isRepeat;
 	bool isSpecular;
+	float shininess;
 	SphereData()
-		: sphereTex(""), isRepeat(true), isSpecular(true)
+		: sphereTex(""), isRepeat(true), isSpecular(true), shininess(50.0f)
 	{}
 };
 struct CubeData {
@@ -88,10 +90,11 @@ struct CubeData {
 	std::string rightTex;
 	bool isRepeat;
 	bool isSpecular;
+	float shininess;
 	CubeData()
 		: frontTex(""), backTex(""), topTex(""),
 		bottomTex(""), leftTex(""), rightTex(""),
-		isRepeat(true) , isSpecular(true)
+		isRepeat(true) , isSpecular(true), shininess(50.0f)
 	{}
 };
 struct PyramidData {
@@ -117,10 +120,11 @@ struct PyramidData {
 	std::string rightTex;
 	bool isRepeat;
 	bool isSpecular;
+	float shininess;
 	PyramidData()
 		: frontTex(""), backTex(""),
 		bottomTex(""), leftTex(""), rightTex(""),
-		isRepeat(true), isSpecular(true)
+		isRepeat(true), isSpecular(true), shininess(50.0f)
 	{}
 };
 struct FrustumCubeData {
@@ -152,10 +156,11 @@ struct FrustumCubeData {
 	std::string rightTex;
 	bool isRepeat;
 	bool isSpecular;
+	float shininess;
 	FrustumCubeData()
 		: frontTex(""), backTex(""), topTex(""),
 		bottomTex(""), leftTex(""), rightTex(""),
-		isRepeat(true), isSpecular(true)
+		isRepeat(true), isSpecular(true), shininess(50.0f)
 	{
 	}
 };
@@ -178,30 +183,8 @@ struct TetrahedronData {
 	float scaleZ;
 	bool isRepeat;
 	bool isSpecular;
+	float shininess;
 };
-
-//struct FrustumCubeData {
-//	float topLength;
-//	float topDepth;
-//	float topOffsetX;
-//	float topOffsetZ;
-//	float bottomLength;
-//	float bottomDepth;
-//	float height;
-//	float r;
-//	float g;
-//	float b;
-//	float transX;
-//	float transY;
-//	float transZ;
-//	float rotX;
-//	float rotY;
-//	float rotZ;
-//	float scaleX;
-//	float scaleY;
-//	float scaleZ;
-//	bool isExpandable;
-//};
 
 class Object
 {

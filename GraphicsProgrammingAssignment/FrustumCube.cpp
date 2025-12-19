@@ -112,10 +112,9 @@ void FrustumCube::Draw() {
 
 	if (isSpecular)
 		glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, specular),
-		glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 50.0f);
+		glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, shininess);
 	else
-		glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, noSpecular),
-		glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 0.0f);
+		glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, noSpecular);
 
 	glTranslatef(transX, transY, transZ);
 
@@ -381,6 +380,10 @@ void FrustumCube::SetIsRepeat(bool r) {
 
 void FrustumCube::SetIsSpecular(bool s) {
 	isSpecular = s;
+}
+
+void FrustumCube::SetShininess(float s) {
+	shininess = s;
 }
 
 // ======================

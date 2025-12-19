@@ -143,10 +143,9 @@ void Cube::Draw() {
 
 	if (isSpecular)
 		glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, specular),
-		glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 50.0f);
+		glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, shininess);
 	else
-		glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, noSpecular),
-		glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 0.0f);
+		glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, noSpecular);
 	
 	glTranslatef(transX, transY, transZ);
 
@@ -417,6 +416,10 @@ void Cube::SetIsRepeat(bool r)
 
 void Cube::SetIsSpecular(bool s) {
 	isRepeat = s;
+}
+
+void Cube::SetShininess(float s) {
+	shininess = s;
 }
 
 // ======================

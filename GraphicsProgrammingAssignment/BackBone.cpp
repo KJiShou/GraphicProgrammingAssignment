@@ -334,12 +334,12 @@ void BackBone::RotatePelvis(float x, float y, float z)
 
 void BackBone::RotateLeftUpperArm(float x, float y, float z)
 {
-	float rx = clamp(x, -60.0f, 90.0f);
-	float ry = clamp(y, -45.0f, 45.0f);
-	float rz = clamp(z, -30.0f, 30.0f);
+	float rx = clamp(x, -45.0f, 180.0f);
+	float rz = clamp(z, -20.0f, 100);
+	float ry = clamp(y, -90.0f, 90.0f);
 
 	leftUpperArmJointArmorRotation[0] = -rx;
-	if (rz > 70) leftUpperArmJointArmorRotation[2] = (rz - 70);
+	if (rz > 70) leftUpperArmJointArmorRotation[2] = -(rz - 70);
 
 	leftUpperArmRotation[0] = -rx;
 	leftUpperArmRotation[1] = -ry;
@@ -587,7 +587,7 @@ void BackBone::Draw() {
 	//===========================
 	// Left Arm Rotation
 	//===========================
-	leftUpperArmJointOuter->Rotate(leftUpperArmJointArmorRotation[0], leftUpperArmJointArmorRotation[1] + 180.0f, leftUpperArmJointArmorRotation[2]);
+	leftUpperArmJointOuter->Rotate(leftUpperArmJointArmorRotation[0], leftUpperArmJointArmorRotation[1], leftUpperArmJointArmorRotation[2]);
 	leftUpperArm->Rotate(leftUpperArmRotation[0], leftUpperArmRotation[1], leftUpperArmRotation[2]);
 	leftForearm->Rotate(leftForearmRotation[0], leftForearmRotation[1], leftForearmRotation[2]);
 	leftHand->Rotate(leftHandRotation[0], leftHandRotation[1], leftHandRotation[2]);
