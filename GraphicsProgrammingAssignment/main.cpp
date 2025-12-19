@@ -479,7 +479,7 @@ void Draw() {
 	//===============================
 	// JS Testing Section
 	//===============================
-	backbone->RotateRightForearm(x, -90);
+	/*backbone->RotateRightForearm(x, -90);
 	backbone->RotateRightUpperArm(x, y, z);
 	backbone->RotateLeftUpperArm(x, y, z);
 	backbone->RotateLeftForearm(x, -90);
@@ -489,12 +489,12 @@ void Draw() {
 	backbone->RotateRightLowerLeg(x);
 	backbone->RotateRightFoot(x, y, z);
 	backbone->RotateLeftUpperLeg(x, y, z);
-	backbone->RotateBody(x, y, z);
+	backbone->RotateBody(x, y, z);*/
 
 	//===============================
 	// JY Testing Section
 	//===============================
-	backbone->RotateRightUpperLeg(x, y, z);
+	/*backbone->RotateRightUpperLeg(x, y, z);*/
 	
 	
 	//===============================
@@ -573,7 +573,7 @@ void Display()
 	
 	
 
-	CalcDeltaTime();
+	
 	Draw();
 	
 	//--------------------------------
@@ -586,6 +586,7 @@ void Display()
 float camNormalMoveSpeed = 0.05;
 float camFasterMoveSpeed = 0.1;
 void Update(int framesToUpdate) {
+	CalcDeltaTime();
 	for (int i = 0; i < framesToUpdate; i++) {
 		globalFrameCounter++;
 
@@ -709,7 +710,9 @@ void Update(int framesToUpdate) {
 		if (input.IsKeyPressed(DIKEYBOARD_NUMPAD8)) {
 			backbone->RotateRightIndex(0, 0, 0);
 		}
+		if (input.IsKeyPressed(DIK_SPACE)) backbone->SetState(BackBone::ATTACK);
 	}
+	backbone->Animate(deltaTime);
 }
 
 int main(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)
