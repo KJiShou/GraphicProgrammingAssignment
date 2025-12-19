@@ -667,6 +667,155 @@ void BackBone::Draw() {
 void BackBone::SetState(AnimState newState) {
 	currentState = newState;
 	animTime = 0.0f;
+	//====================
+	// Main Movement and rotation
+	//====================
+	position[0] = 0.0f;
+	position[1] = 0.0f;
+	position[2] = 0.0f;
+	rotation[0] = 0.0f;
+	rotation[1] = 0.0f;
+	rotation[2] = 0.0f;
+
+	//====================
+	// Head Rotation
+	//====================
+	headRotation[0] = 0.0f;
+	headRotation[1] = 0.0f;
+	headRotation[2] = 0.0f;
+
+	//====================
+	// Body Rotation
+	//====================
+	bodyRotation[0] = 0.0f;
+	bodyRotation[1] = 0.0f;
+	bodyRotation[2] = 0.0f;
+
+	//====================
+	// Pelvis
+	//====================
+	pelvisRotation[0] = 0.0f;
+	pelvisRotation[1] = 0.0f;
+	pelvisRotation[2] = 0.0f;
+
+	//====================
+	// Left Arm
+	//====================
+	leftUpperArmRotation[0] = 0.0f;
+	leftUpperArmRotation[1] = 0.0f;
+	leftUpperArmRotation[2] = 0.0f;
+	leftUpperArmJointArmorRotation[0] = 0.0f;
+	leftUpperArmJointArmorRotation[1] = 0.0f;
+	leftUpperArmJointArmorRotation[2] = 0.0f;
+	leftForearmRotation[0] = 0.0f;
+	leftForearmRotation[1] = 0.0f;
+	leftForearmRotation[2] = 0.0f;
+	leftHandRotation[0] = 0.0f;
+	leftHandRotation[1] = 0.0f;
+	leftHandRotation[2] = 0.0f;
+
+	//====================
+	// Right Arm
+	//====================
+	rightUpperArmRotation[0] = 0.0f;
+	rightUpperArmRotation[1] = 0.0f;
+	rightUpperArmRotation[2] = 0.0f;
+	rightUpperArmJointArmorRotation[0] = 0.0f;
+	rightUpperArmJointArmorRotation[1] = 0.0f;
+	rightUpperArmJointArmorRotation[2] = 0.0f;
+	rightForearmRotation[0] = 0.0f;
+	rightForearmRotation[1] = 0.0f;
+	rightForearmRotation[2] = 0.0f;
+	rightHandRotation[0] = 0.0f;
+	rightHandRotation[1] = 0.0f;
+	rightHandRotation[2] = 0.0f;
+
+	//====================
+	// Left Leg
+	//====================
+	leftLegFrontArmorRotation[0] = 0.0f;
+	leftLegFrontArmorRotation[1] = 0.0f;
+	leftLegFrontArmorRotation[2] = 0.0f;
+	leftLegBackArmorRotation[0] = 0.0f;
+	leftLegBackArmorRotation[1] = 0.0f;
+	leftLegBackArmorRotation[2] = 0.0f;
+	leftLegSideArmorRotation[0] = 0.0f;
+	leftLegSideArmorRotation[1] = 0.0f;
+	leftLegSideArmorRotation[2] = 0.0f;
+	leftUpperLegRotation[0] = 0.0f;
+	leftUpperLegRotation[1] = 0.0f;
+	leftUpperLegRotation[2] = 0.0f;
+	leftLowerLegRotation[0] = 0.0f;
+	leftLowerLegRotation[1] = 0.0f;
+	leftLowerLegRotation[2] = 0.0f;
+	leftFootRotation[0] = 0.0f;
+	leftFootRotation[1] = 0.0f;
+	leftFootRotation[2] = 0.0f;
+
+	//====================
+	// Right Leg
+	//====================
+	rightLegFrontArmorRotation[0] = 0.0f;
+	rightLegFrontArmorRotation[1] = 0.0f;
+	rightLegFrontArmorRotation[2] = 0.0f;
+	rightLegBackArmorRotation[0] = 0.0f;
+	rightLegBackArmorRotation[1] = 0.0f;
+	rightLegBackArmorRotation[2] = 0.0f;
+	rightLegSideArmorRotation[0] = 0.0f;
+	rightLegSideArmorRotation[1] = 0.0f;
+	rightLegSideArmorRotation[2] = 0.0f;
+	rightUpperLegRotation[0] = 0.0f;
+	rightUpperLegRotation[1] = 0.0f;
+	rightUpperLegRotation[2] = 0.0f;
+	rightLowerLegRotation[0] = 0.0f;
+	rightLowerLegRotation[1] = 0.0f;
+	rightLowerLegRotation[2] = 0.0f;
+	rightFootRotation[0] = 0.0f;
+	rightFootRotation[1] = 0.0f;
+	rightFootRotation[2] = 0.0f;
+
+	//====================
+	// Right Finger
+	//====================
+	rightIndexBaseRot = 0.0f;
+	rightIndexMidRot = 0.0f;
+	rightIndexTipRot = 0.0f;
+	rightMiddleBaseRot = 0.0f;
+	rightMiddleMidRot = 0.0f;
+	rightMiddleTipRot = 0.0f;
+	rightRingBaseRot = 0.0f;
+	rightRingMidRot = 0.0f;
+	rightRingTipRot = 0.0f;
+	rightLittleBaseRot = 0.0f;
+	rightLittleMidRot = 0.0f;
+	rightLittleTipRot = 0.0f;
+	rightThumbMidRot = 0.0f;
+	rightThumbTipRot = 0.0f;
+	rightThumbSpreadRot = 30.0f;
+
+	//====================
+	// Left Finger
+	//====================
+	leftIndexBaseRot = 0.0f;
+	leftIndexMidRot = 0.0f;
+	leftIndexTipRot = 0.0f;
+	leftMiddleBaseRot = 0.0f;
+	leftMiddleMidRot = 0.0f;
+	leftMiddleTipRot = 0.0f;
+	leftRingBaseRot = 0.0f;
+	leftRingMidRot = 0.0f;
+	leftRingTipRot = 0.0f;
+	leftLittleBaseRot = 0.0f;
+	leftLittleMidRot = 0.0f;
+	leftLittleTipRot = 0.0f;
+	leftThumbMidRot = 0.0f;
+	leftThumbTipRot = 0.0f;
+	leftThumbSpreadRot = 30.0f;
+}
+
+AnimState BackBone::GetState()
+{
+	return currentState;
 }
 
 // ======================================================
@@ -717,7 +866,6 @@ void BackBone::Animate(float deltaTime) {
 		RotateRightHandFinger(90, 90, 90);
 		RotateLeftHandFinger(90, 90, 90);
 
-		Rotate(0, 0, sin(animTime) * 2.0f);
 		break;
 
 	// ==================================================
@@ -810,21 +958,23 @@ void BackBone::Animate(float deltaTime) {
 		float aSpeed = animTime * 1.0f;
 		float swing = -sin(aSpeed);
 
-		Rotate(10.0f + swing * 20.0f, swing * 40.0f, 0);
+		RotateBody(10.0f + swing * 20.0f, swing * 40.0f, 0);
 
-		RotateLeftUpperLeg(20.0f + swing * 20.0f, 30.0f, 0);
-		RotateRightUpperLeg(-20.0f + swing * 10.0f, -30.0f, 0);
-		RotateLeftLowerLeg(-30.0f - swing * 10.0f);
-		RotateRightLowerLeg(-30.0f);
+		RotateLeftUpperLeg(-10.0f, 0.0f, 25.0f);
+		RotateRightUpperLeg(40.0f + swing * 10.0f, 0.0f, 25.0f);
+		RotateLeftLowerLeg(-45.0f);
+		RotateRightLowerLeg(-30.0f - swing * 10.0f);
+		RotateLeftFoot(10.0f, 0, 0);
+		RotateRightFoot(0.0f, 0, 0);
 
-		RotateRightUpperArm(-45.0f + swing * 45.0f, swing * 30.0f, 20.0f);
+		RotateRightUpperArm(-60.0f + swing * 80.0f, swing * 45.0f, 10.0f);
 
-		RotateRightForearm(30.0f, 0.0f);
+		RotateRightForearm(50.0f - swing * 10.0f, swing * 10.0f);
 
-		RotateRightHand(0, 0, swing * -20.0f);
+		RotateRightHand(-30.0f, 0, 0);
 
-		RotateLeftUpperArm(20.0f - swing * 30.0f, 0, 30.0f);
-		RotateLeftForearm(45.0f, 0);
+		RotateLeftUpperArm(30.0f, 0, 30.0f);
+		RotateLeftForearm(60.0f, 90.0f);
 
 		RotateRightHandFinger(90, 90, 90);
 		RotateLeftHandFinger(90, 90, 90);

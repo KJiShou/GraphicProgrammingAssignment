@@ -1,21 +1,22 @@
 #pragma once
 #include "pch.h"
 #include "Object.h"
+enum AnimState {
+	IDLE,
+	WALK,
+	ATTACK,
+	RUN,
+	JUMP
+};
 
 class BackBone
 {
 public:
 	// animation
-	enum AnimState {
-		IDLE,
-		WALK,
-		ATTACK,
-		RUN,
-		JUMP
-	};
-
+	
 	void Animate(float deltaTime);
 	void SetState(AnimState newState);
+	AnimState GetState();
 
 	Object* root = new Object("empty.json");
 	// head

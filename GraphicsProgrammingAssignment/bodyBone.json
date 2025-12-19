@@ -20,30 +20,6 @@
         "scaleZ": 1.0
       }
     ],
-    "cylinders": [
-        {
-            "baseRadius": 0.1,
-            "topRadius": 0.1,
-            "height": 0.75,
-            "slices": 10,
-            "stacks": 10,
-            "style": "GLU_FILL",
-            "isClose": true,
-            "lineWidth": 1.0,
-            "r": 0.2,
-            "g": 0.2,
-            "b": 0.2,
-            "transX": 0.0,
-            "transY": -0.1,
-            "transZ": 0.0,
-            "rotX": 90.0,
-            "rotY": 0.0,
-            "rotZ": 0.0,
-            "scaleX": 1.0,
-            "scaleY": 1.0,
-            "scaleZ": 1.0
-        }
-    ],
     "cubes": [
         {
             "length": 1.0,
