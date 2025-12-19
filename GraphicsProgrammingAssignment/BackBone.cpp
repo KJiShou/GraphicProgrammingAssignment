@@ -390,12 +390,12 @@ void BackBone::RotateRightHand(float x, float y, float z)
 
 void BackBone::RotateLeftUpperLeg(float x, float y, float z)
 {
-	float rx = clamp(x, -45.0f, 90.0f);
+	float rx = clamp(x, -120.0f, 90.0f);
 	float rz = clamp(z, -15.0f, 60.0f); 
 	float ry = clamp(y, -45.0f, 45.0f);
 
 	if (rx > 20) leftLegFrontArmorRotation[0] = -(rx - 20) * 0.9f;
-	if (rx < 0) leftLegBackArmorRotation[0] = -rx/3.0f;
+	if (rx < 0) leftLegBackArmorRotation[0] = -rx;
 	if (rz > 10) leftLegSideArmorRotation[2] = -(rz - 10) / 2.0f;
 
 	leftUpperLegRotation[0] = -rx; 
@@ -417,12 +417,12 @@ void BackBone::RotateLeftFoot(float x, float y, float z)
 
 void BackBone::RotateRightUpperLeg(float x, float y, float z)
 {
-	float rx = clamp(x, -45.0f, 90.0f);
+	float rx = clamp(x, -120.0f, 90.0f);
 	float rz = clamp(z, -15.0f, 60.0f);
 	float ry = clamp(y, -45.0f, 45.0f);
 
 	if (rx > 20) rightLegFrontArmorRotation[0] = -(rx - 20) * 0.9f;
-	if (rx < 0) rightLegBackArmorRotation[0] = -rx/3.0f;
+	if (rx < 0) rightLegBackArmorRotation[0] = -rx;
 	if (rz > 10) rightLegSideArmorRotation[2] = (rz-10) / 2.0f;
 
 	rightUpperLegRotation[0] = -rx;
@@ -878,7 +878,7 @@ void BackBone::Animate(float deltaTime) {
 		float rSpeed = animTime * 1.8f;
 		float pi = 3.14159f;
 
-		Rotate(20.0f + sin(rSpeed * 2.0f) * 2.0f, 0, sin(rSpeed) * 5.0f);
+		RotateBody(20.0f + sin(rSpeed * 2.0f) * 2.0f, 0, sin(rSpeed) * 5.0f);
 
 		RotateLeftUpperLeg(sin(rSpeed) * 50.0f, 0, 0);
 		RotateRightUpperLeg(sin(rSpeed + pi) * 50.0f, 0, 0);
@@ -962,7 +962,7 @@ void BackBone::Animate(float deltaTime) {
 
 		RotateBody(10.0f + swing * 20.0f, swing * 40.0f, 0);
 
-		RotateLeftUpperLeg(-10.0f, 0.0f, 25.0f);
+		RotateLeftUpperLeg(-10.0f, 15.0f - swing * 15.0f, 25.0f);
 		RotateRightUpperLeg(40.0f + swing * 10.0f, 0.0f, 25.0f);
 		RotateLeftLowerLeg(-45.0f);
 		RotateRightLowerLeg(-30.0f - swing * 10.0f);
@@ -975,12 +975,14 @@ void BackBone::Animate(float deltaTime) {
 
 		RotateRightHand(-30.0f, 0, 0);
 
-		RotateLeftUpperArm(30.0f, 0, 30.0f);
-		RotateLeftForearm(60.0f, 90.0f);
+		RotateLeftUpperArm(80.0f, 0, 20.0f);
+		RotateLeftForearm(60.0f, 30.0f);
+		RotateLeftHand(0.0f, 0.0f, swing * 30.0f);
 
 		RotateRightHandFinger(90, 90, 90);
 		RotateLeftHandFinger(90, 90, 90);
 	}
+	break;
 	break;
 	}
 }
