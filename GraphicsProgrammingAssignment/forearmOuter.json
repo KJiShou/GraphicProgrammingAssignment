@@ -7,7 +7,7 @@
       "height": 0.1,
       "r": 1.0,
       "g": 1.0,
-      "b": 0.5,
+      "b": 1.0,
       "transX": 0.0,
       "transY": -0.9,
       "transZ": 0.0,
@@ -19,14 +19,14 @@
       "scaleZ": 1.0,
       "isExpandable": true,
       "textures": {
-        "isRepeat": true,
-        "all": "Assets/",
-        "front": "Assets/",
-        "back": "Assets/",
-        "top": "Assets/",
-        "bottom": "Assets/",
-        "left": "Assets/",
-        "right": "Assets/"
+        "isRepeat": false,
+        "all": "Assets/off-white-metal.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
       }
     },
     {
@@ -48,14 +48,14 @@
       "scaleZ": 1.0,
       "isExpandable": true,
       "textures": {
-        "isRepeat": true,
-        "all": "Assets/",
-        "front": "Assets/",
-        "back": "Assets/",
-        "top": "Assets/",
-        "bottom": "Assets/",
-        "left": "Assets/",
-        "right": "Assets/"
+        "isRepeat": false,
+        "all": "Assets/skin1.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "Assets/off-white-metal.bmp",
+        "left": "",
+        "right": ""
       }
     },
     {
@@ -63,9 +63,9 @@
       "length": 0.35,
       "width": 0.39,
       "height": 0.6,
-      "r": 0.0,
-      "g": 0.0,
-      "b": 0.0,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": 0.0,
       "transY": -0.526,
       "transZ": 0.0,
@@ -77,14 +77,14 @@
       "scaleZ": 1.0,
       "isExpandable": true,
       "textures": {
-        "isRepeat": true,
-        "all": "Assets/",
-        "front": "Assets/",
-        "back": "Assets/",
-        "top": "Assets/",
-        "bottom": "Assets/",
-        "left": "Assets/",
-        "right": "Assets/"
+        "isRepeat": false,
+        "all": "Assets/dark-metal.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
       }
     },
     {
@@ -92,9 +92,9 @@
       "length": 0.28,
       "width": 0.08,
       "height": 0.01,
-      "r": 0.0,
-      "g": 0.0,
-      "b": 0.0,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": 0.0,
       "transY": -0.821,
       "transZ": -0.26,
@@ -106,14 +106,14 @@
       "scaleZ": 1.0,
       "isExpandable": true,
       "textures": {
-        "isRepeat": true,
-        "all": "Assets/",
-        "front": "Assets/",
-        "back": "Assets/",
-        "top": "Assets/",
-        "bottom": "Assets/",
-        "left": "Assets/",
-        "right": "Assets/"
+        "isRepeat": false,
+        "all": "Assets/off-white-metal.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
       }
     }
   ],
@@ -129,9 +129,9 @@
       "style": "GLU_FILL",
       "isClose": true,
       "lineWidth": 1.0,
-      "r": 0.0,
-      "g": 0.0,
-      "b": 0.0,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": 0.0,
       "transY": 0.0,
       "transZ": -0.18,
@@ -140,7 +140,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": false,
+        "all": "Assets/screw.bmp",
+        "top": "",
+        "bottom": "",
+        "body": "Assets/off-white-metal.bmp"
+      }
     },
     {
       "label": "joint white",
@@ -164,7 +171,14 @@
       "rotZ": 0.0,
       "scaleX": 1.0,
       "scaleY": 1.0,
-      "scaleZ": 1.0
+      "scaleZ": 1.0,
+      "textures": {
+        "isRepeat": false,
+        "all": "Assets/off-white-metal.bmp",
+        "top": "",
+        "bottom": "",
+        "body": ""
+      }
     }
   ],
   "frustumCube": [
@@ -177,9 +191,9 @@
       "bottomLength": 0.30,
       "bottomDepth": 0.25,
       "height": 1.0,
-      "r": 0.5,
-      "g": 0.5,
-      "b": 0.5,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": 0.0,
       "transY": -0.4,
       "transZ": 0.0,
@@ -191,14 +205,14 @@
       "scaleZ": 1.0,
       "isExpandable": true,
       "textures": {
-        "isRepeat": true,
-        "all": "Assets/",
-        "front": "Assets/",
-        "back": "Assets/",
-        "top": "Assets/",
-        "bottom": "Assets/",
-        "left": "Assets/",
-        "right": "Assets/"
+        "isRepeat": false,
+        "all": "Assets/skin1.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "Assets/skin2.bmp",
+        "right": ""
       }
     },
     {
@@ -224,14 +238,14 @@
       "scaleZ": 1.0,
       "isExpandable": true,
       "textures": {
-        "isRepeat": true,
-        "all": "Assets/",
-        "front": "Assets/",
-        "back": "Assets/",
-        "top": "Assets/",
-        "bottom": "Assets/",
-        "left": "Assets/",
-        "right": "Assets/"
+        "isRepeat": false,
+        "all": "Assets/off-white-metal.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
       }
     },
     {
@@ -258,13 +272,13 @@
       "isExpandable": true,
       "textures": {
         "isRepeat": true,
-        "all": "Assets/",
-        "front": "Assets/",
-        "back": "Assets/",
-        "top": "Assets/",
-        "bottom": "Assets/",
-        "left": "Assets/",
-        "right": "Assets/"
+        "all": "Assets/off-white-metal.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
       }
     },
     {
@@ -280,7 +294,7 @@
       "g": 1.0,
       "b": 1.0,
       "transX": 0.0,
-      "transY": -0.675,
+      "transY": -0.6761,
       "transZ": -0.27,
       "rotX": 0,
       "rotY": -90.0,
@@ -290,14 +304,14 @@
       "scaleZ": 1.0,
       "isExpandable": true,
       "textures": {
-        "isRepeat": true,
-        "all": "Assets/",
-        "front": "Assets/",
-        "back": "Assets/",
-        "top": "Assets/",
-        "bottom": "Assets/",
-        "left": "Assets/",
-        "right": "Assets/"
+        "isRepeat": false,
+        "all": "Assets/off-white-metal.bmp",
+        "front": "",
+        "back": "",
+        "top": "Assets/skin4.bmp",
+        "bottom": "",
+        "left": "",
+        "right": ""
       }
     }
   ]

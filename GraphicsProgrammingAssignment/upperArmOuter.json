@@ -19,14 +19,14 @@
       "scaleZ": 1.0,
       "isExpandable": true,
       "textures": {
-        "isRepeat": true,
-        "all": "Assets/",
-        "front": "Assets/",
-        "back": "Assets/",
-        "top": "Assets/",
-        "bottom": "Assets/",
-        "left": "Assets/",
-        "right": "Assets/"
+        "isRepeat": false,
+        "all": "Assets/skin1.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
       }
     }
   ],
@@ -40,9 +40,9 @@
       "bottomLength": 0.35,
       "bottomDepth": 0.35,
       "height": 1.0,
-      "r": 0.5,
-      "g": 0.5,
-      "b": 0.5,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": 0.0,
       "transY": -0.3999,
       "transZ": 0.0,
@@ -87,14 +87,14 @@
       "scaleZ": 1.0,
       "isExpandable": true,
       "textures": {
-        "isRepeat": true,
-        "all": "Assets/",
-        "front": "Assets/",
-        "back": "Assets/",
-        "top": "Assets/",
-        "bottom": "Assets/",
-        "left": "Assets/",
-        "right": "Assets/"
+        "isRepeat": false,
+        "all": "Assets/skin1.bmp",
+        "front": "Assets/skin2.bmp",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
       }
     },
     {
@@ -120,14 +120,14 @@
       "scaleZ": 1.0,
       "isExpandable": true,
       "textures": {
-        "isRepeat": true,
-        "all": "Assets/",
-        "front": "Assets/",
-        "back": "Assets/",
-        "top": "Assets/",
-        "bottom": "Assets/",
-        "left": "Assets/",
-        "right": "Assets/"
+        "isRepeat": false,
+        "all": "Assets/skin4.bmp",
+        "front": "Assets/off-white-metal.bmp",
+        "back": "Assets/off-white-metal.bmp",
+        "top": "",
+        "bottom": "",
+        "left": "Assets/off-white-metal.bmp",
+        "right": "Assets/light2.bmp"
       }
     }
   ]

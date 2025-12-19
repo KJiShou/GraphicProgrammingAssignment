@@ -22,9 +22,81 @@
 #define WINDOW_TITLE "OpenGL Window"
 #define PI 3.14159
 #define FPS 60
+#define CLAMP(v, min, max) ((v < min) ? min : ((v > max) ? max : v))
 
 using json = nlohmann::json;
 json j;
+
+//==================================
+// Key Scheme
+//==================================
+// MODE 1 (Camera View) [Default]
+// ---------------------------------
+// W - Move To Front
+// S - Move To Back
+// A - Move To Left
+// D - Move To Right
+// Q - Move To Down
+// E - Move To Up
+//==================================
+// MODE 2 (Robot Movement)
+// ---------------------------------
+// W - Move To Front
+// S - Move To Back
+// A - Move To Left
+// D - Move To Right
+// Space - Jump
+// SHIFT - Sprint / Run
+// Mouse Left Click - Attack
+//==================================
+// MODE 3 (Light Movement)
+// ---------------------------------
+// W - Move To Front
+// S - Move To Back
+// A - Move To Left
+// D - Move To Right
+// Q - Move To Down
+// E - Move To Up
+//==================================
+// MODE 4 (Every Part Movement)
+// ---------------------------------
+// Y - x(-)
+// U - x(+)
+// H - y(-)
+// J - y(+)
+// B - z(-)
+// N - z(+)
+// 
+// 1 -> Head
+// 2 -> Body
+// 3 -> Left Upper Arm
+// 4 -> Right Upper Arm
+// 5 -> Left ForeArm
+// 6 -> Right ForeArm
+// 7 -> Left Hand
+// 8 -> Right Hand
+// 9 -> Left Up Leg
+// 0 -> Right Up Leg
+// - -> Left Low Leg
+// = -> Right Low Leg
+// [ -> Left Foot
+// ] -> Right Foot
+//==================================
+
+// movement mode
+int keyMode = 0;
+int totalNumberKeyMode = 4;
+
+int selectedPart = 1;
+
+float head[3] = { 0 };
+float body[3] = { 0 };
+float lUpArm[3] = { 0 }, rUpArm[3] = { 0 };
+float lForeArm[2] = { 0 }, rForeArm[2] = { 0 };
+float lHand[3] = { 0 }, rHand[3] = { 0 };
+float lUpLeg[3] = { 0 }, rUpLeg[3] = { 0 };
+float lLowLeg[1] = { 0 }, rLowLeg[1] = { 0 };
+float lFoot[3] = { 0 }, rFoot[3] = { 0 };
 
 // light
 GLUquadricObj* var = gluNewQuadric();
@@ -172,73 +244,10 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 			break;
 		}
 		case VK_SPACE: {
-			gameObjectRotX = 0;
-			gameObjectRotY = 0;
-			gameObjectRotZ = 0;
-			gameObjectTransX = 0;
-			gameObjectTransY = 0;
-			gameObjectTransZ = 0;
-			cameraTransX = -1.0f;
-			cameraTransY = 0;
-			cameraTransZ = -5.0f;
-			input.SetMouseX(0);
-			input.SetMouseY(0);
-			break;
-		}
-		case 'X': {
-			if (GetKeyState(VK_SHIFT) & 0x8000)
-			{
-				cameraRotateXAngle--;
-				if (cameraRotateXAngle <= 0.0f)
-				{
-					cameraRotateXAngle = 360.0f;
-				}
-			}
-			else
-			{
-				cameraRotateXAngle++;
-				if (cameraRotateXAngle >= 360.0f)
-				{
-					cameraRotateXAngle = 0.0f;
-				}
-			}
-			break;
-		}
-		case 'Y': {
-			if (GetKeyState(VK_SHIFT) & 0x8000)
-			{
-				cameraRotateYAngle--;
-				if (cameraRotateYAngle <= 0.0f)
-				{
-					cameraRotateYAngle = 360.0f;
-				}
-			}
-			else
-			{
-				cameraRotateYAngle++;
-				if (cameraRotateYAngle >= 360.0f)
-				{
-					cameraRotateYAngle = 0.0f;
-				}
-			}
-			break;
-		}
-		case 'Z': {
-			if (GetKeyState(VK_SHIFT) & 0x8000)
-			{
-				cameraRotateZAngle--;
-				if (cameraRotateZAngle <= 0.0f)
-				{
-					cameraRotateZAngle = 360.0f;
-				}
-			}
-			else
-			{
-				cameraRotateZAngle++;
-				if (cameraRotateZAngle >= 360.0f)
-				{
-					cameraRotateZAngle = 0.0f;
-				}
+			if (keyMode == 0) {
+				camPosX = 0.0f, camPosY = 0.0f, camPosZ = 5.0f;
+				camYaw = 0.0f;
+				camPitch = 0.0f;
 			}
 			break;
 		}
@@ -264,39 +273,11 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 			isFrustrum = true;
 			break;
 		}
-		/*case 'J': {
-			if (GetKeyState(VK_SHIFT) & 0x8000)
-			{
-				light0->Move(light0->GetPosition()[0] - 0.1f, light0->GetPosition()[1], light0->GetPosition()[2]);
-			}
-			else
-			{
-				light0->Move(light0->GetPosition()[0] + 0.1f, light0->GetPosition()[1], light0->GetPosition()[2]);
-			}
+		case VK_TAB: {
+			keyMode += 1;
+			if (keyMode >= totalNumberKeyMode) keyMode = 0;
 			break;
 		}
-		case 'K': {
-			if (GetKeyState(VK_SHIFT) & 0x8000)
-			{
-				light0->Move(light0->GetPosition()[0], light0->GetPosition()[1] - 0.1f, light0->GetPosition()[2]);
-			}
-			else
-			{
-				light0->Move(light0->GetPosition()[0], light0->GetPosition()[1] + 0.1f, light0->GetPosition()[2]);
-			}
-			break;
-		}
-		case 'L': {
-			if (GetKeyState(VK_SHIFT) & 0x8000)
-			{
-				light0->Move(light0->GetPosition()[0], light0->GetPosition()[1] , light0->GetPosition()[2] - 0.1f);
-			}
-			else
-			{
-				light0->Move(light0->GetPosition()[0], light0->GetPosition()[1], light0->GetPosition()[2] + 0.1f);
-			}
-			break;
-		}*/
 		case VK_ESCAPE:
 			PostQuitMessage(0);
 			break;
@@ -479,7 +460,7 @@ void Draw() {
 	//===============================
 	// JS Testing Section
 	//===============================
-	backbone->RotateRightForearm(x, -90);
+	/*backbone->RotateRightForearm(x, -90);
 	backbone->RotateRightUpperArm(x, y, z);
 	backbone->RotateLeftUpperArm(x, y, z);
 	backbone->RotateLeftForearm(x, -90);
@@ -489,12 +470,12 @@ void Draw() {
 	backbone->RotateRightLowerLeg(x);
 	backbone->RotateRightFoot(x, y, z);
 	backbone->RotateLeftUpperLeg(x, y, z);
-	backbone->RotateBody(x, y, z);
+	backbone->RotateBody(x, y, z);*/
 
 	//===============================
 	// JY Testing Section
 	//===============================
-	backbone->RotateRightUpperLeg(x, y, z);
+	/*backbone->RotateRightUpperLeg(x, y, z);*/
 	
 	
 	//===============================
@@ -573,7 +554,7 @@ void Display()
 	
 	
 
-	CalcDeltaTime();
+	
 	Draw();
 	
 	//--------------------------------
@@ -586,35 +567,9 @@ void Display()
 float camNormalMoveSpeed = 0.05;
 float camFasterMoveSpeed = 0.1;
 void Update(int framesToUpdate) {
+	CalcDeltaTime();
 	for (int i = 0; i < framesToUpdate; i++) {
 		globalFrameCounter++;
-
-		// camera move
-		float speed = input.IsKeyPressed(DIK_LSHIFT) ? camFasterMoveSpeed : camNormalMoveSpeed;
-
-		float forwardX = sinf(camYaw * PI / 180);
-		float forwardZ = cosf(camYaw * PI / 180);
-
-		float rightX = cosf(camYaw * PI / 180);
-		float rightZ = -sinf(camYaw * PI / 180);
-
-		// Move Forward/Back
-		if (input.IsKeyPressed(DIK_S))
-			camPosX += forwardX * speed,
-			camPosZ += forwardZ * speed;
-
-		if (input.IsKeyPressed(DIK_W))
-			camPosX -= forwardX * speed,
-		camPosZ -= forwardZ * speed;
-
-		// Move Left/Right
-		if (input.IsKeyPressed(DIK_A))
-			camPosX -= rightX * speed,
-			camPosZ -= rightZ * speed;
-
-		if (input.IsKeyPressed(DIK_D))
-			camPosX += rightX * speed,
-			camPosZ += rightZ * speed;
 
 		// camera rotation
 		camYaw -= input.GetMouseX() * 0.1f;
@@ -626,90 +581,269 @@ void Update(int framesToUpdate) {
 
 		input.SetMouseX(0);
 		input.SetMouseY(0);
+		// camera move
+		if (keyMode == 0 || keyMode == 3) {
+			float speed = input.IsKeyPressed(DIK_LSHIFT) ? camFasterMoveSpeed : camNormalMoveSpeed;
 
-		// Move Up/Down
-		if (input.IsKeyPressed(DIK_E)) {
-			camPosY += speed;
+			float forwardX = sinf(camYaw * PI / 180);
+			float forwardZ = cosf(camYaw * PI / 180);
+
+			float rightX = cosf(camYaw * PI / 180);
+			float rightZ = -sinf(camYaw * PI / 180);
+
+			// Move Forward/Back
+			if (input.IsKeyPressed(DIK_S))
+				camPosX += forwardX * speed,
+				camPosZ += forwardZ * speed;
+
+			if (input.IsKeyPressed(DIK_W))
+				camPosX -= forwardX * speed,
+				camPosZ -= forwardZ * speed;
+
+			// Move Left/Right
+			if (input.IsKeyPressed(DIK_A))
+				camPosX -= rightX * speed,
+				camPosZ -= rightZ * speed;
+
+			if (input.IsKeyPressed(DIK_D))
+				camPosX += rightX * speed,
+				camPosZ += rightZ * speed;
+
+			// Move Up/Down
+			if (input.IsKeyPressed(DIK_E)) {
+				camPosY += speed;
+			}
+			if (input.IsKeyPressed(DIK_Q)) {
+				camPosY -= speed;
+			}
 		}
-		if (input.IsKeyPressed(DIK_Q)) {
-			camPosY -= speed;
+
+		if (keyMode == 1) {
+			bool isJumping = (backbone->GetState() == JUMP);
+			bool isMoving = false;
+			bool isRunning = input.IsKeyPressed(DIK_LSHIFT);
+			float moveSpeed = isRunning ? 0.15f : 0.05f;
+			AnimState targetMoveAnim = isRunning ? RUN : WALK;
+
+			static float jumpTimer = 0.0f;
+
+			if (isJumping) {
+				jumpTimer += 0.016f;
+
+				if (jumpTimer > 1.64f) {
+					backbone->SetState(IDLE); 
+					isJumping = false;
+					jumpTimer = 0.0f;
+				}
+			}
+
+			if (input.IsKeyPressed(DIK_A)) {
+				if (!isJumping && backbone->GetState() != targetMoveAnim) {
+					backbone->SetState(targetMoveAnim);
+				}
+
+				gameObjectTransX -= moveSpeed;
+				gameObjectRotY = -90;
+				isMoving = true;
+			}
+			else if (input.IsKeyPressed(DIK_D)) {
+				if (!isJumping && backbone->GetState() != targetMoveAnim) {
+					backbone->SetState(targetMoveAnim);
+				}
+
+				gameObjectTransX += moveSpeed;
+				gameObjectRotY = 90;
+				isMoving = true;
+			}
+			else if (input.IsKeyPressed(DIK_S)) {
+				if (!isJumping && backbone->GetState() != targetMoveAnim) {
+					backbone->SetState(targetMoveAnim);
+				}
+
+				gameObjectTransZ += moveSpeed;
+				gameObjectRotY = 0;
+				isMoving = true;
+			}
+			else if (input.IsKeyPressed(DIK_W)) {
+				if (!isJumping && backbone->GetState() != targetMoveAnim) {
+					backbone->SetState(targetMoveAnim);
+				}
+
+				gameObjectTransZ -= moveSpeed;
+				gameObjectRotY = 180;
+				isMoving = true;
+			}
+
+			else if (input.IsLeftMouseDown()) {
+				if (backbone->GetState() != ATTACK) backbone->SetState(ATTACK);
+				isMoving = true;
+			}
+
+			if (!isMoving && !isJumping) {
+				if (backbone->GetState() != IDLE) backbone->SetState(IDLE);
+			}
+
+			if (input.IsKeyPressed(DIK_SPACE)) {
+				if (!isJumping) {
+					backbone->SetState(JUMP);
+					jumpTimer = 0.0f;
+				}
+			}
+			backbone->Rotate(gameObjectRotX, gameObjectRotY + sin(deltaTime * 5.0f) * 2.0f, gameObjectRotZ);
+			backbone->Move(gameObjectTransX, gameObjectTransY, gameObjectTransZ);
 		}
 
 		// Light move
-		// x direction
-		if (input.IsKeyPressed(DIK_J))
-		{
-			if (input.IsKeyPressed(DIK_LSHIFT))
+		if (keyMode == 2) {
+			// x direction
+			if (input.IsKeyPressed(DIK_A))
 			{
 				light0.Move(light0.GetPosition()[0] - 0.1f, light0.GetPosition()[1], light0.GetPosition()[2]);
 			}
-			else {
+			if (input.IsKeyPressed(DIK_D)) {
 				light0.Move(light0.GetPosition()[0] + 0.1f, light0.GetPosition()[1], light0.GetPosition()[2]);
 			}
-		}
 
-		// y direction
-		if (input.IsKeyPressed(DIK_K))
-		{
-			if (input.IsKeyPressed(DIK_LSHIFT))
+			// y direction
+			if (input.IsKeyPressed(DIK_Q))
 			{
 				light0.Move(light0.GetPosition()[0], light0.GetPosition()[1] - 0.1f, light0.GetPosition()[2]);
 			}
-			else {
+			if (input.IsKeyPressed(DIK_E))
 				light0.Move(light0.GetPosition()[0], light0.GetPosition()[1] + 0.1f, light0.GetPosition()[2]);
-			}
-		}
 
-		// z direction
-		if (input.IsKeyPressed(DIK_L))
-		{
-			if (input.IsKeyPressed(DIK_LSHIFT))
+			// z direction
+			if (input.IsKeyPressed(DIK_W))
 			{
-				light0.Move(light0.GetPosition()[0], light0.GetPosition()[1], light0.GetPosition()[2] - 0.1f);
+					light0.Move(light0.GetPosition()[0], light0.GetPosition()[1], light0.GetPosition()[2] - 0.1f);
 			}
-			else {
+			if (input.IsKeyPressed(DIK_S)) {
 				light0.Move(light0.GetPosition()[0], light0.GetPosition()[1], light0.GetPosition()[2] + 0.1f);
 			}
-			
-		}
-
-		//=======================
-		// Testing key
-		//=======================
-		if (input.IsKeyPressed(DIKEYBOARD_NUMPAD1))
-		{
-			if (input.IsKeyPressed(DIK_LSHIFT))
-			{
-				x--;
-			}
-			else {
-				x++;
-			}
-		}
-		if (input.IsKeyPressed(DIKEYBOARD_NUMPAD2))
-		{
-			if (input.IsKeyPressed(DIK_LSHIFT))
-			{
-				y--;
-			}
-			else {
-				y++;
-			}
-		}
-		if (input.IsKeyPressed(DIKEYBOARD_NUMPAD3))
-		{
-			if (input.IsKeyPressed(DIK_LSHIFT))
-			{
-				z--;
-			}
-			else {
-				z++;
-			}
-		}
-		if (input.IsKeyPressed(DIKEYBOARD_NUMPAD8)) {
-			backbone->RotateRightIndex(0, 0, 0);
 		}
 	}
+
+	if (keyMode == 3) {
+		if (input.IsKeyPressed(DIK_1)) selectedPart = 1; // Head
+		if (input.IsKeyPressed(DIK_2)) selectedPart = 2; // Body
+		if (input.IsKeyPressed(DIK_3)) selectedPart = 3; // L.UpArm
+		if (input.IsKeyPressed(DIK_4)) selectedPart = 4; // R.UpArm
+		if (input.IsKeyPressed(DIK_5)) selectedPart = 5; // L.ForeArm
+		if (input.IsKeyPressed(DIK_6)) selectedPart = 6; // R.ForeArm
+		if (input.IsKeyPressed(DIK_7)) selectedPart = 7; // L.Hand
+		if (input.IsKeyPressed(DIK_8)) selectedPart = 8; // R.Hand
+		if (input.IsKeyPressed(DIK_9)) selectedPart = 9; // L.UpLeg
+		if (input.IsKeyPressed(DIK_0)) selectedPart = 10; // R.UpLeg
+		if (input.IsKeyPressed(DIK_MINUS)) selectedPart = 11; // L.LowLeg
+		if (input.IsKeyPressed(DIK_EQUALS)) selectedPart = 12; // R.LowLeg
+		if (input.IsKeyPressed(DIK_LBRACKET)) selectedPart = 13; // L.Foot
+		if (input.IsKeyPressed(DIK_RBRACKET)) selectedPart = 14; // R.Foot
+
+		float spd = 1.0f;
+		float dX = 0, dY = 0, dZ = 0;
+
+		if (input.IsKeyPressed(DIK_U)) dX += spd;
+		if (input.IsKeyPressed(DIK_Y)) dX -= spd;
+		if (input.IsKeyPressed(DIK_J)) dY += spd;
+		if (input.IsKeyPressed(DIK_H)) dY -= spd;
+		if (input.IsKeyPressed(DIK_N)) dZ += spd;
+		if (input.IsKeyPressed(DIK_B)) dZ -= spd;
+
+		switch (selectedPart) {
+		case 1: // Head [-40~40, -70~70, -30~30]
+			head[0] = CLAMP(head[0] + dX, -40.0f, 40.0f);
+			head[1] = CLAMP(head[1] + dY, -70.0f, 70.0f);
+			head[2] = CLAMP(head[2] + dZ, -30.0f, 30.0f);
+			backbone->RotateHead(head[0], head[1], head[2]);
+			break;
+
+		case 2: // Body [-30~30, -45~45, -20~20]
+			body[0] = CLAMP(body[0] + dX, -30.0f, 30.0f);
+			body[1] = CLAMP(body[1] + dY, -45.0f, 45.0f);
+			body[2] = CLAMP(body[2] + dZ, -20.0f, 20.0f);
+			backbone->RotateBody(body[0], body[1], body[2]);
+			break;
+
+		case 3: // Left Upper Arm [-45~180, -90~90, -20~100]
+			lUpArm[0] = CLAMP(lUpArm[0] + dX, -45.0f, 180.0f);
+			lUpArm[1] = CLAMP(lUpArm[1] + dY, -90.0f, 90.0f);
+			lUpArm[2] = CLAMP(lUpArm[2] + dZ, -20.0f, 100.0f);
+			backbone->RotateLeftUpperArm(lUpArm[0], lUpArm[1], lUpArm[2]);
+			break;
+
+		case 4: // Right Upper Arm [-45~180, -90~90, -20~100]
+			rUpArm[0] = CLAMP(rUpArm[0] + dX, -45.0f, 180.0f);
+			rUpArm[1] = CLAMP(rUpArm[1] + dY, -90.0f, 90.0f);
+			rUpArm[2] = CLAMP(rUpArm[2] + dZ, -20.0f, 100.0f);
+			backbone->RotateRightUpperArm(rUpArm[0], rUpArm[1], rUpArm[2]);
+			break;
+
+		case 5: // Left Forearm [0~140, -90~90]
+			lForeArm[0] = CLAMP(lForeArm[0] + dX, 0.0f, 140.0f);
+			lForeArm[1] = CLAMP(lForeArm[1] + dY, -90.0f, 90.0f);
+			backbone->RotateLeftForearm(lForeArm[0], lForeArm[1]);
+			break;
+
+		case 6: // Right Forearm [0~140, -90~90]
+			rForeArm[0] = CLAMP(rForeArm[0] + dX, 0.0f, 140.0f);
+			rForeArm[1] = CLAMP(rForeArm[1] + dY, -90.0f, 90.0f);
+			backbone->RotateRightForearm(rForeArm[0], rForeArm[1]);
+			break;
+
+		case 7: // Left Hand [-45~45, -30~30, -45~45]
+			lHand[0] = CLAMP(lHand[0] + dX, -45.0f, 45.0f);
+			lHand[1] = CLAMP(lHand[1] + dY, -30.0f, 30.0f);
+			lHand[2] = CLAMP(lHand[2] + dZ, -45.0f, 45.0f);
+			backbone->RotateLeftHand(lHand[0], lHand[1], lHand[2]);
+			break;
+
+		case 8: // Right Hand [-45~45, -30~30, -45~45]
+			rHand[0] = CLAMP(rHand[0] + dX, -45.0f, 45.0f);
+			rHand[1] = CLAMP(rHand[1] + dY, -30.0f, 30.0f);
+			rHand[2] = CLAMP(rHand[2] + dZ, -45.0f, 45.0f);
+			backbone->RotateRightHand(rHand[0], rHand[1], rHand[2]);
+			break;
+
+		case 9: // Left Upper Leg [-120~90, -45~45, -15~60]
+			lUpLeg[0] = CLAMP(lUpLeg[0] + dX, -120.0f, 90.0f);
+			lUpLeg[1] = CLAMP(lUpLeg[1] + dY, -45.0f, 45.0f);
+			lUpLeg[2] = CLAMP(lUpLeg[2] + dZ, -15.0f, 60.0f);
+			backbone->RotateLeftUpperLeg(lUpLeg[0], lUpLeg[1], lUpLeg[2]);
+			break;
+
+		case 10: // Right Upper Leg [-120~90, -45~45, -15~60]
+			rUpLeg[0] = CLAMP(rUpLeg[0] + dX, -120.0f, 90.0f);
+			rUpLeg[1] = CLAMP(rUpLeg[1] + dY, -45.0f, 45.0f);
+			rUpLeg[2] = CLAMP(rUpLeg[2] + dZ, -15.0f, 60.0f);
+			backbone->RotateRightUpperLeg(rUpLeg[0], rUpLeg[1], rUpLeg[2]);
+			break;
+
+		case 11: // Left Lower Leg [-130~0]
+			lLowLeg[0] = CLAMP(lLowLeg[0] + dX, -130.0f, 0.0f);
+			backbone->RotateLeftLowerLeg(lLowLeg[0]);
+			break;
+
+		case 12: // Right Lower Leg [-130~0]
+			rLowLeg[0] = CLAMP(rLowLeg[0] + dX, -130.0f, 0.0f);
+			backbone->RotateRightLowerLeg(rLowLeg[0]);
+			break;
+
+		case 13: // Left Foot [-30~45, -30~30, -15~15]
+			lFoot[0] = CLAMP(lFoot[0] + dX, -30.0f, 45.0f);
+			lFoot[1] = CLAMP(lFoot[1] + dY, -30.0f, 30.0f);
+			lFoot[2] = CLAMP(lFoot[2] + dZ, -15.0f, 15.0f);
+			backbone->RotateLeftFoot(lFoot[0], lFoot[1], lFoot[2]);
+			break;
+
+		case 14: // Right Foot [-30~45, -30~30, -15~15]
+			rFoot[0] = CLAMP(rFoot[0] + dX, -30.0f, 45.0f);
+			rFoot[1] = CLAMP(rFoot[1] + dY, -30.0f, 30.0f);
+			rFoot[2] = CLAMP(rFoot[2] + dZ, -15.0f, 15.0f);
+			backbone->RotateRightFoot(rFoot[0], rFoot[1], rFoot[2]);
+			break;
+		}
+	}
+	if (keyMode != 3) backbone->Animate(deltaTime);
 }
 
 int main(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)

@@ -1,10 +1,23 @@
 #pragma once
 #include "pch.h"
 #include "Object.h"
+enum AnimState {
+	IDLE,
+	WALK,
+	ATTACK,
+	RUN,
+	JUMP
+};
 
 class BackBone
 {
 public:
+	// animation
+	
+	void Animate(float deltaTime);
+	void SetState(AnimState newState);
+	AnimState GetState();
+
 	Object* root = new Object("empty.json");
 	// head
 	Object* headBone = new Object("head.json");
@@ -80,102 +93,6 @@ public:
 	Object* rightLowerLeg = new Object("rightLowerLeg.json");
 	Object* rightFoot = new Object("rightFoot.json");
 
-	// Rotation and Movement
-	//====================
-	// Main Movement and rotation
-	//====================
-	float position[3] = { 0.0f, 0.0f, 0.0f };
-	float rotation[3] = { 0.0f, 0.0f, 0.0f };
-
-	//====================
-	// Head Rotation
-	//====================
-	float headRotation[3] = { 0.0f, 0.0f, 0.0f };
-
-	//====================
-	// Body Rotation
-	//====================
-	float bodyRotation[3] = { 0.0f, 0.0f, 0.0f };
-
-	//====================
-	// Pelvis
-	//====================
-	float pelvisRotation[3] = { 0.0f, 0.0f, 0.0f };
-
-	//====================
-	// Left Arm
-	//====================
-	float leftUpperArmRotation[3] = { 0.0f, 0.0f, 0.0f };
-	float leftUpperArmJointArmorRotation[3] = { 0.0f, 0.0f, 0.0f };
-	float leftForearmRotation[3] = { 0.0f, 0.0f, 0.0f };
-	float leftHandRotation[3] = { 0.0f, 0.0f, 0.0f };
-
-	//====================
-	// Right Arm
-	//====================
-	float rightUpperArmRotation[3] = { 0.0f, 0.0f, 0.0f };
-	float rightUpperArmJointArmorRotation[3] = { 0.0f, 0.0f, 0.0f };
-	float rightForearmRotation[3] = { 0.0f, 0.0f, 0.0f };
-	float rightHandRotation[3] = { 0.0f, 0.0f, 0.0f };
-
-	//====================
-	// Left Leg
-	//====================
-	float leftLegFrontArmorRotation[3] = { 0.0f, 0.0f, 0.0f };
-	float leftLegBackArmorRotation[3] = { 0.0f, 0.0f, 0.0f };
-	float leftLegSideArmorRotation[3] = { 0.0f, 0.0f, 0.0f };
-	float leftUpperLegRotation[3] = { 0.0f, 0.0f, 0.0f };
-	float leftLowerLegRotation[3] = { 0.0f, 0.0f, 0.0f };
-	float leftFootRotation[3] = { 0.0f, 0.0f, 0.0f };
-
-	//====================
-	// Right Leg
-	//====================
-	float rightLegFrontArmorRotation[3] = { 0.0f, 0.0f, 0.0f };
-	float rightLegBackArmorRotation[3] = { 0.0f, 0.0f, 0.0f };
-	float rightLegSideArmorRotation[3] = { 0.0f, 0.0f, 0.0f };
-	float rightUpperLegRotation[3] = { 0.0f, 0.0f, 0.0f };
-	float rightLowerLegRotation[3] = { 0.0f, 0.0f, 0.0f };
-	float rightFootRotation[3] = { 0.0f, 0.0f, 0.0f };
-
-	//====================
-	// Right Finger
-	//====================
-	float rightIndexBaseRot = 0.0f;
-	float rightIndexMidRot = 0.0f;
-	float rightIndexTipRot = 0.0f;
-	float rightMiddleBaseRot = 0.0f;
-	float rightMiddleMidRot = 0.0f;
-	float rightMiddleTipRot = 0.0f;
-	float rightRingBaseRot = 0.0f;
-	float rightRingMidRot = 0.0f;
-	float rightRingTipRot = 0.0f;
-	float rightLittleBaseRot = 0.0f;
-	float rightLittleMidRot = 0.0f;
-	float rightLittleTipRot = 0.0f;
-	float rightThumbMidRot = 0.0f;
-	float rightThumbTipRot = 0.0f;
-	float rightThumbSpreadRot = 30.0f;
-
-	//====================
-	// Left Finger
-	//====================
-	float leftIndexBaseRot = 0.0f;
-	float leftIndexMidRot = 0.0f;
-	float leftIndexTipRot = 0.0f;
-	float leftMiddleBaseRot = 0.0f;
-	float leftMiddleMidRot = 0.0f;
-	float leftMiddleTipRot = 0.0f;
-	float leftRingBaseRot = 0.0f;
-	float leftRingMidRot = 0.0f;
-	float leftRingTipRot = 0.0f;
-	float leftLittleBaseRot = 0.0f;
-	float leftLittleMidRot = 0.0f;
-	float leftLittleTipRot = 0.0f;
-	float leftThumbMidRot = 0.0f;
-	float leftThumbTipRot = 0.0f;
-	float leftThumbSpreadRot = 30.0f;
-
 	~BackBone();
 
 	void SetBone();
@@ -217,9 +134,9 @@ public:
 	/**
 	 * @brief Rotate Left Upper Arm
 	 *
-	 * @param x: -60 to 90
-	 * @param y: -45 to 45
-	 * @param z: -30 to 30
+	 * @param x: -45 to 180
+	 * @param y: -20 to 100
+	 * @param z: -90 to 90
 	 */
 	void RotateLeftUpperArm(float x, float y, float z);
 	/**
@@ -240,7 +157,7 @@ public:
 	/**
 	 * @brief Rotate Right Upper Arm
 	 *
-	 * @param x: -135 to 45
+	 * @param x: -45 to 180
 	 * @param y: -20 to 100
 	 * @param z: -90 to 90
 	 */
@@ -266,7 +183,7 @@ public:
 	/**
 	 * @brief Rotate Left Upper Leg
 	 *
-	 * @param x: -45 to 90
+	 * @param x: -120 to 90
 	 * @param y: -15 to 60
 	 * @param z: -45 to 45
 	 */
@@ -288,7 +205,7 @@ public:
 	/**
 	 * @brief Rotate Right Upper Leg
 	 *
-	 * @param x: -90 to 45
+	 * @param x: -120 to 90
 	 * @param y: -15 to 60
 	 * @param z: -45 to 45
 	 */
@@ -405,5 +322,104 @@ public:
 	 * @param z: 0 to 90
 	 */
 	void RotateLeftThumb(float base, float mid, float tip);
+private:
+	float animTime = 0.0f;
+	AnimState currentState = IDLE;
+
+	// Rotation and Movement
+	//====================
+	// Main Movement and rotation
+	//====================
+	float position[3] = { 0.0f, 0.0f, 0.0f };
+	float rotation[3] = { 0.0f, 0.0f, 0.0f };
+
+	//====================
+	// Head Rotation
+	//====================
+	float headRotation[3] = { 0.0f, 0.0f, 0.0f };
+
+	//====================
+	// Body Rotation
+	//====================
+	float bodyRotation[3] = { 0.0f, 0.0f, 0.0f };
+
+	//====================
+	// Pelvis
+	//====================
+	float pelvisRotation[3] = { 0.0f, 0.0f, 0.0f };
+
+	//====================
+	// Left Arm
+	//====================
+	float leftUpperArmRotation[3] = { 0.0f, 0.0f, 0.0f };
+	float leftUpperArmJointArmorRotation[3] = { 0.0f, 0.0f, 0.0f };
+	float leftForearmRotation[3] = { 0.0f, 0.0f, 0.0f };
+	float leftHandRotation[3] = { 0.0f, 0.0f, 0.0f };
+
+	//====================
+	// Right Arm
+	//====================
+	float rightUpperArmRotation[3] = { 0.0f, 0.0f, 0.0f };
+	float rightUpperArmJointArmorRotation[3] = { 0.0f, 0.0f, 0.0f };
+	float rightForearmRotation[3] = { 0.0f, 0.0f, 0.0f };
+	float rightHandRotation[3] = { 0.0f, 0.0f, 0.0f };
+
+	//====================
+	// Left Leg
+	//====================
+	float leftLegFrontArmorRotation[3] = { 0.0f, 0.0f, 0.0f };
+	float leftLegBackArmorRotation[3] = { 0.0f, 0.0f, 0.0f };
+	float leftLegSideArmorRotation[3] = { 0.0f, 0.0f, 0.0f };
+	float leftUpperLegRotation[3] = { 0.0f, 0.0f, 0.0f };
+	float leftLowerLegRotation[3] = { 0.0f, 0.0f, 0.0f };
+	float leftFootRotation[3] = { 0.0f, 0.0f, 0.0f };
+
+	//====================
+	// Right Leg
+	//====================
+	float rightLegFrontArmorRotation[3] = { 0.0f, 0.0f, 0.0f };
+	float rightLegBackArmorRotation[3] = { 0.0f, 0.0f, 0.0f };
+	float rightLegSideArmorRotation[3] = { 0.0f, 0.0f, 0.0f };
+	float rightUpperLegRotation[3] = { 0.0f, 0.0f, 0.0f };
+	float rightLowerLegRotation[3] = { 0.0f, 0.0f, 0.0f };
+	float rightFootRotation[3] = { 0.0f, 0.0f, 0.0f };
+
+	//====================
+	// Right Finger
+	//====================
+	float rightIndexBaseRot = 0.0f;
+	float rightIndexMidRot = 0.0f;
+	float rightIndexTipRot = 0.0f;
+	float rightMiddleBaseRot = 0.0f;
+	float rightMiddleMidRot = 0.0f;
+	float rightMiddleTipRot = 0.0f;
+	float rightRingBaseRot = 0.0f;
+	float rightRingMidRot = 0.0f;
+	float rightRingTipRot = 0.0f;
+	float rightLittleBaseRot = 0.0f;
+	float rightLittleMidRot = 0.0f;
+	float rightLittleTipRot = 0.0f;
+	float rightThumbMidRot = 0.0f;
+	float rightThumbTipRot = 0.0f;
+	float rightThumbSpreadRot = 30.0f;
+
+	//====================
+	// Left Finger
+	//====================
+	float leftIndexBaseRot = 0.0f;
+	float leftIndexMidRot = 0.0f;
+	float leftIndexTipRot = 0.0f;
+	float leftMiddleBaseRot = 0.0f;
+	float leftMiddleMidRot = 0.0f;
+	float leftMiddleTipRot = 0.0f;
+	float leftRingBaseRot = 0.0f;
+	float leftRingMidRot = 0.0f;
+	float leftRingTipRot = 0.0f;
+	float leftLittleBaseRot = 0.0f;
+	float leftLittleMidRot = 0.0f;
+	float leftLittleTipRot = 0.0f;
+	float leftThumbMidRot = 0.0f;
+	float leftThumbTipRot = 0.0f;
+	float leftThumbSpreadRot = 30.0f;
 };
 
