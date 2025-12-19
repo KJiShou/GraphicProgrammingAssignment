@@ -305,7 +305,7 @@
       "isExpandable": true,
       "textures": {
         "isRepeat": false,
-        "all": "Assets/skin2.bmp",
+        "all": "Assets/off-white-metal.bmp",
         "front": "",
         "back": "",
         "top": "Assets/skin4.bmp",

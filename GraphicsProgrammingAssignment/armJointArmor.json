@@ -5,11 +5,40 @@
       "length": 0.7,
       "width": 0.6,
       "height": 0.1,
-      "r": 1.0,
-      "g": 1.0,
-      "b": 0.0,
+      "r": 0.3,
+      "g": 0.3,
+      "b": 0.3,
       "transX": -0.1,
       "transY": 0.3,
+      "transZ": 0.0,
+      "rotX": 0.0,
+      "rotY": 0.0,
+      "rotZ": 0.0,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "scaleZ": 1.0,
+      "isExpandable": true,
+      "textures": {
+        "isRepeat": false,
+        "all": "Assets/metal.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
+      }
+    },
+    {
+      "label": "out cube",
+      "length": 0.1,
+      "width": 0.6,
+      "height": 0.1,
+      "r": 0.3,
+      "g": 0.3,
+      "b": 0.3,
+      "transX": -0.4,
+      "transY": 0.2,
       "transZ": 0.0,
       "rotX": 0.0,
       "rotY": 0.0,
@@ -30,42 +59,13 @@
       }
     },
     {
-      "label": "out cube",
-      "length": 0.1,
-      "width": 0.6,
-      "height": 0.1,
-      "r": 1.0,
-      "g": 1.0,
-      "b": 1.0,
-      "transX": -0.4,
-      "transY": 0.2,
-      "transZ": 0.0,
-      "rotX": 0.0,
-      "rotY": 0.0,
-      "rotZ": 0.0,
-      "scaleX": 1.0,
-      "scaleY": 1.0,
-      "scaleZ": 1.0,
-      "isExpandable": true,
-      "textures": {
-        "isRepeat": true,
-        "all": "Assets/",
-        "front": "Assets/",
-        "back": "Assets/",
-        "top": "Assets/",
-        "bottom": "Assets/",
-        "left": "Assets/",
-        "right": "Assets/"
-      }
-    },
-    {
       "label": "side cube",
       "length": 0.1,
       "width": 0.6,
       "height": 0.1,
-      "r": 1.0,
-      "g": 1.0,
-      "b": 0.5,
+      "r": 0.3,
+      "g": 0.3,
+      "b": 0.3,
       "transX": -0.05,
       "transY": 0.2,
       "transZ": 0.25,
@@ -78,13 +78,13 @@
       "isExpandable": true,
       "textures": {
         "isRepeat": true,
-        "all": "Assets/",
-        "front": "Assets/",
-        "back": "Assets/",
-        "top": "Assets/",
-        "bottom": "Assets/",
-        "left": "Assets/",
-        "right": "Assets/"
+        "all": "Assets/off-white-metal.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
       }
     },
     {
@@ -92,8 +92,8 @@
       "length": 0.1,
       "width": 0.6,
       "height": 0.1,
-      "r": 1.0,
-      "g": 1.0,
+      "r": 0.5,
+      "g": 0.5,
       "b": 0.5,
       "transX": -0.05,
       "transY": 0.2,
@@ -106,14 +106,14 @@
       "scaleZ": 1.0,
       "isExpandable": true,
       "textures": {
-        "isRepeat": true,
-        "all": "Assets/",
-        "front": "Assets/",
-        "back": "Assets/",
-        "top": "Assets/",
-        "bottom": "Assets/",
-        "left": "Assets/",
-        "right": "Assets/"
+        "isRepeat": false,
+        "all": "Assets/off-white-metal.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
       }
     },
     {
@@ -121,9 +121,9 @@
       "length": 0.03,
       "width": 0.1,
       "height": 0.05,
-      "r": 0.0,
-      "g": 0.0,
-      "b": 0.0,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": 0.15,
       "transY": 0.28,
       "transZ": -0.31,
@@ -135,14 +135,14 @@
       "scaleZ": 1.0,
       "isExpandable": true,
       "textures": {
-        "isRepeat": true,
-        "all": "Assets/",
-        "front": "Assets/",
-        "back": "Assets/",
-        "top": "Assets/",
-        "bottom": "Assets/",
-        "left": "Assets/",
-        "right": "Assets/"
+        "isRepeat": false,
+        "all": "Assets/dark-metal.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
       }
     },
     {
@@ -150,9 +150,9 @@
       "length": 0.03,
       "width": 0.1,
       "height": 0.05,
-      "r": 0.0,
-      "g": 0.0,
-      "b": 0.0,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": -0.15,
       "transY": -0.2,
       "transZ": -0.31,
@@ -164,14 +164,14 @@
       "scaleZ": 1.0,
       "isExpandable": true,
       "textures": {
-        "isRepeat": true,
-        "all": "Assets/",
-        "front": "Assets/",
-        "back": "Assets/",
-        "top": "Assets/",
-        "bottom": "Assets/",
-        "left": "Assets/",
-        "right": "Assets/"
+        "isRepeat": false,
+        "all": "Assets/dark-metal.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
       }
     },
     {
@@ -179,9 +179,9 @@
       "length": 0.03,
       "width": 0.1,
       "height": 0.05,
-      "r": 0.0,
-      "g": 0.0,
-      "b": 0.0,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": 0.15,
       "transY": 0.28,
       "transZ": 0.31,
@@ -193,14 +193,14 @@
       "scaleZ": 1.0,
       "isExpandable": true,
       "textures": {
-        "isRepeat": true,
-        "all": "Assets/",
-        "front": "Assets/",
-        "back": "Assets/",
-        "top": "Assets/",
-        "bottom": "Assets/",
-        "left": "Assets/",
-        "right": "Assets/"
+        "isRepeat": false,
+        "all": "Assets/dark-metal.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
       }
     },
     {
@@ -208,9 +208,9 @@
       "length": 0.03,
       "width": 0.1,
       "height": 0.05,
-      "r": 0.0,
-      "g": 0.0,
-      "b": 0.0,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": -0.15,
       "transY": -0.2,
       "transZ": 0.31,
@@ -223,13 +223,13 @@
       "isExpandable": true,
       "textures": {
         "isRepeat": true,
-        "all": "Assets/",
-        "front": "Assets/",
-        "back": "Assets/",
-        "top": "Assets/",
-        "bottom": "Assets/",
-        "left": "Assets/",
-        "right": "Assets/"
+        "all": "Assets/dark-metal.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
       }
     }
   ],
@@ -243,9 +243,9 @@
       "bottomLength": 0.7,
       "bottomDepth": 0.1,
       "height": 0.5,
-      "r": 1.0,
-      "g": 0.0,
-      "b": 0.0,
+      "r": 0.5,
+      "g": 0.5,
+      "b": 0.5,
       "transX": -0.1,
       "transY": -0.1,
       "transZ": -0.25,
@@ -257,14 +257,14 @@
       "scaleZ": 1.0,
       "isExpandable": true,
       "textures": {
-        "isRepeat": true,
-        "all": "Assets/",
-        "front": "Assets/",
-        "back": "Assets/",
-        "top": "Assets/",
-        "bottom": "Assets/",
-        "left": "Assets/",
-        "right": "Assets/"
+        "isRepeat": false,
+        "all": "Assets/skin4.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
       }
     },
     {
@@ -276,8 +276,8 @@
       "bottomLength": 0.7,
       "bottomDepth": 0.1,
       "height": 0.5,
-      "r": 1.0,
-      "g": 1.0,
+      "r": 0.5,
+      "g": 0.5,
       "b": 0.5,
       "transX": -0.1,
       "transY": -0.1,
@@ -290,14 +290,14 @@
       "scaleZ": 1.0,
       "isExpandable": true,
       "textures": {
-        "isRepeat": true,
-        "all": "Assets/",
-        "front": "Assets/",
-        "back": "Assets/",
-        "top": "Assets/",
-        "bottom": "Assets/",
-        "left": "Assets/",
-        "right": "Assets/"
+        "isRepeat": false,
+        "all": "Assets/skin4.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
       }
     },
     {
@@ -310,8 +310,8 @@
       "bottomDepth": 0.5,
       "height": 0.05,
       "r": 1.0,
-      "g": 0.0,
-      "b": 0.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": -0.025,
       "transY": 0.375,
       "transZ": 0.0,
@@ -324,13 +324,13 @@
       "isExpandable": true,
       "textures": {
         "isRepeat": true,
-        "all": "Assets/",
-        "front": "Assets/",
-        "back": "Assets/",
-        "top": "Assets/",
-        "bottom": "Assets/",
-        "left": "Assets/",
-        "right": "Assets/"
+        "all": "Assets/redMetal.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
       }
     },
     {
@@ -344,7 +344,7 @@
       "height": 0.5,
       "r": 1.0,
       "g": 1.0,
-      "b": 0.5,
+      "b": 1.0,
       "transX": -0.1,
       "transY": -0.1,
       "transZ": 0.25,
@@ -357,13 +357,13 @@
       "isExpandable": true,
       "textures": {
         "isRepeat": true,
-        "all": "Assets/",
-        "front": "Assets/",
-        "back": "Assets/",
-        "top": "Assets/",
-        "bottom": "Assets/",
-        "left": "Assets/",
-        "right": "Assets/"
+        "all": "",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
       }
     },
     {
@@ -375,9 +375,9 @@
       "bottomLength": 0.10,
       "bottomDepth": 0.02,
       "height": 0.1,
-      "r": 0.5,
-      "g": 0.5,
-      "b": 0.5,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": -0.35,
       "transY": 0.4,
       "transZ": -0.15,
@@ -390,13 +390,13 @@
       "isExpandable": true,
       "textures": {
         "isRepeat": true,
-        "all": "Assets/",
-        "front": "Assets/",
-        "back": "Assets/",
-        "top": "Assets/",
-        "bottom": "Assets/",
-        "left": "Assets/",
-        "right": "Assets/"
+        "all": "Assets/skin4.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
       }
     },
     {
@@ -408,9 +408,9 @@
       "bottomLength": 0.10,
       "bottomDepth": 0.02,
       "height": 0.1,
-      "r": 0.5,
-      "g": 0.5,
-      "b": 0.5,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": -0.35,
       "transY": 0.4,
       "transZ": 0.15,
@@ -423,13 +423,13 @@
       "isExpandable": true,
       "textures": {
         "isRepeat": true,
-        "all": "Assets/",
-        "front": "Assets/",
-        "back": "Assets/",
-        "top": "Assets/",
-        "bottom": "Assets/",
-        "left": "Assets/",
-        "right": "Assets/"
+        "all": "Assets/skin4.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
       }
     }
   ],
@@ -444,9 +444,9 @@
       "style": "GLU_FILL",
       "isClose": true,
       "lineWidth": 1.0,
-      "r": 0.0,
-      "g": 0.0,
-      "b": 0.0,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": -0.35,
       "transY": 0.4,
       "transZ": -0.15,
@@ -457,11 +457,11 @@
       "scaleY": 1.0,
       "scaleZ": 1.0,
       "textures": {
-        "isRepeat": true,
-        "all": "Assets/.bmp",
-        "top": "Assets/.bmp",
-        "bottom": "Assets/.bmp",
-        "body": "Assets/.bmp"
+        "isRepeat": false,
+        "all": "Assets/metal_pole_rusty_04.bmp",
+        "top": "",
+        "bottom": "",
+        "body": ""
       }
     }
   ]
