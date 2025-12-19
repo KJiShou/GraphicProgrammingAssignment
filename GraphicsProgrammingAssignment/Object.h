@@ -189,6 +189,7 @@ struct TetrahedronData {
 class Object
 {
 private:
+	//GLuint defaultTex;
 	std::string fileName;
 	nlohmann::json j;
 

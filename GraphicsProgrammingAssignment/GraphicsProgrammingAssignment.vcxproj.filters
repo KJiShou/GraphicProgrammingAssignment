@@ -149,12 +149,6 @@
     <None Include="handFinger.json">
       <Filter>Data</Filter>
     </None>
-    <None Include="leftFoot.json" />
-    <None Include="leftLowerLeg.json" />
-    <None Include="leftUpperLeg.json" />
-    <None Include="rightFoot.json" />
-    <None Include="rightLowerLeg.json" />
-    <None Include="rightUpperLeg.json" />
     <None Include="handPalm.json">
       <Filter>Data</Filter>
     </None>
@@ -207,6 +201,25 @@
       <Filter>Data\Leg\Right</Filter>
     </None>
     <None Include="rightLegSideArmor.json">
+      <Filter>Data\Leg\Right</Filter>
+    </None>
+    <None Include="wing.json" />
+    <None Include="leftFoot.json">
+      <Filter>Data\Leg\Left</Filter>
+    </None>
+    <None Include="leftLowerLeg.json">
+      <Filter>Data\Leg\Left</Filter>
+    </None>
+    <None Include="leftUpperLeg.json">
+      <Filter>Data\Leg\Left</Filter>
+    </None>
+    <None Include="rightFoot.json">
+      <Filter>Data\Leg\Right</Filter>
+    </None>
+    <None Include="rightLowerLeg.json">
+      <Filter>Data\Leg\Right</Filter>
+    </None>
+    <None Include="rightUpperLeg.json">
       <Filter>Data\Leg\Right</Filter>
     </None>
   </ItemGroup>
