@@ -25,6 +25,8 @@ public:
 
 	void SetSphereTexture(GLuint tex);
 
+	void SetIsSpecular(bool s);
+
 	// ======================
 	// Getters
 	// ======================
@@ -113,5 +115,7 @@ private:
 	float rotPosX = 0.0f;
 	float rotPosY = 0.0f;
 	float rotPosZ = 0.0f;
+
+	bool isSpecular = false;
 };
 

@@ -38,6 +38,8 @@ public:
 	void SetLeftTexture(GLuint left);
 	void SetRightTexture(GLuint right);
 
+	void SetIsSpecular(bool s);
+
 	// ======================
 	// Getters
 	// ======================
@@ -138,5 +140,6 @@ private:
 	// expand in two way
 	bool isExpandable = false;
 	bool isRepeat = false;
+	bool isSpecular = true;
 };
 

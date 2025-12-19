@@ -134,24 +134,24 @@ void BackBone::SetBone() {
 
 
 	// leg
-	leftLegFrontArmor->Translate(-0.3, -0.5, 0.0);
+	leftLegFrontArmor->Translate(-0.3, -0.5, 0.1);
 	leftLegFrontArmor->Scale(1.2, 1.7, 1.2);
-	leftLegBackArmor->Translate(-0.3, -0.5, 0.0);
+	leftLegBackArmor->Translate(-0.3, -0.5, -0.1);
 	leftLegBackArmor->Scale(1.2, 1.7, 1.2);
 	leftLegSideArmor->Translate(-0.3, -0.5, 0.0);
-	leftLegSideArmor->Scale(1.2, 1.7, 1.2);
+	leftLegSideArmor->Scale(1.2, 1.7, 1.7);
 	leftUpperLeg->Translate(-0.3, -0.3, 0.0);
 	leftUpperLeg->Scale(1.2, 1.2, 1.2);
 	leftUpperLeg->Translate(-0.4, -0.3, 0.0);
 	leftLowerLeg->Translate(0, -0.95, 0);
 	leftFoot->Translate(0, -1.4, 0);
 
-	rightLegFrontArmor->Translate(0.3, -0.5, 0.0);
+	rightLegFrontArmor->Translate(0.3, -0.5, 0.1);
 	rightLegFrontArmor->Scale(1.2, 1.7, 1.2);
-	rightLegBackArmor->Translate(0.3, -0.5, 0.0);
+	rightLegBackArmor->Translate(0.3, -0.5, -0.1);
 	rightLegBackArmor->Scale(1.2, 1.7, 1.2);
 	rightLegSideArmor->Translate(0.3, -0.5, 0.0);
-	rightLegSideArmor->Scale(1.2, 1.7, 1.2);
+	rightLegSideArmor->Scale(1.2, 1.7, 1.7);
 	rightUpperLeg->Translate(0.3, -0.3, 0);
 	rightUpperLeg->Scale(1.2, 1.2, 1.2);
 	rightUpperLeg->Translate(0.4, -0.3, 0);
