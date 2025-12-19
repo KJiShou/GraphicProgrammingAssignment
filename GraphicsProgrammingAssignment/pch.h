@@ -11,3 +11,4 @@
 #include <profileapi.h>
 #include "Math.h"
 #include <vector>
+#include <cmath>

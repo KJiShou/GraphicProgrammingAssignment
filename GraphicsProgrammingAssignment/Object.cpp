@@ -670,6 +670,7 @@ void Object::AddChild(Object* o) {
 
 GLuint Object::LoadTexture(const std::string& filename, bool isRepeat)
 {
+	bool minimap = false;
 	if (filename.empty()) {
 		std::cout << "[LoadTexture] No texture filename provided." << std::endl;
 		return 0; // 0 = no texture
@@ -694,12 +695,24 @@ GLuint Object::LoadTexture(const std::string& filename, bool isRepeat)
 	glGenTextures(1, &texID);
 	glBindTexture(GL_TEXTURE_2D, texID);
 
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	if (minimap) {
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	}
+	else {
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	}
 
 	if (isRepeat) {
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	}
+
+	if (minimap) {
+		float maxAniso = 0.0f;
+		glGetFloatv(0x84FF, &maxAniso);
+		glTexParameterf(GL_TEXTURE_2D, 0x84FE, maxAniso);
 	}
 
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
@@ -710,6 +723,15 @@ GLuint Object::LoadTexture(const std::string& filename, bool isRepeat)
 		0, GL_BGR_EXT, GL_UNSIGNED_BYTE,
 		BMP.bmBits
 	);
+
+	if (minimap) {
+		gluBuild2DMipmaps(
+			GL_TEXTURE_2D, GL_RGB,
+			BMP.bmWidth, BMP.bmHeight,
+			GL_BGR_EXT, GL_UNSIGNED_BYTE,
+			BMP.bmBits
+		);
+	}
 
 	DeleteObject(hBMP);
 

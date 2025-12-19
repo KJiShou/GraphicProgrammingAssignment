@@ -589,7 +589,7 @@ void BackBone::Draw() {
 	//===========================
 	leftUpperArmJointOuter->Rotate(leftUpperArmJointArmorRotation[0], leftUpperArmJointArmorRotation[1], leftUpperArmJointArmorRotation[2]);
 	leftUpperArm->Rotate(leftUpperArmRotation[0], leftUpperArmRotation[1], leftUpperArmRotation[2]);
-	leftForearm->Rotate(leftForearmRotation[0], leftForearmRotation[1], leftForearmRotation[2]);
+	leftForearm->Rotate(leftForearmRotation[0], 90 + leftForearmRotation[1], leftForearmRotation[2]);
 	leftHand->Rotate(leftHandRotation[0], leftHandRotation[1], leftHandRotation[2]);
 
 	//===========================
@@ -597,7 +597,7 @@ void BackBone::Draw() {
 	//===========================
 	rightUpperArmJointOuter->Rotate(rightUpperArmJointArmorRotation[0], rightUpperArmJointArmorRotation[1] + 180.0f, rightUpperArmJointArmorRotation[2]);
 	rightUpperArm->Rotate(rightUpperArmRotation[0], rightUpperArmRotation[1], rightUpperArmRotation[2]);
-	rightForearm->Rotate(rightForearmRotation[0], rightForearmRotation[1], rightForearmRotation[2]);
+	rightForearm->Rotate(rightForearmRotation[0], -90 + rightForearmRotation[1], rightForearmRotation[2]);
 	rightHand->Rotate(rightHandRotation[0], rightHandRotation[1], rightHandRotation[2]);
 
 	//===========================
@@ -662,4 +662,323 @@ void BackBone::Draw() {
 	// Draw
 	//===========================
 	root->Draw();
+}
+
+void BackBone::SetState(AnimState newState) {
+	currentState = newState;
+	animTime = 0.0f;
+	//====================
+	// Main Movement and rotation
+	//====================
+	position[0] = 0.0f;
+	position[1] = 0.0f;
+	position[2] = 0.0f;
+	rotation[0] = 0.0f;
+	rotation[1] = 0.0f;
+	rotation[2] = 0.0f;
+
+	//====================
+	// Head Rotation
+	//====================
+	headRotation[0] = 0.0f;
+	headRotation[1] = 0.0f;
+	headRotation[2] = 0.0f;
+
+	//====================
+	// Body Rotation
+	//====================
+	bodyRotation[0] = 0.0f;
+	bodyRotation[1] = 0.0f;
+	bodyRotation[2] = 0.0f;
+
+	//====================
+	// Pelvis
+	//====================
+	pelvisRotation[0] = 0.0f;
+	pelvisRotation[1] = 0.0f;
+	pelvisRotation[2] = 0.0f;
+
+	//====================
+	// Left Arm
+	//====================
+	leftUpperArmRotation[0] = 0.0f;
+	leftUpperArmRotation[1] = 0.0f;
+	leftUpperArmRotation[2] = 0.0f;
+	leftUpperArmJointArmorRotation[0] = 0.0f;
+	leftUpperArmJointArmorRotation[1] = 0.0f;
+	leftUpperArmJointArmorRotation[2] = 0.0f;
+	leftForearmRotation[0] = 0.0f;
+	leftForearmRotation[1] = 0.0f;
+	leftForearmRotation[2] = 0.0f;
+	leftHandRotation[0] = 0.0f;
+	leftHandRotation[1] = 0.0f;
+	leftHandRotation[2] = 0.0f;
+
+	//====================
+	// Right Arm
+	//====================
+	rightUpperArmRotation[0] = 0.0f;
+	rightUpperArmRotation[1] = 0.0f;
+	rightUpperArmRotation[2] = 0.0f;
+	rightUpperArmJointArmorRotation[0] = 0.0f;
+	rightUpperArmJointArmorRotation[1] = 0.0f;
+	rightUpperArmJointArmorRotation[2] = 0.0f;
+	rightForearmRotation[0] = 0.0f;
+	rightForearmRotation[1] = 0.0f;
+	rightForearmRotation[2] = 0.0f;
+	rightHandRotation[0] = 0.0f;
+	rightHandRotation[1] = 0.0f;
+	rightHandRotation[2] = 0.0f;
+
+	//====================
+	// Left Leg
+	//====================
+	leftLegFrontArmorRotation[0] = 0.0f;
+	leftLegFrontArmorRotation[1] = 0.0f;
+	leftLegFrontArmorRotation[2] = 0.0f;
+	leftLegBackArmorRotation[0] = 0.0f;
+	leftLegBackArmorRotation[1] = 0.0f;
+	leftLegBackArmorRotation[2] = 0.0f;
+	leftLegSideArmorRotation[0] = 0.0f;
+	leftLegSideArmorRotation[1] = 0.0f;
+	leftLegSideArmorRotation[2] = 0.0f;
+	leftUpperLegRotation[0] = 0.0f;
+	leftUpperLegRotation[1] = 0.0f;
+	leftUpperLegRotation[2] = 0.0f;
+	leftLowerLegRotation[0] = 0.0f;
+	leftLowerLegRotation[1] = 0.0f;
+	leftLowerLegRotation[2] = 0.0f;
+	leftFootRotation[0] = 0.0f;
+	leftFootRotation[1] = 0.0f;
+	leftFootRotation[2] = 0.0f;
+
+	//====================
+	// Right Leg
+	//====================
+	rightLegFrontArmorRotation[0] = 0.0f;
+	rightLegFrontArmorRotation[1] = 0.0f;
+	rightLegFrontArmorRotation[2] = 0.0f;
+	rightLegBackArmorRotation[0] = 0.0f;
+	rightLegBackArmorRotation[1] = 0.0f;
+	rightLegBackArmorRotation[2] = 0.0f;
+	rightLegSideArmorRotation[0] = 0.0f;
+	rightLegSideArmorRotation[1] = 0.0f;
+	rightLegSideArmorRotation[2] = 0.0f;
+	rightUpperLegRotation[0] = 0.0f;
+	rightUpperLegRotation[1] = 0.0f;
+	rightUpperLegRotation[2] = 0.0f;
+	rightLowerLegRotation[0] = 0.0f;
+	rightLowerLegRotation[1] = 0.0f;
+	rightLowerLegRotation[2] = 0.0f;
+	rightFootRotation[0] = 0.0f;
+	rightFootRotation[1] = 0.0f;
+	rightFootRotation[2] = 0.0f;
+
+	//====================
+	// Right Finger
+	//====================
+	rightIndexBaseRot = 0.0f;
+	rightIndexMidRot = 0.0f;
+	rightIndexTipRot = 0.0f;
+	rightMiddleBaseRot = 0.0f;
+	rightMiddleMidRot = 0.0f;
+	rightMiddleTipRot = 0.0f;
+	rightRingBaseRot = 0.0f;
+	rightRingMidRot = 0.0f;
+	rightRingTipRot = 0.0f;
+	rightLittleBaseRot = 0.0f;
+	rightLittleMidRot = 0.0f;
+	rightLittleTipRot = 0.0f;
+	rightThumbMidRot = 0.0f;
+	rightThumbTipRot = 0.0f;
+	rightThumbSpreadRot = 30.0f;
+
+	//====================
+	// Left Finger
+	//====================
+	leftIndexBaseRot = 0.0f;
+	leftIndexMidRot = 0.0f;
+	leftIndexTipRot = 0.0f;
+	leftMiddleBaseRot = 0.0f;
+	leftMiddleMidRot = 0.0f;
+	leftMiddleTipRot = 0.0f;
+	leftRingBaseRot = 0.0f;
+	leftRingMidRot = 0.0f;
+	leftRingTipRot = 0.0f;
+	leftLittleBaseRot = 0.0f;
+	leftLittleMidRot = 0.0f;
+	leftLittleTipRot = 0.0f;
+	leftThumbMidRot = 0.0f;
+	leftThumbTipRot = 0.0f;
+	leftThumbSpreadRot = 30.0f;
+}
+
+AnimState BackBone::GetState()
+{
+	return currentState;
+}
+
+// ======================================================
+// Animation Update Function
+// ======================================================
+void BackBone::Animate(float deltaTime) {
+	animTime += deltaTime * 5.0f;
+
+	float rSpeed = animTime * 0.1f;
+	const float OPPOSITE_PHASE = 3.14159f;
+
+	switch (currentState) {
+	// ==================================================
+	// IDLE
+	// ==================================================
+	case IDLE:
+		RotateBody(sin(animTime * 0.5f) * 2.0f, 0, 0);
+
+		RotateLeftUpperArm(sin(animTime * 0.5f) * 2.0f, 0, 10);
+		RotateRightUpperArm(sin(animTime * 0.5f) * 2.0f, 0, 10);
+
+		RotateLeftHandFinger(0, 0, 0);
+		RotateRightHandFinger(0, 0, 0);
+		RotateLeftUpperLeg(0, 0, 0);
+		RotateRightUpperLeg(0, 0, 0);
+		RotateLeftLowerLeg(0);
+		RotateRightLowerLeg(0);
+		break;
+
+	// ==================================================
+	// WALK 
+	// ==================================================
+	case WALK:
+		RotateLeftUpperLeg(sin(animTime) * 30.0f, 0, 0);
+		RotateRightUpperLeg(sin(animTime + OPPOSITE_PHASE) * 30.0f, 0, 0);
+
+		RotateLeftLowerLeg(clamp(sin(animTime) * 50.0f, -60.0f, 0.0f));
+		RotateRightLowerLeg(clamp(sin(animTime + OPPOSITE_PHASE) * 50.0f, -60.0f, 0.0f));
+
+		RotateLeftUpperArm(sin(animTime + OPPOSITE_PHASE) * 25.0f, 0, 10);
+		RotateRightUpperArm(sin(animTime) * 25.0f, 0, 10);
+
+		RotateLeftForearm(15.0f + sin(animTime + OPPOSITE_PHASE) * 10.0f, 0.0f);
+		RotateRightForearm(15.0f + sin(animTime) * 10.0f, 0.0f);
+
+		RotateLeftHand(sin(animTime + OPPOSITE_PHASE) * 15.0f, 0, 0);
+		RotateRightHand(sin(animTime) * 15.0f, 0, 0);
+		RotateRightHandFinger(90, 90, 90);
+		RotateLeftHandFinger(90, 90, 90);
+
+		break;
+
+	// ==================================================
+	//  RUN
+	// ==================================================
+	case RUN:
+	{
+		float rSpeed = animTime * 1.8f;
+		float pi = 3.14159f;
+
+		Rotate(20.0f + sin(rSpeed * 2.0f) * 2.0f, 0, sin(rSpeed) * 5.0f);
+
+		RotateLeftUpperLeg(sin(rSpeed) * 50.0f, 0, 0);
+		RotateRightUpperLeg(sin(rSpeed + pi) * 50.0f, 0, 0);
+
+		RotateLeftLowerLeg(clamp(-35.0f - cos(rSpeed + 0.2f) * 55.0f, -80.0f, 0.0f));
+		RotateRightLowerLeg(clamp(-35.0f - cos(rSpeed + pi + 0.2f) * 55.0f, -80.0f, 0.0f));
+
+		RotateLeftFoot(sin(rSpeed) * 30.0f - 15.0f, 0, 0);
+		RotateRightFoot(sin(rSpeed + pi) * 30.0f - 15.0f, 0, 0);
+
+		RotateLeftUpperArm(-15.0f + sin(rSpeed + pi) * 45.0f, 0, 25);
+		RotateRightUpperArm(-15.0f + sin(rSpeed) * 45.0f, 0, 25);
+
+		RotateLeftForearm(100.0f + sin(rSpeed + pi) * 20.0f, 0.0f);
+		RotateRightForearm(100.0f + sin(rSpeed) * 20.0f, 0.0f);
+
+		RotateLeftHand(sin(rSpeed + pi) * 30.0f, 0, 0);
+		RotateRightHand(sin(rSpeed) * 30.0f, 0, 0);
+
+		RotateLeftHandFinger(90, 90, 90);
+		RotateRightHandFinger(90, 90, 90);
+		break;
+	}
+
+	// ==========================================
+	// JUMP
+	// ==========================================
+	case JUMP:
+	{
+		float jumpSpeed = animTime * 1.0f;
+		float jPhase = -sin(jumpSpeed);
+
+		if (jPhase > 0) {
+			position[1] = jPhase * 4.5f;
+
+			RotateBody(-10.0f * jPhase, 0, 0);
+
+			RotateLeftUpperLeg(-10.0f * jPhase, 0, 0);
+			RotateRightUpperLeg(-10.0f * jPhase, 0, 0);
+
+			RotateLeftLowerLeg(-5.0f);
+			RotateRightLowerLeg(-5.0f);
+
+			RotateLeftFoot(45.0f * jPhase, 0, 0);
+			RotateRightFoot(45.0f * jPhase, 0, 0);
+		}
+		else {
+			position[1] = jPhase * 1.5f;
+
+			RotateBody(30.0f * abs(jPhase), 0, 0);
+
+			RotateLeftUpperLeg(abs(jPhase) * 60.0f, 0, 0);
+			RotateRightUpperLeg(abs(jPhase) * 60.0f, 0, 0);
+
+			RotateLeftLowerLeg(-abs(jPhase) * 90.0f);
+			RotateRightLowerLeg(-abs(jPhase) * 90.0f);
+
+			RotateLeftFoot(abs(jPhase) * -30.0f, 0, 0);
+			RotateRightFoot(abs(jPhase) * -30.0f, 0, 0);
+		}
+
+		RotateLeftUpperArm(45.0f - jPhase * 90.0f, 0, 10);
+		RotateRightUpperArm(45.0f - jPhase * 90.0f, 0, 10);
+
+		RotateLeftForearm(30.0f, 0);
+		RotateRightForearm(30.0f, 0);
+
+		RotateLeftHandFinger(90, 90, 90);
+		RotateRightHandFinger(90, 90, 90);
+
+		break;
+	}
+
+	// ==================================================
+	// ATTACK
+	// ==================================================
+	case ATTACK:
+	{
+		float aSpeed = animTime * 1.0f;
+		float swing = -sin(aSpeed);
+
+		RotateBody(10.0f + swing * 20.0f, swing * 40.0f, 0);
+
+		RotateLeftUpperLeg(-10.0f, 0.0f, 25.0f);
+		RotateRightUpperLeg(40.0f + swing * 10.0f, 0.0f, 25.0f);
+		RotateLeftLowerLeg(-45.0f);
+		RotateRightLowerLeg(-30.0f - swing * 10.0f);
+		RotateLeftFoot(10.0f, 0, 0);
+		RotateRightFoot(0.0f, 0, 0);
+
+		RotateRightUpperArm(-60.0f + swing * 80.0f, swing * 45.0f, 10.0f);
+
+		RotateRightForearm(50.0f - swing * 10.0f, swing * 10.0f);
+
+		RotateRightHand(-30.0f, 0, 0);
+
+		RotateLeftUpperArm(30.0f, 0, 30.0f);
+		RotateLeftForearm(60.0f, 90.0f);
+
+		RotateRightHandFinger(90, 90, 90);
+		RotateLeftHandFinger(90, 90, 90);
+	}
+	break;
+	}
 }
