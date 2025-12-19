@@ -197,6 +197,7 @@
     <None Include="..\.gitignore" />
     <None Include="armJointArmor.json" />
     <None Include="background.json" />
+    <None Include="bigWing.json" />
     <None Include="body.json" />
     <None Include="bodyBone.json" />
     <None Include="bridge.json" />

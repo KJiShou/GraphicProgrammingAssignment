@@ -222,5 +222,6 @@
     <None Include="rightUpperLeg.json">
       <Filter>Data\Leg\Right</Filter>
     </None>
+    <None Include="bigWing.json" />
   </ItemGroup>
 </Project>
