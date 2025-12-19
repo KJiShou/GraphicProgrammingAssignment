@@ -222,6 +222,7 @@
     <None Include="template.json" />
     <None Include="towerBridge.json" />
     <None Include="upperArmOuter.json" />
+    <None Include="wing.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
