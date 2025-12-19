@@ -57,6 +57,10 @@ json j;
 // Q - Move To Down
 // E - Move To Up
 //==================================
+// MODE 4 (Every Part Movement)
+// ---------------------------------
+// 
+//==================================
 
 // movement mode
 int keyMode = 0;

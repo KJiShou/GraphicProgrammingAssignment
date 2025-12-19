@@ -300,7 +300,9 @@ void BackBone::ReadData() {
 	leftForearmOuter->ReadData();
 	rightForearmOuter->ReadData();
 	rightUpperArmJoint->ReadData();
+	rightUpperArmJointOuter->ReadData();
 	leftUpperArmJoint->ReadData();
+	leftUpperArmJointOuter->ReadData();
 	wing->ReadData();
 }
 
