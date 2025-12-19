@@ -4,9 +4,9 @@
       "length": 0.25,
       "width": 0.05,
       "height": 0.2,
-      "r": 0.8,
-      "g": 0.7,
-      "b": 0.6,
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
       "transX": 0.0,
       "transY": -0.15,
       "transZ": 0.0,
@@ -16,7 +16,17 @@
       "scaleX": 1.0,
       "scaleY": 1.0,
       "scaleZ": 1.0,
-      "isExpandable": true
+      "isExpandable": true,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/dark-silver-metal.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
+      }
     },
     {
       "length": 0.25,
@@ -24,7 +34,7 @@
       "height": 0.2,
       "r": 1.0,
       "g": 1.0,
-      "b": 0.5,
+      "b": 1.0,
       "transX": 0.0,
       "transY": -0.15,
       "transZ": -0.065,
@@ -34,7 +44,17 @@
       "scaleX": 1.0,
       "scaleY": 1.0,
       "scaleZ": 1.0,
-      "isExpandable": true
+      "isExpandable": true,
+      "textures": {
+        "isRepeat": true,
+        "all": "Assets/off-white-metal.bmp",
+        "front": "",
+        "back": "",
+        "top": "",
+        "bottom": "",
+        "left": "",
+        "right": ""
+      }
     }
   ],
   "spheres": [

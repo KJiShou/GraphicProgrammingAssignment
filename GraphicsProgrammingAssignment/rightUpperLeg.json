@@ -111,7 +111,7 @@
         "all": "Assets/skin1.bmp",
         "front": "",
         "back": "",
-        "top": "Assets/skinWithText.bmp",
+        "top": "Assets/skin2.bmp",
         "bottom": "",
         "left": "",
         "right": ""
@@ -177,7 +177,7 @@
         "all": "Assets/skin1.bmp",
         "front": "",
         "back": "",
-        "top": "Assets/skin1.bmp",
+        "top": "Assets/skinWithText.bmp",
         "bottom": "",
         "left": "",
         "right": ""
