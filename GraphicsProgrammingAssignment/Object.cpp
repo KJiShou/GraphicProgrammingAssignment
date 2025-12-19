@@ -10,6 +10,11 @@ Object::~Object() {
 	for (Object* c : children) {
 		delete c;
 	}
+
+	/*if (defaultTex != 0) {
+		glDeleteTextures(1, &defaultTex);
+		defaultTex = 0;
+	}*/
 }
 
 
@@ -309,13 +314,19 @@ void Object::ReadData(bool firstRun) {
 			std::string back = tex.value("back", "");
 			std::string left = tex.value("left", "");
 			std::string right = tex.value("right", "");
-
+			std::cout << "All texture: " << tex.value("all", "Not found") << std::endl;
 			if (!top.empty())    c.topTex = top;
+			std::cout << "top texture: " << c.topTex << std::endl;
 			if (!bottom.empty()) c.bottomTex = bottom;
+			std::cout << "bottom texture: " << c.bottomTex << std::endl;
 			if (!front.empty())   c.frontTex = front;
+			std::cout << "front texture: " << c.frontTex << std::endl;
 			if (!back.empty())   c.backTex = back;
+			std::cout << "back texture: " << c.backTex << std::endl;
 			if (!left.empty())   c.leftTex = left;
+			std::cout << "left texture: " << c.leftTex << std::endl;
 			if (!right.empty())   c.rightTex = right;
+			std::cout << "right texture: " << c.rightTex << std::endl;
 
 			c.isRepeat = tex.value("isRepeat", true);
 		}
@@ -388,9 +399,9 @@ void Object::ReadData(bool firstRun) {
 			cylinders[i]->Rotate(data.rotX, data.rotY, data.rotZ, false, 0.0f, 0.0f, 0.0f);
 			cylinders[i]->Scale(data.scaleX, data.scaleY, data.scaleZ);
 			
-			cylinders[i]->SetCylinderTexture(LoadTexture(data.bodyTex, data.isRepeat));
-			cylinders[i]->SetTopTexture(LoadTexture(data.topTex, data.isRepeat));
-			cylinders[i]->SetBottomTexture(LoadTexture(data.bottomTex, data.isRepeat));
+			cylinders[i]->SetCylinderTexture(data.bodyTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(data.bodyTex, data.isRepeat));
+			cylinders[i]->SetTopTexture(data.topTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(data.topTex, data.isRepeat));
+			cylinders[i]->SetBottomTexture(data.bottomTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(data.bottomTex, data.isRepeat));
 			i++;
 		}
 		i = 0;
@@ -402,7 +413,7 @@ void Object::ReadData(bool firstRun) {
 			spheres[i]->Rotate(data.rotX, data.rotY, data.rotZ);
 			spheres[i]->Scale(data.scaleX, data.scaleY, data.scaleZ);
 
-			spheres[i]->SetSphereTexture(LoadTexture(data.sphereTex, data.isRepeat));
+			spheres[i]->SetSphereTexture(data.sphereTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(data.sphereTex, data.isRepeat));
 			i++;
 		}
 		i = 0;
@@ -415,12 +426,12 @@ void Object::ReadData(bool firstRun) {
 			cubes[i]->SetExpandable(data.isExpandable);
 			cubes[i]->SetIsRepeat(data.isRepeat);
 
-			cubes[i]->SetFrontTexture(LoadTexture(data.frontTex, data.isRepeat));
-			cubes[i]->SetBackTexture(LoadTexture(data.backTex, data.isRepeat));
-			cubes[i]->SetTopTexture(LoadTexture(data.topTex, data.isRepeat));
-			cubes[i]->SetBottomTexture(LoadTexture(data.bottomTex, data.isRepeat));
-			cubes[i]->SetLeftTexture(LoadTexture(data.leftTex, data.isRepeat));
-			cubes[i]->SetRightTexture(LoadTexture(data.rightTex, data.isRepeat));
+			cubes[i]->SetFrontTexture(data.frontTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(data.frontTex, data.isRepeat));
+			cubes[i]->SetBackTexture(data.backTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(data.backTex, data.isRepeat));
+			cubes[i]->SetTopTexture(data.topTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(data.topTex, data.isRepeat));
+			cubes[i]->SetBottomTexture(data.bottomTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(data.bottomTex, data.isRepeat));
+			cubes[i]->SetLeftTexture(data.leftTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(data.leftTex, data.isRepeat));
+			cubes[i]->SetRightTexture(data.rightTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(data.rightTex, data.isRepeat));
 			i++;
 		}
 		i = 0;
@@ -431,11 +442,11 @@ void Object::ReadData(bool firstRun) {
 			pyramids[i]->Rotate(data.rotX, data.rotY, data.rotZ);
 			pyramids[i]->Scale(data.scaleX, data.scaleY, data.scaleZ);
 			
-			pyramids[i]->SetFrontTexture(LoadTexture(data.frontTex, data.isRepeat));
-			pyramids[i]->SetBackTexture(LoadTexture(data.backTex, data.isRepeat));
-			pyramids[i]->SetBottomTexture(LoadTexture(data.bottomTex, data.isRepeat));
-			pyramids[i]->SetLeftTexture(LoadTexture(data.leftTex, data.isRepeat));
-			pyramids[i]->SetRightTexture(LoadTexture(data.rightTex, data.isRepeat));
+			pyramids[i]->SetFrontTexture(data.frontTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(data.frontTex, data.isRepeat));
+			pyramids[i]->SetBackTexture(data.backTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(data.backTex, data.isRepeat));
+			pyramids[i]->SetBottomTexture(data.bottomTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(data.bottomTex, data.isRepeat));
+			pyramids[i]->SetLeftTexture(data.leftTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(data.leftTex, data.isRepeat));
+			pyramids[i]->SetRightTexture(data.rightTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(data.rightTex, data.isRepeat));
 			pyramids[i]->SetIsRepeat(data.isRepeat);
 			i++;
 		}
@@ -449,12 +460,12 @@ void Object::ReadData(bool firstRun) {
 			frustumCubes[i]->SetExpandable(data.isExpandable);
 			frustumCubes[i]->SetIsRepeat(data.isRepeat);
 
-			frustumCubes[i]->SetFrontTexture(LoadTexture(data.frontTex, data.isRepeat));
-			frustumCubes[i]->SetBackTexture(LoadTexture(data.backTex, data.isRepeat));
-			frustumCubes[i]->SetTopTexture(LoadTexture(data.topTex, data.isRepeat));
-			frustumCubes[i]->SetBottomTexture(LoadTexture(data.bottomTex, data.isRepeat));
-			frustumCubes[i]->SetLeftTexture(LoadTexture(data.leftTex, data.isRepeat));
-			frustumCubes[i]->SetRightTexture(LoadTexture(data.rightTex, data.isRepeat));
+			frustumCubes[i]->SetFrontTexture(data.frontTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(data.frontTex, data.isRepeat));
+			frustumCubes[i]->SetBackTexture(data.backTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(data.backTex, data.isRepeat));
+			frustumCubes[i]->SetTopTexture(data.topTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(data.topTex, data.isRepeat));
+			frustumCubes[i]->SetBottomTexture(data.bottomTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(data.bottomTex, data.isRepeat));
+			frustumCubes[i]->SetLeftTexture(data.leftTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(data.leftTex, data.isRepeat));
+			frustumCubes[i]->SetRightTexture(data.rightTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(data.rightTex, data.isRepeat));
 			i++;
 		}
 		i = 0;
@@ -484,9 +495,9 @@ void Object::ReadData(bool firstRun) {
 		for (size_t i = 0; i < cylinders.size() && i < cylindersData.size(); i++) {
 			
 			cylinders[i]->ClearTextures();
-			cylinders[i]->SetCylinderTexture(LoadTexture(cylindersData[i].bodyTex, cylindersData[i].isRepeat));
-			cylinders[i]->SetTopTexture(LoadTexture(cylindersData[i].topTex, cylindersData[i].isRepeat));
-			cylinders[i]->SetBottomTexture(LoadTexture(cylindersData[i].bottomTex, cylindersData[i].isRepeat));
+			cylinders[i]->SetCylinderTexture(cylindersData[i].bodyTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(cylindersData[i].bodyTex, cylindersData[i].isRepeat));
+			cylinders[i]->SetTopTexture(cylindersData[i].topTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(cylindersData[i].topTex, cylindersData[i].isRepeat));
+			cylinders[i]->SetBottomTexture(cylindersData[i].bottomTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(cylindersData[i].bottomTex, cylindersData[i].isRepeat));
 
 			cylinders[i]->SetBaseRadius(cylindersData[i].baseRadius);
 			cylinders[i]->SetTopRadius(cylindersData[i].topRadius);
@@ -507,7 +518,7 @@ void Object::ReadData(bool firstRun) {
 		for (size_t i = 0; i < spheres.size() && i < spheresData.size(); i++)
 		{
 			spheres[i]->ClearTextures();
-			spheres[i]->SetSphereTexture(LoadTexture(spheresData[i].sphereTex, spheresData[i].isRepeat));
+			spheres[i]->SetSphereTexture(spheresData[i].sphereTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(spheresData[i].sphereTex, spheresData[i].isRepeat));
 
 			spheres[i]->SetRadius(spheresData[i].radius);
 			spheres[i]->SetSlices(spheresData[i].slices);
@@ -523,12 +534,12 @@ void Object::ReadData(bool firstRun) {
 		for (size_t i = 0; i < cubes.size() && i < cubesData.size(); i++)
 		{
 			cubes[i]->ClearTextures();
-			cubes[i]->SetFrontTexture(LoadTexture(cubesData[i].frontTex, cubesData[i].isRepeat));
-			cubes[i]->SetBackTexture(LoadTexture(cubesData[i].backTex, cubesData[i].isRepeat));
-			cubes[i]->SetTopTexture(LoadTexture(cubesData[i].topTex, cubesData[i].isRepeat));
-			cubes[i]->SetBottomTexture(LoadTexture(cubesData[i].bottomTex, cubesData[i].isRepeat));
-			cubes[i]->SetLeftTexture(LoadTexture(cubesData[i].leftTex, cubesData[i].isRepeat));
-			cubes[i]->SetRightTexture(LoadTexture(cubesData[i].rightTex, cubesData[i].isRepeat));
+			cubes[i]->SetFrontTexture(cubesData[i].frontTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(cubesData[i].frontTex, cubesData[i].isRepeat));
+			cubes[i]->SetBackTexture(cubesData[i].backTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(cubesData[i].backTex, cubesData[i].isRepeat));
+			cubes[i]->SetTopTexture(cubesData[i].topTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(cubesData[i].topTex, cubesData[i].isRepeat));
+			cubes[i]->SetBottomTexture(cubesData[i].bottomTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(cubesData[i].bottomTex, cubesData[i].isRepeat));
+			cubes[i]->SetLeftTexture(cubesData[i].leftTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(cubesData[i].leftTex, cubesData[i].isRepeat));
+			cubes[i]->SetRightTexture(cubesData[i].rightTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(cubesData[i].rightTex, cubesData[i].isRepeat));
 
 			cubes[i]->SetLength(cubesData[i].length);
 			cubes[i]->SetWidth(cubesData[i].width);
@@ -544,11 +555,11 @@ void Object::ReadData(bool firstRun) {
 		for (size_t i = 0; i < pyramids.size() && i < pyramidsData.size(); i++)
 		{
 			pyramids[i]->ClearTextures();
-			pyramids[i]->SetFrontTexture(LoadTexture(pyramidsData[i].frontTex, pyramidsData[i].isRepeat));
-			pyramids[i]->SetBackTexture(LoadTexture(pyramidsData[i].backTex, pyramidsData[i].isRepeat));
-			pyramids[i]->SetBottomTexture(LoadTexture(pyramidsData[i].bottomTex, pyramidsData[i].isRepeat));
-			pyramids[i]->SetLeftTexture(LoadTexture(pyramidsData[i].leftTex, pyramidsData[i].isRepeat));
-			pyramids[i]->SetRightTexture(LoadTexture(pyramidsData[i].rightTex, pyramidsData[i].isRepeat));
+			pyramids[i]->SetFrontTexture(pyramidsData[i].frontTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(pyramidsData[i].frontTex, pyramidsData[i].isRepeat));
+			pyramids[i]->SetBackTexture(pyramidsData[i].backTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(pyramidsData[i].backTex, pyramidsData[i].isRepeat));
+			pyramids[i]->SetBottomTexture(pyramidsData[i].bottomTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(pyramidsData[i].bottomTex, pyramidsData[i].isRepeat));
+			pyramids[i]->SetLeftTexture(pyramidsData[i].leftTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(pyramidsData[i].leftTex, pyramidsData[i].isRepeat));
+			pyramids[i]->SetRightTexture(pyramidsData[i].rightTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(pyramidsData[i].rightTex, pyramidsData[i].isRepeat));
 
 			pyramids[i]->SetLength(pyramidsData[i].length);
 			pyramids[i]->SetWidth(pyramidsData[i].width);
@@ -563,12 +574,12 @@ void Object::ReadData(bool firstRun) {
 		for (size_t i = 0; i < frustumCubes.size() && i < frustumCubesData.size(); i++)
 		{
 			frustumCubes[i]->ClearTextures();
-			frustumCubes[i]->SetFrontTexture(LoadTexture(frustumCubesData[i].frontTex, frustumCubesData[i].isRepeat));
-			frustumCubes[i]->SetBackTexture(LoadTexture(frustumCubesData[i].backTex, frustumCubesData[i].isRepeat));
-			frustumCubes[i]->SetTopTexture(LoadTexture(frustumCubesData[i].topTex, frustumCubesData[i].isRepeat));
-			frustumCubes[i]->SetBottomTexture(LoadTexture(frustumCubesData[i].bottomTex, frustumCubesData[i].isRepeat));
-			frustumCubes[i]->SetLeftTexture(LoadTexture(frustumCubesData[i].leftTex, frustumCubesData[i].isRepeat));
-			frustumCubes[i]->SetRightTexture(LoadTexture(frustumCubesData[i].rightTex, frustumCubesData[i].isRepeat));
+			frustumCubes[i]->SetFrontTexture(frustumCubesData[i].frontTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(frustumCubesData[i].frontTex, frustumCubesData[i].isRepeat));
+			frustumCubes[i]->SetBackTexture(frustumCubesData[i].backTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(frustumCubesData[i].backTex, frustumCubesData[i].isRepeat));
+			frustumCubes[i]->SetTopTexture(frustumCubesData[i].topTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(frustumCubesData[i].topTex, frustumCubesData[i].isRepeat));
+			frustumCubes[i]->SetBottomTexture(frustumCubesData[i].bottomTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(frustumCubesData[i].bottomTex, frustumCubesData[i].isRepeat));
+			frustumCubes[i]->SetLeftTexture(frustumCubesData[i].leftTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(frustumCubesData[i].leftTex, frustumCubesData[i].isRepeat));
+			frustumCubes[i]->SetRightTexture(frustumCubesData[i].rightTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(frustumCubesData[i].rightTex, frustumCubesData[i].isRepeat));
 
 			frustumCubes[i]->SetTopLength(frustumCubesData[i].topLength);
 			frustumCubes[i]->SetTopDepth(frustumCubesData[i].topDepth);
