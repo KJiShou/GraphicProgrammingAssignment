@@ -481,6 +481,7 @@ void Draw() {
 	//===============================
 	backbone->RotateRightForearm(x, -90);
 	backbone->RotateRightUpperArm(x, y, z);
+	backbone->RotateLeftUpperArm(x, y, z);
 	backbone->RotateLeftForearm(x, -90);
 	backbone->RotateLeftHandFinger(x, y, z);
 	backbone->RotateRightHandFinger(x, y, z);
