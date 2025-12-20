@@ -561,6 +561,14 @@ void Draw() {
 	//backbone->RotateLeftMiddle(0.0f, 0.0f, 0.0f);
 	//backbone->RotateLeftRing(0.0f, 0.0f, 0.0f);
 	//backbone->RotateLeftLittle(0.0f, 0.0f, 0.0f);
+
+	backbone->RotateRightUpperArm(90.0f, 0.0f, 0.0f);
+	backbone->RotateRightHandFinger(90.0f, 90.0f, 90.0f);
+	//backbone->RotateLeftThumb(0.0f, 0.0f, 0.0f);
+	//backbone->RotateLeftIndex(0.0f, 90.0f, 90.0f);
+	//backbone->RotateLeftMiddle(0.0f, 0.0f, 0.0f);
+	//backbone->RotateLeftRing(0.0f, 0.0f, 0.0f);
+	//backbone->RotateLeftLittle(0.0f, 0.0f, 0.0f);
 	
 	//===============================
 	// HJ Testing Section
