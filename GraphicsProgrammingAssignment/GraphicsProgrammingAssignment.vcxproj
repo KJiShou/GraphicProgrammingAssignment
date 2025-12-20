@@ -214,11 +214,13 @@
     <None Include="leftLowerLeg.json" />
     <None Include="leftUpperLeg.json" />
     <None Include="rightFoot.json" />
+    <None Include="rightForearmOuter.json" />
     <None Include="rightLegArmor.json" />
     <None Include="rightLegBackArmor.json" />
     <None Include="rightLegFrontArmor.json" />
     <None Include="rightLegSideArmor.json" />
     <None Include="rightLowerLeg.json" />
+    <None Include="rightUpperArmOuter.json" />
     <None Include="rightUpperLeg.json" />
     <None Include="template.json" />
     <None Include="towerBridge.json" />
