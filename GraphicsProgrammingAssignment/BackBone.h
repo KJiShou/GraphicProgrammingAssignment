@@ -77,8 +77,6 @@ public:
 	Object* leftThumbMid = new Object("handFinger.json");
 	Object* leftThumbTip = new Object("handFinger.json");
 
-
-
 	// legs
 	Object* leftLegFrontArmor = new Object("leftLegFrontArmor.json");
 	Object* leftLegBackArmor = new Object("leftLegBackArmor.json");
@@ -93,6 +91,11 @@ public:
 	Object* rightUpperLeg = new Object("rightUpperLeg.json");
 	Object* rightLowerLeg = new Object("rightLowerLeg.json");
 	Object* rightFoot = new Object("rightFoot.json");
+
+	// Weapons
+	Object* gun = new Object("gun.json");
+	Object* sword = new Object("sword.json");
+	Object* shield = new Object("shield.json");
 
 	~BackBone();
 

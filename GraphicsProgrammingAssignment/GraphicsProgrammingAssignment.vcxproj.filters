@@ -25,6 +25,8 @@
     <Filter Include="Data\Leg\Right">
       <UniqueIdentifier>{34629072-a046-4ff8-8735-38aca74788a1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Data\Weapons">
+      <UniqueIdentifier>{d958a3ab-e8d4-4e23-bebf-2161ed9d7ad2}</UniqueIdentifier>
     <Filter Include="Data\Arm">
       <UniqueIdentifier>{81a9e089-66dd-43b7-bdf3-a677e43de1cf}</UniqueIdentifier>
     </Filter>
@@ -209,6 +211,9 @@
     </None>
     <None Include="rightUpperLeg.json">
       <Filter>Data\Leg\Right</Filter>
+    </None>
+    <None Include="gun.json">
+      <Filter>Data\Weapons</Filter>
     </None>
     <None Include="bigWing.json" />
     <None Include="armJointArmor.json">
