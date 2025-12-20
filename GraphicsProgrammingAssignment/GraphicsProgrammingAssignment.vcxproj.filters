@@ -1,21 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="BackBone.cpp" />
-    <ClCompile Include="Cube.cpp" />
-    <ClCompile Include="Cylinder.cpp" />
-    <ClCompile Include="FrustumCube.cpp" />
-    <ClCompile Include="InputManager.cpp" />
-    <ClCompile Include="Light.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Math.cpp" />
-    <ClCompile Include="Object.cpp" />
-    <ClCompile Include="pch.cpp" />
-    <ClCompile Include="Pyramid.cpp" />
-    <ClCompile Include="Sphere.cpp" />
-    <ClCompile Include="Tetrahedron.cpp" />
-    <ClCompile Include="Timer.cpp" />
-    <ClCompile Include="TowerBridge.cpp" />
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Data">
+      <UniqueIdentifier>{e31c5097-cdff-418e-814e-32ff4d813f01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\Leg">
+      <UniqueIdentifier>{5e28d950-aad8-4d44-b3ea-ff73eb4922de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\Leg\Left">
+      <UniqueIdentifier>{f39eb3c1-82be-4976-9b3b-65c1a2bd8852}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\Leg\Right">
+      <UniqueIdentifier>{34629072-a046-4ff8-8735-38aca74788a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\Weapons">
+      <UniqueIdentifier>{d958a3ab-e8d4-4e23-bebf-2161ed9d7ad2}</UniqueIdentifier>
+	</Filter>
+    <Filter Include="Data\Arm">
+      <UniqueIdentifier>{81a9e089-66dd-43b7-bdf3-a677e43de1cf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackBone.h" />
