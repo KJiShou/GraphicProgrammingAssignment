@@ -5,7 +5,10 @@ BackBone::~BackBone()
 	delete root;
 	delete headBone;
 	delete body;
-	delete wing;
+	delete leftWing;
+	delete rightWing;
+	delete bigLeftWing;
+	delete bigRightWing;
 	delete pelvis;
 
 	delete leftUpperArm;
@@ -81,7 +84,19 @@ void BackBone::SetBone() {
 	
 	// body
 	body->Translate(0, 1, 0);
-	
+
+	leftWing->Translate(0.1, 0, -0.04);
+	leftWing->Rotate(0, -15, 0);
+
+	rightWing->Translate(-0.1, 0, -0.04);
+	rightWing->Rotate(0, 15, 0);
+
+	bigLeftWing->Translate(0.165, 0, -0.13);
+	bigLeftWing->Rotate(0, -40, 0);
+
+	bigRightWing->Translate(-0.165, 0, -0.13);
+	bigRightWing->Rotate(0, 40, 0);
+
 	// arm
 	leftUpperArmJoint->Translate(-1.0, 1.8, 0);
 	leftForearm->Translate(0.0, -0.95, 0);
@@ -115,19 +130,19 @@ void BackBone::SetBone() {
 	rightThumbTip->Translate(0.0f, -0.1f, 0.0f);
 
 	// index finger positions
-	leftIndexBase->Translate(0.09f, -0.25f, 0.0f);
+	leftIndexBase->Translate(-0.09f, -0.25f, 0.0f);
 	leftIndexMid->Translate(0.0f, -0.13f, 0.0f);
 	leftIndexTip->Translate(0.0f, -0.1f, 0.0f);
 	// middle finger positions
-	leftMiddleBase->Translate(0.03f, -0.25f, 0.0f);
+	leftMiddleBase->Translate(-0.03f, -0.25f, 0.0f);
 	leftMiddleMid->Translate(0.0f, -0.13f, 0.0f);
 	leftMiddleTip->Translate(0.0f, -0.1f, 0.0f);
 	// ring finger positions
-	leftRingBase->Translate(-0.03f, -0.25f, 0.0f);
+	leftRingBase->Translate(0.03f, -0.25f, 0.0f);
 	leftRingMid->Translate(0.0f, -0.13f, 0.0f);
 	leftRingTip->Translate(0.0f, -0.1f, 0.0f);
 	// little finger positions
-	leftLittleBase->Translate(-0.09f, -0.25f, 0.0f);
+	leftLittleBase->Translate(0.09f, -0.25f, 0.0f);
 	leftLittleMid->Translate(0.0f, -0.13f, 0.0f);
 	leftLittleTip->Translate(0.0f, -0.1f, 0.0f);
 	// thumb finger positions
@@ -171,7 +186,10 @@ void BackBone::SetBone() {
 
 	// body -> head
 	body->AddChild(headBone);
-	body->AddChild(wing);
+	body->AddChild(leftWing);
+	body->AddChild(rightWing);
+	body->AddChild(bigLeftWing);
+	body->AddChild(bigRightWing);
 
 	// left arm
 	body->AddChild(leftUpperArmJoint);
@@ -316,10 +334,13 @@ void BackBone::ReadData() {
 	rightUpperArmJointOuter->ReadData();
 	leftUpperArmJoint->ReadData();
 	leftUpperArmJointOuter->ReadData();
-	wing->ReadData();
 	gun->ReadData();
 	sword->ReadData();
 	shield->ReadData();
+	leftWing->ReadData();
+	rightWing->ReadData();
+	bigLeftWing->ReadData();
+	bigRightWing->ReadData();
 }
 
 float clamp(float v, float min, float max) {
@@ -627,12 +648,12 @@ void BackBone::Draw() {
 	rightMiddleBase->Rotate(-rightMiddleBaseRot, 0, 0);
 	rightMiddleMid->Rotate(-rightMiddleMidRot, 0, 0);
 	rightMiddleTip->Rotate(-rightMiddleTipRot, 0, 0);
-	rightRingBase->Rotate(-rightMiddleBaseRot, 0, 0);
-	rightRingMid->Rotate(-rightMiddleMidRot, 0, 0);
-	rightRingTip->Rotate(-rightMiddleTipRot, 0, 0);
-	rightLittleBase->Rotate(-rightMiddleBaseRot, 0, 0);
-	rightLittleMid->Rotate(-rightMiddleMidRot, 0, 0);
-	rightLittleTip->Rotate(-rightMiddleTipRot, 0, 0);
+	rightRingBase->Rotate(-rightRingBaseRot, 0, 0);
+	rightRingMid->Rotate(-rightRingMidRot, 0, 0);
+	rightRingTip->Rotate(-rightRingTipRot, 0, 0);
+	rightLittleBase->Rotate(-rightLittleBaseRot, 0, 0);
+	rightLittleMid->Rotate(-rightLittleMidRot, 0, 0);
+	rightLittleTip->Rotate(-rightLittleTipRot, 0, 0);
 	rightThumbSpread->Rotate(0.0f, 0.0f, rightThumbSpreadRot);
 	rightThumbMid->Rotate(-rightThumbMidRot, 0, 0);
 	rightThumbTip->Rotate(-rightThumbTipRot, 0, 0);
