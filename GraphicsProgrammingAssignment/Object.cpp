@@ -365,6 +365,27 @@ void Object::ReadData(bool firstRun) {
 		p.isSpecular = jc.value("isSpecular", true);
 		p.shininess = jc.value("shininess", 50.0f);
 
+		if (jc.contains("textures") && jc["textures"].is_object()) {
+			auto& tex = jc["textures"];
+
+			std::string all = tex.value("all", "");
+			if (!all.empty()) {
+				p.backTex = p.bottomTex = p.leftTex = p.rightTex = all;
+			}
+
+			std::string bottom = tex.value("bottom", "");
+			std::string back = tex.value("back", "");
+			std::string left = tex.value("left", "");
+			std::string right = tex.value("right", "");
+
+			if (!bottom.empty()) p.bottomTex = bottom;
+			if (!back.empty())   p.backTex = back;
+			if (!left.empty())   p.leftTex = left;
+			if (!right.empty())   p.rightTex = right;
+
+			p.isRepeat = tex.value("isRepeat", true);
+		}
+
 		tetrahedronsData.push_back(p);
 	}
 
@@ -467,6 +488,11 @@ void Object::ReadData(bool firstRun) {
 			tetrahedrons[i]->SetIsRepeat(data.isRepeat);
 			tetrahedrons[i]->SetIsSpecular(data.isSpecular);
 			tetrahedrons[i]->SetShininess(data.shininess);
+
+			tetrahedrons[i]->SetBackTexture(data.backTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(data.backTex, data.isRepeat));
+			tetrahedrons[i]->SetBottomTexture(data.bottomTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(data.bottomTex, data.isRepeat));
+			tetrahedrons[i]->SetLeftTexture(data.leftTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(data.leftTex, data.isRepeat));
+			tetrahedrons[i]->SetRightTexture(data.rightTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(data.rightTex, data.isRepeat));
 			i++;
 		}
 	}
@@ -599,6 +625,13 @@ void Object::ReadData(bool firstRun) {
 			tetrahedrons[i]->SetIsRepeat(tetrahedronsData[i].isRepeat);
 			tetrahedrons[i]->SetIsSpecular(tetrahedronsData[i].isSpecular);
 			tetrahedrons[i]->SetShininess(tetrahedronsData[i].shininess);
+
+			tetrahedrons[i]->ClearTextures();
+			tetrahedrons[i]->SetBackTexture(tetrahedronsData[i].backTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(tetrahedronsData[i].backTex, tetrahedronsData[i].isRepeat));
+			tetrahedrons[i]->SetBottomTexture(tetrahedronsData[i].bottomTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(tetrahedronsData[i].bottomTex, tetrahedronsData[i].isRepeat));
+			tetrahedrons[i]->SetLeftTexture(tetrahedronsData[i].leftTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(tetrahedronsData[i].leftTex, tetrahedronsData[i].isRepeat));
+			tetrahedrons[i]->SetRightTexture(tetrahedronsData[i].rightTex.empty() ? LoadTexture("Assets/default.bmp", false) : LoadTexture(tetrahedronsData[i].rightTex, tetrahedronsData[i].isRepeat));
+
 		}
 	}
 }

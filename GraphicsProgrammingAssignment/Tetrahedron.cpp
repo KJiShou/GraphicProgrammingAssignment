@@ -221,6 +221,28 @@ void Tetrahedron::SetShininess(float s) {
 	shininess = s;
 }
 
+void Tetrahedron::ClearTextures() {
+	if (texBack != 0) {
+		glDeleteTextures(1, &texBack);
+		texBack = 0;
+	}
+
+	if (texBottom != 0) {
+		glDeleteTextures(1, &texBottom);
+		texBottom = 0;
+	}
+
+	if (texLeft != 0) {
+		glDeleteTextures(1, &texLeft);
+		texLeft = 0;
+	}
+
+	if (texRight != 0) {
+		glDeleteTextures(1, &texRight);
+		texRight = 0;
+	}
+}
+
 // ======================
 // Getters
 // ======================

@@ -1,6 +1,7 @@
 {
     "spheres": [
         {
+            "label": "face",
             "radius": 0.2,
             "slices": 20,
             "stacks": 20,
@@ -22,6 +23,7 @@
     ],
     "pyramids": [
         {
+            "label": "yellow V",
             "length": 0.05,
             "width": 0.05,
             "height": 0.5,
@@ -36,9 +38,21 @@
             "rotZ": -45.0,
             "scaleX": 1.0,
             "scaleY": 1.0,
-            "scaleZ": 1.0
+            "scaleZ": 1.0,
+            "isSpecular": true,
+            "shininess": 50.0,
+            "textures": {
+                "isRepeat": false,
+                "all": "Assets/metal.bmp",
+                "front": "",
+                "back": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
+            "label": "yellow V",
             "length": 0.05,
             "width": 0.05,
             "height": 0.5,
@@ -53,9 +67,19 @@
             "rotZ": 45.0,
             "scaleX": 1.0,
             "scaleY": 1.0,
-            "scaleZ": 1.0
+            "scaleZ": 1.0,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/metal.bmp",
+                "front": "",
+                "back": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
+            "label": "eye",
             "length": 0.09,
             "width": 0.05,
             "height": 0.16,
@@ -73,6 +97,7 @@
             "scaleZ": 1.0
         },
         {
+            "label": "eye",
             "length": 0.09,
             "width": 0.05,
             "height": 0.16,
@@ -92,12 +117,13 @@
     ],
     "cubes": [
         {
+            "label": "left head",
             "length": 0.1,
             "width": 0.35,
             "height": 0.5,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": -0.2,
             "transY": 0.7,
             "transZ": -0.05,
@@ -108,24 +134,26 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
+            "label": "right head",
             "length": 0.1,
             "width": 0.35,
             "height": 0.5,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.2,
             "transY": 0.7,
             "transZ": -0.05,
@@ -136,24 +164,26 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
+            "label": "front head",
             "length": 0.32,
             "width": 0.1,
             "height": 0.15,
-            "r": 0.5,
-            "g": 0.0,
-            "b": 0.0,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.0,
             "transY": 0.875,
             "transZ": 0.14,
@@ -164,24 +194,26 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
+            "label": "left mask",
             "length": 0.26,
             "width": 0.05,
             "height": 0.2,
-            "r": 0.5,
-            "g": 0.0,
-            "b": 0.0,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": -0.1,
             "transY": 0.55,
             "transZ": 0.17,
@@ -192,24 +224,26 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
+            "label": "right mask",
             "length": 0.26,
             "width": 0.05,
             "height": 0.2,
-            "r": 0.5,
-            "g": 0.0,
-            "b": 0.0,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.1,
             "transY": 0.55,
             "transZ": 0.17,
@@ -220,24 +254,26 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
+            "label": "back head",
             "length": 0.5,
             "width": 0.05,
             "height": 0.5,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.0,
             "transY": 0.7,
             "transZ": -0.25,
@@ -248,24 +284,26 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
+            "label": "back back head",
             "length": 0.4,
             "width": 0.1,
             "height": 0.4,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.0,
             "transY": 0.7,
             "transZ": -0.3,
@@ -276,24 +314,26 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
+            "label": "back back back head",
             "length": 0.3,
             "width": 0.1,
             "height": 0.3,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.0,
             "transY": 0.7,
             "transZ": -0.4,
@@ -304,24 +344,26 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
+            "label": "face top head",
             "length": 0.4,
             "width": 0.45,
             "height": 0.1,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.0,
             "transY": 1.0,
             "transZ": -0.02,
@@ -332,18 +374,20 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
+            "label": "top head middle red",
             "length": 0.1,
             "width": 0.1,
             "height": 0.15,
@@ -360,6 +404,7 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
+            "isSpecular": true,
             "textures": [
                 {
                     "front": "Assets/meme1.bmp",
@@ -372,7 +417,7 @@
             ]
         },
         {
-            "comment": "top red hat white cover",
+            "label": "top red hat white cover",
             "length": 0.025,
             "width": 0.08,
             "height": 0.2,
@@ -389,19 +434,20 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
-            "comment": "top red hat white cover",
+            "label": "top red hat white cover",
             "length": 0.025,
             "width": 0.506,
             "height": 0.1,
@@ -418,19 +464,20 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
-            "comment": "top red hat white cover",
+            "label": "top red hat white cover",
             "length": 0.025,
             "width": 0.08,
             "height": 0.2,
@@ -447,19 +494,20 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
-            "comment": "top red hat white cover",
+            "label": "top red hat white cover",
             "length": 0.025,
             "width": 0.506,
             "height": 0.1,
@@ -476,19 +524,20 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
-            "comment": "top red hat white cover",
+            "label": "top red hat white cover",
             "length": 0.15,
             "width": 0.585,
             "height": 0.025,
@@ -505,19 +554,20 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
-            "comment": "top red hat white cover",
+            "label": "top red hat white cover",
             "length": 0.15,
             "width": 0.05,
             "height": 0.025,
@@ -534,47 +584,20 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
-            "comment": "top red hat white cover",
-            "length": 0.025,
-            "width": 0.506,
-            "height": 0.1,
-            "r": 1.0,
-            "g": 1.0,
-            "b": 1.0,
-            "transX": 0.0625,
-            "transY": 1.1,
-            "transZ": -0.047,
-            "rotX": 0.0,
-            "rotY": 0.0,
-            "rotZ": 0.0,
-            "scaleX": 1.0,
-            "scaleY": 1.0,
-            "scaleZ": 1.0,
-            "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
-        },
-        {
+            "label": "top red in white cover",
             "length": 0.1,
             "width": 0.5,
             "height": 0.15,
@@ -591,18 +614,20 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
+            "label": "top red in white cover",
             "length": 0.1,
             "width": 0.25,
             "height": 0.15,
@@ -619,18 +644,20 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
+            "label": "top red in white cover",
             "length": 0.1,
             "width": 0.07,
             "height": 0.15,
@@ -647,24 +674,26 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
+            "label": " ",
             "length": 0.1,
             "width": 0.01,
             "height": 0.5,
-            "r": 0.5,
-            "g": 0.0,
-            "b": 0.0,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": -0.207,
             "transY": 0.70,
             "transZ": 0.15,
@@ -675,24 +704,26 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
+            "label": " ",
             "length": 0.1,
             "width": 0.01,
             "height": 0.5,
-            "r": 0.5,
-            "g": 0.0,
-            "b": 0.0,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.207,
             "transY": 0.70,
             "transZ": 0.15,
@@ -703,24 +734,26 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
+            "label": " ",
             "length": 0.07,
             "width": 0.3,
             "height": 0.06,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": -0.203,
             "transY": 0.953,
             "transZ": -0.025,
@@ -731,24 +764,25 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
             "length": 0.07,
             "width": 0.3,
             "height": 0.06,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.205,
             "transY": 0.953,
             "transZ": -0.025,
@@ -759,24 +793,25 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
             "length": 0.01,
             "width": 0.4,
             "height": 0.089,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.223,
             "transY": 0.7,
             "transZ": -0.311,
@@ -787,24 +822,25 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
             "length": 0.01,
             "width": 0.4,
             "height": 0.089,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": -0.223,
             "transY": 0.7,
             "transZ": -0.311,
@@ -815,24 +851,25 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
             "length": 0.01,
             "width": 0.3,
             "height": 0.110,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": -0.172,
             "transY": 0.7,
             "transZ": -0.399,
@@ -843,24 +880,25 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
             "length": 0.01,
             "width": 0.3,
             "height": 0.110,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.172,
             "transY": 0.7,
             "transZ": -0.399,
@@ -871,24 +909,25 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
             "length": 0.07,
             "width": 0.25,
             "height": 0.35,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.288,
             "transY": 0.7,
             "transZ": -0.06,
@@ -899,24 +938,25 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
             "length": 0.085,
             "width": 0.01,
             "height": 0.35,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.284,
             "transY": 0.7,
             "transZ": 0.085,
@@ -927,24 +967,25 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
             "length": 0.085,
             "width": 0.01,
             "height": 0.35,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.284,
             "transY": 0.7,
             "transZ": -0.204,
@@ -955,24 +996,25 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
             "length": 0.07,
             "width": 0.25,
             "height": 0.35,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": -0.288,
             "transY": 0.7,
             "transZ": -0.06,
@@ -983,24 +1025,25 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
             "length": 0.085,
             "width": 0.01,
             "height": 0.35,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": -0.284,
             "transY": 0.7,
             "transZ": 0.085,
@@ -1011,24 +1054,25 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
             "length": 0.085,
             "width": 0.01,
             "height": 0.35,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": -0.284,
             "transY": 0.7,
             "transZ": -0.204,
@@ -1039,16 +1083,17 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
             "length": 0.1,
@@ -1067,16 +1112,17 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
             "length": 0.1,
@@ -1095,16 +1141,17 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
             "length": 0.1,
@@ -1123,16 +1170,17 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         },
         {
             "length": 0.1,
@@ -1151,22 +1199,17 @@
             "scaleY": 1.0,
             "scaleZ": 1.0,
             "isExpandable": true,
-            "textures": [
-                {
-                    "front": "Assets/meme1.bmp",
-                    "back": "Assets/meme1.bmp",
-                    "top": "Assets/meme1.bmp",
-                    "bottom": "Assets/meme1.bmp",
-                    "left": "Assets/meme1.bmp",
-                    "right": "Assets/meme1.bmp"
-                }
-            ]
+            "isSpecular": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/whiteMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
+            }
         }
-
-
-
-
-
-
     ]
 }

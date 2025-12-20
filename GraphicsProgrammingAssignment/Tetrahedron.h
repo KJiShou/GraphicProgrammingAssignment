@@ -28,6 +28,8 @@ public:
 	void SetIsSpecular(bool s);
 	void SetShininess(float s);
 
+	void ClearTextures();
+
 	// ======================
 	// Getters
 	// ======================
