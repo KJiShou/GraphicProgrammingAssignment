@@ -1,73 +1,241 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="BackBone.cpp" />
-    <ClCompile Include="Cube.cpp" />
-    <ClCompile Include="Cylinder.cpp" />
-    <ClCompile Include="FrustumCube.cpp" />
-    <ClCompile Include="InputManager.cpp" />
-    <ClCompile Include="Light.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Math.cpp" />
-    <ClCompile Include="Object.cpp" />
-    <ClCompile Include="pch.cpp" />
-    <ClCompile Include="Pyramid.cpp" />
-    <ClCompile Include="Sphere.cpp" />
-    <ClCompile Include="Tetrahedron.cpp" />
-    <ClCompile Include="Timer.cpp" />
-    <ClCompile Include="TowerBridge.cpp" />
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Data">
+      <UniqueIdentifier>{e31c5097-cdff-418e-814e-32ff4d813f01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\Leg">
+      <UniqueIdentifier>{5e28d950-aad8-4d44-b3ea-ff73eb4922de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\Leg\Left">
+      <UniqueIdentifier>{f39eb3c1-82be-4976-9b3b-65c1a2bd8852}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\Leg\Right">
+      <UniqueIdentifier>{34629072-a046-4ff8-8735-38aca74788a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\Weapons">
+      <UniqueIdentifier>{d958a3ab-e8d4-4e23-bebf-2161ed9d7ad2}</UniqueIdentifier>
+    <Filter Include="Data\Arm">
+      <UniqueIdentifier>{81a9e089-66dd-43b7-bdf3-a677e43de1cf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BackBone.h" />
-    <ClInclude Include="Cube.h" />
-    <ClInclude Include="Cylinder.h" />
-    <ClInclude Include="FrustumCube.h" />
-    <ClInclude Include="InputManager.h" />
-    <ClInclude Include="json.hpp" />
-    <ClInclude Include="Light.h" />
-    <ClInclude Include="Math.h" />
-    <ClInclude Include="Object.h" />
-    <ClInclude Include="pch.h" />
-    <ClInclude Include="Pyramid.h" />
-    <ClInclude Include="Sphere.h" />
-    <ClInclude Include="Tetrahedron.h" />
-    <ClInclude Include="Timer.h" />
-    <ClInclude Include="TowerBridge.h" />
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cube.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pyramid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cylinder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sphere.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TowerBridge.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Math.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tetrahedron.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BackBone.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FrustumCube.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cube.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pyramid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cylinder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sphere.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="json.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TowerBridge.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Math.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tetrahedron.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BackBone.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FrustumCube.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data.json">
+      <Filter>Data</Filter>
+    </None>
     <None Include="..\.gitignore" />
-    <None Include="armJointArmor.json" />
-    <None Include="background.json" />
-    <None Include="bigWing.json" />
-    <None Include="body.json" />
-    <None Include="bodyBone.json" />
-    <None Include="bridge.json" />
-    <None Include="data.json" />
-    <None Include="forearmOuter.json" />
-    <None Include="gun.json" />
-    <None Include="handFinger.json" />
-    <None Include="handPalm.json" />
-    <None Include="head.json" />
-    <None Include="leftFoot.json" />
-    <None Include="leftLegArmor.json" />
-    <None Include="leftLegBackArmor.json" />
-    <None Include="leftLegFrontArmor.json" />
-    <None Include="leftLegSideArmor.json" />
-    <None Include="leftLowerLeg.json" />
-    <None Include="leftUpperLeg.json" />
-    <None Include="rightFoot.json" />
-    <None Include="rightForearmOuter.json" />
-    <None Include="rightLegArmor.json" />
-    <None Include="rightLegBackArmor.json" />
-    <None Include="rightLegFrontArmor.json" />
-    <None Include="rightLegSideArmor.json" />
-    <None Include="rightLowerLeg.json" />
-    <None Include="rightUpperArmOuter.json" />
-    <None Include="rightUpperLeg.json" />
-    <None Include="template.json" />
-    <None Include="towerBridge.json" />
-    <None Include="upperArmOuter.json" />
+    <None Include="towerBridge.json">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="template.json">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="bridge.json">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="background.json">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="body.json">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="bodyBone.json">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="head.json">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="leftFoot.json">
+      <Filter>Data\Leg\Left</Filter>
+    </None>
+    <None Include="leftLegArmor.json">
+      <Filter>Data\Leg\Left</Filter>
+    </None>
+    <None Include="leftLowerLeg.json">
+      <Filter>Data\Leg\Left</Filter>
+    </None>
+    <None Include="leftUpperLeg.json">
+      <Filter>Data\Leg\Left</Filter>
+    </None>
+    <None Include="rightFoot.json">
+      <Filter>Data\Leg\Right</Filter>
+    </None>
+    <None Include="rightLegArmor.json">
+      <Filter>Data\Leg\Right</Filter>
+    </None>
+    <None Include="rightLowerLeg.json">
+      <Filter>Data\Leg\Right</Filter>
+    </None>
+    <None Include="rightUpperLeg.json">
+      <Filter>Data\Leg\Right</Filter>
+    </None>
+    <None Include="leftLegFrontArmor.json">
+      <Filter>Data\Leg\Left</Filter>
+    </None>
+    <None Include="leftLegBackArmor.json">
+      <Filter>Data\Leg\Left</Filter>
+    </None>
+    <None Include="leftLegSideArmor.json">
+      <Filter>Data\Leg\Left</Filter>
+    </None>
+    <None Include="rightLegFrontArmor.json">
+      <Filter>Data\Leg\Right</Filter>
+    </None>
+    <None Include="rightLegBackArmor.json">
+      <Filter>Data\Leg\Right</Filter>
+    </None>
+    <None Include="rightLegSideArmor.json">
+      <Filter>Data\Leg\Right</Filter>
+    </None>
     <None Include="wing.json" />
-    <None Include="shield.json" />
+    <None Include="leftFoot.json">
+      <Filter>Data\Leg\Left</Filter>
+    </None>
+    <None Include="leftLowerLeg.json">
+      <Filter>Data\Leg\Left</Filter>
+    </None>
+    <None Include="leftUpperLeg.json">
+      <Filter>Data\Leg\Left</Filter>
+    </None>
+    <None Include="rightFoot.json">
+      <Filter>Data\Leg\Right</Filter>
+    </None>
+    <None Include="rightLowerLeg.json">
+      <Filter>Data\Leg\Right</Filter>
+    </None>
+    <None Include="rightUpperLeg.json">
+      <Filter>Data\Leg\Right</Filter>
+    </None>
+    <None Include="gun.json">
+      <Filter>Data\Weapons</Filter>
+    </None>
+    <None Include="bigWing.json" />
+    <None Include="armJointArmor.json">
+      <Filter>Data\Arm</Filter>
+    </None>
+    <None Include="forearmOuter.json">
+      <Filter>Data\Arm</Filter>
+    </None>
+    <None Include="upperArmOuter.json">
+      <Filter>Data\Arm</Filter>
+    </None>
+    <None Include="handPalm.json">
+      <Filter>Data\Arm</Filter>
+    </None>
+    <None Include="handFinger.json">
+      <Filter>Data\Arm</Filter>
+    </None>
+    <None Include="rightUpperArmOuter.json">
+      <Filter>Data\Arm</Filter>
+    </None>
+    <None Include="rightForearmOuter.json">
+      <Filter>Data\Arm</Filter>
+    </None>
   </ItemGroup>
 </Project>
