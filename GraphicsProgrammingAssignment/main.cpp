@@ -38,25 +38,30 @@ json j;
 // D - Move To Right
 // Q - Move To Down
 // E - Move To Up
+// 
+// Light Movement
+// I - Move To Front
+// K - Move To Back
+// J - Move To Left
+// L - Move To Right
+// U - Move To Down
+// O - Move To Up
+// 
+// Feature Key
+// Z - Show/Close Axis Line
+// X - Perspective view
+// C - Ortho view
+// V - Frustum view
 //==================================
 // MODE 2 (Robot Movement)
 // ---------------------------------
-// W - Move To Front
-// S - Move To Back
-// A - Move To Left
-// D - Move To Right
+// T - Move To Front
+// G - Move To Back
+// F - Move To Left
+// H - Move To Right
 // Space - Jump
 // SHIFT - Sprint / Run
-// Mouse Left Click - Attack
-//==================================
-// MODE 3 (Light Movement)
-// ---------------------------------
-// W - Move To Front
-// S - Move To Back
-// A - Move To Left
-// D - Move To Right
-// Q - Move To Down
-// E - Move To Up
+// Mouse Left Click - Attack and Defend
 //==================================
 // MODE 4 (Every Part Movement)
 // ---------------------------------
@@ -85,7 +90,7 @@ json j;
 
 // movement mode
 int keyMode = 0;
-int totalNumberKeyMode = 4;
+int totalNumberKeyMode = 3;
 
 int selectedPart = 1;
 
@@ -251,23 +256,23 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 			}
 			break;
 		}
-		case 'F': {
+		case 'Z': {
 			drawAxis = !drawAxis;
 			break;
 		}
-		case 'O': {
+		case 'C': {
 			isOtho = true;
 			isPerspective = false;
 			isFrustrum = false;
 			break;
 		}
-		case 'P': {
+		case 'X': {
 			isOtho = false;
 			isPerspective = true;
 			isFrustrum = false;
 			break;
 		}
-		case 'I': {
+		case 'V': {
 			isOtho = false;
 			isPerspective = false;
 			isFrustrum = true;
@@ -477,7 +482,6 @@ void Draw() {
 	//===============================
 	/*backbone->RotateRightUpperLeg(x, y, z);*/
 	
-	
 	//===============================
 	// HJ Testing Section
 	//===============================
@@ -582,7 +586,6 @@ void Update(int framesToUpdate) {
 		input.SetMouseX(0);
 		input.SetMouseY(0);
 		// camera move
-		if (keyMode == 0 || keyMode == 3) {
 			float speed = input.IsKeyPressed(DIK_LSHIFT) ? camFasterMoveSpeed : camNormalMoveSpeed;
 
 			float forwardX = sinf(camYaw * PI / 180);
@@ -616,7 +619,6 @@ void Update(int framesToUpdate) {
 			if (input.IsKeyPressed(DIK_Q)) {
 				camPosY -= speed;
 			}
-		}
 
 		if (keyMode == 1) {
 			bool isJumping = (backbone->GetState() == JUMP);
@@ -637,7 +639,7 @@ void Update(int framesToUpdate) {
 				}
 			}
 
-			if (input.IsKeyPressed(DIK_A)) {
+			if (input.IsKeyPressed(DIK_F)) {
 				if (!isJumping && backbone->GetState() != targetMoveAnim) {
 					backbone->SetState(targetMoveAnim);
 				}
@@ -646,7 +648,7 @@ void Update(int framesToUpdate) {
 				gameObjectRotY = -90;
 				isMoving = true;
 			}
-			else if (input.IsKeyPressed(DIK_D)) {
+			else if (input.IsKeyPressed(DIK_H)) {
 				if (!isJumping && backbone->GetState() != targetMoveAnim) {
 					backbone->SetState(targetMoveAnim);
 				}
@@ -655,7 +657,7 @@ void Update(int framesToUpdate) {
 				gameObjectRotY = 90;
 				isMoving = true;
 			}
-			else if (input.IsKeyPressed(DIK_S)) {
+			else if (input.IsKeyPressed(DIK_G)) {
 				if (!isJumping && backbone->GetState() != targetMoveAnim) {
 					backbone->SetState(targetMoveAnim);
 				}
@@ -664,7 +666,7 @@ void Update(int framesToUpdate) {
 				gameObjectRotY = 0;
 				isMoving = true;
 			}
-			else if (input.IsKeyPressed(DIK_W)) {
+			else if (input.IsKeyPressed(DIK_T)) {
 				if (!isJumping && backbone->GetState() != targetMoveAnim) {
 					backbone->SetState(targetMoveAnim);
 				}
@@ -694,36 +696,34 @@ void Update(int framesToUpdate) {
 		}
 
 		// Light move
-		if (keyMode == 2) {
 			// x direction
-			if (input.IsKeyPressed(DIK_A))
+			if (input.IsKeyPressed(DIK_J))
 			{
 				light0.Move(light0.GetPosition()[0] - 0.1f, light0.GetPosition()[1], light0.GetPosition()[2]);
 			}
-			if (input.IsKeyPressed(DIK_D)) {
+			if (input.IsKeyPressed(DIK_L)) {
 				light0.Move(light0.GetPosition()[0] + 0.1f, light0.GetPosition()[1], light0.GetPosition()[2]);
 			}
 
 			// y direction
-			if (input.IsKeyPressed(DIK_Q))
+			if (input.IsKeyPressed(DIK_U))
 			{
 				light0.Move(light0.GetPosition()[0], light0.GetPosition()[1] - 0.1f, light0.GetPosition()[2]);
 			}
-			if (input.IsKeyPressed(DIK_E))
+			if (input.IsKeyPressed(DIK_O))
 				light0.Move(light0.GetPosition()[0], light0.GetPosition()[1] + 0.1f, light0.GetPosition()[2]);
 
 			// z direction
-			if (input.IsKeyPressed(DIK_W))
+			if (input.IsKeyPressed(DIK_I))
 			{
 					light0.Move(light0.GetPosition()[0], light0.GetPosition()[1], light0.GetPosition()[2] - 0.1f);
 			}
-			if (input.IsKeyPressed(DIK_S)) {
+			if (input.IsKeyPressed(DIK_K)) {
 				light0.Move(light0.GetPosition()[0], light0.GetPosition()[1], light0.GetPosition()[2] + 0.1f);
 			}
-		}
 	}
 
-	if (keyMode == 3) {
+	if (keyMode == 2) {
 		if (input.IsKeyPressed(DIK_1)) selectedPart = 1; // Head
 		if (input.IsKeyPressed(DIK_2)) selectedPart = 2; // Body
 		if (input.IsKeyPressed(DIK_3)) selectedPart = 3; // L.UpArm
@@ -843,7 +843,7 @@ void Update(int framesToUpdate) {
 			break;
 		}
 	}
-	if (keyMode != 3) backbone->Animate(deltaTime);
+	if (keyMode != 2) backbone->Animate(deltaTime);
 }
 
 int main(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)
