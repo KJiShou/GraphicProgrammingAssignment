@@ -75,6 +75,13 @@ json j;
 // B - z(-)
 // N - z(+)
 // 
+// Finger Rotation
+// N -> thumb
+// M -> Index
+// , -> Middle
+// . -> Ring
+// / -> Little
+// 
 // R - Reset Position
 // 
 // 1 -> Head
@@ -91,6 +98,9 @@ json j;
 // = -> Right Low Leg
 // [ -> Left Foot
 // ] -> Right Foot
+// \ -> wing
+// ; -> left hand finger
+// ' -> right hand finger
 //==================================
 
 // movement mode
@@ -107,6 +117,8 @@ float lHand[3] = { 0 }, rHand[3] = { 0 };
 float lUpLeg[3] = { 0 }, rUpLeg[3] = { 0 };
 float lLowLeg[1] = { 0 }, rLowLeg[1] = { 0 };
 float lFoot[3] = { 0 }, rFoot[3] = { 0 };
+float lFinger[5] = { 0 }, rFinger[5] = { 0 };
+float wing = 0.0f;
 float jumpTimer = 0.0f;
 float attackTimer = 0.0f;
 float blockTimer = 0.0f;
@@ -296,6 +308,9 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 				lFoot[0] = 0; lFoot[1] = 0; lFoot[2] = 0;
 				rFoot[0] = 0; rFoot[1] = 0; rFoot[2] = 0;
 
+				lFinger[0] = 0; lFinger[1] = 0; lFinger[2] = 0; lFinger[3] = 0; lFinger[4] = 0;
+				rFinger[0] = 0; rFinger[1] = 0; rFinger[2] = 0; rFinger[3] = 0; rFinger[4] = 0;
+
 				backbone->RotateHead(0, 0, 0);
 				backbone->RotateBody(0, 0, 0);
 				backbone->RotateLeftUpperArm(0, 0, 0);
@@ -310,6 +325,8 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 				backbone->RotateRightLowerLeg(0);
 				backbone->RotateLeftFoot(0, 0, 0);
 				backbone->RotateRightFoot(0, 0, 0);
+				backbone->RotateLeftHandFinger(0, 0, 0);
+				backbone->RotateRightHandFinger(0, 0, 0);
 			}
 			break;
 		}
@@ -834,9 +851,13 @@ void Update(int framesToUpdate) {
 		if (input.IsKeyPressed(DIK_EQUALS)) selectedPart = 12; // R.LowLeg
 		if (input.IsKeyPressed(DIK_LBRACKET)) selectedPart = 13; // L.Foot
 		if (input.IsKeyPressed(DIK_RBRACKET)) selectedPart = 14; // R.Foot
+		if (input.IsKeyPressed(DIK_BACKSLASH)) selectedPart = 15; // Wing
+		if (input.IsKeyPressed(DIK_SEMICOLON)) selectedPart = 16; // left hand finger
+		if (input.IsKeyPressed(DIK_APOSTROPHE)) selectedPart = 17; // left hand finger
 
 		float spd = 1.0f;
 		float dX = 0, dY = 0, dZ = 0;
+		float f1 = 0, f2 = 0, f3 = 0, f4 = 0, f5 = 0;
 
 		if (input.IsKeyPressed(DIK_U)) dX += spd;
 		if (input.IsKeyPressed(DIK_Y)) dX -= spd;
@@ -844,6 +865,47 @@ void Update(int framesToUpdate) {
 		if (input.IsKeyPressed(DIK_H)) dY -= spd;
 		if (input.IsKeyPressed(DIK_N)) dZ += spd;
 		if (input.IsKeyPressed(DIK_B)) dZ -= spd;
+		if (input.IsKeyPressed(DIK_N)) {
+			if (input.IsKeyPressed(DIK_LSHIFT)) {
+				f1 -= spd;
+			}
+			else {
+				f1 += spd;
+			}
+		}
+		if (input.IsKeyPressed(DIK_M)) {
+			if (input.IsKeyPressed(DIK_LSHIFT)) {
+				f2 -= spd;
+			}
+			else {
+				f2 += spd;
+			}
+		}
+		if (input.IsKeyPressed(DIK_COMMA)) {
+			if (input.IsKeyPressed(DIK_LSHIFT)) {
+				f3 -= spd;
+			}
+			else {
+				f3 += spd;
+			}
+		}
+		if (input.IsKeyPressed(DIK_PERIOD)) {
+			if (input.IsKeyPressed(DIK_LSHIFT)) {
+				f4 -= spd;
+			}
+			else {
+				f4 += spd;
+			}
+		}
+		if (input.IsKeyPressed(DIK_SLASH)) {
+			if (input.IsKeyPressed(DIK_LSHIFT)) {
+				f5 -= spd;
+			}
+			else {
+				f5 += spd;
+			}
+		}
+		
 
 		switch (selectedPart) {
 		case 1: // Head [-40~40, -70~70, -30~30]
@@ -936,6 +998,34 @@ void Update(int framesToUpdate) {
 			rFoot[1] = CLAMP(rFoot[1] + dY, -30.0f, 30.0f);
 			rFoot[2] = CLAMP(rFoot[2] + dZ, -15.0f, 15.0f);
 			backbone->RotateRightFoot(rFoot[0], rFoot[1], rFoot[2]);
+			break;
+		case 15: // Wing [0, -40~45, 0]
+			wing = CLAMP(wing + dY, -40.0f, 45.0f);
+			backbone->RotateWing(wing, wing);
+			break;
+		case 16: // Left Finger [0~90, 0~90, 0~90]
+			lFinger[0] = CLAMP(lFinger[0] + f1, 0.0f, 90.0f);
+			lFinger[1] = CLAMP(lFinger[1] + f2, 0.0f, 90.0f);
+			lFinger[2] = CLAMP(lFinger[2] + f3, 0.0f, 90.0f);
+			lFinger[3] = CLAMP(lFinger[3] + f4, 0.0f, 90.0f);
+			lFinger[4] = CLAMP(lFinger[4] + f5, 0.0f, 90.0f);
+			backbone->RotateLeftThumb(lFinger[0], lFinger[0], lFinger[0]);
+			backbone->RotateLeftIndex(lFinger[1], lFinger[1], lFinger[1]);
+			backbone->RotateLeftMiddle(lFinger[2], lFinger[2], lFinger[2]);
+			backbone->RotateLeftRing(lFinger[3], lFinger[3], lFinger[3]);
+			backbone->RotateLeftLittle(lFinger[4], lFinger[4], lFinger[4]);
+			break;
+		case 17: // Right Finger [0~90, 0~90, 0~90]
+			rFinger[0] = CLAMP(rFinger[0] + f1, 0.0f, 90.0f);
+			rFinger[1] = CLAMP(rFinger[1] + f2, 0.0f, 90.0f);
+			rFinger[2] = CLAMP(rFinger[2] + f3, 0.0f, 90.0f);
+			rFinger[3] = CLAMP(rFinger[3] + f4, 0.0f, 90.0f);
+			rFinger[4] = CLAMP(rFinger[4] + f5, 0.0f, 90.0f);
+			backbone->RotateRightThumb(rFinger[0], rFinger[0], rFinger[0]);
+			backbone->RotateRightIndex(rFinger[1], rFinger[1], rFinger[1]);
+			backbone->RotateRightMiddle(rFinger[2], rFinger[2], rFinger[2]);
+			backbone->RotateRightRing(rFinger[3], rFinger[3], rFinger[3]);
+			backbone->RotateRightLittle(rFinger[4], rFinger[4], rFinger[4]);
 			break;
 		}
 	}

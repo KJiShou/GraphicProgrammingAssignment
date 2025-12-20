@@ -151,21 +151,6 @@
     <None Include="head.json">
       <Filter>Data</Filter>
     </None>
-    <None Include="handFinger.json">
-      <Filter>Data</Filter>
-    </None>
-    <None Include="handPalm.json">
-      <Filter>Data</Filter>
-    </None>
-    <None Include="upperArmOuter.json">
-      <Filter>Data</Filter>
-    </None>
-    <None Include="forearmOuter.json">
-      <Filter>Data</Filter>
-    </None>
-    <None Include="armJointArmor.json">
-      <Filter>Data</Filter>
-    </None>
     <None Include="leftFoot.json">
       <Filter>Data\Leg\Left</Filter>
     </None>
@@ -231,5 +216,26 @@
       <Filter>Data\Weapons</Filter>
     </None>
     <None Include="bigWing.json" />
+    <None Include="armJointArmor.json">
+      <Filter>Data\Arm</Filter>
+    </None>
+    <None Include="forearmOuter.json">
+      <Filter>Data\Arm</Filter>
+    </None>
+    <None Include="upperArmOuter.json">
+      <Filter>Data\Arm</Filter>
+    </None>
+    <None Include="handPalm.json">
+      <Filter>Data\Arm</Filter>
+    </None>
+    <None Include="handFinger.json">
+      <Filter>Data\Arm</Filter>
+    </None>
+    <None Include="rightUpperArmOuter.json">
+      <Filter>Data\Arm</Filter>
+    </None>
+    <None Include="rightForearmOuter.json">
+      <Filter>Data\Arm</Filter>
+    </None>
   </ItemGroup>
 </Project>

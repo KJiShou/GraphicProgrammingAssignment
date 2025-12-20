@@ -364,6 +364,12 @@ void BackBone::RotateBody(float x, float y, float z)
 	bodyRotation[2] = clamp(z, -20.0f, 20.0f);
 }
 
+void BackBone::RotateWing(float smallWing, float bigWing)
+{
+	smallWingRotation = clamp(smallWing, -15.0f, 30.0f);
+	bigWingRotation = clamp(bigWing, -40.0f, 45.0f);;
+}
+
 void BackBone::RotatePelvis(float x, float y, float z)
 {
 	pelvisRotation[0] = -clamp(x, -20.0f, 20.0f);
@@ -617,6 +623,10 @@ void BackBone::Draw() {
 	// Body Rotation
 	//===========================
 	body->Rotate(bodyRotation[0], bodyRotation[1], bodyRotation[2], 0.0f, 0.3f, 0.0f);
+	leftWing->Rotate(0, -15 - smallWingRotation, 0.0f, 0.0f, 0.0f, -0.7f);
+	rightWing->Rotate(0, 15 + smallWingRotation, 0.0f, 0.0f, 0.0f, -0.7f);
+	bigLeftWing->Rotate(0, -40 - bigWingRotation, 0.0f, 0.0f, 0.0f, -0.7f);
+	bigRightWing->Rotate(0, 40 + bigWingRotation, 0.0f, 0.0f, 0.0f, -0.7f);
 
 	//===========================
 	// Pelvis Rotation
@@ -729,6 +739,8 @@ void BackBone::SetState(AnimState newState) {
 	bodyRotation[0] = 0.0f;
 	bodyRotation[1] = 0.0f;
 	bodyRotation[2] = 0.0f;
+	smallWingRotation = 0.0f;
+	bigWingRotation = 0.0f;
 
 	//====================
 	// Pelvis
@@ -905,6 +917,7 @@ void BackBone::Animate(float deltaTime) {
 		RotateRightHandFinger(90, 90, 90);
 		RotateLeftHandFinger(90, 90, 90);
 
+		RotateWing(10 + sin(animTime) * 20.0f,10 + sin(animTime) * 20.0f);
 		break;
 
 	// ==================================================
@@ -937,6 +950,8 @@ void BackBone::Animate(float deltaTime) {
 
 		RotateLeftHandFinger(90, 90, 90);
 		RotateRightHandFinger(90, 90, 90);
+
+		RotateWing(10 + sin(animTime * 2) * 20.0f, 10 + sin(animTime * 2) * 20.0f);
 		break;
 	}
 
