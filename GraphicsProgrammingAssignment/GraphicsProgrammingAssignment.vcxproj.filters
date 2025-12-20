@@ -27,6 +27,7 @@
     </Filter>
     <Filter Include="Data\Weapons">
       <UniqueIdentifier>{d958a3ab-e8d4-4e23-bebf-2161ed9d7ad2}</UniqueIdentifier>
+	</Filter>
     <Filter Include="Data\Arm">
       <UniqueIdentifier>{81a9e089-66dd-43b7-bdf3-a677e43de1cf}</UniqueIdentifier>
     </Filter>
