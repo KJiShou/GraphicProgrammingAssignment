@@ -5,7 +5,10 @@ BackBone::~BackBone()
 	delete root;
 	delete headBone;
 	delete body;
-	delete wing;
+	delete leftWing;
+	delete rightWing;
+	delete bigLeftWing;
+	delete bigRightWing;
 	delete pelvis;
 
 	delete leftUpperArm;
@@ -77,7 +80,19 @@ void BackBone::SetBone() {
 	
 	// body
 	body->Translate(0, 1, 0);
-	
+
+	leftWing->Translate(0.1, 0, -0.04);
+	leftWing->Rotate(0, -15, 0);
+
+	rightWing->Translate(-0.1, 0, -0.04);
+	rightWing->Rotate(0, 15, 0);
+
+	bigLeftWing->Translate(0.165, 0, -0.13);
+	bigLeftWing->Rotate(0, -40, 0);
+
+	bigRightWing->Translate(-0.165, 0, -0.13);
+	bigRightWing->Rotate(0, 40, 0);
+
 	// arm
 	leftUpperArmJoint->Translate(-1.0, 1.8, 0);
 	leftForearm->Translate(0.0, -0.95, 0);
@@ -167,7 +182,10 @@ void BackBone::SetBone() {
 
 	// body -> head
 	body->AddChild(headBone);
-	body->AddChild(wing);
+	body->AddChild(leftWing);
+	body->AddChild(rightWing);
+	body->AddChild(bigLeftWing);
+	body->AddChild(bigRightWing);
 
 	// left arm
 	body->AddChild(leftUpperArmJoint);
@@ -303,7 +321,10 @@ void BackBone::ReadData() {
 	rightUpperArmJointOuter->ReadData();
 	leftUpperArmJoint->ReadData();
 	leftUpperArmJointOuter->ReadData();
-	wing->ReadData();
+	leftWing->ReadData();
+	rightWing->ReadData();
+	bigLeftWing->ReadData();
+	bigRightWing->ReadData();
 }
 
 float clamp(float v, float min, float max) {
