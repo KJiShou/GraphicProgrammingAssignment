@@ -1040,30 +1040,39 @@ void BackBone::Animate(float deltaTime) {
 	{
 		float t = clamp(animTime * 0.5f, 0.0f, 1.0f);
 
-		float bSpeed = animTime * 2.0f;
-		float brace = sin(bSpeed) * 5.0f;
+		RotateBody(-2, 4, 0);
 
-		RotateBody((10.0f + brace) * t, -30.0f * t, 0);
+		RotatePelvis(-8.0f * t, -45.0f * t, 2.0f * t);
 
-		RotateLeftUpperLeg(-10.0f * t, 15.0f * t, 25.0f * t);
-		RotateRightUpperLeg(40.0f * t, 0.0f, 25.0f * t);
+		RotateHead(0.0f, 0.0f, 0.0f);
 
-		RotateLeftLowerLeg((-60.0f - brace) * t);
-		RotateRightLowerLeg((-50.0f - brace) * t);
+		RotateLeftUpperArm(-45.0f * t, 5.0f * t, 0.0f * t);
 
-		RotateLeftFoot(10.0f * t, 0, 0);
-		RotateRightFoot(0.0f, 0, 0);
+		RotateLeftForearm(69.0f * t, -4.0f * t);
 
-		RotateRightUpperArm(30.0f * t, 30.0f * t, 10.0f * t);
-		RotateRightForearm(100.0f * t, 0.0f);
-		RotateRightHand(0.0f, 0, 0);
+		RotateLeftHand(26.0f * t, -30.0f * t, 8.0f * t);
 
-		RotateLeftUpperArm(-30.0f * t, 45.0f * t, 30.0f * t);
-		RotateLeftForearm(120.0f * t, 0.0f);
-		RotateLeftHand(0.0f, 180.0f * t, 0.0f);
+		RotateLeftHandFinger(0.0f * t, 0.0f * t, 0.0f * t);
 
-		RotateRightHandFinger(90 * t, 90 * t, 90 * t);
-		RotateLeftHandFinger(90 * t, 90 * t, 90 * t);
+		RotateRightUpperArm(27.0f * t, 68.0f * t, 50.0f * t);
+
+		RotateRightForearm(75.0f * t, 89.0f * t);
+
+		RotateRightHand(-16.0f * t, -3.0f * t, 45.0f * t);
+
+		RotateRightHandFinger(90.0f * t, 90.0f * t, 90.0f * t);
+
+		RotateLeftUpperLeg(90.0f * t, 36.0f * t, 60.0f * t);
+
+		RotateLeftLowerLeg(-42.0f * t);
+
+		RotateLeftFoot(17.0f * t, -2.0f * t, -3.0f * t);
+
+		RotateRightUpperLeg(83.0f * t, 11.0f * t, 43.0f * t);
+
+		RotateRightLowerLeg(-70.0f * t);
+
+		RotateRightFoot(0.0f * t, 2.0f * t, 0.0f * t);
 	}
 	break;
 	case SHOOT:

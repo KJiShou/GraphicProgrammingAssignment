@@ -110,14 +110,15 @@ int totalNumberKeyMode = 3;
 int selectedPart = 1;
 
 float head[3] = { 0 };
-float body[3] = { 0 };
-float lUpArm[3] = { 0 }, rUpArm[3] = { 0 };
-float lForeArm[2] = { 0 }, rForeArm[2] = { 0 };
-float lHand[3] = { 0 }, rHand[3] = { 0 };
-float lUpLeg[3] = { 0 }, rUpLeg[3] = { 0 };
-float lLowLeg[1] = { 0 }, rLowLeg[1] = { 0 };
-float lFoot[3] = { 0 }, rFoot[3] = { 0 };
-float lFinger[5] = { 0 }, rFinger[5] = { 0 };
+float body[3] = { 0, -16, 0 };
+float pelvis[3] = { 0 };
+float lUpArm[3] = { -45, 5, 0 }, rUpArm[3] = { 27, 68, 50 };
+float lForeArm[2] = { 69, -4 }, rForeArm[2] = { 75, 89 };
+float lHand[3] = { 26, -30, 8 }, rHand[3] = { -16, -18, 45 };
+float lUpLeg[3] = { 90, 8, 60}, rUpLeg[3] = { 76, -11, -7 };
+float lLowLeg[1] = { -94 }, rLowLeg[1] = { -85 };
+float lFoot[3] = { -20, -2, -3 }, rFoot[3] = { -30, 2, 0 };
+float lFinger[5] = { 0 }, rFinger[5] = { 90, 90, 90, 90, 90 };
 float wing = 0.0f;
 float jumpTimer = 0.0f;
 float attackTimer = 0.0f;
@@ -284,6 +285,7 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 			// Head & Body
 			std::cout << "Head:      x(" << head[0] << "), y(" << head[1] << "), z(" << head[2] << ")" << std::endl;
 			std::cout << "Body:      x(" << body[0] << "), y(" << body[1] << "), z(" << body[2] << ")" << std::endl;
+			std::cout << "Pelvis:      x(" << pelvis[0] << "), y(" << pelvis[1] << "), z(" << pelvis[2] << ")" << std::endl;
 			std::cout << "-----------------------------" << std::endl;
 
 			// Arms (Left)
@@ -327,6 +329,7 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 			if (keyMode == 2) {
 				head[0] = 0; head[1] = 0; head[2] = 0;
 				body[0] = 0; body[1] = 0; body[2] = 0;
+				pelvis[0] = 0; pelvis[1] = 0; pelvis[2] = 0;
 
 				lUpArm[0] = 0; lUpArm[1] = 0; lUpArm[2] = 0;
 				rUpArm[0] = 0; rUpArm[1] = 0; rUpArm[2] = 0;
@@ -351,6 +354,7 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 
 				backbone->RotateHead(0, 0, 0);
 				backbone->RotateBody(0, 0, 0);
+				backbone->RotatePelvis(0, 0, 0);
 				backbone->RotateLeftUpperArm(0, 0, 0);
 				backbone->RotateRightUpperArm(0, 0, 0);
 				backbone->RotateLeftForearm(0, 0);
@@ -600,8 +604,8 @@ void Draw() {
 	//backbone->RotateLeftRing(0.0f, 0.0f, 0.0f);
 	//backbone->RotateLeftLittle(0.0f, 0.0f, 0.0f);
 
-	backbone->RotateRightUpperArm(90.0f, 0.0f, 0.0f);
-	backbone->RotateRightHandFinger(90.0f, 90.0f, 90.0f);
+	/*backbone->RotateRightUpperArm(90.0f, 0.0f, 0.0f);
+	backbone->RotateRightHandFinger(90.0f, 90.0f, 90.0f);*/
 	//backbone->RotateLeftThumb(0.0f, 0.0f, 0.0f);
 	//backbone->RotateLeftIndex(0.0f, 90.0f, 90.0f);
 	//backbone->RotateLeftMiddle(0.0f, 0.0f, 0.0f);
@@ -780,8 +784,10 @@ void Update(int framesToUpdate) {
 
 			if (isBlocking) {
 				blockTimer += 0.016f;
+				if (gameObjectTransY > -0.4) gameObjectTransY -= 0.016;
 				if (blockTimer > 1.0f) {
 					backbone->SetState(IDLE);
+					gameObjectTransY = 0;
 					isBlocking = false;
 					blockTimer = 0.0f;
 				}
@@ -804,32 +810,32 @@ void Update(int framesToUpdate) {
 				if (!isJumping && !isAttacking && !isBlocking && !isShooting && backbone->GetState() != targetMoveAnim) {
 					backbone->SetState(targetMoveAnim);
 				}
-				if (!isShooting) gameObjectTransX -= moveSpeed;
-				if (!isShooting) gameObjectRotY = -90;
+				if (!isShooting && !isBlocking) gameObjectTransX -= moveSpeed;
+				if (!isShooting && !isBlocking) gameObjectRotY = -90;
 				isMoving = true;
 			}
 			else if (input.IsKeyPressed(DIK_H)) {
 				if (!isJumping && !isAttacking && !isBlocking && !isShooting && backbone->GetState() != targetMoveAnim) {
 					backbone->SetState(targetMoveAnim);
 				}
-				if (!isShooting) gameObjectTransX += moveSpeed;
-				if (!isShooting) gameObjectRotY = 90;
+				if (!isShooting && !isBlocking) gameObjectTransX += moveSpeed;
+				if (!isShooting && !isBlocking) gameObjectRotY = 90;
 				isMoving = true;
 			}
 			else if (input.IsKeyPressed(DIK_G)) {
 				if (!isJumping && !isAttacking && !isBlocking && !isShooting && backbone->GetState() != targetMoveAnim) {
 					backbone->SetState(targetMoveAnim);
 				}
-				if (!isShooting) gameObjectTransZ += moveSpeed;
-				if (!isShooting) gameObjectRotY = 0;
+				if (!isShooting && !isBlocking) gameObjectTransZ += moveSpeed;
+				if (!isShooting && !isBlocking) gameObjectRotY = 0;
 				isMoving = true;
 			}
 			else if (input.IsKeyPressed(DIK_T)) {
 				if (!isJumping && !isAttacking && !isBlocking && !isShooting && backbone->GetState() != targetMoveAnim) {
 					backbone->SetState(targetMoveAnim);
 				}
-				if (!isShooting) gameObjectTransZ -= moveSpeed;
-				if (!isShooting) gameObjectRotY = 180;
+				if (!isShooting && !isBlocking) gameObjectTransZ -= moveSpeed;
+				if (!isShooting && !isBlocking) gameObjectRotY = 180;
 				isMoving = true;
 			}
 
@@ -882,6 +888,7 @@ void Update(int framesToUpdate) {
 		if (input.IsKeyPressed(DIK_BACKSLASH)) selectedPart = 15; // Wing
 		if (input.IsKeyPressed(DIK_SEMICOLON)) selectedPart = 16; // left hand finger
 		if (input.IsKeyPressed(DIK_APOSTROPHE)) selectedPart = 17; // left hand finger
+		if (input.IsKeyPressed(DIK_F2)) selectedPart = 18; // left hand finger
 
 		float spd = 1.0f;
 		float dX = 0, dY = 0, dZ = 0;
@@ -1054,6 +1061,12 @@ void Update(int framesToUpdate) {
 			backbone->RotateRightMiddle(rFinger[2], rFinger[2], rFinger[2]);
 			backbone->RotateRightRing(rFinger[3], rFinger[3], rFinger[3]);
 			backbone->RotateRightLittle(rFinger[4], rFinger[4], rFinger[4]);
+			break;
+		case 18: // Right Finger [0~90, 0~90, 0~90]
+			pelvis[0] = CLAMP(pelvis[0] + dX, -30.0f, 30.0f);
+			pelvis[1] = CLAMP(pelvis[1] + dY, -45.0f, 45.0f);
+			pelvis[2] = CLAMP(pelvis[2] + dZ, -20.0f, 20.0f);
+			backbone->RotatePelvis(pelvis[0], pelvis[1], pelvis[2]);
 			break;
 		}
 	}
