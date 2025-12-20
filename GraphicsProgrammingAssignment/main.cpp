@@ -122,6 +122,7 @@ float wing = 0.0f;
 float jumpTimer = 0.0f;
 float attackTimer = 0.0f;
 float blockTimer = 0.0f;
+float shootTimer = 0.0f;
 
 // light
 GLUquadricObj* var = gluNewQuadric();
@@ -274,6 +275,43 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 				camYaw = 0.0f;
 				camPitch = 0.0f;
 			}
+			break;
+		}
+		case VK_F1:
+		{
+			std::cout << std::fixed << std::setprecision(1);
+			std::cout << "\n=== ROBOT POSE DEBUG INFO ===" << std::endl;
+			// Head & Body
+			std::cout << "Head:      x(" << head[0] << "), y(" << head[1] << "), z(" << head[2] << ")" << std::endl;
+			std::cout << "Body:      x(" << body[0] << "), y(" << body[1] << "), z(" << body[2] << ")" << std::endl;
+			std::cout << "-----------------------------" << std::endl;
+
+			// Arms (Left)
+			std::cout << "L.UpArm:   x(" << lUpArm[0] << "), y(" << lUpArm[1] << "), z(" << lUpArm[2] << ")" << std::endl;
+			std::cout << "L.ForeArm: x(" << lForeArm[0] << "), y(" << lForeArm[1] << ")" << std::endl;
+			std::cout << "L.Hand:    x(" << lHand[0] << "), y(" << lHand[1] << "), z(" << lHand[2] << ")" << std::endl;
+			std::cout << "L.Finger:    1(" << lFinger[0] << "), 2(" << lFinger[1] << "), 3(" << lFinger[2] << "), 4(" << lFinger[3] << "), 5(" << lFinger[4] << ")" << std::endl;
+
+			// Arms (Right)
+			std::cout << "R.UpArm:   x(" << rUpArm[0] << "), y(" << rUpArm[1] << "), z(" << rUpArm[2] << ")" << std::endl;
+			std::cout << "R.ForeArm: x(" << rForeArm[0] << "), y(" << rForeArm[1] << ")" << std::endl;
+			std::cout << "R.Hand:    x(" << rHand[0] << "), y(" << rHand[1] << "), z(" << rHand[2] << ")" << std::endl;
+			std::cout << "R.Finger:    1(" << rFinger[0] << "), 2(" << rFinger[1] << "), 3(" << rFinger[2] << "), 4(" << rFinger[3] << "), 5(" << rFinger[4] << ")" << std::endl;
+			std::cout << "-----------------------------" << std::endl;
+
+			// Legs (Left)
+			std::cout << "L.UpLeg:   x(" << lUpLeg[0] << "), y(" << lUpLeg[1] << "), z(" << lUpLeg[2] << ")" << std::endl;
+			std::cout << "L.LowLeg:  x(" << lLowLeg[0] << ")" << std::endl;
+			std::cout << "L.Foot:    x(" << lFoot[0] << "), y(" << lFoot[1] << "), z(" << lFoot[2] << ")" << std::endl;
+
+			// Legs (Right)
+			std::cout << "R.UpLeg:   x(" << rUpLeg[0] << "), y(" << rUpLeg[1] << "), z(" << rUpLeg[2] << ")" << std::endl;
+			std::cout << "R.LowLeg:  x(" << rLowLeg[0] << ")" << std::endl;
+			std::cout << "R.Foot:    x(" << rFoot[0] << "), y(" << rFoot[1] << "), z(" << rFoot[2] << ")" << std::endl;
+			std::cout << "-----------------------------" << std::endl;
+
+			std::cout << "Wing:      (" << wing << ")" << std::endl;
+			std::cout << "=============================" << std::endl;
 			break;
 		}
 		case 'R':
@@ -554,10 +592,10 @@ void Draw() {
 	//===============================
 	// JY Testing Section
 	//===============================
-	backbone->RotateLeftUpperArm(90.0f, 0.0f, 0.0f);
-	backbone->RotateLeftHandFinger(90.0f, 90.0f, 90.0f);
+	//backbone->RotateLeftUpperArm(90.0f, 0.0f, 0.0f);
+	//backbone->RotateLeftHandFinger(90.0f, 90.0f, 90.0f);
 	//backbone->RotateLeftThumb(0.0f, 0.0f, 0.0f);
-	backbone->RotateLeftIndex(0.0f, 90.0f, 90.0f);
+	//backbone->RotateLeftIndex(0.0f, 90.0f, 90.0f);
 	//backbone->RotateLeftMiddle(0.0f, 0.0f, 0.0f);
 	//backbone->RotateLeftRing(0.0f, 0.0f, 0.0f);
 	//backbone->RotateLeftLittle(0.0f, 0.0f, 0.0f);
@@ -666,44 +704,47 @@ void Update(int framesToUpdate) {
 		input.SetMouseX(0);
 		input.SetMouseY(0);
 		// camera move
-			float speed = input.IsKeyPressed(DIK_LSHIFT) ? camFasterMoveSpeed : camNormalMoveSpeed;
+		float speed = input.IsKeyPressed(DIK_LSHIFT) ? camFasterMoveSpeed : camNormalMoveSpeed;
 
-			float forwardX = sinf(camYaw * PI / 180);
-			float forwardZ = cosf(camYaw * PI / 180);
+		float forwardX = sinf(camYaw * PI / 180);
+		float forwardZ = cosf(camYaw * PI / 180);
 
-			float rightX = cosf(camYaw * PI / 180);
-			float rightZ = -sinf(camYaw * PI / 180);
+		float rightX = cosf(camYaw * PI / 180);
+		float rightZ = -sinf(camYaw * PI / 180);
 
-			// Move Forward/Back
-			if (input.IsKeyPressed(DIK_S))
-				camPosX += forwardX * speed,
-				camPosZ += forwardZ * speed;
+		// Move Forward/Back
+		if (input.IsKeyPressed(DIK_S))
+			camPosX += forwardX * speed,
+			camPosZ += forwardZ * speed;
 
-			if (input.IsKeyPressed(DIK_W))
-				camPosX -= forwardX * speed,
-				camPosZ -= forwardZ * speed;
+		if (input.IsKeyPressed(DIK_W))
+			camPosX -= forwardX * speed,
+			camPosZ -= forwardZ * speed;
 
-			// Move Left/Right
-			if (input.IsKeyPressed(DIK_A))
-				camPosX -= rightX * speed,
-				camPosZ -= rightZ * speed;
+		// Move Left/Right
+		if (input.IsKeyPressed(DIK_A))
+			camPosX -= rightX * speed,
+			camPosZ -= rightZ * speed;
 
-			if (input.IsKeyPressed(DIK_D))
-				camPosX += rightX * speed,
-				camPosZ += rightZ * speed;
+		if (input.IsKeyPressed(DIK_D))
+			camPosX += rightX * speed,
+			camPosZ += rightZ * speed;
 
-			// Move Up/Down
-			if (input.IsKeyPressed(DIK_E)) {
-				camPosY += speed;
-			}
-			if (input.IsKeyPressed(DIK_Q)) {
-				camPosY -= speed;
-			}
+		// Move Up/Down
+		if (input.IsKeyPressed(DIK_E)) {
+			camPosY += speed;
+		}
+		if (input.IsKeyPressed(DIK_Q)) {
+			camPosY -= speed;
+		}
 
 		if (keyMode == 1) {
 			bool isAttacking = (backbone->GetState() == ATTACK);
 			bool isJumping = (backbone->GetState() == JUMP);
 			bool isBlocking = (backbone->GetState() == BLOCK);
+
+			bool isShooting = (backbone->GetState() == SHOOT);
+
 			bool isMoving = false;
 			bool isRunning = input.IsKeyPressed(DIK_LSHIFT);
 			float moveSpeed = isRunning ? 0.15f : 0.05f;
@@ -711,9 +752,8 @@ void Update(int framesToUpdate) {
 
 			if (isJumping) {
 				jumpTimer += 0.016f;
-
 				if (jumpTimer > 1.64f) {
-					backbone->SetState(IDLE); 
+					backbone->SetState(IDLE);
 					isJumping = false;
 					jumpTimer = 0.0f;
 				}
@@ -723,11 +763,9 @@ void Update(int framesToUpdate) {
 				attackTimer += 0.016f;
 				if (attackTimer > 1.26f) {
 					backbone->SetState(BLOCK);
-
 					isAttacking = false;
 					isBlocking = true;
 					attackTimer = 0.0f;
-
 					blockTimer = 0.0f;
 				}
 			}
@@ -741,99 +779,81 @@ void Update(int framesToUpdate) {
 				}
 			}
 
+			if (input.IsKeyPressed(DIK_K)) {
+				if (!isShooting && !isJumping && !isAttacking && !isBlocking) {
+					backbone->SetState(SHOOT);
+				}
+				isShooting = true;
+			}
+			else {
+				if (isShooting) {
+					backbone->SetState(IDLE);
+					isShooting = false;
+				}
+			}
+
 			if (input.IsKeyPressed(DIK_F)) {
-				if (!isJumping && !isAttacking && !isBlocking && backbone->GetState() != targetMoveAnim) {
+				if (!isJumping && !isAttacking && !isBlocking && !isShooting && backbone->GetState() != targetMoveAnim) {
 					backbone->SetState(targetMoveAnim);
 				}
-
-				gameObjectTransX -= moveSpeed;
-				gameObjectRotY = -90;
+				if (!isShooting) gameObjectTransX -= moveSpeed;
+				if (!isShooting) gameObjectRotY = -90;
 				isMoving = true;
 			}
 			else if (input.IsKeyPressed(DIK_H)) {
-				if (!isJumping && !isAttacking && !isBlocking && backbone->GetState() != targetMoveAnim) {
+				if (!isJumping && !isAttacking && !isBlocking && !isShooting && backbone->GetState() != targetMoveAnim) {
 					backbone->SetState(targetMoveAnim);
 				}
-
-				gameObjectTransX += moveSpeed;
-				gameObjectRotY = 90;
+				if (!isShooting) gameObjectTransX += moveSpeed;
+				if (!isShooting) gameObjectRotY = 90;
 				isMoving = true;
 			}
 			else if (input.IsKeyPressed(DIK_G)) {
-				if (!isJumping && !isAttacking && !isBlocking && backbone->GetState() != targetMoveAnim) {
+				if (!isJumping && !isAttacking && !isBlocking && !isShooting && backbone->GetState() != targetMoveAnim) {
 					backbone->SetState(targetMoveAnim);
 				}
-
-				gameObjectTransZ += moveSpeed;
-				gameObjectRotY = 0;
+				if (!isShooting) gameObjectTransZ += moveSpeed;
+				if (!isShooting) gameObjectRotY = 0;
 				isMoving = true;
 			}
 			else if (input.IsKeyPressed(DIK_T)) {
-				if (!isJumping && !isAttacking && !isBlocking && backbone->GetState() != targetMoveAnim) {
+				if (!isJumping && !isAttacking && !isBlocking && !isShooting && backbone->GetState() != targetMoveAnim) {
 					backbone->SetState(targetMoveAnim);
 				}
-
-				gameObjectTransZ -= moveSpeed;
-				gameObjectRotY = 180;
+				if (!isShooting) gameObjectTransZ -= moveSpeed;
+				if (!isShooting) gameObjectRotY = 180;
 				isMoving = true;
 			}
 
 			else if (input.IsLeftMouseDown()) {
-				if (!isAttacking && !isJumping && !isBlocking) {
+				if (!isAttacking && !isJumping && !isBlocking && !isShooting) {
 					backbone->SetState(ATTACK);
 					attackTimer = 0.0f;
 				}
 				isMoving = true;
 			}
-
 			else if (input.IsRightMouseDown()) {
-				if (!isAttacking && !isJumping && !isBlocking) {
+				if (!isAttacking && !isJumping && !isBlocking && !isShooting) {
 					backbone->SetState(BLOCK);
 					blockTimer = 0.0f;
 				}
 				isMoving = true;
 			}
 
-			if (!isMoving && !isJumping && !isAttacking && !isBlocking) {
+			if (!isMoving && !isJumping && !isAttacking && !isBlocking && !isShooting) {
 				if (backbone->GetState() != IDLE) backbone->SetState(IDLE);
 			}
 
 			if (input.IsKeyPressed(DIK_SPACE)) {
-				if (!isJumping && !isAttacking && !isBlocking) {
+				if (!isJumping && !isAttacking && !isBlocking && !isShooting) {
 					backbone->SetState(JUMP);
 					jumpTimer = 0.0f;
 				}
 			}
+
 			backbone->Rotate(gameObjectRotX, gameObjectRotY + sin(deltaTime * 5.0f) * 2.0f, gameObjectRotZ);
 			backbone->Move(gameObjectTransX, gameObjectTransY, gameObjectTransZ);
 		}
-
-		// Light move
-			// x direction
-			if (input.IsKeyPressed(DIK_J))
-			{
-				light0.Move(light0.GetPosition()[0] - 0.1f, light0.GetPosition()[1], light0.GetPosition()[2]);
-			}
-			if (input.IsKeyPressed(DIK_L)) {
-				light0.Move(light0.GetPosition()[0] + 0.1f, light0.GetPosition()[1], light0.GetPosition()[2]);
-			}
-
-			// y direction
-			if (input.IsKeyPressed(DIK_U))
-			{
-				light0.Move(light0.GetPosition()[0], light0.GetPosition()[1] - 0.1f, light0.GetPosition()[2]);
-			}
-			if (input.IsKeyPressed(DIK_O))
-				light0.Move(light0.GetPosition()[0], light0.GetPosition()[1] + 0.1f, light0.GetPosition()[2]);
-
-			// z direction
-			if (input.IsKeyPressed(DIK_I))
-			{
-					light0.Move(light0.GetPosition()[0], light0.GetPosition()[1], light0.GetPosition()[2] - 0.1f);
-			}
-			if (input.IsKeyPressed(DIK_K)) {
-				light0.Move(light0.GetPosition()[0], light0.GetPosition()[1], light0.GetPosition()[2] + 0.1f);
-			}
 	}
 
 	if (keyMode == 2) {
@@ -1029,7 +1049,7 @@ void Update(int framesToUpdate) {
 			break;
 		}
 	}
-	if (keyMode != 2); //backbone->Animate(deltaTime);
+	if (keyMode != 2) backbone->Animate(deltaTime);
 }
 
 int main(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)

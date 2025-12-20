@@ -1012,57 +1012,96 @@ void BackBone::Animate(float deltaTime) {
 		float aSpeed = animTime * 1.0f;
 		float swing = -sin(aSpeed);
 
-		RotateBody(10.0f + swing * 20.0f, swing * 40.0f, 0);
+		float t = clamp(animTime * 4.0f, 0.0f, 1.0f);
 
-		RotateLeftUpperLeg(-10.0f, 15.0f - swing * 15.0f, 25.0f);
-		RotateRightUpperLeg(40.0f + swing * 10.0f, 0.0f, 25.0f);
-		RotateLeftLowerLeg(-45.0f);
-		RotateRightLowerLeg(-30.0f - swing * 10.0f);
-		RotateLeftFoot(10.0f, 0, 0);
+		RotateBody((10.0f + swing * 20.0f) * t, swing * 40.0f * t, 0);
+
+		RotateLeftUpperLeg(-10.0f * t, (15.0f - swing * 15.0f) * t, 25.0f * t);
+		RotateRightUpperLeg((40.0f + swing * 10.0f) * t, 0.0f, 25.0f * t);
+		RotateLeftLowerLeg(-45.0f * t);
+		RotateRightLowerLeg((-30.0f - swing * 10.0f) * t);
+		RotateLeftFoot(10.0f * t, 0, 0);
 		RotateRightFoot(0.0f, 0, 0);
 
-		RotateRightUpperArm(-60.0f + swing * 80.0f, swing * 45.0f, 10.0f);
+		RotateRightUpperArm((-60.0f + swing * 80.0f) * t, swing * 45.0f * t, 10.0f * t);
+		RotateRightForearm((50.0f - swing * 10.0f) * t, swing * 10.0f * t);
+		RotateRightHand(-30.0f * t, 0, 0);
 
-		RotateRightForearm(50.0f - swing * 10.0f, swing * 10.0f);
+		RotateLeftUpperArm(80.0f * t, 0, 20.0f * t);
+		RotateLeftForearm(60.0f * t, 30.0f * t);
+		RotateLeftHand(0.0f, 0.0f, swing * 30.0f * t);
 
-		RotateRightHand(-30.0f, 0, 0);
-
-		RotateLeftUpperArm(80.0f, 0, 20.0f);
-		RotateLeftForearm(60.0f, 30.0f);
-		RotateLeftHand(0.0f, 0.0f, swing * 30.0f);
-
-		RotateRightHandFinger(90, 90, 90);
-		RotateLeftHandFinger(90, 90, 90);
+		RotateRightHandFinger(90 * t, 90 * t, 90 * t);
+		RotateLeftHandFinger(90 * t, 90 * t, 90 * t);
 	}
 	break;
+
 	case BLOCK:
 	{
+		float t = clamp(animTime * 0.5f, 0.0f, 1.0f);
+
 		float bSpeed = animTime * 2.0f;
 		float brace = sin(bSpeed) * 5.0f;
 
-		RotateBody(10.0f + brace, -30.0f, 0);
+		RotateBody((10.0f + brace) * t, -30.0f * t, 0);
 
-		RotateLeftUpperLeg(-10.0f, 15.0f, 25.0f);
-		RotateRightUpperLeg(40.0f, 0.0f, 25.0f);
+		RotateLeftUpperLeg(-10.0f * t, 15.0f * t, 25.0f * t);
+		RotateRightUpperLeg(40.0f * t, 0.0f, 25.0f * t);
 
-		RotateLeftLowerLeg(-60.0f - brace);
-		RotateRightLowerLeg(-50.0f - brace);
+		RotateLeftLowerLeg((-60.0f - brace) * t);
+		RotateRightLowerLeg((-50.0f - brace) * t);
 
-		RotateLeftFoot(10.0f, 0, 0);
+		RotateLeftFoot(10.0f * t, 0, 0);
 		RotateRightFoot(0.0f, 0, 0);
 
-		RotateRightUpperArm(30.0f, 30.0f, 10.0f);
-
-		RotateRightForearm(100.0f, 0.0f);
-
+		RotateRightUpperArm(30.0f * t, 30.0f * t, 10.0f * t);
+		RotateRightForearm(100.0f * t, 0.0f);
 		RotateRightHand(0.0f, 0, 0);
 
-		RotateLeftUpperArm(-30.0f, 45.0f, 30.0f);
-		RotateLeftForearm(120.0f, 0.0f);
-		RotateLeftHand(0.0f, 180.0f, 0.0f);
+		RotateLeftUpperArm(-30.0f * t, 45.0f * t, 30.0f * t);
+		RotateLeftForearm(120.0f * t, 0.0f);
+		RotateLeftHand(0.0f, 180.0f * t, 0.0f);
 
-		RotateRightHandFinger(90, 90, 90);
-		RotateLeftHandFinger(90, 90, 90);
+		RotateRightHandFinger(90 * t, 90 * t, 90 * t);
+		RotateLeftHandFinger(90 * t, 90 * t, 90 * t);
+	}
+	break;
+	case SHOOT:
+	{
+		float t = clamp(animTime * 0.5, 0.0f, 1.0f);
+
+		t = sin(t * 1.5707f);
+
+		RotateBody(0.0f, -28.0f * t, 0.0f);
+
+		RotateHead(14.0f * t, 70.0f * t, -4.0f * t);
+
+		RotateLeftUpperArm(108.0f * t, -90.0f * t, 10.0f - 30.0f * t);
+
+		RotateLeftForearm(90.0f * t, 54.0f * t);
+		RotateLeftHand(0.0f, 0.0f, 0.0f);
+
+		RotateRightUpperArm(20.0f * t, 11.0f * t, 10.0f + 11.0f * t);
+
+		RotateRightForearm(140.0f * t, 90.0f * t);
+		RotateRightHand(45.0f * t, 13.0f * t, 11.0f * t);
+
+		RotateLeftHandFinger(90 * t, 90 * t, 90 * t);
+		RotateLeftIndex(0.0f, 90.0f * t, 90.0f * t);
+
+		RotateRightThumb(39 * t, 39 * t, 39 * t);
+		RotateRightIndex(44.0f * t, 44.0f * t, 44.0f * t);
+		RotateRightMiddle(41 * t, 41 * t, 41 * t);
+		RotateRightRing(40 * t, 40 * t, 40 * t);
+		RotateRightLittle(42 * t, 42 * t, 42 * t);
+
+		RotateLeftUpperLeg(3.0f * t, 45.0f * t, 42.0f * t);
+		RotateLeftLowerLeg(-23.0f * t);
+		RotateLeftFoot(-30.0f * t, 30.0f * t, 15.0f * t);
+
+		RotateRightUpperLeg(40.0f * t, 34.0f * t, 26.0f * t);
+		RotateRightLowerLeg(-39.0f * t);
+		RotateRightFoot(0.0f, 0.0f, 0.0f);
 	}
 	break;
 	}
