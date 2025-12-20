@@ -42,9 +42,9 @@ public:
 	Object* rightUpperArm = new Object("empty.json");
 	Object* rightUpperArmJoint = new Object("empty.json");
 	Object* rightUpperArmJointOuter = new Object("armJointArmor.json");
-	Object* rightUpperArmOuter = new Object("upperArmOuter.json");
+	Object* rightUpperArmOuter = new Object("rightUpperArmOuter.json");
 	Object* rightForearm = new Object("empty.json");
-	Object* rightForearmOuter = new Object("forearmOuter.json");
+	Object* rightForearmOuter = new Object("rightForearmOuter.json");
 	Object* rightHand = new Object("handPalm.json");
 	Object* rightIndexBase = new Object("handFinger.json");
 	Object* rightIndexMid = new Object("handFinger.json");
@@ -123,6 +123,13 @@ public:
 	 * @param z: -20 to 20
 	 */
 	void RotateBody(float x, float y, float z);
+	/**
+	 * @brief Rotate Wing
+	 *
+	 * @param smallWing: -30 to 30
+	 * @param bigWIng: -45 to 45
+	 */
+	void RotateWing(float smallWing, float bigWing);
 	/**
 	 * @brief Rotate Pelvis
 	 *
@@ -346,6 +353,8 @@ private:
 	// Body Rotation
 	//====================
 	float bodyRotation[3] = { 0.0f, 0.0f, 0.0f };
+	float smallWingRotation = 0.0f;
+	float bigWingRotation = 0.0f;
 
 	//====================
 	// Pelvis
