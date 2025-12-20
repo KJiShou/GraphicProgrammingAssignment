@@ -1,33 +1,37 @@
 {
     "spheres": [
-      {
-        "radius": 0.1,
-        "slices": 20,
-        "stacks": 20,
-        "style": "GLU_FILL",
-        "lineWidth": 1.0,
-        "r": 1.0,
-        "g": 1.0,
-        "b": 0.0,
-        "transX": 0.0,
-        "transY": 0.0,
-        "transZ": 0.0,
-        "rotX": 0.0,
-        "rotY": 0.0,
-        "rotZ": 0.0,
-        "scaleX": 1.0,
-        "scaleY": 1.0,
-        "scaleZ": 1.0
-      }
+        {
+            "radius": 0.1,
+            "slices": 20,
+            "stacks": 20,
+            "style": "GLU_FILL",
+            "lineWidth": 1.0,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "transX": 0.0,
+            "transY": 0.0,
+            "transZ": 0.0,
+            "rotX": 0.0,
+            "rotY": 0.0,
+            "rotZ": 0.0,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/ballJoint.bmp"
+            }
+        }
     ],
     "cubes": [
         {
             "length": 1.0,
             "width": 0.5,
             "height": 0.2,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.0,
             "transY": 0.2,
             "transZ": -0.025,
@@ -39,23 +43,23 @@
             "scaleZ": 1.0,
             "isExpandable": true,
             "textures": {
-                "isRepeat": true,
-                "all": "Assets/.bmp",
-                "front": "Assets/.bmp",
-                "back": "Assets/.bmp",
-                "top": "Assets/.bmp",
-                "bottom": "Assets/.bmp",
-                "left": "Assets/.bmp",
-                "right": "Assets/.bmp"
+                "isRepeat": false,
+                "all": "Assets/off-white-metal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
             }
         },
         {
             "length": 0.4,
             "width": 0.7,
             "height": 0.2,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.0,
             "transY": -0.3,
             "transZ": -0.025,
@@ -67,14 +71,14 @@
             "scaleZ": 1.0,
             "isExpandable": true,
             "textures": {
-                "isRepeat": true,
-                "all": "Assets/.bmp",
-                "front": "Assets/.bmp",
-                "back": "Assets/.bmp",
-                "top": "Assets/.bmp",
-                "bottom": "Assets/.bmp",
-                "left": "Assets/.bmp",
-                "right": "Assets/.bmp"
+                "isRepeat": false,
+                "all": "Assets/dark-silver-metal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
             }
         },
         {
@@ -82,9 +86,9 @@
             "length": 0.2,
             "width": 0.15,
             "height": 0.7,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.0,
             "transY": -0.05,
             "transZ": 0.3,
@@ -96,14 +100,14 @@
             "scaleZ": 1.0,
             "isExpandable": true,
             "textures": {
-                "isRepeat": true,
-                "all": "Assets/.bmp",
-                "front": "Assets/.bmp",
-                "back": "Assets/.bmp",
-                "top": "Assets/.bmp",
-                "bottom": "Assets/.bmp",
-                "left": "Assets/.bmp",
-                "right": "Assets/.bmp"
+                "isRepeat": false,
+                "all": "Assets/off-white-metal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
             }
         },
         {
@@ -125,14 +129,14 @@
             "scaleZ": 1.0,
             "isExpandable": true,
             "textures": {
-                "isRepeat": true,
-                "all": "Assets/.bmp",
-                "front": "Assets/.bmp",
-                "back": "Assets/.bmp",
-                "top": "Assets/.bmp",
-                "bottom": "Assets/.bmp",
-                "left": "Assets/.bmp",
-                "right": "Assets/.bmp"
+                "isRepeat": false,
+                "all": "Assets/redMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
             }
         },
         {
@@ -140,9 +144,9 @@
             "length": 0.2,
             "width": 0.15,
             "height": 0.7,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.0,
             "transY": -0.05,
             "transZ": -0.3,
@@ -154,14 +158,14 @@
             "scaleZ": 1.0,
             "isExpandable": true,
             "textures": {
-                "isRepeat": true,
-                "all": "Assets/.bmp",
-                "front": "Assets/.bmp",
-                "back": "Assets/.bmp",
-                "top": "Assets/.bmp",
-                "bottom": "Assets/.bmp",
-                "left": "Assets/.bmp",
-                "right": "Assets/.bmp"
+                "isRepeat": false,
+                "all": "Assets/off-white-metal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
             }
         }
     ],
@@ -175,9 +179,9 @@
             "bottomLength": 0.2,
             "bottomDepth": 0.5,
             "height": 0.1,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.0,
             "transY": -0.15,
             "transZ": 0.425,
@@ -189,14 +193,14 @@
             "scaleZ": 1.0,
             "isExpandable": true,
             "textures": {
-                "isRepeat": true,
-                "all": "Assets/.bmp",
-                "front": "Assets/.bmp",
-                "back": "Assets/.bmp",
-                "top": "Assets/.bmp",
-                "bottom": "Assets/.bmp",
-                "left": "Assets/.bmp",
-                "right": "Assets/.bmp"
+                "isRepeat": false,
+                "all": "Assets/off-white-metal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
             }
         },
         {
@@ -208,9 +212,9 @@
             "bottomLength": 0.2,
             "bottomDepth": 0.1,
             "height": 0.1,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.0,
             "transY": 0.15,
             "transZ": 0.425,
@@ -222,14 +226,14 @@
             "scaleZ": 1.0,
             "isExpandable": true,
             "textures": {
-                "isRepeat": true,
-                "all": "Assets/.bmp",
-                "front": "Assets/.bmp",
-                "back": "Assets/.bmp",
-                "top": "Assets/.bmp",
-                "bottom": "Assets/.bmp",
-                "left": "Assets/.bmp",
-                "right": "Assets/.bmp"
+                "isRepeat": false,
+                "all": "Assets/off-white-metal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
             }
         },
         {
@@ -255,14 +259,14 @@
             "scaleZ": 1.0,
             "isExpandable": true,
             "textures": {
-                "isRepeat": true,
-                "all": "Assets/.bmp",
-                "front": "Assets/.bmp",
-                "back": "Assets/.bmp",
-                "top": "Assets/.bmp",
-                "bottom": "Assets/.bmp",
-                "left": "Assets/.bmp",
-                "right": "Assets/.bmp"
+                "isRepeat": false,
+                "all": "Assets/redMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
             }
         },
         {
@@ -274,9 +278,9 @@
             "bottomLength": 0.2,
             "bottomDepth": 0.5,
             "height": 0.1,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.0,
             "transY": -0.15,
             "transZ": -0.425,
@@ -288,14 +292,14 @@
             "scaleZ": 1.0,
             "isExpandable": true,
             "textures": {
-                "isRepeat": true,
-                "all": "Assets/.bmp",
-                "front": "Assets/.bmp",
-                "back": "Assets/.bmp",
-                "top": "Assets/.bmp",
-                "bottom": "Assets/.bmp",
-                "left": "Assets/.bmp",
-                "right": "Assets/.bmp"
+                "isRepeat": false,
+                "all": "Assets/off-white-metal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
             }
         },
         {
@@ -307,9 +311,9 @@
             "bottomLength": 0.2,
             "bottomDepth": 0.1,
             "height": 0.1,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.0,
             "transY": 0.15,
             "transZ": -0.425,
@@ -321,14 +325,14 @@
             "scaleZ": 1.0,
             "isExpandable": true,
             "textures": {
-                "isRepeat": true,
-                "all": "Assets/.bmp",
-                "front": "Assets/.bmp",
-                "back": "Assets/.bmp",
-                "top": "Assets/.bmp",
-                "bottom": "Assets/.bmp",
-                "left": "Assets/.bmp",
-                "right": "Assets/.bmp"
+                "isRepeat": false,
+                "all": "Assets/off-white-metal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
             }
         }
     ]
