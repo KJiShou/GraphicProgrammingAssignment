@@ -67,6 +67,10 @@ BackBone::~BackBone()
 	delete rightLegFrontArmor;
 	delete rightLegBackArmor;
 	delete rightLegSideArmor;
+
+	delete gun;
+	delete sword;
+	delete shield;
 }
 
 
@@ -82,16 +86,16 @@ void BackBone::SetBone() {
 	body->Translate(0, 1, 0);
 
 	leftWing->Translate(0.1, 0, -0.04);
-	leftWing->Rotate(0, -15, 0);
+	leftWing->Rotate(0, -15, 0, 0.0, 0.0, -0.7);
 
 	rightWing->Translate(-0.1, 0, -0.04);
-	rightWing->Rotate(0, 15, 0);
+	rightWing->Rotate(0, 15, 0, 0.0, 0.0, -0.7);
 
-	bigLeftWing->Translate(0.165, 0, -0.13);
-	bigLeftWing->Rotate(0, -40, 0);
+	bigLeftWing->Translate(0.565, 0, -0.13);
+	bigLeftWing->Rotate(0, -40, 0, 0.0, 0.0, -0.7);
 
-	bigRightWing->Translate(-0.165, 0, -0.13);
-	bigRightWing->Rotate(0, 40, 0);
+	bigRightWing->Translate(-0.565, 0, -0.13);
+	bigRightWing->Rotate(0, 40, 0, 0.0, 0.0, -0.7);
 
 	// arm
 	leftUpperArmJoint->Translate(-1.0, 1.8, 0);
@@ -195,6 +199,11 @@ void BackBone::SetBone() {
 	leftUpperArm->AddChild(leftUpperArmOuter);
 	leftForearm->AddChild(leftHand);
 	leftForearm->AddChild(leftForearmOuter);
+
+	// left hand -> weapons
+	leftHand->AddChild(gun);
+	leftHand->AddChild(sword);
+
 	// hand -> index finger
 	leftHand->AddChild(leftIndexBase);
 	leftIndexBase->AddChild(leftIndexMid);
@@ -224,6 +233,10 @@ void BackBone::SetBone() {
 	rightUpperArm->AddChild(rightUpperArmOuter);
 	rightForearm->AddChild(rightHand);
 	rightForearm->AddChild(rightForearmOuter);
+
+	// right hand -> weapons
+	rightHand->AddChild(shield);
+
 	// hand -> index finger
 	rightHand->AddChild(rightIndexBase);
 	rightIndexBase->AddChild(rightIndexMid);
@@ -321,6 +334,9 @@ void BackBone::ReadData() {
 	rightUpperArmJointOuter->ReadData();
 	leftUpperArmJoint->ReadData();
 	leftUpperArmJointOuter->ReadData();
+	gun->ReadData();
+	sword->ReadData();
+	shield->ReadData();
 	leftWing->ReadData();
 	rightWing->ReadData();
 	bigLeftWing->ReadData();
@@ -1004,6 +1020,35 @@ void BackBone::Animate(float deltaTime) {
 		RotateLeftHandFinger(90, 90, 90);
 	}
 	break;
+	case BLOCK:
+	{
+		float bSpeed = animTime * 2.0f;
+		float brace = sin(bSpeed) * 5.0f;
+
+		RotateBody(10.0f + brace, -30.0f, 0);
+
+		RotateLeftUpperLeg(-10.0f, 15.0f, 25.0f);
+		RotateRightUpperLeg(40.0f, 0.0f, 25.0f);
+
+		RotateLeftLowerLeg(-60.0f - brace);
+		RotateRightLowerLeg(-50.0f - brace);
+
+		RotateLeftFoot(10.0f, 0, 0);
+		RotateRightFoot(0.0f, 0, 0);
+
+		RotateRightUpperArm(30.0f, 30.0f, 10.0f);
+
+		RotateRightForearm(100.0f, 0.0f);
+
+		RotateRightHand(0.0f, 0, 0);
+
+		RotateLeftUpperArm(-30.0f, 45.0f, 30.0f);
+		RotateLeftForearm(120.0f, 0.0f);
+		RotateLeftHand(0.0f, 180.0f, 0.0f);
+
+		RotateRightHandFinger(90, 90, 90);
+		RotateLeftHandFinger(90, 90, 90);
+	}
 	break;
 	}
 }
