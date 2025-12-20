@@ -126,19 +126,19 @@ void BackBone::SetBone() {
 	rightThumbTip->Translate(0.0f, -0.1f, 0.0f);
 
 	// index finger positions
-	leftIndexBase->Translate(0.09f, -0.25f, 0.0f);
+	leftIndexBase->Translate(-0.09f, -0.25f, 0.0f);
 	leftIndexMid->Translate(0.0f, -0.13f, 0.0f);
 	leftIndexTip->Translate(0.0f, -0.1f, 0.0f);
 	// middle finger positions
-	leftMiddleBase->Translate(0.03f, -0.25f, 0.0f);
+	leftMiddleBase->Translate(-0.03f, -0.25f, 0.0f);
 	leftMiddleMid->Translate(0.0f, -0.13f, 0.0f);
 	leftMiddleTip->Translate(0.0f, -0.1f, 0.0f);
 	// ring finger positions
-	leftRingBase->Translate(-0.03f, -0.25f, 0.0f);
+	leftRingBase->Translate(0.03f, -0.25f, 0.0f);
 	leftRingMid->Translate(0.0f, -0.13f, 0.0f);
 	leftRingTip->Translate(0.0f, -0.1f, 0.0f);
 	// little finger positions
-	leftLittleBase->Translate(-0.09f, -0.25f, 0.0f);
+	leftLittleBase->Translate(0.09f, -0.25f, 0.0f);
 	leftLittleMid->Translate(0.0f, -0.13f, 0.0f);
 	leftLittleTip->Translate(0.0f, -0.1f, 0.0f);
 	// thumb finger positions
@@ -632,12 +632,12 @@ void BackBone::Draw() {
 	rightMiddleBase->Rotate(-rightMiddleBaseRot, 0, 0);
 	rightMiddleMid->Rotate(-rightMiddleMidRot, 0, 0);
 	rightMiddleTip->Rotate(-rightMiddleTipRot, 0, 0);
-	rightRingBase->Rotate(-rightMiddleBaseRot, 0, 0);
-	rightRingMid->Rotate(-rightMiddleMidRot, 0, 0);
-	rightRingTip->Rotate(-rightMiddleTipRot, 0, 0);
-	rightLittleBase->Rotate(-rightMiddleBaseRot, 0, 0);
-	rightLittleMid->Rotate(-rightMiddleMidRot, 0, 0);
-	rightLittleTip->Rotate(-rightMiddleTipRot, 0, 0);
+	rightRingBase->Rotate(-rightRingBaseRot, 0, 0);
+	rightRingMid->Rotate(-rightRingMidRot, 0, 0);
+	rightRingTip->Rotate(-rightRingTipRot, 0, 0);
+	rightLittleBase->Rotate(-rightLittleBaseRot, 0, 0);
+	rightLittleMid->Rotate(-rightLittleMidRot, 0, 0);
+	rightLittleTip->Rotate(-rightLittleTipRot, 0, 0);
 	rightThumbSpread->Rotate(0.0f, 0.0f, rightThumbSpreadRot);
 	rightThumbMid->Rotate(-rightThumbMidRot, 0, 0);
 	rightThumbTip->Rotate(-rightThumbTipRot, 0, 0);
@@ -651,12 +651,12 @@ void BackBone::Draw() {
 	leftMiddleBase->Rotate(-leftMiddleBaseRot, 0, 0);
 	leftMiddleMid->Rotate(-leftMiddleMidRot, 0, 0);
 	leftMiddleTip->Rotate(-leftMiddleTipRot, 0, 0);
-	leftRingBase->Rotate(-leftMiddleBaseRot, 0, 0);
-	leftRingMid->Rotate(-leftMiddleMidRot, 0, 0);
-	leftRingTip->Rotate(-leftMiddleTipRot, 0, 0);
-	leftLittleBase->Rotate(-leftMiddleBaseRot, 0, 0);
-	leftLittleMid->Rotate(-leftMiddleMidRot, 0, 0);
-	leftLittleTip->Rotate(-leftMiddleTipRot, 0, 0);
+	leftRingBase->Rotate(-leftRingBaseRot, 0, 0);
+	leftRingMid->Rotate(-leftRingMidRot, 0, 0);
+	leftRingTip->Rotate(-leftRingTipRot, 0, 0);
+	leftLittleBase->Rotate(-leftLittleBaseRot, 0, 0);
+	leftLittleMid->Rotate(-leftLittleMidRot, 0, 0);
+	leftLittleTip->Rotate(-leftLittleTipRot, 0, 0);
 	leftThumbSpread->Rotate(0.0f, 0.0f, -leftThumbSpreadRot);
 	leftThumbMid->Rotate(-leftThumbMidRot, 0, 0);
 	leftThumbTip->Rotate(-leftThumbTipRot, 0, 0);
