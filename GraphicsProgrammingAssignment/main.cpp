@@ -32,6 +32,7 @@ json j;
 //==================================
 // MODE 1 (Camera View) [Default]
 // ---------------------------------
+// Camera Movement
 // W - Move To Front
 // S - Move To Back
 // A - Move To Left
@@ -62,6 +63,8 @@ json j;
 // Space - Jump
 // SHIFT - Sprint / Run
 // Mouse Left Click - Attack and Defend
+// 
+// R - Reset Position
 //==================================
 // MODE 4 (Every Part Movement)
 // ---------------------------------
@@ -71,6 +74,8 @@ json j;
 // J - y(+)
 // B - z(-)
 // N - z(+)
+// 
+// R - Reset Position
 // 
 // 1 -> Head
 // 2 -> Body
@@ -102,6 +107,9 @@ float lHand[3] = { 0 }, rHand[3] = { 0 };
 float lUpLeg[3] = { 0 }, rUpLeg[3] = { 0 };
 float lLowLeg[1] = { 0 }, rLowLeg[1] = { 0 };
 float lFoot[3] = { 0 }, rFoot[3] = { 0 };
+float jumpTimer = 0.0f;
+float attackTimer = 0.0f;
+float blockTimer = 0.0f;
 
 // light
 GLUquadricObj* var = gluNewQuadric();
@@ -253,6 +261,55 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 				camPosX = 0.0f, camPosY = 0.0f, camPosZ = 5.0f;
 				camYaw = 0.0f;
 				camPitch = 0.0f;
+			}
+			break;
+		}
+		case 'R':
+		{
+			if (keyMode == 1) {
+				gameObjectRotX = 0;
+				gameObjectRotY = 0;
+				gameObjectRotZ = 0;
+				gameObjectTransX = 0;
+				gameObjectTransY = 0;
+				gameObjectTransZ = 0;
+			}
+			if (keyMode == 2) {
+				head[0] = 0; head[1] = 0; head[2] = 0;
+				body[0] = 0; body[1] = 0; body[2] = 0;
+
+				lUpArm[0] = 0; lUpArm[1] = 0; lUpArm[2] = 0;
+				rUpArm[0] = 0; rUpArm[1] = 0; rUpArm[2] = 0;
+
+				lForeArm[0] = 0; lForeArm[1] = 0;
+				rForeArm[0] = 0; rForeArm[1] = 0;
+
+				lHand[0] = 0; lHand[1] = 0; lHand[2] = 0;
+				rHand[0] = 0; rHand[1] = 0; rHand[2] = 0;
+
+				lUpLeg[0] = 0; lUpLeg[1] = 0; lUpLeg[2] = 0;
+				rUpLeg[0] = 0; rUpLeg[1] = 0; rUpLeg[2] = 0;
+
+				lLowLeg[0] = 0;
+				rLowLeg[0] = 0;
+
+				lFoot[0] = 0; lFoot[1] = 0; lFoot[2] = 0;
+				rFoot[0] = 0; rFoot[1] = 0; rFoot[2] = 0;
+
+				backbone->RotateHead(0, 0, 0);
+				backbone->RotateBody(0, 0, 0);
+				backbone->RotateLeftUpperArm(0, 0, 0);
+				backbone->RotateRightUpperArm(0, 0, 0);
+				backbone->RotateLeftForearm(0, 0);
+				backbone->RotateRightForearm(0, 0);
+				backbone->RotateLeftHand(0, 0, 0);
+				backbone->RotateRightHand(0, 0, 0);
+				backbone->RotateLeftUpperLeg(0, 0, 0);
+				backbone->RotateRightUpperLeg(0, 0, 0);
+				backbone->RotateLeftLowerLeg(0);
+				backbone->RotateRightLowerLeg(0);
+				backbone->RotateLeftFoot(0, 0, 0);
+				backbone->RotateRightFoot(0, 0, 0);
 			}
 			break;
 		}
@@ -621,13 +678,13 @@ void Update(int framesToUpdate) {
 			}
 
 		if (keyMode == 1) {
+			bool isAttacking = (backbone->GetState() == ATTACK);
 			bool isJumping = (backbone->GetState() == JUMP);
+			bool isBlocking = (backbone->GetState() == BLOCK);
 			bool isMoving = false;
 			bool isRunning = input.IsKeyPressed(DIK_LSHIFT);
 			float moveSpeed = isRunning ? 0.15f : 0.05f;
 			AnimState targetMoveAnim = isRunning ? RUN : WALK;
-
-			static float jumpTimer = 0.0f;
 
 			if (isJumping) {
 				jumpTimer += 0.016f;
@@ -639,8 +696,30 @@ void Update(int framesToUpdate) {
 				}
 			}
 
+			if (isAttacking) {
+				attackTimer += 0.016f;
+				if (attackTimer > 1.26f) {
+					backbone->SetState(BLOCK);
+
+					isAttacking = false;
+					isBlocking = true;
+					attackTimer = 0.0f;
+
+					blockTimer = 0.0f;
+				}
+			}
+
+			if (isBlocking) {
+				blockTimer += 0.016f;
+				if (blockTimer > 1.0f) {
+					backbone->SetState(IDLE);
+					isBlocking = false;
+					blockTimer = 0.0f;
+				}
+			}
+
 			if (input.IsKeyPressed(DIK_F)) {
-				if (!isJumping && backbone->GetState() != targetMoveAnim) {
+				if (!isJumping && !isAttacking && !isBlocking && backbone->GetState() != targetMoveAnim) {
 					backbone->SetState(targetMoveAnim);
 				}
 
@@ -649,7 +728,7 @@ void Update(int framesToUpdate) {
 				isMoving = true;
 			}
 			else if (input.IsKeyPressed(DIK_H)) {
-				if (!isJumping && backbone->GetState() != targetMoveAnim) {
+				if (!isJumping && !isAttacking && !isBlocking && backbone->GetState() != targetMoveAnim) {
 					backbone->SetState(targetMoveAnim);
 				}
 
@@ -658,7 +737,7 @@ void Update(int framesToUpdate) {
 				isMoving = true;
 			}
 			else if (input.IsKeyPressed(DIK_G)) {
-				if (!isJumping && backbone->GetState() != targetMoveAnim) {
+				if (!isJumping && !isAttacking && !isBlocking && backbone->GetState() != targetMoveAnim) {
 					backbone->SetState(targetMoveAnim);
 				}
 
@@ -667,7 +746,7 @@ void Update(int framesToUpdate) {
 				isMoving = true;
 			}
 			else if (input.IsKeyPressed(DIK_T)) {
-				if (!isJumping && backbone->GetState() != targetMoveAnim) {
+				if (!isJumping && !isAttacking && !isBlocking && backbone->GetState() != targetMoveAnim) {
 					backbone->SetState(targetMoveAnim);
 				}
 
@@ -677,16 +756,27 @@ void Update(int framesToUpdate) {
 			}
 
 			else if (input.IsLeftMouseDown()) {
-				if (backbone->GetState() != ATTACK) backbone->SetState(ATTACK);
+				if (!isAttacking && !isJumping && !isBlocking) {
+					backbone->SetState(ATTACK);
+					attackTimer = 0.0f;
+				}
 				isMoving = true;
 			}
 
-			if (!isMoving && !isJumping) {
+			else if (input.IsRightMouseDown()) {
+				if (!isAttacking && !isJumping && !isBlocking) {
+					backbone->SetState(BLOCK);
+					blockTimer = 0.0f;
+				}
+				isMoving = true;
+			}
+
+			if (!isMoving && !isJumping && !isAttacking && !isBlocking) {
 				if (backbone->GetState() != IDLE) backbone->SetState(IDLE);
 			}
 
 			if (input.IsKeyPressed(DIK_SPACE)) {
-				if (!isJumping) {
+				if (!isJumping && !isAttacking && !isBlocking) {
 					backbone->SetState(JUMP);
 					jumpTimer = 0.0f;
 				}

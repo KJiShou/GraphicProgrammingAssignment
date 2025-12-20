@@ -184,6 +184,10 @@ struct TetrahedronData {
 	bool isRepeat;
 	bool isSpecular;
 	float shininess;
+	std::string backTex;
+	std::string bottomTex;
+	std::string leftTex;
+	std::string rightTex;
 };
 
 class Object
