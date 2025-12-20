@@ -10,9 +10,9 @@
             "style": "GLU_FILL",
             "isClose": true,
             "lineWidth": 1.0,
-            "r": 0.2,
-            "g": 0.2,
-            "b": 0.2,
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
             "transX": 0.0,
             "transY": 2.0,
             "transZ": -0.45,
@@ -22,12 +22,14 @@
             "scaleX": 1.0,
             "scaleY": 1.0,
             "scaleZ": 1.0,
+            "isSpecular": true,
+            "shininess": 50.0,
             "textures": {
                 "isRepeat": true,
-                "all": "Assets/.bmp",
-                "top": "Assets/.bmp",
-                "bottom": "Assets/.bmp",
-                "body": "Assets/.bmp"
+                "all": "Assets/metal.bmp",
+                "top": "",
+                "bottom": "",
+                "body": ""
             }
         },
         {
@@ -40,24 +42,26 @@
             "style": "GLU_FILL",
             "isClose": true,
             "lineWidth": 1.0,
-            "r": 0.2,
-            "g": 0.2,
-            "b": 0.2,
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
             "transX": -0.08,
             "transY": 2.65,
             "transZ": -0.58,
-            "rotX": 0.0,
+            "rotX": 110.0,
             "rotY": 90.0,
             "rotZ": 0.0,
             "scaleX": 1.0,
             "scaleY": 1.0,
             "scaleZ": 1.0,
+            "isSpecular": true,
+            "shininess": 50.0,
             "textures": {
-                "isRepeat": true,
-                "all": "Assets/.bmp",
-                "top": "Assets/.bmp",
-                "bottom": "Assets/.bmp",
-                "body": "Assets/.bmp"
+                "isRepeat": false,
+                "all": "",
+                "top": "Assets/screw.bmp",
+                "bottom": "Assets/screw.bmp",
+                "body": "Assets/metal.bmp"
             }
         }
     ],
@@ -84,13 +88,13 @@
             "shininess": 50.0,
             "textures": {
                 "isRepeat": true,
-                "all": "Assets/.bmp",
-                "front": "Assets/.bmp",
-                "back": "Assets/.bmp",
-                "top": "Assets/.bmp",
-                "bottom": "Assets/.bmp",
-                "left": "Assets/.bmp",
-                "right": "Assets/.bmp"
+                "all": "Assets/metal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
             }
         },
         {
@@ -115,13 +119,13 @@
             "shininess": 50.0,
             "textures": {
                 "isRepeat": true,
-                "all": "Assets/.bmp",
-                "front": "Assets/.bmp",
-                "back": "Assets/.bmp",
-                "top": "Assets/.bmp",
-                "bottom": "Assets/.bmp",
-                "left": "Assets/.bmp",
-                "right": "Assets/.bmp"
+                "all": "Assets/metal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
             }
         }
     ],
@@ -135,9 +139,9 @@
             "bottomLength": 0.08,
             "bottomDepth": 2.25,
             "height": 0.15,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.0,
             "transY": 3.04,
             "transZ": -1.7,
@@ -151,14 +155,14 @@
             "isSpecular": true,
             "shininess": 50.0,
             "textures": {
-                "isRepeat": true,
-                "all": "Assets/.bmp",
-                "front": "Assets/.bmp",
-                "back": "Assets/.bmp",
-                "top": "Assets/.bmp",
-                "bottom": "Assets/.bmp",
-                "left": "Assets/.bmp",
-                "right": "Assets/.bmp"
+                "isRepeat": false,
+                "all": "Assets/dark-metal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
             }
         },
         {
@@ -171,8 +175,8 @@
             "bottomDepth": 1.25,
             "height": 0.15,
             "r": 0.0,
-            "g": 0.0,
-            "b": 0.9,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.0,
             "transY": 2.7255,
             "transZ": -1.25625,
@@ -186,14 +190,14 @@
             "isSpecular": true,
             "shininess": 50.0,
             "textures": {
-                "isRepeat": true,
-                "all": "Assets/.bmp",
-                "front": "Assets/.bmp",
-                "back": "Assets/.bmp",
-                "top": "Assets/.bmp",
-                "bottom": "Assets/.bmp",
-                "left": "Assets/.bmp",
-                "right": "Assets/.bmp"
+                "isRepeat": false,
+                "all": "Assets/silverMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
             }
         },
         {
@@ -205,9 +209,9 @@
             "bottomLength": 0.08,
             "bottomDepth": 2.25,
             "height": 0.15,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.0,
             "transY": 2.7,
             "transZ": -1.8,
@@ -221,14 +225,14 @@
             "isSpecular": true,
             "shininess": 50.0,
             "textures": {
-                "isRepeat": true,
-                "all": "Assets/.bmp",
-                "front": "Assets/.bmp",
-                "back": "Assets/.bmp",
-                "top": "Assets/.bmp",
-                "bottom": "Assets/.bmp",
-                "left": "Assets/.bmp",
-                "right": "Assets/.bmp"
+                "isRepeat": false,
+                "all": "Assets/dark-metal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
             }
         },
         {
@@ -241,8 +245,8 @@
             "bottomDepth": 1.25,
             "height": 0.15,
             "r": 0.0,
-            "g": 0.0,
-            "b": 0.9,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.0,
             "transY": 2.4255,
             "transZ": -1.35625,
@@ -256,14 +260,14 @@
             "isSpecular": true,
             "shininess": 50.0,
             "textures": {
-                "isRepeat": true,
-                "all": "Assets/.bmp",
-                "front": "Assets/.bmp",
-                "back": "Assets/.bmp",
-                "top": "Assets/.bmp",
-                "bottom": "Assets/.bmp",
-                "left": "Assets/.bmp",
-                "right": "Assets/.bmp"
+                "isRepeat": false,
+                "all": "Assets/silverMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
             }
         },
         {
@@ -275,9 +279,9 @@
             "bottomLength": 0.08,
             "bottomDepth": 2.25,
             "height": 0.15,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.0,
             "transY": 2.4,
             "transZ": -1.8,
@@ -291,14 +295,14 @@
             "isSpecular": true,
             "shininess": 50.0,
             "textures": {
-                "isRepeat": true,
-                "all": "Assets/.bmp",
-                "front": "Assets/.bmp",
-                "back": "Assets/.bmp",
-                "top": "Assets/.bmp",
-                "bottom": "Assets/.bmp",
-                "left": "Assets/.bmp",
-                "right": "Assets/.bmp"
+                "isRepeat": false,
+                "all": "Assets/dark-metal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
             }
         },
         {
@@ -311,8 +315,8 @@
             "bottomDepth": 1.25,
             "height": 0.15,
             "r": 0.0,
-            "g": 0.0,
-            "b": 0.9,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.0,
             "transY": 2.1255,
             "transZ": -1.35625,
@@ -326,14 +330,14 @@
             "isSpecular": true,
             "shininess": 50.0,
             "textures": {
-                "isRepeat": true,
-                "all": "Assets/.bmp",
-                "front": "Assets/.bmp",
-                "back": "Assets/.bmp",
-                "top": "Assets/.bmp",
-                "bottom": "Assets/.bmp",
-                "left": "Assets/.bmp",
-                "right": "Assets/.bmp"
+                "isRepeat": false,
+                "all": "Assets/silverMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
             }
         },
         {
@@ -345,9 +349,9 @@
             "bottomLength": 0.08,
             "bottomDepth": 2.25,
             "height": 0.15,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.0,
             "transY": 2.1,
             "transZ": -1.8,
@@ -361,14 +365,14 @@
             "isSpecular": true,
             "shininess": 50.0,
             "textures": {
-                "isRepeat": true,
-                "all": "Assets/.bmp",
-                "front": "Assets/.bmp",
-                "back": "Assets/.bmp",
-                "top": "Assets/.bmp",
-                "bottom": "Assets/.bmp",
-                "left": "Assets/.bmp",
-                "right": "Assets/.bmp"
+                "isRepeat": false,
+                "all": "Assets/dark-metal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
             }
         },
         {
@@ -381,8 +385,8 @@
             "bottomDepth": 1.25,
             "height": 0.15,
             "r": 0.0,
-            "g": 0.0,
-            "b": 0.9,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.0,
             "transY": 1.8255,
             "transZ": -1.35625,
@@ -396,14 +400,14 @@
             "isSpecular": true,
             "shininess": 50.0,
             "textures": {
-                "isRepeat": true,
-                "all": "Assets/.bmp",
-                "front": "Assets/.bmp",
-                "back": "Assets/.bmp",
-                "top": "Assets/.bmp",
-                "bottom": "Assets/.bmp",
-                "left": "Assets/.bmp",
-                "right": "Assets/.bmp"
+                "isRepeat": false,
+                "all": "Assets/silverMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
             }
         },
         {
@@ -415,9 +419,9 @@
             "bottomLength": 0.08,
             "bottomDepth": 2.25,
             "height": 0.15,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.0,
             "transY": 1.8,
             "transZ": -1.82,
@@ -431,14 +435,14 @@
             "isSpecular": true,
             "shininess": 50.0,
             "textures": {
-                "isRepeat": true,
-                "all": "Assets/.bmp",
-                "front": "Assets/.bmp",
-                "back": "Assets/.bmp",
-                "top": "Assets/.bmp",
-                "bottom": "Assets/.bmp",
-                "left": "Assets/.bmp",
-                "right": "Assets/.bmp"
+                "isRepeat": false,
+                "all": "Assets/dark-metal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
             }
         },
         {
@@ -451,8 +455,8 @@
             "bottomDepth": 1.25,
             "height": 0.15,
             "r": 0.0,
-            "g": 0.0,
-            "b": 0.9,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.0,
             "transY": 1.5255,
             "transZ": -1.37625,
@@ -466,14 +470,14 @@
             "isSpecular": true,
             "shininess": 50.0,
             "textures": {
-                "isRepeat": true,
-                "all": "Assets/.bmp",
-                "front": "Assets/.bmp",
-                "back": "Assets/.bmp",
-                "top": "Assets/.bmp",
-                "bottom": "Assets/.bmp",
-                "left": "Assets/.bmp",
-                "right": "Assets/.bmp"
+                "isRepeat": false,
+                "all": "Assets/silverMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
             }
         },
         {
@@ -485,9 +489,9 @@
             "bottomLength": 0.08,
             "bottomDepth": 2.25,
             "height": 0.15,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.0,
             "transY": 1.52,
             "transZ": -1.9,
@@ -501,14 +505,14 @@
             "isSpecular": true,
             "shininess": 50.0,
             "textures": {
-                "isRepeat": true,
-                "all": "Assets/.bmp",
-                "front": "Assets/.bmp",
-                "back": "Assets/.bmp",
-                "top": "Assets/.bmp",
-                "bottom": "Assets/.bmp",
-                "left": "Assets/.bmp",
-                "right": "Assets/.bmp"
+                "isRepeat": false,
+                "all": "Assets/dark-metal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
             }
         },
         {
@@ -521,8 +525,8 @@
             "bottomDepth": 1.25,
             "height": 0.15,
             "r": 0.0,
-            "g": 0.0,
-            "b": 0.9,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.0,
             "transY": 1.24,
             "transZ": -1.415,
@@ -536,14 +540,14 @@
             "isSpecular": true,
             "shininess": 50.0,
             "textures": {
-                "isRepeat": true,
-                "all": "Assets/.bmp",
-                "front": "Assets/.bmp",
-                "back": "Assets/.bmp",
-                "top": "Assets/.bmp",
-                "bottom": "Assets/.bmp",
-                "left": "Assets/.bmp",
-                "right": "Assets/.bmp"
+                "isRepeat": false,
+                "all": "Assets/silverMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
             }
         },
         {
@@ -555,9 +559,9 @@
             "bottomLength": 0.08,
             "bottomDepth": 2.25,
             "height": 0.15,
-            "r": 0.5,
-            "g": 0.5,
-            "b": 0.5,
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.0,
             "transY": 1.22,
             "transZ": -1.925,
@@ -571,14 +575,14 @@
             "isSpecular": true,
             "shininess": 50.0,
             "textures": {
-                "isRepeat": true,
-                "all": "Assets/.bmp",
-                "front": "Assets/.bmp",
-                "back": "Assets/.bmp",
-                "top": "Assets/.bmp",
-                "bottom": "Assets/.bmp",
-                "left": "Assets/.bmp",
-                "right": "Assets/.bmp"
+                "isRepeat": false,
+                "all": "Assets/dark-metal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
             }
         },
         {
@@ -591,8 +595,8 @@
             "bottomDepth": 1.25,
             "height": 0.15,
             "r": 0.0,
-            "g": 0.0,
-            "b": 0.9,
+            "g": 1.0,
+            "b": 1.0,
             "transX": 0.0,
             "transY": 0.945,
             "transZ": -1.48,
@@ -606,14 +610,14 @@
             "isSpecular": true,
             "shininess": 50.0,
             "textures": {
-                "isRepeat": true,
-                "all": "Assets/.bmp",
-                "front": "Assets/.bmp",
-                "back": "Assets/.bmp",
-                "top": "Assets/.bmp",
-                "bottom": "Assets/.bmp",
-                "left": "Assets/.bmp",
-                "right": "Assets/.bmp"
+                "isRepeat": false,
+                "all": "Assets/silverMetal.bmp",
+                "front": "",
+                "back": "",
+                "top": "",
+                "bottom": "",
+                "left": "",
+                "right": ""
             }
         }
     ]
