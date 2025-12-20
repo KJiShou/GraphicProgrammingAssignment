@@ -703,7 +703,7 @@ void Object::AddChild(Object* o) {
 
 GLuint Object::LoadTexture(const std::string& filename, bool isRepeat)
 {
-	bool minimap = false;
+	bool mipmap = false;
 	if (filename.empty()) {
 		std::cout << "[LoadTexture] No texture filename provided." << std::endl;
 		return 0; // 0 = no texture
@@ -728,7 +728,7 @@ GLuint Object::LoadTexture(const std::string& filename, bool isRepeat)
 	glGenTextures(1, &texID);
 	glBindTexture(GL_TEXTURE_2D, texID);
 
-	if (minimap) {
+	if (mipmap) {
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	}
@@ -742,7 +742,7 @@ GLuint Object::LoadTexture(const std::string& filename, bool isRepeat)
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	}
 
-	if (minimap) {
+	if (mipmap) {
 		float maxAniso = 0.0f;
 		glGetFloatv(0x84FF, &maxAniso);
 		glTexParameterf(GL_TEXTURE_2D, 0x84FE, maxAniso);
@@ -757,7 +757,7 @@ GLuint Object::LoadTexture(const std::string& filename, bool isRepeat)
 		BMP.bmBits
 	);
 
-	if (minimap) {
+	if (mipmap) {
 		gluBuild2DMipmaps(
 			GL_TEXTURE_2D, GL_RGB,
 			BMP.bmWidth, BMP.bmHeight,
