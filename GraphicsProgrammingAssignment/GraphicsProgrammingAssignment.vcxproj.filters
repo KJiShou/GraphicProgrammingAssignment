@@ -238,6 +238,9 @@
     <None Include="rightForearmOuter.json">
       <Filter>Data\Arm</Filter>
     </None>
+    <None Include="shield.json">
+      <Filter>Data\Weapons</Filter>
+    </None>
     <None Include="sword.json">
       <Filter>Data\Weapons</Filter>
     </None>

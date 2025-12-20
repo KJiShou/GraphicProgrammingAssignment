@@ -7,7 +7,8 @@ enum AnimState {
 	ATTACK,
 	RUN,
 	JUMP,
-	BLOCK
+	BLOCK,
+	SHOOT
 };
 
 class BackBone
