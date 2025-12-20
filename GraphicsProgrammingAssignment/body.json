@@ -144,32 +144,33 @@
         }
     ],
     "spheres": [
-      {
-        "label": "middle chest ball",
-        "radius": 0.115,
-        "slices": 50,
-        "stacks": 50,
-        "style": "GLU_FILL",
-        "lineWidth": 1.0,
-        "r": 1.0,
-        "g": 1.0,
-        "b": 1.0,
-        "transX": 0.001,
-        "transY": 1.785,
-        "transZ": 0.59,
-        "rotX": 90.0,
-        "rotY": 90.0,
-        "rotZ": 180.0,
-        "scaleX": 1.0,
-        "scaleY": 1.0,
-        "scaleZ": 1.0,
-        "isSpecular": true,
-        "isShiny": true,
-        "textures": {
-          "isRepeat": true,
-          "all": "Assets/greenBallMetal.bmp"
+        {
+            "label": "middle chest ball",
+            "radius": 0.115,
+            "slices": 50,
+            "stacks": 50,
+            "style": "GLU_FILL",
+            "lineWidth": 1.0,
+            "r": 0.0,
+            "g": 1.0,
+            "b": 0.0,
+            "transX": 0.001,
+            "transY": 1.785,
+            "transZ": 0.59,
+            "rotX": 90.0,
+            "rotY": 90.0,
+            "rotZ": 180.0,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0,
+            "isSpecular": true,
+            "shininess": 50.0,
+            "isShiny": true,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/.bmp"
+            }
         }
-      }
     ],
     "cubes": [
         {

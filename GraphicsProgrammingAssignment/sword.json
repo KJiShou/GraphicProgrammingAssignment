@@ -1,0 +1,103 @@
+{
+    "frustumCube": [
+        {
+            "label": "blade",
+            "topLength": 0.03,
+            "topDepth": 0.08,
+            "topOffsetX": -0.02,
+            "topOffsetZ": 0.0,
+            "bottomLength": 0.01,
+            "bottomDepth": 0.08,
+            "height": 0.08,
+            "r": 1.0,
+            "g": 0.0,
+            "b": 0.0,
+            "transX": -0.4,
+            "transY": -0.19,
+            "transZ": 0.07,
+            "rotX": 0.0,
+            "rotY": 0.0,
+            "rotZ": 0.0,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0,
+            "isExpandable": true,
+            "isSpecular": true,
+            "shininess": 50.0,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/.bmp",
+                "front": "Assets/.bmp",
+                "back": "Assets/.bmp",
+                "top": "Assets/.bmp",
+                "bottom": "Assets/.bmp",
+                "left": "Assets/.bmp",
+                "right": "Assets/.bmp"
+            }
+        }
+    ],
+    "cubes": [
+        {
+            "label": "grip",
+            "length": 0.4,
+            "width": 0.08,
+            "height": 0.08,
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "transX": 0.02,
+            "transY": -0.19,
+            "transZ": 0.07,
+            "rotX": 0.0,
+            "rotY": 0.0,
+            "rotZ": 0.0,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0,
+            "isExpandable": true,
+            "isSpecular": true,
+            "shininess": 50.0,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/.bmp",
+                "front": "Assets/.bmp",
+                "back": "Assets/.bmp",
+                "top": "Assets/.bmp",
+                "bottom": "Assets/.bmp",
+                "left": "Assets/.bmp",
+                "right": "Assets/.bmp"
+            }
+        },
+        {
+            "label": "upper grip",
+            "length": 0.07,
+            "width": 0.25,
+            "height": 0.25,
+            "r": 0.2,
+            "g": 0.2,
+            "b": 0.2,
+            "transX": -0.2,
+            "transY": -0.19,
+            "transZ": 0.07,
+            "rotX": 0.0,
+            "rotY": 0.0,
+            "rotZ": 0.0,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0,
+            "isExpandable": true,
+            "isSpecular": true,
+            "shininess": 50.0,
+            "textures": {
+                "isRepeat": true,
+                "all": "Assets/.bmp",
+                "front": "Assets/.bmp",
+                "back": "Assets/.bmp",
+                "top": "Assets/.bmp",
+                "bottom": "Assets/.bmp",
+                "left": "Assets/.bmp",
+                "right": "Assets/.bmp"
+            }
+        }
+    ]
+}
