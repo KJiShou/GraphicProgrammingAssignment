@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source Files">
@@ -27,6 +27,7 @@
     </Filter>
     <Filter Include="Data\Weapons">
       <UniqueIdentifier>{d958a3ab-e8d4-4e23-bebf-2161ed9d7ad2}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Data\Arm">
       <UniqueIdentifier>{81a9e089-66dd-43b7-bdf3-a677e43de1cf}</UniqueIdentifier>
     </Filter>
@@ -236,6 +237,9 @@
     </None>
     <None Include="rightForearmOuter.json">
       <Filter>Data\Arm</Filter>
+    </None>
+    <None Include="shield.json">
+      <Filter>Data\Weapons</Filter>
     </None>
   </ItemGroup>
 </Project>

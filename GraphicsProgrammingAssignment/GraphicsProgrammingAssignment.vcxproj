@@ -223,6 +223,7 @@
     <None Include="rightLowerLeg.json" />
     <None Include="rightUpperArmOuter.json" />
     <None Include="rightUpperLeg.json" />
+    <None Include="shield.json" />
     <None Include="template.json" />
     <None Include="towerBridge.json" />
     <None Include="upperArmOuter.json" />
