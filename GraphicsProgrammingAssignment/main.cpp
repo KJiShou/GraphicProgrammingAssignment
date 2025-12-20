@@ -475,8 +475,13 @@ void Draw() {
 	//===============================
 	// JY Testing Section
 	//===============================
-	/*backbone->RotateRightUpperLeg(x, y, z);*/
-	
+	backbone->RotateLeftUpperArm(90.0f, 0.0f, 0.0f);
+	backbone->RotateLeftHandFinger(90.0f, 90.0f, 90.0f);
+	//backbone->RotateLeftThumb(0.0f, 0.0f, 0.0f);
+	//backbone->RotateLeftIndex(0.0f, 0.0f, 0.0f);
+	//backbone->RotateLeftMiddle(0.0f, 0.0f, 0.0f);
+	//backbone->RotateLeftRing(0.0f, 0.0f, 0.0f);
+	//backbone->RotateLeftLittle(0.0f, 0.0f, 0.0f);
 	
 	//===============================
 	// HJ Testing Section
@@ -843,7 +848,7 @@ void Update(int framesToUpdate) {
 			break;
 		}
 	}
-	if (keyMode != 3) backbone->Animate(deltaTime);
+	if (keyMode != 3); //backbone->Animate(deltaTime);
 }
 
 int main(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)

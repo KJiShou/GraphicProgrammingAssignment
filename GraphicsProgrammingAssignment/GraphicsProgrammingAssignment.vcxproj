@@ -202,6 +202,7 @@
     <None Include="bridge.json" />
     <None Include="data.json" />
     <None Include="forearmOuter.json" />
+    <None Include="gun.json" />
     <None Include="handFinger.json" />
     <None Include="handPalm.json" />
     <None Include="head.json" />

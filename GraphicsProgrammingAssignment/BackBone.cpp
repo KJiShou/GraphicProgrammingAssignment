@@ -64,6 +64,10 @@ BackBone::~BackBone()
 	delete rightLegFrontArmor;
 	delete rightLegBackArmor;
 	delete rightLegSideArmor;
+
+	delete gun;
+	delete sword;
+	delete shield;
 }
 
 
@@ -177,6 +181,11 @@ void BackBone::SetBone() {
 	leftUpperArm->AddChild(leftUpperArmOuter);
 	leftForearm->AddChild(leftHand);
 	leftForearm->AddChild(leftForearmOuter);
+
+	// left hand -> weapons
+	leftHand->AddChild(gun);
+	leftHand->AddChild(sword);
+
 	// hand -> index finger
 	leftHand->AddChild(leftIndexBase);
 	leftIndexBase->AddChild(leftIndexMid);
@@ -206,6 +215,10 @@ void BackBone::SetBone() {
 	rightUpperArm->AddChild(rightUpperArmOuter);
 	rightForearm->AddChild(rightHand);
 	rightForearm->AddChild(rightForearmOuter);
+
+	// right hand -> weapons
+	rightHand->AddChild(shield);
+
 	// hand -> index finger
 	rightHand->AddChild(rightIndexBase);
 	rightIndexBase->AddChild(rightIndexMid);
@@ -304,6 +317,9 @@ void BackBone::ReadData() {
 	leftUpperArmJoint->ReadData();
 	leftUpperArmJointOuter->ReadData();
 	wing->ReadData();
+	gun->ReadData();
+	sword->ReadData();
+	shield->ReadData();
 }
 
 float clamp(float v, float min, float max) {
@@ -630,12 +646,12 @@ void BackBone::Draw() {
 	leftMiddleBase->Rotate(-leftMiddleBaseRot, 0, 0);
 	leftMiddleMid->Rotate(-leftMiddleMidRot, 0, 0);
 	leftMiddleTip->Rotate(-leftMiddleTipRot, 0, 0);
-	leftRingBase->Rotate(-leftMiddleBaseRot, 0, 0);
-	leftRingMid->Rotate(-leftMiddleMidRot, 0, 0);
-	leftRingTip->Rotate(-leftMiddleTipRot, 0, 0);
-	leftLittleBase->Rotate(-leftMiddleBaseRot, 0, 0);
-	leftLittleMid->Rotate(-leftMiddleMidRot, 0, 0);
-	leftLittleTip->Rotate(-leftMiddleTipRot, 0, 0);
+	leftRingBase->Rotate(-leftRingBaseRot, 0, 0);
+	leftRingMid->Rotate(-leftRingMidRot, 0, 0);
+	leftRingTip->Rotate(-leftRingTipRot, 0, 0);
+	leftLittleBase->Rotate(-leftLittleBaseRot, 0, 0);
+	leftLittleMid->Rotate(-leftLittleMidRot, 0, 0);
+	leftLittleTip->Rotate(-leftLittleTipRot, 0, 0);
 	leftThumbSpread->Rotate(0.0f, 0.0f, -leftThumbSpreadRot);
 	leftThumbMid->Rotate(-leftThumbMidRot, 0, 0);
 	leftThumbTip->Rotate(-leftThumbTipRot, 0, 0);
