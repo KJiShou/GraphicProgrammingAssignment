@@ -26,13 +26,13 @@
             "shininess": 50.0,
             "textures": {
                 "isRepeat": true,
-                "all": "Assets/golden-armor.bmp",
-                "front": "",
-                "back": "",
-                "top": "",
-                "bottom": "",
-                "left": "",
-                "right": ""
+                "all": "Assets/.bmp",
+                "front": "Assets/.bmp",
+                "back": "Assets/.bmp",
+                "top": "Assets/.bmp",
+                "bottom": "Assets/.bmp",
+                "left": "Assets/.bmp",
+                "right": "Assets/.bmp"
             }
         }
     ],
@@ -90,13 +90,13 @@
             "shininess": 50.0,
             "textures": {
                 "isRepeat": true,
-                "all": "Assets/metal.bmp",
-                "front": "",
-                "back": "",
-                "top": "",
-                "bottom": "",
-                "left": "",
-                "right": ""
+                "all": "Assets/.bmp",
+                "front": "Assets/.bmp",
+                "back": "Assets/.bmp",
+                "top": "Assets/.bmp",
+                "bottom": "Assets/.bmp",
+                "left": "Assets/.bmp",
+                "right": "Assets/.bmp"
             }
         },
         {
@@ -121,13 +121,13 @@
             "shininess": 50.0,
             "textures": {
                 "isRepeat": true,
-                "all": "Assets/metal.bmp",
-                "front": "",
-                "back": "",
-                "top": "",
-                "bottom": "",
-                "left": "",
-                "right": ""
+                "all": "Assets/.bmp",
+                "front": "Assets/.bmp",
+                "back": "Assets/.bmp",
+                "top": "Assets/.bmp",
+                "bottom": "Assets/.bmp",
+                "left": "Assets/.bmp",
+                "right": "Assets/.bmp"
             }
         },
         {
@@ -152,13 +152,13 @@
             "shininess": 50.0,
             "textures": {
                 "isRepeat": true,
-                "all": "Assets/golden-armor.bmp",
-                "front": "",
-                "back": "",
-                "top": "",
-                "bottom": "",
-                "left": "",
-                "right": ""
+                "all": "Assets/.bmp",
+                "front": "Assets/.bmp",
+                "back": "Assets/.bmp",
+                "top": "Assets/.bmp",
+                "bottom": "Assets/.bmp",
+                "left": "Assets/.bmp",
+                "right": "Assets/.bmp"
             }
         }
     ],
