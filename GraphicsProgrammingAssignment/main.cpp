@@ -125,6 +125,25 @@ float attackTimer = 0.0f;
 float blockTimer = 0.0f;
 float shootTimer = 0.0f;
 
+struct Bullet {
+	float x, y, z;
+	float vx, vy, vz;
+	bool active;
+};
+
+std::vector<Bullet> bullets;
+bool hasSword = false;
+bool hasGun = false;
+bool hasShield = false;
+
+float recoilTimer = 0.0f;
+bool isFiring = false;
+
+void ToggleSword();
+void ToggleGun();
+void ToggleShield();
+void FireBullet();
+
 // light
 GLUquadricObj* var = gluNewQuadric();
 Light light0 = Light( { 0.2f, 0.2f, 0.2f, 1.0f}, { 1.0f, 1.0f, 1.0f, 1.0f}, {1.0f, 10.0f, 5.0f, 1.0f}, GL_LIGHT0);
@@ -169,6 +188,9 @@ float deltaTime = 0.0f;
 TowerBridge* towerBridge = NULL;
 Object* background = NULL;
 BackBone* backbone = NULL;
+Object* gun = NULL;
+Object* sword = NULL;
+Object* shield = NULL;
 
 float camPosX = 0.0f, camPosY = 0.0f, camPosZ = 5.0f;
 float camYaw = 0.0f;   // Y-axis rotation (left/right)
@@ -182,6 +204,9 @@ void ReadData() {
 	//background->ReadData();
 	backbone->ReadData();
 	towerBridge->ReadData();
+	gun->ReadData();
+	sword->ReadData();
+	shield->ReadData();
 }
 
 void LoadTexture(LPCSTR filename, GLuint& texID, bool isRepeat)
@@ -224,6 +249,75 @@ void LoadTexture(LPCSTR filename, GLuint& texID, bool isRepeat)
 void ClearTexture() {
 	glDeleteTextures(1, &tex1);
 	DeleteObject(hBMP);
+}
+
+void ToggleSword() {
+	if (hasSword) {
+		backbone->leftHand->RemoveChild(sword);
+		hasSword = false;
+		backbone->RotateLeftHandFinger(0, 0, 0);
+	}
+	else {
+		if (hasGun) ToggleGun();
+
+		backbone->leftHand->AddChild(sword);
+		hasSword = true;
+
+		backbone->RotateLeftHandFinger(90, 90, 90);
+	}
+}
+
+void ToggleGun() {
+	if (hasGun) {
+		backbone->leftHand->RemoveChild(gun);
+		hasGun = false;
+		backbone->RotateLeftHandFinger(0, 0, 0);
+	}
+	else {
+		if (hasSword) ToggleSword();
+
+		backbone->leftHand->AddChild(gun);
+		hasGun = true;
+
+		backbone->RotateLeftHandFinger(90, 90, 90);
+		backbone->RotateLeftIndex(0.0f, 90.0f, 90.0f);
+	}
+}
+
+void ToggleShield() {
+	if (hasShield) {
+		backbone->rightHand->RemoveChild(shield);
+		hasShield = false;
+		backbone->RotateRightHandFinger(0, 0, 0);
+	}
+	else {
+		backbone->rightHand->AddChild(shield);
+		hasShield = true;
+
+		backbone->RotateRightHandFinger(90, 90, 90);
+	}
+}
+
+void FireBullet() {
+	float angleRad = (gameObjectRotY + 65) * PI / 180.0f;
+
+	Bullet b;
+	float offsetSide = 1.5f;
+
+	float speed = 1.0f;
+
+	b.vx = sin(angleRad) * speed;
+	b.vz = cos(angleRad) * speed;
+	b.vy = 0.0f;
+
+	float offsetHeight = 3.2f;
+
+	b.x = gameObjectTransX + 0.7;
+	b.y = gameObjectTransY + offsetHeight;
+	b.z = gameObjectTransZ + 1.0;
+
+	b.active = true;
+	bullets.push_back(b);
 }
 
 LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
@@ -316,6 +410,18 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 			std::cout << "=============================" << std::endl;
 			break;
 		}
+		case '1':
+			if (keyMode == 1)
+				ToggleSword();
+			break;
+		case '2':
+			if (keyMode == 1)
+				ToggleGun();
+			break;
+		case '3':
+			if (keyMode == 1)
+				ToggleShield();
+			break;
 		case 'R':
 		{
 			if (keyMode == 1) {
@@ -596,10 +702,10 @@ void Draw() {
 	//===============================
 	// JY Testing Section
 	//===============================
-	backbone->RotateLeftUpperArm(90.0f, 0.0f, 0.0f);
-	backbone->RotateLeftHandFinger(90.0f, 90.0f, 90.0f);
+	//backbone->RotateLeftUpperArm(90.0f, 0.0f, 0.0f);
+	//backbone->RotateLeftHandFinger(90.0f, 90.0f, 90.0f);
 	//backbone->RotateLeftThumb(0.0f, 0.0f, 0.0f);
-	backbone->RotateLeftIndex(0.0f, 90.0f, 90.0f);
+	//backbone->RotateLeftIndex(0.0f, 90.0f, 90.0f);
 	//backbone->RotateLeftMiddle(0.0f, 0.0f, 0.0f);
 	//backbone->RotateLeftRing(0.0f, 0.0f, 0.0f);
 	//backbone->RotateLeftLittle(0.0f, 0.0f, 0.0f);
@@ -650,6 +756,31 @@ void Draw() {
 	//sphere1.Draw();
 	frustumCube.Translate(5.0f, 0.0f, 10.0f);
 	//frustumCube.Draw();
+
+	glPushMatrix();
+	glLoadIdentity();
+
+	UpdateCameraView();
+	glTranslatef(cameraTransX, cameraTransY, cameraTransZ);
+	glRotatef(cameraRotateXAngle, 1.0f, 0.0f, 0.0f);
+	glRotatef(cameraRotateYAngle, 0.0f, 1.0f, 0.0f);
+	glRotatef(cameraRotateZAngle, 0.0f, 0.0f, 1.0f);
+
+	GLfloat yellowColor[] = { 1.0f, 1.0f, 0.0f, 1.0f };
+	GLfloat noSpecular[] = { 0.0f, 0.0f, 0.0f, 1.0f };
+	glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, yellowColor);
+	glMaterialfv(GL_FRONT, GL_SPECULAR, noSpecular);
+
+	for (const auto& b : bullets) {
+		if (b.active) {
+			glPushMatrix();
+			glTranslatef(b.x, b.y, b.z);
+			gluSphere(var, 0.1f, 8, 8);
+			glPopMatrix();
+		}
+	}
+
+	glPopMatrix();
 	
 	glPopMatrix();
 }
@@ -711,17 +842,15 @@ void Update(int framesToUpdate) {
 	for (int i = 0; i < framesToUpdate; i++) {
 		globalFrameCounter++;
 
-		// camera rotation
 		camYaw -= input.GetMouseX() * 0.1f;
 		camPitch -= input.GetMouseY() * 0.1f;
 
-		// Clamp pitch
 		if (camPitch > 89.0f)  camPitch = 89.0f;
 		if (camPitch < -89.0f) camPitch = -89.0f;
 
 		input.SetMouseX(0);
 		input.SetMouseY(0);
-		// camera move
+
 		float speed = input.IsKeyPressed(DIK_LSHIFT) ? camFasterMoveSpeed : camNormalMoveSpeed;
 
 		float forwardX = sinf(camYaw * PI / 180);
@@ -730,7 +859,6 @@ void Update(int framesToUpdate) {
 		float rightX = cosf(camYaw * PI / 180);
 		float rightZ = -sinf(camYaw * PI / 180);
 
-		// Move Forward/Back
 		if (input.IsKeyPressed(DIK_S))
 			camPosX += forwardX * speed,
 			camPosZ += forwardZ * speed;
@@ -739,7 +867,6 @@ void Update(int framesToUpdate) {
 			camPosX -= forwardX * speed,
 			camPosZ -= forwardZ * speed;
 
-		// Move Left/Right
 		if (input.IsKeyPressed(DIK_A))
 			camPosX -= rightX * speed,
 			camPosZ -= rightZ * speed;
@@ -748,7 +875,6 @@ void Update(int framesToUpdate) {
 			camPosX += rightX * speed,
 			camPosZ += rightZ * speed;
 
-		// Move Up/Down
 		if (input.IsKeyPressed(DIK_E)) {
 			camPosY += speed;
 		}
@@ -760,7 +886,6 @@ void Update(int framesToUpdate) {
 			bool isAttacking = (backbone->GetState() == ATTACK);
 			bool isJumping = (backbone->GetState() == JUMP);
 			bool isBlocking = (backbone->GetState() == BLOCK);
-
 			bool isShooting = (backbone->GetState() == SHOOT);
 
 			bool isMoving = false;
@@ -780,11 +905,9 @@ void Update(int framesToUpdate) {
 			if (isAttacking) {
 				attackTimer += 0.016f;
 				if (attackTimer > 1.26f) {
-					backbone->SetState(BLOCK);
+					backbone->SetState(IDLE);
 					isAttacking = false;
-					isBlocking = true;
 					attackTimer = 0.0f;
-					blockTimer = 0.0f;
 				}
 			}
 
@@ -796,19 +919,6 @@ void Update(int framesToUpdate) {
 					gameObjectTransY = 0;
 					isBlocking = false;
 					blockTimer = 0.0f;
-				}
-			}
-
-			if (input.IsKeyPressed(DIK_K)) {
-				if (!isShooting && !isJumping && !isAttacking && !isBlocking) {
-					backbone->SetState(SHOOT);
-				}
-				isShooting = true;
-			}
-			else {
-				if (isShooting) {
-					backbone->SetState(IDLE);
-					isShooting = false;
 				}
 			}
 
@@ -845,20 +955,70 @@ void Update(int framesToUpdate) {
 				isMoving = true;
 			}
 
-			else if (input.IsLeftMouseDown()) {
-				if (!isAttacking && !isJumping && !isBlocking && !isShooting) {
-					backbone->SetState(ATTACK);
-					attackTimer = 0.0f;
+			if (input.IsLeftMouseDown()) {
+				if (hasSword && !isJumping && !isBlocking && !isShooting) {
+					if (backbone->GetState() != ATTACK) {
+						backbone->SetState(ATTACK);
+						attackTimer = 0.0f;
+					}
+					isMoving = true;
 				}
-				isMoving = true;
-			}
-			else if (input.IsRightMouseDown()) {
-				if (!isAttacking && !isJumping && !isBlocking && !isShooting) {
-					backbone->SetState(BLOCK);
-					blockTimer = 0.0f;
+				else if (hasGun && isShooting) {
+					if (!isFiring) {
+						FireBullet();
+						isFiring = true;
+						recoilTimer = 0.0f;
+					}
 				}
-				isMoving = true;
 			}
+			else {
+				if (isFiring) isFiring = false;
+			}
+
+			if (input.IsRightMouseDown()) {
+				if (hasShield && !isAttacking && !isJumping && !isShooting) {
+					if (backbone->GetState() != BLOCK) {
+						backbone->SetState(BLOCK);
+						blockTimer = 0.0f;
+					}
+					isMoving = true;
+				}
+				else if (hasGun && !isAttacking && !isJumping && !isBlocking) {
+					if (!isShooting) {
+						backbone->SetState(SHOOT);
+					}
+					isShooting = true;
+				}
+			}
+			else {
+				if (isShooting) {
+					backbone->SetState(IDLE);
+					isShooting = false;
+				}
+			}
+
+			if (isFiring && recoilTimer < 0.2f) {
+				recoilTimer += 0.016f;
+				float recoil = (rand() % 10 - 5) * 0.5f;
+				gameObjectRotX = recoil;
+			}
+			else if (recoilTimer >= 0.2f && recoilTimer < 0.3f) {
+				gameObjectRotX = 0;
+				recoilTimer = 1.0f;
+			}
+
+			for (auto& b : bullets) {
+				if (b.active) {
+					b.x += b.vx;
+					b.y += b.vy;
+					b.z += b.vz;
+
+					if (abs(b.x) > 50 || abs(b.z) > 50) b.active = false;
+				}
+			}
+			
+			bullets.erase(std::remove_if(bullets.begin(), bullets.end(),
+				[](const Bullet& b) { return !b.active; }), bullets.end());
 
 			if (!isMoving && !isJumping && !isAttacking && !isBlocking && !isShooting) {
 				if (backbone->GetState() != IDLE) backbone->SetState(IDLE);
@@ -874,6 +1034,13 @@ void Update(int framesToUpdate) {
 			backbone->Rotate(gameObjectRotX, gameObjectRotY + sin(deltaTime * 5.0f) * 2.0f, gameObjectRotZ);
 			backbone->Move(gameObjectTransX, gameObjectTransY, gameObjectTransZ);
 		}
+
+		if (input.IsKeyPressed(DIK_J)) light0.Move(light0.GetPosition()[0] - 0.1f, light0.GetPosition()[1], light0.GetPosition()[2]);
+		if (input.IsKeyPressed(DIK_L)) light0.Move(light0.GetPosition()[0] + 0.1f, light0.GetPosition()[1], light0.GetPosition()[2]);
+		if (input.IsKeyPressed(DIK_U)) light0.Move(light0.GetPosition()[0], light0.GetPosition()[1] - 0.1f, light0.GetPosition()[2]);
+		if (input.IsKeyPressed(DIK_O)) light0.Move(light0.GetPosition()[0], light0.GetPosition()[1] + 0.1f, light0.GetPosition()[2]);
+		if (input.IsKeyPressed(DIK_I)) light0.Move(light0.GetPosition()[0], light0.GetPosition()[1], light0.GetPosition()[2] - 0.1f);
+		if (input.IsKeyPressed(DIK_K)) light0.Move(light0.GetPosition()[0], light0.GetPosition()[1], light0.GetPosition()[2] + 0.1f);
 	}
 
 	if (keyMode == 2) {
@@ -946,105 +1113,105 @@ void Update(int framesToUpdate) {
 				f5 += spd;
 			}
 		}
-		
+
 
 		switch (selectedPart) {
-		case 1: // Head [-40~40, -70~70, -30~30]
+		case 1:
 			head[0] = CLAMP(head[0] + dX, -40.0f, 40.0f);
 			head[1] = CLAMP(head[1] + dY, -70.0f, 70.0f);
 			head[2] = CLAMP(head[2] + dZ, -30.0f, 30.0f);
 			backbone->RotateHead(head[0], head[1], head[2]);
 			break;
 
-		case 2: // Body [-30~30, -45~45, -20~20]
+		case 2:
 			body[0] = CLAMP(body[0] + dX, -30.0f, 30.0f);
 			body[1] = CLAMP(body[1] + dY, -45.0f, 45.0f);
 			body[2] = CLAMP(body[2] + dZ, -20.0f, 20.0f);
 			backbone->RotateBody(body[0], body[1], body[2]);
 			break;
 
-		case 3: // Left Upper Arm [-45~180, -90~90, -20~100]
+		case 3:
 			lUpArm[0] = CLAMP(lUpArm[0] + dX, -45.0f, 180.0f);
 			lUpArm[1] = CLAMP(lUpArm[1] + dY, -90.0f, 90.0f);
 			lUpArm[2] = CLAMP(lUpArm[2] + dZ, -20.0f, 100.0f);
 			backbone->RotateLeftUpperArm(lUpArm[0], lUpArm[1], lUpArm[2]);
 			break;
 
-		case 4: // Right Upper Arm [-45~180, -90~90, -20~100]
+		case 4:
 			rUpArm[0] = CLAMP(rUpArm[0] + dX, -45.0f, 180.0f);
 			rUpArm[1] = CLAMP(rUpArm[1] + dY, -90.0f, 90.0f);
 			rUpArm[2] = CLAMP(rUpArm[2] + dZ, -20.0f, 100.0f);
 			backbone->RotateRightUpperArm(rUpArm[0], rUpArm[1], rUpArm[2]);
 			break;
 
-		case 5: // Left Forearm [0~140, -90~90]
+		case 5:
 			lForeArm[0] = CLAMP(lForeArm[0] + dX, 0.0f, 140.0f);
 			lForeArm[1] = CLAMP(lForeArm[1] + dY, -90.0f, 90.0f);
 			backbone->RotateLeftForearm(lForeArm[0], lForeArm[1]);
 			break;
 
-		case 6: // Right Forearm [0~140, -90~90]
+		case 6:
 			rForeArm[0] = CLAMP(rForeArm[0] + dX, 0.0f, 140.0f);
 			rForeArm[1] = CLAMP(rForeArm[1] + dY, -90.0f, 90.0f);
 			backbone->RotateRightForearm(rForeArm[0], rForeArm[1]);
 			break;
 
-		case 7: // Left Hand [-45~45, -30~30, -45~45]
+		case 7:
 			lHand[0] = CLAMP(lHand[0] + dX, -45.0f, 45.0f);
 			lHand[1] = CLAMP(lHand[1] + dY, -30.0f, 30.0f);
 			lHand[2] = CLAMP(lHand[2] + dZ, -45.0f, 45.0f);
 			backbone->RotateLeftHand(lHand[0], lHand[1], lHand[2]);
 			break;
 
-		case 8: // Right Hand [-45~45, -30~30, -45~45]
+		case 8:
 			rHand[0] = CLAMP(rHand[0] + dX, -45.0f, 45.0f);
 			rHand[1] = CLAMP(rHand[1] + dY, -30.0f, 30.0f);
 			rHand[2] = CLAMP(rHand[2] + dZ, -45.0f, 45.0f);
 			backbone->RotateRightHand(rHand[0], rHand[1], rHand[2]);
 			break;
 
-		case 9: // Left Upper Leg [-120~90, -45~45, -15~60]
+		case 9:
 			lUpLeg[0] = CLAMP(lUpLeg[0] + dX, -120.0f, 90.0f);
 			lUpLeg[1] = CLAMP(lUpLeg[1] + dY, -45.0f, 45.0f);
 			lUpLeg[2] = CLAMP(lUpLeg[2] + dZ, -15.0f, 60.0f);
 			backbone->RotateLeftUpperLeg(lUpLeg[0], lUpLeg[1], lUpLeg[2]);
 			break;
 
-		case 10: // Right Upper Leg [-120~90, -45~45, -15~60]
+		case 10:
 			rUpLeg[0] = CLAMP(rUpLeg[0] + dX, -120.0f, 90.0f);
 			rUpLeg[1] = CLAMP(rUpLeg[1] + dY, -45.0f, 45.0f);
 			rUpLeg[2] = CLAMP(rUpLeg[2] + dZ, -15.0f, 60.0f);
 			backbone->RotateRightUpperLeg(rUpLeg[0], rUpLeg[1], rUpLeg[2]);
 			break;
 
-		case 11: // Left Lower Leg [-130~0]
+		case 11:
 			lLowLeg[0] = CLAMP(lLowLeg[0] + dX, -130.0f, 0.0f);
 			backbone->RotateLeftLowerLeg(lLowLeg[0]);
 			break;
 
-		case 12: // Right Lower Leg [-130~0]
+		case 12:
 			rLowLeg[0] = CLAMP(rLowLeg[0] + dX, -130.0f, 0.0f);
 			backbone->RotateRightLowerLeg(rLowLeg[0]);
 			break;
 
-		case 13: // Left Foot [-30~45, -30~30, -15~15]
+		case 13:
 			lFoot[0] = CLAMP(lFoot[0] + dX, -30.0f, 45.0f);
 			lFoot[1] = CLAMP(lFoot[1] + dY, -30.0f, 30.0f);
 			lFoot[2] = CLAMP(lFoot[2] + dZ, -15.0f, 15.0f);
 			backbone->RotateLeftFoot(lFoot[0], lFoot[1], lFoot[2]);
 			break;
 
-		case 14: // Right Foot [-30~45, -30~30, -15~15]
+		case 14:
 			rFoot[0] = CLAMP(rFoot[0] + dX, -30.0f, 45.0f);
 			rFoot[1] = CLAMP(rFoot[1] + dY, -30.0f, 30.0f);
 			rFoot[2] = CLAMP(rFoot[2] + dZ, -15.0f, 15.0f);
 			backbone->RotateRightFoot(rFoot[0], rFoot[1], rFoot[2]);
 			break;
-		case 15: // Wing [0, -40~45, 0]
+		case 15:
 			wing = CLAMP(wing + dY, -40.0f, 45.0f);
 			backbone->RotateWing(wing, wing);
 			break;
-		case 16: // Left Finger [0~90, 0~90, 0~90]
+		case 16:
 			lFinger[0] = CLAMP(lFinger[0] + f1, 0.0f, 90.0f);
 			lFinger[1] = CLAMP(lFinger[1] + f2, 0.0f, 90.0f);
 			lFinger[2] = CLAMP(lFinger[2] + f3, 0.0f, 90.0f);
@@ -1056,7 +1223,7 @@ void Update(int framesToUpdate) {
 			backbone->RotateLeftRing(lFinger[3], lFinger[3], lFinger[3]);
 			backbone->RotateLeftLittle(lFinger[4], lFinger[4], lFinger[4]);
 			break;
-		case 17: // Right Finger [0~90, 0~90, 0~90]
+		case 17:
 			rFinger[0] = CLAMP(rFinger[0] + f1, 0.0f, 90.0f);
 			rFinger[1] = CLAMP(rFinger[1] + f2, 0.0f, 90.0f);
 			rFinger[2] = CLAMP(rFinger[2] + f3, 0.0f, 90.0f);
@@ -1068,7 +1235,7 @@ void Update(int framesToUpdate) {
 			backbone->RotateRightRing(rFinger[3], rFinger[3], rFinger[3]);
 			backbone->RotateRightLittle(rFinger[4], rFinger[4], rFinger[4]);
 			break;
-		case 18: // Right Finger [0~90, 0~90, 0~90]
+		case 18:
 			pelvis[0] = CLAMP(pelvis[0] + dX, -30.0f, 30.0f);
 			pelvis[1] = CLAMP(pelvis[1] + dY, -45.0f, 45.0f);
 			pelvis[2] = CLAMP(pelvis[2] + dZ, -20.0f, 20.0f);
@@ -1149,6 +1316,9 @@ int main(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)
 
 	towerBridge = new TowerBridge();
 	background = new Object("background.json");
+	gun = new Object("gun.json");
+	sword = new Object("sword.json");
+	shield = new Object("shield.json");
 	while (ProcessMessages())
 	{
 		input.Update();

@@ -242,6 +242,8 @@ public:
 	void ReadData();
 
 	void AddChild(Object* o);
+	void RemoveChild(Object* o);
+	void DeleteAllChildren();
 
 	GLuint LoadTexture(const std::string& filename, bool isRepeat);
 };

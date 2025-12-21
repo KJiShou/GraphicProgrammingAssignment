@@ -701,6 +701,24 @@ void Object::AddChild(Object* o) {
 	children.push_back(o);
 }
 
+void Object::RemoveChild(Object* o) {
+	auto it = std::remove(children.begin(), children.end(), o);
+
+	if (it != children.end()) {
+		children.erase(it, children.end());
+
+	}
+}
+
+void Object::DeleteAllChildren() {
+	for (Object* child : children) {
+		if (child != nullptr) {
+			delete child; 
+		}
+	}
+	children.clear();
+}
+
 GLuint Object::LoadTexture(const std::string& filename, bool isRepeat)
 {
 	bool mipmap = false;
