@@ -31,6 +31,9 @@
     <Filter Include="Data\Arm">
       <UniqueIdentifier>{81a9e089-66dd-43b7-bdf3-a677e43de1cf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Data\Weapons\Patterns">
+      <UniqueIdentifier>{f26cd8fa-2b3b-4281-809f-0bad37c21452}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -245,7 +248,22 @@
       <Filter>Data\Weapons</Filter>
     </None>
     <None Include="gunBodyPattern1.json">
-      <Filter>Data\Weapons</Filter>
+      <Filter>Data\Weapons\Patterns</Filter>
+    </None>
+    <None Include="gunBodyPattern2.json">
+      <Filter>Data\Weapons\Patterns</Filter>
+    </None>
+    <None Include="gunBodyPattern3.json">
+      <Filter>Data\Weapons\Patterns</Filter>
+    </None>
+    <None Include="gunBodyPattern4.json">
+      <Filter>Data\Weapons\Patterns</Filter>
+    </None>
+    <None Include="gunBodyPattern5.json">
+      <Filter>Data\Weapons\Patterns</Filter>
+    </None>
+    <None Include="gunOriginalBody.json">
+      <Filter>Data\Weapons\Patterns</Filter>
     </None>
   </ItemGroup>
 </Project>
