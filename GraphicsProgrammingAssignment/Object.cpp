@@ -721,7 +721,7 @@ void Object::DeleteAllChildren() {
 
 GLuint Object::LoadTexture(const std::string& filename, bool isRepeat)
 {
-	bool mipmap = false;
+	bool mipmap = true;
 	if (filename.empty()) {
 		std::cout << "[LoadTexture] No texture filename provided." << std::endl;
 		return 0; // 0 = no texture
