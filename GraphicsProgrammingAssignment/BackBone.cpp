@@ -1104,7 +1104,6 @@ void BackBone::Animate(float deltaTime) {
 		RotateRightForearm(140.0f * t, 90.0f * t);
 		RotateRightHand(45.0f * t, 13.0f * t, 11.0f * t);
 
-		RotateLeftHandFinger(90 * t, 90 * t, 90 * t);
 		RotateLeftIndex(0.0f, 90.0f * t, 90.0f * t);
 
 		RotateRightThumb(39 * t, 39 * t, 39 * t);
