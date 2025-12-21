@@ -73,7 +73,7 @@ json j;
 // 
 // R - Reset Position
 //==================================
-// MODE 4 (Every Part Movement)
+// MODE 3 (Every Part Movement)
 // ---------------------------------
 // T - x(+)
 // SHIFT + T - x(-)
@@ -201,8 +201,8 @@ BackBone* backbone = NULL;
 Object* gun = NULL;
 Object* sword = NULL;
 Object* shield = NULL;
-Object* gunPattern = NULL;
-Object* gunOriginal = NULL;
+Object* gunPatterns[6];
+int currentPatternIndex = 0;
 
 float camPosX = 0.0f, camPosY = 0.0f, camPosZ = 5.0f;
 float camYaw = 0.0f;   // Y-axis rotation (left/right)
@@ -219,8 +219,11 @@ void ReadData() {
 	gun->ReadData();
 	sword->ReadData();
 	shield->ReadData();
-	gunPattern->ReadData();
-	gunOriginal->ReadData();
+	for (int i = 0; i < 6; i++) {
+		if (gunPatterns[i] != NULL) {
+			gunPatterns[i]->ReadData();
+		}
+	}
 }
 
 void LoadTexture(LPCSTR filename, GLuint& texID, bool isRepeat)
@@ -428,16 +431,13 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 			backbone->SetWing(!backbone->GetHasWing());
 			break;
 		case '7':
-			if (hasPattern) {
-				gun->RemoveChild(gunPattern);
-				gun->AddChild(gunOriginal);
-				hasPattern = false;
+			gun->RemoveChild(gunPatterns[currentPatternIndex]);
+			currentPatternIndex++;
+
+			if (currentPatternIndex >= 6) {
+				currentPatternIndex = 0;
 			}
-			else {
-				gun->AddChild(gunPattern);
-				gun->RemoveChild(gunOriginal);
-				hasPattern = true;
-			}
+			gun->AddChild(gunPatterns[currentPatternIndex]);
 			break;
 		case '1':
 			if (keyMode == 1)
@@ -731,8 +731,8 @@ void Draw() {
 	//===============================
 	// JY Testing Section
 	//===============================
-	backbone->RotateLeftUpperArm(90.0f, 0.0f, 0.0f);
-	backbone->RotateLeftHandFinger(90.0f, 90.0f, 90.0f);
+	//backbone->RotateLeftUpperArm(90.0f, 0.0f, 0.0f);
+	//backbone->RotateLeftHandFinger(90.0f, 90.0f, 90.0f);
 	//backbone->RotateLeftThumb(0.0f, 0.0f, 0.0f);
 	//backbone->RotateLeftIndex(0.0f, 90.0f, 90.0f);
 	//backbone->RotateLeftMiddle(0.0f, 0.0f, 0.0f);
@@ -1060,6 +1060,19 @@ void Update(int framesToUpdate) {
 				}
 			}
 
+			if (hasGun) {
+				backbone->RotateLeftHandFinger(90, 90, 90);
+				backbone->RotateLeftIndex(0, 90, 90);
+			}
+
+			if (hasSword) {
+				backbone->RotateLeftHandFinger(90, 90, 90);
+			}
+
+			if (hasShield) {
+				backbone->RotateRightHandFinger(90, 90, 90);
+			}
+
 			backbone->Rotate(gameObjectRotX, gameObjectRotY + sin(deltaTime * 5.0f) * 2.0f, gameObjectRotZ);
 			backbone->Move(gameObjectTransX, gameObjectTransY, gameObjectTransZ);
 		}
@@ -1368,9 +1381,13 @@ int main(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)
 	gun = new Object("gun.json");
 	sword = new Object("sword.json");
 	shield = new Object("shield.json");
-	gunPattern = new Object("gunBodyPattern1.json");
-	gunOriginal = new Object("gunOriginalBody.json");
-	gun->AddChild(gunOriginal);
+	gunPatterns[0] = new Object("gunOriginalBody.json");
+	gunPatterns[1] = new Object("gunBodyPattern1.json");
+	gunPatterns[2] = new Object("gunBodyPattern2.json");
+	gunPatterns[3] = new Object("gunBodyPattern3.json");
+	gunPatterns[4] = new Object("gunBodyPattern4.json");
+	gunPatterns[5] = new Object("gunBodyPattern5.json");
+	gun->AddChild(gunPatterns[0]);
 	while (ProcessMessages())
 	{
 		input.Update();
