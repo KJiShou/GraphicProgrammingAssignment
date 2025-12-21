@@ -244,5 +244,8 @@
     <None Include="sword.json">
       <Filter>Data\Weapons</Filter>
     </None>
+    <None Include="gunBodyPattern1.json">
+      <Filter>Data\Weapons</Filter>
+    </None>
   </ItemGroup>
 </Project>
