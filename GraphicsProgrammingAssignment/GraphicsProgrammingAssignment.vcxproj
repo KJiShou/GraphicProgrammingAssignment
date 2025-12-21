@@ -205,6 +205,7 @@
     <None Include="forearmOuter.json" />
     <None Include="gun.json" />
     <None Include="gunBodyPattern1.json" />
+    <None Include="gunOriginalBody.json" />
     <None Include="handFinger.json" />
     <None Include="handPalm.json" />
     <None Include="head.json" />

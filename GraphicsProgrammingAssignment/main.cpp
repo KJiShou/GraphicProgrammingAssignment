@@ -54,6 +54,8 @@ json j;
 // C - Ortho view
 // V - Frustum view
 // F1 - print Debug Info
+// 6 - Add Wing
+// 7 - Add pattern
 //==================================
 // MODE 2 (Robot Movement)
 // ---------------------------------
@@ -142,6 +144,7 @@ std::vector<Bullet> bullets;
 bool hasSword = false;
 bool hasGun = false;
 bool hasShield = false;
+bool hasPattern = false;
 
 float recoilTimer = 0.0f;
 bool isFiring = false;
@@ -198,6 +201,8 @@ BackBone* backbone = NULL;
 Object* gun = NULL;
 Object* sword = NULL;
 Object* shield = NULL;
+Object* gunPattern = NULL;
+Object* gunOriginal = NULL;
 
 float camPosX = 0.0f, camPosY = 0.0f, camPosZ = 5.0f;
 float camYaw = 0.0f;   // Y-axis rotation (left/right)
@@ -214,6 +219,8 @@ void ReadData() {
 	gun->ReadData();
 	sword->ReadData();
 	shield->ReadData();
+	gunPattern->ReadData();
+	gunOriginal->ReadData();
 }
 
 void LoadTexture(LPCSTR filename, GLuint& texID, bool isRepeat)
@@ -419,6 +426,18 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 		}
 		case'6':
 			backbone->SetWing(!backbone->GetHasWing());
+			break;
+		case '7':
+			if (hasPattern) {
+				gun->RemoveChild(gunPattern);
+				gun->AddChild(gunOriginal);
+				hasPattern = false;
+			}
+			else {
+				gun->AddChild(gunPattern);
+				gun->RemoveChild(gunOriginal);
+				hasPattern = true;
+			}
 			break;
 		case '1':
 			if (keyMode == 1)
@@ -1349,6 +1368,9 @@ int main(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)
 	gun = new Object("gun.json");
 	sword = new Object("sword.json");
 	shield = new Object("shield.json");
+	gunPattern = new Object("gunBodyPattern1.json");
+	gunOriginal = new Object("gunOriginalBody.json");
+	gun->AddChild(gunOriginal);
 	while (ProcessMessages())
 	{
 		input.Update();
