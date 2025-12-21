@@ -417,6 +417,9 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 			std::cout << "=============================" << std::endl;
 			break;
 		}
+		case'6':
+			backbone->SetWing(!backbone->GetHasWing());
+			break;
 		case '1':
 			if (keyMode == 1)
 				ToggleSword();
