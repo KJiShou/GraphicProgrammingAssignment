@@ -201,8 +201,8 @@ void BackBone::SetBone() {
 	leftForearm->AddChild(leftForearmOuter);
 
 	// left hand -> weapons
-	//leftHand->AddChild(gun);
-	leftHand->AddChild(sword);
+	leftHand->AddChild(gun);
+	//leftHand->AddChild(sword);
 
 	// hand -> index finger
 	leftHand->AddChild(leftIndexBase);
@@ -334,8 +334,8 @@ void BackBone::ReadData() {
 	rightUpperArmJointOuter->ReadData();
 	leftUpperArmJoint->ReadData();
 	leftUpperArmJointOuter->ReadData();
-	//gun->ReadData();
-	sword->ReadData();
+	gun->ReadData();
+	//sword->ReadData();
 	shield->ReadData();
 	leftWing->ReadData();
 	rightWing->ReadData();
