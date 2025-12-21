@@ -53,6 +53,7 @@ json j;
 // X - Perspective view
 // C - Ortho view
 // V - Frustum view
+// F1 - print Debug Info
 //==================================
 // MODE 2 (Robot Movement)
 // ---------------------------------
@@ -62,18 +63,22 @@ json j;
 // H - Move To Right
 // Space - Jump
 // SHIFT - Sprint / Run
-// Mouse Left Click - Attack and Defend
+// Mouse Left Click - Attack(sword) and Shoot(Gun)
+// Mouse Right Click - Block(shield) and Aim(Gun without shield)
+// 1 - equip/drop sword
+// 2 - equip/drop gun
+// 3 - equip/drop shield
 // 
 // R - Reset Position
 //==================================
 // MODE 4 (Every Part Movement)
 // ---------------------------------
-// Y - x(-)
-// U - x(+)
-// H - y(-)
-// J - y(+)
+// T - x(+)
+// SHIFT + T - x(-)
+// G - y(-)
+// SHIFT + G - y(-)
 // B - z(-)
-// N - z(+)
+// SHIFT + B - z(-)
 // 
 // Finger Rotation
 // N -> thumb
@@ -81,6 +86,7 @@ json j;
 // , -> Middle
 // . -> Ring
 // / -> Little
+// SHIFT - reverse order
 // 
 // R - Reset Position
 // 
@@ -101,6 +107,7 @@ json j;
 // \ -> wing
 // ; -> left hand finger
 // ' -> right hand finger
+// F2 -> Pelvis
 //==================================
 
 // movement mode
@@ -1061,18 +1068,38 @@ void Update(int framesToUpdate) {
 		if (input.IsKeyPressed(DIK_BACKSLASH)) selectedPart = 15; // Wing
 		if (input.IsKeyPressed(DIK_SEMICOLON)) selectedPart = 16; // left hand finger
 		if (input.IsKeyPressed(DIK_APOSTROPHE)) selectedPart = 17; // left hand finger
-		if (input.IsKeyPressed(DIK_F2)) selectedPart = 18; // left hand finger
+		if (input.IsKeyPressed(DIK_F2)) selectedPart = 18; // pelvis
 
 		float spd = 1.0f;
 		float dX = 0, dY = 0, dZ = 0;
 		float f1 = 0, f2 = 0, f3 = 0, f4 = 0, f5 = 0;
 
-		if (input.IsKeyPressed(DIK_U)) dX += spd;
-		if (input.IsKeyPressed(DIK_Y)) dX -= spd;
-		if (input.IsKeyPressed(DIK_J)) dY += spd;
-		if (input.IsKeyPressed(DIK_H)) dY -= spd;
-		if (input.IsKeyPressed(DIK_N)) dZ += spd;
-		if (input.IsKeyPressed(DIK_B)) dZ -= spd;
+		if (input.IsKeyPressed(DIK_T)) {
+			if (input.IsKeyPressed(DIK_LSHIFT) || input.IsKeyPressed(DIK_RSHIFT)) {
+				dX -= spd;
+			}
+			else {
+				dX += spd;
+			}
+		}
+		if (input.IsKeyPressed(DIK_G)) {
+			if (input.IsKeyPressed(DIK_LSHIFT) || input.IsKeyPressed(DIK_RSHIFT)) {
+				dY -= spd;
+			}
+			else {
+				dY += spd;
+			}
+		}
+
+		if (input.IsKeyPressed(DIK_B)) {
+			if (input.IsKeyPressed(DIK_LSHIFT) || input.IsKeyPressed(DIK_RSHIFT)) {
+				dZ -= spd;
+			}
+			else {
+				dZ += spd;
+			}
+		}
+
 		if (input.IsKeyPressed(DIK_N)) {
 			if (input.IsKeyPressed(DIK_LSHIFT)) {
 				f1 -= spd;
