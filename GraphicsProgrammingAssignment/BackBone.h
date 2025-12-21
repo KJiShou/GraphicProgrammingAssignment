@@ -334,9 +334,12 @@ public:
 	 * @param z: 0 to 90
 	 */
 	void RotateLeftThumb(float base, float mid, float tip);
+	void SetWing(bool w);
+	bool GetHasWing();
 private:
 	float animTime = 0.0f;
 	AnimState currentState = IDLE;
+	bool hasWing = false;
 
 	// Rotation and Movement
 	//====================

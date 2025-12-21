@@ -592,6 +592,16 @@ void BackBone::RotateLeftThumb(float base, float mid, float tip)
 	leftThumbTipRot = clamp(tip, 0.0f, 60.0f);
 }
 
+void BackBone::SetWing(bool w)
+{
+	hasWing = w;
+}
+
+bool BackBone::GetHasWing()
+{
+	return hasWing;
+}
+
 
 
 void BackBone::Move(float x, float y, float z) {
@@ -623,6 +633,21 @@ void BackBone::Draw() {
 	// Body Rotation
 	//===========================
 	body->Rotate(bodyRotation[0], bodyRotation[1], bodyRotation[2], 0.0f, 0.3f, 0.0f);
+	if (!hasWing) {
+		leftWing->Translate(0, 10000 , 0);
+		rightWing->Translate(0, 10000, 0);
+		bigLeftWing->Translate(0, 10000, 0);
+		bigRightWing->Translate(0, 10000, 0);
+	}
+	else {
+		leftWing->Translate(0.1, 0, -0.04);
+
+		rightWing->Translate(-0.1, 0, -0.04);
+
+		bigLeftWing->Translate(0.565, 0, -0.13);
+
+		bigRightWing->Translate(-0.565, 0, -0.13);
+	}
 	leftWing->Rotate(0, -15 - smallWingRotation, 0.0f, 0.0f, 0.0f, -0.7f);
 	rightWing->Rotate(0, 15 + smallWingRotation, 0.0f, 0.0f, 0.0f, -0.7f);
 	bigLeftWing->Rotate(0, -40 - bigWingRotation, 0.0f, 0.0f, 0.0f, -0.7f);
