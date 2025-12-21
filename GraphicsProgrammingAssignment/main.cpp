@@ -1070,7 +1070,7 @@ void Update(int framesToUpdate) {
 			break;
 		}
 	}
-	if (keyMode != 2) backbone->Animate(deltaTime);
+	//if (keyMode != 2); //backbone->Animate(deltaTime);
 }
 
 int main(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)
