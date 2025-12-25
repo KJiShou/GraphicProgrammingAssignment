@@ -74,6 +74,14 @@ Manual control of every individual body part.
 
 ---
 
+**Image of robot**
+<img width="1584" height="861" alt="image" src="https://github.com/user-attachments/assets/9054ada1-9f46-48cd-8ca7-fe6cc5567bbd" />
+<img width="1584" height="861" alt="image" src="https://github.com/user-attachments/assets/08a5a47f-e7c0-4b9f-b370-bcdacd7c0b24" />
+<img width="1584" height="861" alt="image" src="https://github.com/user-attachments/assets/73eb8007-dca6-4506-a94e-67e0a95c0ed3" />
+<img width="1584" height="861" alt="image" src="https://github.com/user-attachments/assets/c43baf58-896d-498c-ac5d-99c459838b7d" />
+
+---
+
 ## Development Guide
 
 ### About Including Libraries
@@ -87,13 +95,6 @@ After adding your libraries, whenever you create a new class or any `.cpp` file,
 #include "pch.h"
 
 ```
-**Image of robot**
-<img width="1584" height="861" alt="image" src="https://github.com/user-attachments/assets/9054ada1-9f46-48cd-8ca7-fe6cc5567bbd" />
-<img width="1584" height="861" alt="image" src="https://github.com/user-attachments/assets/08a5a47f-e7c0-4b9f-b370-bcdacd7c0b24" />
-<img width="1584" height="861" alt="image" src="https://github.com/user-attachments/assets/73eb8007-dca6-4506-a94e-67e0a95c0ed3" />
-<img width="1584" height="861" alt="image" src="https://github.com/user-attachments/assets/c43baf58-896d-498c-ac5d-99c459838b7d" />
-
----
 
 *(See the example image below)*
 
